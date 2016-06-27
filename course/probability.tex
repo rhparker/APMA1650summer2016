@@ -92,16 +92,19 @@
 
 \begin{document}
 
-\section{Probability}
-In general parlance, the term \emph{probability} is used as a measure of a person's belief in the occurrence of a future event. Take a sentence such as, ``There is a 50\% probability of rain tomorrow''. A professional meteorologist has used a sophisticated mathematical model to distill large amounts of atmospheric data down to a simple number indicating her belief that it is equally likely to rain or not rain tomorrow. We can intepret this number however we wish. Who does this meterologist work for? How reliable have their predictions been in the past? (Here, we should examine our biases, for we might be more likely to recall rain when none was predicted than the other way around.) Then we can use this number to make decisions such as whether or not to carry an umbrella.\\
+\section{Probability Essentials}
+In general parlance, the term \emph{probability} is used as a measure of a person's belief in the occurrence of an event. This is the \emph{subjective} notion of probability. Take a sentence such as, ``There is a 60\% probability of rain tomorrow''. Where did this come from? A professional meteorologist has used a sophisticated mathematical model to distill large amounts of atmospheric data down to a simple number indicating her belief that it is more likely to rain than to not rain tomorrow. We can intepret this number however we wish. We should be careful, however, to examine both our biases and those of the meterologist. Who does this meterologist work for? How reliable have their predictions been in the past? (We should be careful here since we might be more likely to recall rain when none was predicted than the other way around.) Are meterologists more likely to err on the side of predicting rain, since that way fewer people will be upset if they are wrong? We can use this number to make important life decisions such as whether or not to carry an umbrella. The downside of this is that it is in essence a subjective opinion, even if that opinion comes from an expert. In addition, for subjective probabilites to make sense, they have to be internally consistent. In this example, if we believe there is a 60\% chance of rain tomorrow, we must also believe that there is a 40\% chance of it not raining tomorrow.
+\\
 
-We can put this idea on a more mathematical footing by looking at the \emph{empirical probability} (or relative frequency) of an event. Imaging rolling a standard six-sided die repeatedly. The empirical probability of rolling a 1 is the ratio of the number of times a 1 is rolled to the total number of rolls. In general, we have:
+Let's look at a different example. What is the probability of rolling a 1 on a standard six-sided die? We can argue based on symmetry that since dice are cubical, there should be no reason for one face to be preferred over another. Thus this probability is 1/6. This is the \emph{classical} notion of probability. In this interpretation, we use symmetry arguments to divide our experiment (a single die roll, in this case) into elementary events which are equally probable (the six distint die rolls). We can compute the proability of any event using these elementary, equiprobably events. The limitation of this approach is that is requires a symmetry argument to be effective; thus it works for coin flips and die rolls, but not for more complicated scenarios.\\
+
+We can look at the die roll experiment in another way. Imaging rolling a standard six-sided die repeatedly. The empirical probability of rolling a 1 is the ratio of the number of times a 1 is rolled to the total number of rolls. In general, we have:
 \[
 \text{empirical probability of a certain event} = \frac{ \text{number of times the event occurs }}{\text{total number of trials}}
 \]
-Intuitively, as we perform more and more dice rolls, the empirical probability of rolling a 1 should approach some mythical quantity which we call the \emph{probability} of rolling a 1. Using a symmetry argument, since dice are cubical and there should be no reason for one face to be preferred over another, this probability should be 1/6. This idea, which is known as the \emph{law of large numbers} will be made rigorous later in the course.\\
+Intuitively, as we perform more and more dice rolls, the empirical probability of rolling a 1 should approach some mythical quantity which we call the \emph{true probability} of rolling a 1. This approach is the \emph{empirical}, or \emph{frequentist}, approach to probability. For a standard, six-sided die, it stands to reason that the empirical probabilty should approach the classical probabiliy of 1/6 as the number of rolls approaches infinity. This result is called the \emph{law of large numbers} and will be discussed later in the course. The empirical approach has a critical advantage over the classical approach in that we do not require symmetry to compute our probabilities. As an example of this, think of how you would determine the probability of rolling a 1 if someone handed you a loaded die. The empirical approach does, however, have its limits. Returing to the weather example, there is no way to think of the chance of rain tomorrow as the limit of a sequence of independent experiements. Unless we are in the movie Groundhog Day, tomorrow can only happen once!\\
 
-For now, however, we require a more rigorous, mathematical definition of probability, and for that we turn to the language of \emph{set theory}.
+For our purposes, we require a more rigorous, mathematical construction of probability. This is known as \emph{axiomatic probability} and will unify some of the aspects of the other approaches to probability. For this, we turn to the language of \emph{set theory}.
 
 \subsection{Sample Spaces}
 A \emph{set} is a collection of distinct objects. A \emph{sample space}, denoted $\cals$ is the set of all outcomes of a particular experiment. Here are some examples of sample spaces:
@@ -208,7 +211,7 @@ A \cup (B \cap C) &= (A \cup B) \cap (A \cup C)
 \end{enumerate}
 
 \subsection{Axiomatic Definition of Probability}
-Equipped with our our knowlege of set theory, we can define probability axiomatically as follows. Given any event $A$ in our sample space $\cals$, we assign a probability $\P(A)$ to that event such that the following rules hold:
+Equipped with our our knowlege of set theory, we can define probability axiomatically as follows. Given any event $A$ in our sample space $\cals$, we assign a probability $\P(A)$ to that event such that the following rules hold\footnote{You can construct a coherent notion of probabiltiy with fewer axioms and derive the remaining rules from these; I like this version of probability rules, since it codifies what we want to be true given our intuitive notion of probability.}:
 \begin{enumerate}
 \item $0 \leq \P(A) \leq 1$ \\
 
@@ -244,7 +247,7 @@ These rules tell us the properties that we want probability to have. However, gi
 \begin{example}Consider once again tossing a single die. The sample space for this is $\cals = \{1, 2, 3, 4, 5, 6\}$. This sample space contains 6 simple events: $\{1\}, \{2\}, \{3\},\{4\}, \{5\}$, and $\{6\}$. We can assign any probabilties we want to these simple events, as long as they add up to 1. For example, assuming we have a fair die, we can let $\P(\{i\}) = 1/6$ for $i = 1, \dots, 6$. If we like, we can check that all the above rules hold. If we have a loaded die, which rolls a 6, say, half the time, we could assign probabilites: $\P(\{6\}) = 1/2, \P(\{i\}) = 1/10$ for $i = 1, \dots, 5$.
 \end{example}
 
-\begin{example}Consider this time a countable sample space $\cals = \N = \{1, 2, 3, \dots\}$. One possibility is to assign probabilities $\P(\{i\}) = 1/2^i$ for $i = 1, 2, 3, \dots$, i.e. $\P(\{1\}) = 1/2$, $\P(\{2\}) = 1/4$, $\P(\{3\}) = 1/8$, etc. Perhaps you recall from calculus that this is a geometric series, and so we know its sum is:
+\begin{example}Consider this time a countable sample space $\cals = \N = \{1, 2, 3, \dots\}$. One possibility is to assign probabilities $\P(\{i\}) = 1/2^i$ for $i = 1, 2, 3, \dots$, i.e. $\P(\{1\}) = 1/2$, $\P(\{2\}) = 1/4$, $\P(\{3\}) = 1/8$, etc. Perhaps you recall from calculus that this is a geometric series with first element $1/2$ and common ratio $1/2$, and so we know its sum is:
 \[
 \sum_{i = 1}^{\infty} \P(\{i\}) = \sum_{i = 1}^{\infty} \frac{1}{2^i} = \frac{1}{2}\frac{1}{1 - 1/2} = 1
 \]
@@ -254,6 +257,9 @@ Since the sum of the probabilities of all the simple events is 1, we are all set
 \includegraphics[width=5cm]{Geometric_series}
 \end{figure}
 \end{example}
+
+% end of class 1
+% \end{document}
 
 \subsection{Discrete Uniform Distribution}
 The first probability distribution we will consider is the uniform distribution on a \emph{finite} sample space. In the discrete uniform distribution, every simple event is equally likely to occur. If we have a finite sample space with $n$ simple events, then the discrete uniform distribution assigns each simple event a probability of $1/n$.
@@ -288,7 +294,7 @@ For general $n$ and $m$, it is not immediately obvious how to perform the requis
 \subsubsection{The Basic Principle of Counting}
 
 \begin{framed}
-  \emph{The basic principle of counting (mn rule) }\\
+  \emph{The basic principle of counting ($mn$-rule) }\\
   \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
   Suppose we are performing two experiments. If the first experiment has $m$ possible outcomes and the second experiment has $n$ possible outcomes, there are $mn$ possible outcomes for the two experiments. We can generalize this to more than two experiments; in that case, we take the product of the number of outcomes from each experiment.
 \end{framed}
@@ -370,7 +376,7 @@ Consider the following example, which is modification of the Rutabega Curl examp
 
 \begin{example}100 students buy raffle tickets. Three names are chosen from a hat uniformly at random to win a free sandwich at Eastside Pockets\footnote{A popular eatery on Thayer St. near Brown University}. How many possibilities are there for the winners?\\
 
-How is this problem fundamentally different from the Rutabega Curl. Here, the three prizes are identical, as opposed to the three distinct medals in the Rutabega Curl. We can think of this problem as selecting 3 items from a group of 100, but \emph{the order in which we select them does not matter}. Let's look at this in a few stages:
+How is this problem fundamentally different from the Rutabega Curl? Here, the three prizes are identical, as opposed to the three distinct medals in the Rutabega Curl. We can think of this problem as selecting 3 items from a group of 100, but \emph{the order in which we select them does not matter}. Let's look at this in a few stages:
 \begin{enumerate}
 \item Let's pretend for a moment that the order of selection matters. Then, as in the Rutabega Curl, there are $100 \cdot 99 \cdot 98$ possibilities.
 \item Compared to the the case where order matters, is the number of possibilities greater, fewer, or the same? There must be fewer possibilities since, for example, choosing the numbers $(1, 2, 3)$ from the hat in that order is the same as choosing them in the order $(3, 2, 1)$.
@@ -403,6 +409,42 @@ The number of combinations (unordered arrangements) of $r$ items drawn from a gr
 \]
 \end{framed}
 
+\begin{example}The Brown crossword puzzle club consists of 5 undergraduate and 7 graduate students.
+\item How many different committees of 2 undergrads and 3 grad students can be formed?
+
+There are $\binom{5}{2}$ possible groups of 2 undergrads, and $\binom{7}{3}$ possible groups of 3 grad students. We multiply these together (basic principle of counting) to get:
+\[
+\binom{5}{2} \binom{7}{3}  = \frac{5!}{2!3!} \frac{7!}{3!4!} = \frac{5\cdot4}{2\cdot1} \frac{7\cdot6\cdot5}{3\cdot2\cdot1} = 10 \cdot 35 = 350
+\]
+
+\item What if two of the grads students refuse to be on the same committee?
+
+There are $\binom{7}{3} = 35$ possible groups of 3 graduate students. How many contain both of the two students who refuse to serve together? To make a three-person committee which includes these two, you need to include the two rival students plus one other student selected from the five remaining graduate students. Thus there are $\binom{2}{2}\binom{5}{1} = 5$ committees which include the two rival students. Subtracting from 35, there are 30 committees which don't include both rival students. As above, we multiply to get $10 \cdot 30 = 300$ possible committees.
+\end{example}
+
+Computing probabilities of poker hands are classic problems in probability. Since the order of the cards in a poker hand does not matter, these problems involve combinations.
+
+\begin{example}
+You are dealt a five-card poker hand. What is the probability of getting the following hands:
+\begin{enumerate}
+\item A full house (three of cards of one number plus two cards of another number)\\
+
+There are 52 cards in a poker deck, and a poker hand is 5 cards. Since the order of the cards dealt does not matter, there are $\binom{52}{5}$ possible five-card poker hands. To count the number of hands which give us a full house, we use the following procedure:
+\begin{enumerate}
+\item Choose the number for the three-of-a-kind. There are $\binom{13}{1}$ ways to do that. Now select three out of the four cards of this number. There are $\binom{4}{3}$ ways to do that. Thus there are $\binom{13}{1}\binom{4}{3}$ ways to choose the three-of-a-kind.
+\item Choose the number for the pair. There are $\binom{12}{1}$ ways to do that, since we have already chosen one of the numbers for the three-of-a-kind. Now select two out of the four cards of this number. There are $\binom{4}{2}$ ways to do that. Thus there are $\binom{12}{1}\binom{4}{2}$ ways to choose the pair once the three-of-a-kind has been chosen.
+\item Multiply all of these together to get $\binom{13}{1}\binom{4}{3}\binom{12}{1}\binom{4}{2}$ poker hands which are full houses.
+\end{enumerate}
+To get the probability of a full house, we divide by the number of poker hands (the size of the sample space) to get:
+\[
+\frac{\binom{13}{1}\binom{4}{3}\binom{12}{1}\binom{4}{2}}{\binom{52}{2}} = 0.00144
+\]
+\end{enumerate}
+It is worth noting that the number of full houses is not $\binom{13}{2}\binom{4}{3}\binom{4}{2}$, i.e. choose two numbers, then choose a three-of-a-kind, then choose a pair. Why does this not work? This method does not distinguish betwen, say, \texttt{33366} and \texttt{33666} (i.e. it treats these as the same), and these are two distinct full houses. Since this undercounts by a factor of two, you can check that if you multiply this by two, you get the correct answer above. 
+\end{example}
+
+
+
 Combinations are incredibly useful. We can use them in some rather surprising cases.
 
 \begin{example}Consider the binary string \texttt{11000}. How many distinct orderings are there of the digits in this string?\\
@@ -431,15 +473,25 @@ Since there are $n$ total antennas, there are $n!$ linear arrangements of the an
 \[
 | * | * | * | * | * | * | \dots | * | * |
 \]
-\end{example}
 For the system to be functional, each space $|$ can contain at most one defective antenna. There are $n - m + 1$ spaces to choose from, and $m$ defective antennas to place. Thus there are $\binom{n-m+1}{m}$ functional arrangements. Dividing this by the total number of arrangements $n!$, the probability that the system is functional is:
 \[
 \frac{ \binom{n-m+1}{m}}{n!}
 \]
+\end{example}
 
+\begin{example}
+I buy an assortment of 10 bagels from Bagel Gourmet. There are five types of bagels to choose from: everything, onion, poppy, raisin, and sesame. How many different assortments of bagels can I bring home? Assume there are at least 10 of each kind of bagel in the store.\\
 
-Bagel problem
-
+We can model the problem in a way that lets us use combinations. Imagine you buy the bagels in a special box. The bagels are arranged in a line, and are always in alphabetical order: everything, onion, poppy, raisin, sesame. There are four dividers, one between each bagel type, and if a bagel type is not present, we just put the dividers next to each other. Here is an example of three bagel boxes with their dividers. Bagels are designated by * and dividers by $|$.
+\begin{figure}[H]
+\begin{tabular}{ll}
+$* * | * | * * * | * * | * *$ & 2 everything, 1 onion, 3 poppy, 2 raisin, 2 sesame \\
+$* * * | | * * * | | * *$ & 3 everything, 3 poppy, 2 sesame\\
+$* * * * * * * * * * | | | |$ & 10 everything\\
+\end{tabular}
+\end{figure}
+From the picture, we see that an assortement of 10 bagels can be represented as a linear string of 14 symbols: 10 * representing the bagels and 4 $|$ representing the dividers. The number of assortments is the same as the number of distinct orderings of this linear string: $\binom{14}{4} = 1001$
+\end{example}
 
 \subsubsection{Multinomials}
 

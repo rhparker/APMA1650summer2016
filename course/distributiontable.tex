@@ -35,7 +35,7 @@ Distribution & Parameters & Probabiltiy Mass Function (pmf) & Mean & Variance \\
 \hline
 Binomial & $n, p$ & \makecell{ $\displaystyle p(r) = \binom{n}{r}p^r(1-p)^{n-r}$\\$ \displaystyle r = 0, 1, \dots, n$} & $np$ & $np(1-p)$ \\
 Geometric & $p$ & \makecell{ $\displaystyle p(r) = p(1-p)^{r-1}$ \\ $r = 1, 2, \dots$} & $ \displaystyle \frac{1}{p}$ & $\displaystyle \frac{1 - p}{p^2}$ \\
-Poisson & $\lambda$ & \makecell{ $\displaystyle p(r) = \frac{\lambda^r e^{-\lambda}}{r!}$ \\ $r = 1, 2, \dots$ } & $\lambda$ & $\lambda$ \\
+Poisson & $\lambda$ & \makecell{ $\displaystyle p(r) = \frac{\lambda^r e^{-\lambda}}{r!}$ \\ $r = 0, 1, 2, \dots$ } & $\lambda$ & $\lambda$ \\
 \end{tabular}
 \end{figure}
 
@@ -48,7 +48,7 @@ Poisson & $\lambda$ & \makecell{ $\displaystyle p(r) = \frac{\lambda^r e^{-\lamb
 Distribution & Parameters & Probability Density Function (pdf) & Mean & Variance \\
 \hline
 Uniform & $a, b$ & \makecell{ $\displaystyle f(y) = \frac{1}{b-a}$ \\ $a \leq y \leq b$ }& $\displaystyle \frac{a + b}{2}$ & $\displaystyle \frac{(b - a)^2}{12}$ \\
-Exponential & $\lambda$ & \makecell{ $\displaystyle f(y) = \lambda e^{-\lambda y}$ \\ $0 < y < \infty$} & $\displaystyle \frac{1}{\lambda}$ & $\displaystyle \frac{1}{\lambda^2}$ \\
+Exponential & $\lambda$ & \makecell{ $\displaystyle f(y) = \lambda e^{-\lambda y}$ \\ $0 \leq y < \infty$} & $\displaystyle \frac{1}{\lambda}$ & $\displaystyle \frac{1}{\lambda^2}$ \\
 Normal & $\mu, \sigma$ & $\displaystyle f(y) = \frac{1}{\sqrt{2 \pi}\sigma}e^{- \frac{(y - \mu)^2}{2 \sigma^2}}$ & $\mu$ & $\sigma^2$ \\
 Standard Normal & none & $\displaystyle f(y) = \frac{1}{\sqrt{2 \pi}}e^{- \frac{y^2}{2}}$ & $0$ & $1$ \\
 \end{tabular}
