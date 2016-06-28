@@ -262,14 +262,22 @@ Since the sum of the probabilities of all the simple events is 1, we are all set
 % \end{document}
 
 \subsection{Discrete Uniform Distribution}
-The first probability distribution we will consider is the uniform distribution on a \emph{finite} sample space. In the discrete uniform distribution, every simple event is equally likely to occur. If we have a finite sample space with $n$ simple events, then the discrete uniform distribution assigns each simple event a probability of $1/n$. Why is this the case? If each simple event has probability $p$ and there are $n$ simple events $A_1, \dots A_n$ in our sample space, then using the fact that the sample space $S$ must have probability 1 and that the simple events are pairwise disjoint:
+The first probability distribution we will consider is the uniform distribution on a \emph{finite} sample space. In the discrete uniform distribution, every simple event is equally likely to occur. \\
+
+Suppose we have a finite sample space $cals$ with $n$ simple events. The discrete uniform distribution assigns each simple event a probability of $1/n$. Why is this the case? If each simple event has probability $p$ and there are $n$ simple events $A_1, \dots A_n$ in our sample space, then using the fact that the sample space $S$ must have probability 1 and that the simple events are pairwise disjoint:
 \begin{align*}
 1 &= \P(S) \\
 &= \P(A_1 \cup A_2 \cup \cdots \cup A_n) \\
 &= \P(A_1) + \P(A_2) + \dots + \P(A_n) \\
 &= np
 \end{align*}
-where in the last line we use the fact that the simple events each have probability $p$, and there are $n$ of them. Solving for $p$, we get $p = 1/n$.
+where in the last line we use the fact that the simple events each have probability $p$, and there are $n$ of them. Solving for $p$, we get $p = 1/n$.\\
+
+How do we find the probability of an event that is not a simple event? Again, consider a discrete sample space $cals$ with $n$ simple events. Suppose we have an event $A$ which is a subset of $cals$. Since we have a finite sample space, $A$ is composed of a finite number $m$ of simple events, where $m$ is an integer between 0 and $n$. The probability of $A$ is:
+\[
+\P(A) = \frac{ \text{number of simple events in $A$}}{\text{number of simple events in $\cals$}} = \frac{m}{n}
+\]
+
 
 \begin{example}Consider the finite sample space $\cals$ representing the roll of two standard dice. This sample space has 36 simple events, so each simple event has a probability of 1/36. Note that for the simple events in this sample space, the order of the die rolls matters. $(1, 6)$ and $(6, 1)$ are two different events; even though both events contain the same die rolls, for the former, the 1 is rolled first, while for the latter, the 6 is rolled first.
 \begin{enumerate}
@@ -417,6 +425,7 @@ The number of combinations (unordered arrangements) of $r$ items drawn from a gr
 \end{framed}
 
 \begin{example}The Brown crossword puzzle club consists of 5 undergraduate and 7 graduate students.
+\begin{enumerate}
 \item How many different committees of 2 undergrads and 3 grad students can be formed?
 
 There are $\binom{5}{2}$ possible groups of 2 undergrads, and $\binom{7}{3}$ possible groups of 3 grad students. We multiply these together (basic principle of counting) to get:
@@ -427,6 +436,7 @@ There are $\binom{5}{2}$ possible groups of 2 undergrads, and $\binom{7}{3}$ pos
 \item What if two of the grads students refuse to be on the same committee?
 
 There are $\binom{7}{3} = 35$ possible groups of 3 graduate students. How many contain both of the two students who refuse to serve together? To make a three-person committee which includes these two, you need to include the two rival students plus one other student selected from the five remaining graduate students. Thus there are $\binom{2}{2}\binom{5}{1} = 5$ committees which include the two rival students. Subtracting from 35, there are 30 committees which don't include both rival students. As above, we multiply to get $10 \cdot 30 = 300$ possible committees.
+\end{enumerate}
 \end{example}
 
 Computing probabilities of poker hands are classic problems in probability. Since the order of the cards in a poker hand does not matter, these problems involve combinations.
@@ -446,11 +456,9 @@ To get the probability of a full house, we divide by the number of poker hands (
 \[
 \frac{\binom{13}{1}\binom{4}{3}\binom{12}{1}\binom{4}{2}}{\binom{52}{2}} = 0.00144
 \]
-\end{enumerate}
 It is worth noting that the number of full houses is not $\binom{13}{2}\binom{4}{3}\binom{4}{2}$, i.e. choose two numbers, then choose a three-of-a-kind, then choose a pair. Why does this not work? This method does not distinguish betwen, say, \texttt{33366} and \texttt{33666} (i.e. it treats these as the same), and these are two distinct full houses. Since this undercounts by a factor of two, you can check that if you multiply this by two, you get the correct answer above. 
+\end{enumerate}
 \end{example}
-
-
 
 Combinations are incredibly useful. We can use them in some rather surprising cases.
 
@@ -588,8 +596,204 @@ Note that there is a perfect correspondance between each appropriate collection 
 \[
 \binom{11}{1 \: 2\: 4 \: 4} = \frac{11!}{1!\:2!\:4!\:4!} = 34,650
 \]
-
-
 \end{example}
+
+\subsection{Conditional Probability}
+Sometimes the probability of an event will depend on whether or not another event has occurred. There are many real-life examples of this:
+\begin{enumerate}
+\item In weather prediction, the probability of rain tomorrow depends on whether or not it is raining today. This especially makes sense during the tropical storm season when it will often rain for days on end.
+\item In the field of public health, probabilties of developing disease depend on many outside factors. The probability of developing lung cancer, for example, depends on factors such as smoking history, exposure to second-hand smoke, and occupational exposure to asbestos.
+\item Poker players are constantly thinking about conditional probability. For example, what is the probability of an inside straight draw on the final two cards given the cards the player has already seen?
+\end{enumerate}
+
+Let's do a simple die-tossing example, and then generalize.
+
+\begin{example}On a standard, fair six-sided die, the probability of rolling a 1 is 1/6. This is the \emph{unconditional probability} of rolling a 1, since this probability does not depend on any additional information. Now suppose we know that our die roll is odd. What is the \emph{conditional probability} of rolling a 1 given the die roll is odd? There are 3 possible odd rolls: 1, 3, and 5. We reduce our sample space to the three odd rolls since we know one of those occurred. Since we still have a discrete uniform distribution, each of the three odd rolls is equally likely. Thus the probability of rolling a 1 given an odd roll is 1/3.
+\end{example}
+
+Note that what we did above is reduce our sample space from all six possible rolls to the three odd rolls. We then kept the uniform distribution on the the new, smaller sample space. To generalize this to arbitrary events, let's draw a picture! Let $\cals$ be our sample space, and consider two events $A$ and $B$ in $\cals$. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=6cm]{venn.eps}
+\end{figure}
+
+We are interested in the probability of $A$ given that $B$ has occurred, which we will write $\P(A|B)$ (``the probability of $A$ given $B$''). If $\P(B) = 0$, i.e. $B$ cannot occur, then $\P(A|B)$ must also be 0 (does this make sense?) So we are only interested in the case where $\P(B) > 0$, i.e. $B$ can actually happen. What we are going to do is \emph{restrict} our sample space from $\cals$ down to $B$ since the only events we care about are ones where $B$ has occurred. Imagine taking an eraser (or digital equivalent) to the picture above and removing everything that is outside of B. We are left with the following picture:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=6cm]{AgivenB.eps}
+\end{figure}
+
+The piece of $A$ which lies inside $B$ is $A \cap B$, which is on the left of the picture above. If we think of probability intuitively as ``area'' in pictures like this, it makes sense that the conditional probability of $A$ given $B$ is the ratio of $\P(A \cap B)$ to $\P(B)$.
+
+\begin{framed}
+Let $A$ and $B$ be two events. The \emph{conditional probability} of $A$ given that $B$ has occurred is given by:
+\[
+\P(A|B) = \frac{\P(A \cap B)}{\P(B)}
+\]
+as long as $\P(B) = 0$. (If $\P(B) = 0$, then this is zero.)
+\end{framed}
+
+As a sanity check, let's use this definition of conditional probability and redo our die roll example from above.
+
+\begin{example}What is the probability of rolling a 1 on a standard six-sided die given than an odd number was observed?\\
+
+Let $A$ be the event that a 1 is rolled, and $B$ the event that an odd number is rolled. Since $A \subset B$, $A \cap B = A$ (does this make sense?) Using the discrete uniform distribution, $\P(A) = 1/6$ and $\P(B) = 1/2$ (since $B$ is composed of three simple events, each with probability 1/6).
+Thus we have:
+\[
+\P(A|B) = \frac{ \P(A \cap B)}{\P(B)} = \frac{\P(A)}{\P(B)} = \frac{(1/6)}{(1/2)} = frac{1}{3} \approx 0.339
+\]
+This agrees with our intuitive computation above.
+\end{example}
+
+Let's do another example, this time using the roll of two dice.
+
+\begin{example}
+You roll two standard, fair six-sided dice. What is the the probability that the sum is greater than or equal to 11, given that the first roll is a 6?\\
+
+Let $A$ be the event that the sum is greater than or equal to 11, and $B$ the event that the first roll is a 6. The events are shown graphically below.
+\begin{figure}[H]
+\centering
+\includegraphics[width=6cm]{2dice1.eps}
+\end{figure}
+First let's use the sample space reduction method. Given that $B$ has occurred, i.e. the first roll is a 6, we reduce our sample space to $B$, i.e. to the bottom row of the picture. There are six squares in the bottom row, and since we still have the uniform distribution, each is equally likely. Of those 6, 2 of them (the rightmost two) have a sum of dice greater than or equal to 11. Thus the conditional probabaility is $\P(A|B) = 2/6 = 1/3$.\\
+
+We can also use our definition of conditional probabiltiy. Using the uniform distribution, $\P(B) = 6/36$. Since $A \cap B$ is the two rightmost square on the bottom row, $\P(A \cap B) = 2/36$. By the definition of conditional probability:
+\[
+\P(A|B) = \frac{ \P(A \cap B)}{\P(B)} = \frac{2/36}{6/36} = \frac{1}{3}
+\]
+Thus again we get the same answer using either method.
+\end{example}
+
+Sometimes using a reduced sample space is much easier that using the definition of conditional probabiltiy. Consider the following example.
+
+\begin{example}In the card game bridge (which is near and dear to my heart), 52 cards are dealt out equally to 4 players (called North, South, East and West). Given that North and South have a total of 8 spades between them (out of 13 total spades), what is the probability that East has 3 spades.\\
+
+Here it is easiest to work with a reduced sample space. If North and South have 26 cards and 8 spades between them, then East and West much have the remaining 26 cards and 5 spades between them. The reduced sample space we will work with is the sample space of possible hands for East. Since East has 13 of the remaining 26 cards, there are $\binom{26}{13}$ possible hands for East. This is the size of the sample space. In how many of those hands does East have exactly 3 spades? To do this, we first choose 3 of the remaining 5 spades. There are $\binom{5}{3}$ ways to do this. Then we need to choose the non-spade cards. East has 10 non-spade cards, and there are $26 - 5 = 21$ non-spade cards to choose from, thus there are $\binom{21}{10}$ ways to choose these. Multiplying these together, there are $\binom{5}{3}\binom{21}{10}$ possible hands where East has exactly 3 of the remaining spades. Thus the conditional probability that East has 3 spades given that North and South have 8 spades between them is:
+\[
+\frac{ \binom{5}{3}\binom{21}{10} }{\binom{26}{13}} \approx 0.339
+\]
+\end{example}
+
+\subsection{Independence}
+Two events $A$ and $B$ are independent if the whether or not one event occurs is unaffected by whether or not the other event occurs. We will make this mathematically precise in a momement, but here are some intuitive examples:
+\begin{enumerate}
+\item You are flipping coins repeatedly. Each coin flip is independent of all other coin flips, since there is no way for coin flips to affect each other. Now imagine you flip 10 heads in a row. It is tempting to say that the streak of heads must break, and that it is more likely than not that the 11th flip is a tail. This is known as the \emph{gambler's fallacy}, and is false since the flips are independent, and each flip has a 1/2 probability of heads. A famous example of this occurred in the Monte Carlo casino in Monaco on August 18, 1913. In a game of roulette, the ball landed on black 26 times in a row, and gamblers lost a lot of money betting that the streak would break.
+\item In blackjack, if a player is dealt an ace, the next deal is less likely to be an ace, since the cards are drawn without replacement. Successive deals of cards are thus not independent. This is the basis for counting cards in blackjack and other games.
+\item In the field of public health, ``smoking'' and ``contracting lung cancer'' are not independent since a causal link has been shown between the two.
+\end{enumerate}
+We are ready to formally definite the concept of independence.
+
+\begin{framed}
+Let $A$ and $B$ be two events. $A$ and $B$ are \emph{independent} if any of the following hold:
+\begin{align*}
+\P(A|B) &= \P(A) \\
+\P(B|A) &= \P(B) \\
+\P(A \cap B) &= \P(A)\P(B)
+\end{align*}
+In plain language, two events are independent if the conditional probability is the same as the unconditional probability, or if the probability of both events occurring is the same as the product of the probabilities of the individual events.
+\end{framed}
+
+Let's look at a few examples of independence.
+
+\begin{example}
+Let us roll a single fair, six-sided die, and consider the following events:
+\begin{itemize}
+\item $A$: we roll an odd number
+\item $B$: we roll an even number
+\item $C$: we roll a 1 or a 2
+\end{itemize}
+\begin{enumerate}
+\item Are $A$ and $B$ independent? \\
+
+Because $A \cap B = \emptyset$, $\P(A \cap B) = 0$, thus $\P(A|B) = \P(A \cap B) / \P(B) = 0$. But $\P(A) = 1/2$. Since $\P(A|B) \neq \P(A)$, $A$ and $B$ are not independent. We did not expect them to be independent, since if $A$ occurs, $B$ cannot occur, and vice versa.
+\item Are $A$ and $C$ independent? \\
+
+Using the sample space reduction method, we see that $\P(A|C) = 1/2$, since if we know we roll a 1 or a 2, half the time we will roll an odd number. Since $\P(A) = 1/2$ as well, $\P(A|C) = \P(A)$, thus $A$ and $C$ are independent.
+\end{enumerate}
+\end{example}
+
+For our next problem we revisit our familiar two-coin-flip example.
+
+\begin{example}
+Let us roll two fair, six-sided dice, and consider the following events:
+\begin{itemize}
+\item $A$: we roll a 4 on the first die
+\item $B$: the sum of the two dice is 6
+\item $C$: the sum of the two dice is 7
+\end{itemize}
+\begin{enumerate}
+\item Are $A$ and $B$ independent? \\
+
+Here we use the ``product of probabilites'' test for independence. $\P(A \cap B) = 1/36$, since if we know the first die is 4 and the two dice sum to 6, the second die must be a 2; this corresponds to a single point in the sample space. $\P(A) = 1/6$, since a single die has a 1/6 chance of rolling any number. $B$ comprises 5 simple events, as we can see graphically below; thus $\P(B) = 5/36$. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=4cm]{2dice2.eps}
+\end{figure}
+Since $\P(A)\P(B) = (1/6)(5/36) = 5/216 \neq 1/36 = \P(A \cap B)$, these events are not independent. Why does this make sense? If we are interested in a sum of 6 on two dice, the outcome of the first throw matters; a sum of 6 is impossible if the first die is a 6, and is possible for all other rolls of the first die. Thus is makes sense that $A$ and $B$ should not be independent.
+
+\item Are $A$ and $C$ independent? \\
+
+Here, we have again that $\P(A \cap C) = 1/36$, since if we know the first die is 4 and the two dice sum to 7, the second die must be a 3; $\P(A) = 1/6$ as above. We can see graphically that $\P(C) = 6/36 = 1/6$, since $C$ comprises 6 simple events. Thus $\P(A)\P(C) = (1/6)(1/6) = 1/36 = \P(A \cap C)$, and so $A$ and $C$ are independent. Why does this make sense? No matter what we roll on the first die, there is an equal probability (1/6) of getting a sum of 7 when the second die is rolled.
+\end{enumerate}
+\end{example}
+
+\subsection{Multiplicative and Additive Laws of Probability}
+The multiplicative and additive laws of probability give the probabilties of intersections and unions of events, and are important in constructing probabilies for more complicated events.
+
+\begin{framed}
+\emph{The multiplicative law of probability}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $A$ and $B$ be two events. Then the probability of the intersection of the two events is:
+\begin{align*}
+\P(A \cap B) &= \P(A)\P(B|A) \\
+&= \P(B)\P(A|B)
+\end{align*}
+If $A$ and $B$ are independent, then:
+\[
+\P(A \cap B) = \P(A)\P(B)
+\]
+\end{framed}
+This follows directly from the definition of conditional probability. We can extend this to find the probability of the intersection of multiple events. For example, for three events $A$, $B$, and $C$, we have:
+\[
+\P(A \cap B \cap C) = \P(A)\P(B|A)\P(C|A\cap B)
+\]
+We can extend this string of conditional probabilities to find the probability of the intersection of as many events as we want. \\
+
+The additive law of probability gives the probability of the union of two events.
+\begin{framed}
+\emph{The additive law of probability}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $A$ and $B$ be two events. Then the probability of the union of the two events is:
+\begin{align*}
+\P(A \cup B) &= \P(A) + \P(B) - \P(A \cap B) 
+\end{align*}
+If $A$ and $B$ are disjoint (mutually exclusive), i.e. $\P(A \cap B) = \emptyset$, then:
+\[
+\P(A \cup B) = \P(A) + \P(B)
+\]
+\end{framed}
+
+To see this is true, consider the Venn diagram below.
+\begin{figure}[H]
+\centering
+\includegraphics[width=6cm]{additive.eps}
+\end{figure}
+\begin{enumerate}
+\item $A \cup B$ (show in gray) is the disjoint union of $E$, $F$, and $G$, so by the additive property of probability, $\P(A \cup B) = \P(E) + \P(F) + \P(G)$.
+\item $A$ is the disjoint union of $E$ and $F$, so by $\P(A) = \P(E) + \P(F)$.
+\item $B$ is the disjoint union of $F$ and $G$, so by $\P(B) = \P(F) + \P(G)$.
+\item Addding together $\P(A)$ and $\P(B)$, and noting that $F = A \cap B$:
+\begin{align*}
+\P(A) + \P(B) &= \P(E) + \P(F) + \P(F) + \P(G) \\
+&= \P(A \cup B) + \P(A \cap B)
+\end{align*}
+Rearranging this, we get the additive rule.
+\end{enumerate}
+Intuitively, if we add the probability of $A$ and $B$, we are ``double-counting'' $A \cap B$, so we have to subtract it off to get $\P(A \cup B)$. This can be extended to unions of more than two sets, but the formulas are annoying and will not be useful to us in this course. 
+
+
+
 
 \end{document}
