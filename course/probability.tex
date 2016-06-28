@@ -273,7 +273,7 @@ Suppose we have a finite sample space $cals$ with $n$ simple events. The discret
 \end{align*}
 where in the last line we use the fact that the simple events each have probability $p$, and there are $n$ of them. Solving for $p$, we get $p = 1/n$.\\
 
-How do we find the probability of an event that is not a simple event? Again, consider a discrete sample space $cals$ with $n$ simple events. Suppose we have an event $A$ which is a subset of $cals$. Since we have a finite sample space, $A$ is composed of a finite number $m$ of simple events, where $m$ is an integer between 0 and $n$. The probability of $A$ is:
+How do we find the probability of an event that is not a simple event? Again, consider a discrete sample space $\cals$ with $n$ simple events. Suppose we have an event $A$ which is a subset of $\cals$. Since we have a finite sample space, $A$ is composed of a finite number $m$ of simple events, where $m$ is an integer between 0 and $n$. The probability of $A$ is:
 \[
 \P(A) = \frac{ \text{number of simple events in $A$}}{\text{number of simple events in $\cals$}} = \frac{m}{n}
 \]
@@ -442,9 +442,7 @@ There are $\binom{7}{3} = 35$ possible groups of 3 graduate students. How many c
 Computing probabilities of poker hands are classic problems in probability. Since the order of the cards in a poker hand does not matter, these problems involve combinations.
 
 \begin{example}
-You are dealt a five-card poker hand. What is the probability of getting the following hands:
-\begin{enumerate}
-\item A full house (three of cards of one number plus two cards of another number)\\
+You are dealt a five-card poker hand. What is the probability of getting a full house (three cards of one number plus two cards of another number)\\
 
 There are 52 cards in a poker deck, and a poker hand is 5 cards. Since the order of the cards dealt does not matter, there are $\binom{52}{5}$ possible five-card poker hands. To count the number of hands which give us a full house, we use the following procedure:
 \begin{enumerate}
@@ -457,7 +455,6 @@ To get the probability of a full house, we divide by the number of poker hands (
 \frac{\binom{13}{1}\binom{4}{3}\binom{12}{1}\binom{4}{2}}{\binom{52}{2}} = 0.00144
 \]
 It is worth noting that the number of full houses is not $\binom{13}{2}\binom{4}{3}\binom{4}{2}$, i.e. choose two numbers, then choose a three-of-a-kind, then choose a pair. Why does this not work? This method does not distinguish betwen, say, \texttt{33366} and \texttt{33666} (i.e. it treats these as the same), and these are two distinct full houses. Since this undercounts by a factor of two, you can check that if you multiply this by two, you get the correct answer above. 
-\end{enumerate}
 \end{example}
 
 Combinations are incredibly useful. We can use them in some rather surprising cases.
@@ -502,7 +499,7 @@ For a sanity check, let's calculate this for the case where $n = 4$ and $m = 2$,
 This agrees with what we found above!
 
 \begin{example}
-I buy an assortment of 10 bagels from Bagel Gourmet. There are five types of bagels to choose from: everything, onion, poppy, raisin, and sesame. How many different assortments of bagels can I bring home? Assume there are at least 10 of each kind of bagel in the store.\\
+I buy an assortment of 10 bagels from Bagel Gourmet on Thayer St.\footnote{Having lived in Brooklyn for many years, I am only \emph{slightly} obsessed with bagels.}. There are five types of bagels to choose from: everything, onion, poppy, raisin, and sesame. How many different assortments of bagels can I bring home? Assume there are at least 10 of each kind of bagel in the store.\\
 
 We can model the problem in a way that lets us use combinations. Imagine you buy the bagels in a special box. The bagels are arranged in a line, and are always in alphabetical order: everything, onion, poppy, raisin, sesame. There are four dividers, one between each bagel type, and if a bagel type is not present, we just put the dividers next to each other. Here is an example of three bagel boxes with their dividers. Bagels are designated by * and dividers by $|$.
 \begin{figure}[H]
@@ -514,6 +511,8 @@ $* * * * * * * * * * | | | |$ & 10 everything\\
 \end{figure}
 From the picture, we see that an assortement of 10 bagels can be represented as a linear string of 14 symbols: 10 * representing the bagels and 4 $|$ representing the dividers. The number of assortments is the same as the number of distinct orderings of this linear string: $\binom{14}{4} = 1001$
 \end{example}
+
+% end of class 2
 
 One final application of combinations is to the binomial theorem. The binomial theorem gives us a nice expression for expanding the binomial $(x+y)^n$, where $n$ is a positive integer.
 
@@ -793,7 +792,9 @@ Rearranging this, we get the additive rule.
 \end{enumerate}
 Intuitively, if we add the probability of $A$ and $B$, we are ``double-counting'' $A \cap B$, so we have to subtract it off to get $\P(A \cup B)$. This can be extended to unions of more than two sets, but the formulas are annoying and will not be useful to us in this course. 
 
-
+Bayes Theorem
+Public Health example
+Examples
 
 
 \end{document}
