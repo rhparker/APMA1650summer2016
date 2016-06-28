@@ -262,9 +262,16 @@ Since the sum of the probabilities of all the simple events is 1, we are all set
 % \end{document}
 
 \subsection{Discrete Uniform Distribution}
-The first probability distribution we will consider is the uniform distribution on a \emph{finite} sample space. In the discrete uniform distribution, every simple event is equally likely to occur. If we have a finite sample space with $n$ simple events, then the discrete uniform distribution assigns each simple event a probability of $1/n$.
+The first probability distribution we will consider is the uniform distribution on a \emph{finite} sample space. In the discrete uniform distribution, every simple event is equally likely to occur. If we have a finite sample space with $n$ simple events, then the discrete uniform distribution assigns each simple event a probability of $1/n$. Why is this the case? If each simple event has probability $p$ and there are $n$ simple events $A_1, \dots A_n$ in our sample space, then using the fact that the sample space $S$ must have probability 1 and that the simple events are pairwise disjoint:
+\begin{align*}
+1 &= \P(S) \\
+&= \P(A_1 \cup A_2 \cup \cdots \cup A_n) \\
+&= \P(A_1) + \P(A_2) + \dots + \P(A_n) \\
+&= np
+\end{align*}
+where in the last line we use the fact that the simple events each have probability $p$, and there are $n$ of them. Solving for $p$, we get $p = 1/n$.
 
-\begin{example}Consider the finite sample space $\cals$ representing the roll of two standard dice. This sample space has 36 simple events, so each simple event has a probability of 1/36. Note that for the simple events in this sample space, the order of the die rolls matters. $(1, 6)$ and $(6, 1)$ are two different eventsl; even though both events contain the same die rolls, for the former, the 1 is rolled first, while for the latter, the 6 is rolled first.
+\begin{example}Consider the finite sample space $\cals$ representing the roll of two standard dice. This sample space has 36 simple events, so each simple event has a probability of 1/36. Note that for the simple events in this sample space, the order of the die rolls matters. $(1, 6)$ and $(6, 1)$ are two different events; even though both events contain the same die rolls, for the former, the 1 is rolled first, while for the latter, the 6 is rolled first.
 \begin{enumerate}
 \item What is the probability that the sum of the two dice is 7? Looking at the graphical depiction of this event above, we see that there are 6 simple events that give us a sum of 7. Thus the probability of a sum of 7 is 6/36 = 1/6.
 \item What is the probability that the sum of the two dice is less than 11. In this case, it is easier to compute the probability that the sum is 11 or greater and then subtract that probability from 1. (Why can we do this?) Let $A$ be the event that the sum is 11 or greater. $A$ is composed of 3 simple events: $(6, 6), (6, 5)$, and $(5, 6)$. Thus we have $\P(A) = 3/36$. The probability we want is:
@@ -277,7 +284,7 @@ In the previous example, it is relatively straightforward to draw the sample spa
 
 \begin{example}A communication system consists of $n$ antennas arranged in a line. Exactly $m$ out of the $n$ antennas are defective. The system is functional if no two consecutive antennas are defective. Assuming that each linear arrangement of the antennas is equally likely, what is the probability that the system will be functional?\\
 
-For small values of $n$ and $m$, say $n = 4$ and $m = 2$, we can write out all of the possible configurations. Representing a functional antenna by 1 and a defective antenna by 0, there are exactly six linear arrangements:
+For small values of $n$ and $m$, say $n = 4$ and $m = 2$, we can write out all of the possible configurations. Representing a functional antenna by \texttt{1} and a defective antenna by \texttt{0}, there are exactly six linear arrangements:
 \begin{enumerate}[noitemsep]
 \item 0 1 1 0
 \item 0 1 0 1
@@ -343,7 +350,7 @@ n \cdot (n-1) \cdot (n-2) \cdots 2 \cdot 1 = n!
 The symbol $n!$ is the \emph{factorial} operation, and it is defined exactly as written above.
 \end{example}
 
-\begin{example}Every December (since 1996), the city of Ithaca, NY has hosted the International Rutabega Curl\footnote{\url{http://www.rutabagacurl.com}} (contestants must supply their own rutabega). Gold, silver, and bronze medals are given to the top three finishers. If 100 contentants enter the rutabega curl, how many possibilities are there for the winners?\\
+\begin{example}Every December (since 1996), the city of Ithaca, NY hosts the International Rutabega Curl\footnote{\url{http://www.rutabagacurl.com}} (contestants must supply their own rutabega). Gold, silver, and bronze medals are given to the top three finishers. If 100 contentants enter the rutabega curl, how many possibilities are there for the winners?\\
 
 For the gold medalist, we have 100 contestants to choose from. Since you cannot win more than one medal, we choose from 99 contentants for the silver medal and 98 contestants for the bronze medal. The number of medal possibilities is:
 \[
@@ -465,19 +472,26 @@ $a$ & $b$ & $c$ & $d$ & $e$ & subset \\
 Notice that two-element subsets match up exactly with orderings of \texttt{11000}! Thus we see that there are $\binom{5}{2}$ rearrangements of the binary string \texttt{11000}.
 \end{example}
 
-In general, if you have a string of length $n$ composed of two symbols, and you have $r$ of one symbol (thus $n-r$ of the other), the number of distinct orderings of the string is $\binom{n}{r}$. Let's return to the antenna example from above.
+In general, if you have a string of length $n$ composed of two symbols, and you have $r$ of one symbol (thus $n-r$ of the other), the number of distinct orderings of the string is $\binom{n}{r}$. Equipped with this, let's return to the antenna example from the beginning of the section.
 
 \begin{example}A communication system consists of $n$ antennas arranged in a line. Exactly $m$ out of the $n$ antennas are defective. The system is functional if no two consecutive antennas are defective. Assuming that each linear arrangement of the antennas is equally likely, what is the probability that the system will be functional?\\
 
-Since there are $n$ total antennas, there are $n!$ linear arrangements of the antennas. How many of these arrangements are functional? Let's draw a picture! Imagine we have the $n - m$ functional antennas in a line. We will represent each functional antenna by the symbol *, and the spaces between the functional antennas by a vertical bar $|$. We will also place a space to the far right and to the far right:
+First we need to figure out how many possible arrangements there are, i.e. the size of our sample space. If we use the digit \texttt{1} to represent a functional antenna, and the digit \texttt{0} to represent a defective antenna, then each arrangement can be represented by a binary string of length $n$ consisting of $m$ 0s and $n - m$ 1s. Thus from what we learned above, there are $\binom{n}{m}$ possible arrangements. \\
+
+How many of these arrangements are functional? Let's draw a picture! Imagine we have the $n - m$ functional antennas in a line. We will represent each functional antenna by the symbol *, and the spaces between the functional antennas by a vertical bar $|$. We will also place a space to the far right and to the far right:
 \[
 | * | * | * | * | * | * | \dots | * | * |
 \]
-For the system to be functional, each space $|$ can contain at most one defective antenna. There are $n - m + 1$ spaces to choose from, and $m$ defective antennas to place. Thus there are $\binom{n-m+1}{m}$ functional arrangements. Dividing this by the total number of arrangements $n!$, the probability that the system is functional is:
+For the system to be functional, each space $|$ can contain at most one defective antenna. There are $n - m + 1$ spaces to choose from, and $m$ defective antennas to place. Thus there are $\binom{n-m+1}{m}$ functional arrangements. Dividing this by the total number of arrangements $\binom{n}{m}$, the probability that the system is functional is:
 \[
-\frac{ \binom{n-m+1}{m}}{n!}
+\frac{ \binom{n-m+1}{m}}{\binom{n}{m}}
+\]
+For a sanity check, let's calculate this for the case where $n = 4$ and $m = 2$, which we did manually above:
+\[
+\frac{ \binom{n-m+1}{m}}{\binom{n}{m}} = \frac{\binom{3}{2}}{\binom{4}{2}} = \frac{3}{6} = \frac{1}{2}
 \]
 \end{example}
+This agrees with what we found above!
 
 \begin{example}
 I buy an assortment of 10 bagels from Bagel Gourmet. There are five types of bagels to choose from: everything, onion, poppy, raisin, and sesame. How many different assortments of bagels can I bring home? Assume there are at least 10 of each kind of bagel in the store.\\
@@ -493,6 +507,89 @@ $* * * * * * * * * * | | | |$ & 10 everything\\
 From the picture, we see that an assortement of 10 bagels can be represented as a linear string of 14 symbols: 10 * representing the bagels and 4 $|$ representing the dividers. The number of assortments is the same as the number of distinct orderings of this linear string: $\binom{14}{4} = 1001$
 \end{example}
 
+One final application of combinations is to the binomial theorem. The binomial theorem gives us a nice expression for expanding the binomial $(x+y)^n$, where $n$ is a positive integer.
+
+\begin{framed}
+\emph{The binomial theorem}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+\[
+(x+y)^n = \sum_{r=0}^n \binom{n}{r}x^r y^{n-r}
+\]
+\end{framed}
+Due to their appearance in this theorem, the coefficients $\binom{n}{r}$ are often called \emph{binomial coefficients}. Rather than give the usual proof by induction, we will argue this is true using what we know about combinations. Consider the product:
+\[
+(x_1 + y_1)(x_2 + y_2)\cdots(x_n + y_n)
+\]
+If we multiply this out, we get a sum of $2^n$ terms, each of which is the product of $n$ factors. To see this is the case, to get a term in the sum, we pick either $x_i$ or $y_i$ from each of the $n$ binomials $(x_i + y_i)$ and multiply them together. There are $2^n$ such terms, since for each binomial we have two possible choices and there are $n$ total binomials. How many of these $2^n$ terms have exactly $r$ of the $x_i$ terms and $n-r$ of the $y_i$ terms? We can think of each term as a string of length $n$ composed of $r$ $x$'s and $n-r$ $y$'s. By what we learned above, there are $\binom{n}{r}$ such terms. Taking $x_i = x$ and $y_i = y$ for all $i$, we obtain the binomial theorem.
+
 \subsubsection{Multinomials}
+\begin{framed}
+The number of ways of dividing $n$ objects into $k$ distinct groups containing $n_1, dots, n_k$ objects each, where each object appears in exactly one group, and $n_1 + \cdots + n_k = n$ is given by:
+\[
+\binom{n}{n_1 \: n_2\: \cdots \:n_k} = \frac{n!}{n_1!\:n_2!\:\cdots\:n_k!}
+\]
+The term on the left is called a \emph{multinomial coefficient}
+\end{framed}
+To see why this is the case, we will use the following argument:
+\begin{enumerate}
+\item For the first group, we choose $n_1$ out of $n$ items. Since order does not matter, there are $\binom{n}{n_1}$ ways to do this.
+\item For each choice in step 1, there are $\binom{n - n_1}{n_2}$ choices for the second group, since we have already taken $n_1$ items out of the larger group.
+\item For each choice in step 1 and step 2, there are $\binom{n - n_1 - n_2}{n_3}$ choices for the third group, since we already have taken $n_1 + n_2$ items out of the larger group.
+\item Repeat this until we get to the $k$th group, where there are $\binom{n - n_1 - \dots - n_{k-1}}{n_k}$ choices for the $k$th group given all the previous choices
+\item Multiply these together to get:
+\begin{align*}
+&\binom{n}{n_1 \: n_2\: \cdots \:n_k} = \binom{n}{n_1} \binom{n - n_1}{n_2} \binom{n - n_1 - n_2}{n_3} \cdots \binom{n - n_1 - \dots - n_{k-1}}{n_k} \\
+&= \frac{n!}{n_1! (n - n_1)!}\:\frac{(n - n_1)!}{n_2!(n - n_1 - n_2!)}\:\frac{(n - n_1 - n_2)!}{n_3!(n - n_1 - n_2 - n_3!)}\cdots\frac{n - n_1 - \dots - n_{k-1}!}{n_k! (n - n_1 - \dots - n_k)!}\\
+&= \frac{n!}{n_1! \: n_2! \: n_3! \cdots n_k! (n - n_1 - \dots - n_k! )} \\
+&= \frac{n!}{n_1! \: n_2! \: n_3! \cdots n_k! \: 0! } \\
+&= \frac{n!}{n_1! \: n_2! \: n_3! \cdots n_k! }
+\end{align*}
+\end{enumerate}
+where, after some very satisfying cancellation, we have used the fact that $n_1 + \dots + n_k = n$ and $0! = 1$.\\
+
+If you want to think about this another way, you can use the following reasoning. Imagine we have $n$ objects and want to divide them into groups as above. Imagine we have a special box which contains the $n$ objects in a line. Divide the box into sections using dividers, so that the first section contains $n_1$ objects, the second $n_2$ objects, all the way down to the $k$th section which contains $k$ objects. For example, if we had $n = 10$ with four groups $n_1 = 2, n_2 = 4, n_3 = 1, n_4 = 3$, our box looks like:
+\[
+* * | * * * * | * | * * *
+\]
+where * represents a space to put an objects, and $|$ is a section divider. There are $n!$ permutations of $n$ objects, thus there are $n!$ distinct ways to place the $n$ objects into the box. Since we are dividing our objects into groups, order does not matter within each group. The first section in the box represents the first group, so since order does not matter within that section, we divide by $n_1!$, the number of permutations of $n_1$ objects. Repeating this for each section, we divide by each $n_i!$ in turn to obtain our multinomial coefficient. 
+
+\begin{example}A group of 15 international relations students will be divided into three groups. Each group consists of 15 students and is assigned a different country (Azerbaijan, Belarus, and Chechnya) on which to do a group final presentation. How many such divisions are possible:\\
+
+Since we are are dividing 15 people into 3 distinct groups of 5, we can use the multinomial coefficient to determine the number or arrangements:
+\[
+\binom{15}{5 \: 5\: 5} = \frac{15!}{5!\:5!\:5!} = 756,756
+\]
+\end{example}
+
+\begin{example}Now suppose we are dividing a group of 15 international relations students into three groups of 5 students each for a final project of the each group's choosing. How is this problem different from the previous one? How many different arrangements are possible?\\
+
+In the previous example, the three groups were distinct, so it matters which one a student is assigned to. In this case, the three groups are identical. Thus since the order of the three groups does not mater, we divide the previous result by $3!$, which is the number of ways of ordering three items (in this case, the items are the three groups).
+\[
+\frac{ \binom{15}{5 \: 5\: 5}}{3!} = \frac{15!}{5!\:5!\:5!\:3!} = 126,126
+\]
+\end{example}
+
+\begin{example}How many different, distinct rearrangements are there of the word MISSISSIPPI?\\
+
+We are looking for all distinct orderings of a string with four distinct symbols. If there were only two distinct symbols, we could use binomial coefficients, so we suspect multinomial coefficients may be in play here. Once again, consider a set with eleven elements in them, which we will label with the integers 1 - 11. We want to divide those elements into four subsets with 1, 2, 4, and 4 elements (respectively). We will label those subsets by the letters M, P, I, and S (no coincidence here!). Let's make a table, where each row is a subset, and letters M, I, S, and P in the row indicate which subset each element belongs to.
+
+\begin{figure}[H]
+\centering
+\label{mississippi}
+\begin{tabular}{lllllllllll}
+$1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ & $10$ & $11$ \\
+\hline
+M & I & S & S & I & S & S & I & P & P & I \\
+I & S & I & P & M & P & S & I & S & S & I \\
+\end{tabular}
+\end{figure} 
+
+Note that there is a perfect correspondance between each appropriate collection of four subsets and each arrangement of MISSISSIPPI. Thus we can use the multinomial coefficient for this problem, and we get that the total number of distinct rearrangements is:
+\[
+\binom{11}{1 \: 2\: 4 \: 4} = \frac{11!}{1!\:2!\:4!\:4!} = 34,650
+\]
+
+
+\end{example}
 
 \end{document}
