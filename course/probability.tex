@@ -760,6 +760,8 @@ This follows directly from the definition of conditional probability. We can ext
 \]
 We can extend this string of conditional probabilities to find the probability of the intersection of as many events as we want. \\
 
+
+
 The additive law of probability gives the probability of the union of two events.
 \begin{framed}
 \emph{The additive law of probability}\\
@@ -792,9 +794,217 @@ Rearranging this, we get the additive rule.
 \end{enumerate}
 Intuitively, if we add the probability of $A$ and $B$, we are ``double-counting'' $A \cap B$, so we have to subtract it off to get $\P(A \cup B)$. This can be extended to unions of more than two sets, but the formulas are annoying and will not be useful to us in this course. 
 
-Bayes Theorem
-Public Health example
-Examples
+We can use the multiplication and addition rules in the following problem.
 
+\begin{example}You have two bags of balls. The first bag contains one red ball and three white balls. The second bag contains two red balls and two white balls. You choose a bag uniformly at random and then draw a ball from the chosen bag.
+\begin{enumerate}
+\item What is the probability that the ball you draw is red?\\
+
+We can do this directly using the multiplication and addition rules if we wish, but it is far easier to draw a \emph{tree diagram}. Let $B_1$ be the event that we choose Bag 1, and $B_2$ the event that we choose Bag 2. Let $R$ be the event that we draw a red ball, and $W$ be the event that we draw a white ball. Then we have the following tree diagram. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=5cm]{tree1.eps}
+\end{figure}
+
+Tree diagrams are really hard to explain in writing, but I will try. Starting at the node on the left, the first two edges of the tree are $B_1$ and $B_2$. Their respective probabilities are written below, and are both 1/2, since the choice of bag is uniform. At the point, the tree branches again. Let's look at the top of the tree diagram, the part which follows $B_1$. The upper branch is labeled $R$, and indicates that the event $R$ follows $B_1$. The probability listed there is the conditional probability of $R$ given $B_1$, so $\P(R|B_1) = 1/4$. If we follow the arrows through $B_1$ and $R$, we reach the leaf of the tree which is labeled 1/8. This leaf represents the event $B_1 \cap R$, since we passed through both of those events to get there. The probability 1/8 listed there is the probability of $B_1 \cap R$. We get this by multiplying all the probabilties we passed through to get there. This follows the multiplication rule, since:
+\[
+\P(B_1 \cup R) = \P(B_1)\P(R|B_1) = (1/2)(1/4) = 1/8
+\]
+The interpretation of the other branches of the tree is similar. It might help to see a version of the tree diagram with all the probabilites (conditional and otherwise) labeled: 
+\begin{figure}[H]
+\centering
+\includegraphics[width=5cm]{tree2.eps}
+\end{figure}
+
+To find $\P(R)$, we just add up all the leaves that end passing through $R$. There are two such leaves, labeled 1/8 and 2/8, thus $\P(R) = 1/8 + 2/8 = 3/8$.\\
+
+If we prefer, we can look at this a little more formally using the addition rule. Recalling that the sample space is designated $\cals$ and that $B_1$ and $B_2$ are disjoint with $B_1 \cup B2 = \cals$ (you can only choose one bag, and you must choose a bag):
+\begin{align*}
+R &= R \cap \cals & \text{ intersecting with $\cals$ does nothing, since $A \subset \cals$}\\
+&= R \cap (B_1 \cup B_2) \\
+&= (R \cap B_1) \cup (R \cap B_2) & \text{ by the distributive law}
+\end{align*}
+Then since $R \cap B_1$ and $R \cap B_2$ are disjoint (why is this the case?), we can use the addition rule to get:
+\[
+\P(R) = \P(R \cap B_1) + \P(R \cap B_2) = 1/8 + 2/8 = 3/8
+\]
+\end{enumerate}
+
+\item What is the probability we chose Bag 1 in the first step given that we draw a red ball?\\\
+
+Here we are looking for the conditional probability $\P(B_1|R)$. We computed $\P(R)$ in the first part, and we can read off $\P(B_1 \cap R) = 1/8$ from the tree. Thus by the definition of conditional expectation:
+\[
+\P(B_1|R) = \frac{\P(B_1 \cap R)}{\P(R)} = \frac{1/8}{3/8} = \frac{1}{3}
+\]
+
+\end{example}
+
+\subsection{Bayes' Rule and the Law of Total Probability}
+Given two events $A$ and $B$, Bayes' rule is a mathematical forumala for relating the two conditional probabilities $\P(A|B)$ and $P(B|A)$. In it's simplest form, Bayes' rule may be stated as follows:
+
+\begin{framed}
+\emph{Bayes' rule}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $A$ and $B$ be two events. Then:
+\begin{align*}
+\P(A | B) &= \frac{ \P(B|A)\P(A)}{\P(B)}
+\end{align*}
+where $\P(B) \neq 0.$
+\end{framed}
+To see this is true, we can multiply both sides by $\P(B)$ to get:
+\[
+\P(A|B) \P(B) = \P(B|A)\P(A)
+\]
+Both sides of this equation are equal to $\P(A\cap B)$ by the definition of conditional probability, thus the statement of Bayes' rule is true. Let's return to the drawing-balls-from-bags example, and use Bayes' rule on it.
+
+\begin{example}You have two bags of balls. The first bag contains one red ball and three white balls. The second bag contains two red balls and two white balls. You choose a bag uniformly at random and then draw a ball from the chosen bag. What is the probability that you choose the Bag 1 in the first step given that the ball drawn is red?\\
+
+Using the same events as above, we are looking for conditional probabiltiy $\P(B_1|R)$. For the opposite conditional probability, $\P(R | B_1) = 1/4$ since we know exactly what happens if we draw from Bag 1. $\P(B_1) = 1/2$, since we are choosing the bags uniformly at random. To use Bayes' rule, the only remaining probability we need is $\P(R)$, which is harder to compute. Luckily we found it above using the tree diagram, so we know $\P(R) = 3/8$. (We will learn a formula later which gets around this pesky probabilility.) Thus we plug everything into Bayes' rule to get:
+\[
+\P(B_1| R) = \frac{ \P(R|B_1)\P(B_1)}{\P(R)} = \frac{ (1/4)(1/2) }{3/8} = \frac{1}{3}
+\]
+which agrees what we obtained above.
+\end{example}
+
+Bayes' rule is most often used in conjunction with the \emph{Law of Total Probabiltiy}, which we state below. First we need to define a \emph{partition} of a sample space.
+
+\begin{framed}
+\emph{Partition of a sample space}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+A \emph{partition} of a sample space $\cals$ is a finite collection of disjoint subsets of $\cals$ whose union is $\cals$. Intuitively, a partition of $\cals$ is a ``division of $\cals$ into separate pieces''. Mathematically, a partition of $\cals$ is a collection $\{E_1, E_2, \dots, E_k\}$ of subsets of $\cals$ such that:
+\begin{enumerate}
+\item $\cals = E_1 \cup E_2 \cup \cdots \cup E_k$
+\item $E_i \cap E_j = \emptyset$ for $i \neq j$
+\end{enumerate}
+\end{framed}
+
+For any event $A$, the collection $\{A, A^c\}$ is always a partition of $\cals$ (can you see why this is the case?) For a finite sample space, the collection of all simple events is also a partition. Here is a partition of $\cals$ into 4 subsets illustrated graphically.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=5cm]{partition.eps}
+\end{figure}
+
+If $A$ is any event, and $\{E_1, E_2, \dots, E_k\}$ is a partition of $\cals$, then we can decompose $A$ according to the partition by:
+\[
+A = (A \cap E_1) \cup (A \cap E_2) \cup \cdots \cup (A \cap E_k)
+\]
+where this union consists of disjoint sets (since the partition consists of disjoint sets). For $k = 4$, this is illustrated graphically below:
+\begin{figure}[H]
+\centering
+\includegraphics[width=5cm]{partition2.eps}
+\end{figure}
+
+We are now ready to state the Law of Total Probability.
+
+\begin{framed}
+\emph{Law of total probabiltiy}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $\{E_1, E_2, \dots, E_k\}$ be a partition of $\cals$ such that $\P(E_i) > 0$ for all $i$. Then for any event $A$, we can decompose the probabiliy of $A$ according to our partition as:
+\[
+\P(A) = \sum_{i = 1}^k \P(A|E_i)\P(E_i)
+\]
+\end{framed}
+To see this is true, first we decompose our event $A$ as we did above into disjoint sets:
+\[
+A = (A \cap E_1) \cup (A \cap E_2) \cup \cdots \cup (A \cap E_k)
+\]
+Then we can write:
+\begin{align*}
+\P(A) &= \P( (A \cap E_1) \cup (A \cap E_2) \cup \cdots \cup (A \cap E_k) )
+&= \P(A \cap E_1) + \P(A \cap E_2) + \dots + \P(A \cap E_k)
+&= \P(A|E_1)\P(E_1) + \P(A|E_2)\P(E_2) + \dots + \P(A|E_k)\P(E_k) 
+\end{align*}
+where we have used the fact that the decomposition of $A$ is a union of disjoint sets, and have also used the definition of conditional probabilility.\\
+
+We can now combine Bayes' rule and the Law of Total Probability to get another version of Bayes' rule.
+
+\begin{framed}
+\emph{Bayes' rule, total probability version}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $A$ and $B$ be two events, and let $\{E_1, E_2, \dots, E_k\}$ be a partition of $\cals$ such that $\P(E_i) > 0$ for all $i$. Then:
+\begin{align*}
+\P(A | B) &= \frac{ \P(B|A)\P(A)}{\sum_{i=1}^k \P(B|E_i)\P(E_i)}
+\end{align*}
+where $\P(B) \neq 0.$
+\end{framed}
+To get this, take Bayes' rule and expand $\P(B)$ in the denominator using our partition and the Law of Total Probability.
+
+Let's revisit the drawing-balls-from-bags example one final time, using the total probability version of Bayes' rule.
+
+\begin{example}You have two bags of balls. The first bag contains one red ball and three white balls. The second bag contains two red balls and two white balls. You choose a bag uniformly at random and then draw a ball from the chosen bag. What is the probability that you choose the Bag 1 in the first step given that the ball drawn is red?\\
+
+Using the same events as in the above two versions, we are once again looking for conditional probabiltiy $\P(B_1|R)$. Our partition is $\{B_1, B_2\}$ since one of these two events must occur (so the union is $\cals$), but both cannot occur (so they are disjoint). Writing out Bayes' rule, we get:
+\[
+\P(B_1|R) = \frac{ \P(R|B_1)\P(B_1)}{ \P(R|B_1)\P(B_1) + \P(R|B_2)\P(B_2) }
+\]
+The probabilities involved in this are straightforward:
+\begin{enumerate}
+\item $\P(B_1) = \P(B_2) = 1/2$
+\item $\P(R|B_1) = 1/4$
+\item $\P(R|B_2) = 1/2$
+\end{enumerate}
+So we just plug these in to get:
+\[
+\P(B_1|R) = \frac{ (1/4)(1/2)}{(1/4)(1/2) + (1/2)(1/2) } = \frac{1/8}{3/8} = \frac{1}{3}
+\]
+which agrees with both versions above!
+\end{example}
+
+\begin{example}Consider the following card game. We have 3 cards that are identical in shape and size. The cards are colored as follows:
+\begin{enumerate}
+\item both sides are red
+\item both sides are black
+\item one side is red and the other side is black
+\end{enumerate}
+The three cards are shuffled and one is randomly chosen and it put down on a table. If the face-up side of the chosen card is red, what is the probability that the other side is black?\\
+
+Let $RR$, $BB$, and $RB$ denote the events that the chosen card is all red, all black, or red-black (respectively). Let $R$ be the event that the face-up side of the chosen card is red. Note that $\{RR, BB, RB\}$ is a partition of our sample space. We are interested in whether the red-black card has been chosen, i.e. $\P(RB|R)$. First we write out the total probability version of Bayes' rule, then we plug in the probabilties we know:
+\begin{align*}
+\P(RB|R) &= \frac{ \P(R|RB) \P(RB) }{ \P(R|RR)\P(RR) + \P(R|BB)\P(BB) + \P(R|RB)\P(RB) } \\
+&= \frac{(1/2)(1/3)}{ (1)(1/3) + 0(1/3) + (1/2)(1/3) } \\
+&= \frac{1/6}{1/2} \\
+&= \frac{1}{3}
+\end{align*}
+Thus the probability that the other side is black is only 1/3. It is tempting to guess that that the probability of the other side being black is 1/2 since there are two possible cards it could be (all red and red-black), and they should be equally likely. It turns out that this is not the case! The two cards are not equally likely. Here is one way to see this. Instead of considering three cards, let's think of them as six sides. We can label the six sides as:
+\begin{enumerate}
+\item $R_1$ and $R_2$: the two red sides of the all-red card
+\item $B_1$ and $B_2$: the two black sides of the all-black card
+\item $R_3$ and $B_3$: the red and black sides of the red-black card
+\end{enumerate}
+If red is face up, it must be $R_1, R_2$, or $R_3$, and these are equally likely. For $R_1$ and $R_2$, the other side of the card is red. Only for $R_3$ is the other side black. Thus the probability of the other side of the card being black is 1/3, which agrees with the result from Bayes' theorem.
+\end{example}
+
+Here is another application of Bayes' theorem which concerns medical testing. This is a classic example in the field of public health.
+
+\begin{example}
+The OraQuick HIV test is a rapid test for HIV, which can give a result in 20 minutes. The test has the following properties:
+\begin{enumerate}
+\item Sensitivity (probability of a positive test given that you have the disease): 0.996 (99.6\%)
+\item Specificitiy (probability of a negative test given that you don't have the disease): 0.999 (99.9\%)
+\end{enumerate}
+What is the positive predictive value of the test, i.e. the probability that a patient has HIV given that the OraQuick test is positive\footnote{Sensitivity, specificity, and positive predictive value are public health terms; you don't have to know them. Data here is from the CDC website.}.\\
+
+Let $T$ be the event that the test is positive, and $H$ the event that the patient has HIV. We are interested in the positive predictive value, which is $\P(H|T)$. Let's write out Bayes' rule:
+\[
+\P(H|T) = \frac{ \P(T|H)\P(H)}{ \P(T) }
+\]
+We cannot possibly know the denominator $\P(T)$ (the probability of a positive test), so we will use the total probability of Bayes' theorem, with partition $\{H, H^c\}$.
+
+\[
+\P(H|T) = \frac{ \P(T|H)\P(H)}{ \P(T|H)\P(H) + \P(T|H^c)\P(H^c) }
+\]
+What do we know? $\P(T|H)$ is the sensitivity, so that is 0.996. We don't know $\P(T|H^c)$, but we do know the specificity, which is $\P(T^c|H^c) = 0.999$. Since $\P(T|H^c) + \P(T^c|H^c) = 1$ (either the test is positive or it's not), $\P(T|H^c) = 1 - \P(T^c|H^c) = 1 - 0.999 = 0.001$. All that remains is $\P(H)$. ($\P(H^c) = 1 - \P(H)$, so we are all set once we have $\P(H)$.) What is $\P(H)$? That is the probability that a randomly-selected patient has HIV, what is known in public health parlance and the disease prevalence. This can be a hard quantity to determine and is the crux of this entire problem.\\
+
+The CDC estimates that 1.2 million people in the US have HIV\footnote{This estimate is for the end of 2012, but is the most recent CDC data I can find.}, out of a total population of 319 million. That puts the prevalence of HIV at 0.00376. So we will take $\P(H) = 0.00376$ for now, which gives us $\P(H^c) = 1 - 0.00376$. Plugging everything into Bayes' theorem:
+\[
+\P(H|T) = \frac{ (0.996)(0.00376)}{ (0.996)(0.00376) + (0.001)(1 - 0.00376) } = 0.79
+\] 
+So we get a positive test in 80\% of the cases, which is decent but not great. Let's repeat this with a different value for the prevalence of HIV. In Fulton County, GA (which contains Atlanta) the prevalence of HIV is approximately 0.0123 (significantly higher than for the nation as a whole). This gives us a positive predictive value of:
+\[
+\P(H|T) = \frac{ (0.996)(0.0123)}{ (0.996)(0.0123) + (0.001)(1 - 0.0123) } = 0.925
+\]
+which is higher. The take-home message here for public health is the following. The positive predictive value of a  test depends on the prevalence of the disease you are testing for; it increases as a disease becomes more common, i.e. increases with disease prevalence. Even the most sensitive and specific test does a poor job of detecting rare diseases.
+\end{example}
 
 \end{document}
