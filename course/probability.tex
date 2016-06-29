@@ -531,7 +531,7 @@ If we multiply this out, we get a sum of $2^n$ terms, each of which is the produ
 
 \subsubsection{Multinomials}
 \begin{framed}
-The number of ways of dividing $n$ objects into $k$ distinct groups containing $n_1, dots, n_k$ objects each, where each object appears in exactly one group, and $n_1 + \cdots + n_k = n$ is given by:
+The number of ways of dividing $n$ objects into $k$ distinct groups containing $n_1, \dots, n_k$ objects each, where each object appears in exactly one group, and $n_1 + \cdots + n_k = n$ is given by:
 \[
 \binom{n}{n_1 \: n_2\: \cdots \:n_k} = \frac{n!}{n_1!\:n_2!\:\cdots\:n_k!}
 \]
@@ -641,7 +641,7 @@ As a sanity check, let's use this definition of conditional probability and redo
 Let $A$ be the event that a 1 is rolled, and $B$ the event that an odd number is rolled. Since $A \subset B$, $A \cap B = A$ (does this make sense?) Using the discrete uniform distribution, $\P(A) = 1/6$ and $\P(B) = 1/2$ (since $B$ is composed of three simple events, each with probability 1/6).
 Thus we have:
 \[
-\P(A|B) = \frac{ \P(A \cap B)}{\P(B)} = \frac{\P(A)}{\P(B)} = \frac{(1/6)}{(1/2)} = frac{1}{3} \approx 0.339
+\P(A|B) = \frac{ \P(A \cap B)}{\P(B)} = \frac{\P(A)}{\P(B)} = \frac{(1/6)}{(1/2)} = \frac{1}{3} \approx 0.339
 \]
 This agrees with our intuitive computation above.
 \end{example}
@@ -654,7 +654,7 @@ You roll two standard, fair six-sided dice. What is the the probability that the
 Let $A$ be the event that the sum is greater than or equal to 11, and $B$ the event that the first roll is a 6. The events are shown graphically below.
 \begin{figure}[H]
 \centering
-\includegraphics[width=6cm]{2dice1.eps}
+\includegraphics[width=8cm]{2dice1.eps}
 \end{figure}
 First let's use the sample space reduction method. Given that $B$ has occurred, i.e. the first roll is a 6, we reduce our sample space to $B$, i.e. to the bottom row of the picture. There are six squares in the bottom row, and since we still have the uniform distribution, each is equally likely. Of those 6, 2 of them (the rightmost two) have a sum of dice greater than or equal to 11. Thus the conditional probabaility is $\P(A|B) = 2/6 = 1/3$.\\
 
@@ -803,22 +803,22 @@ We can use the multiplication and addition rules in the following problem.
 We can do this directly using the multiplication and addition rules if we wish, but it is far easier to draw a \emph{tree diagram}. Let $B_1$ be the event that we choose Bag 1, and $B_2$ the event that we choose Bag 2. Let $R$ be the event that we draw a red ball, and $W$ be the event that we draw a white ball. Then we have the following tree diagram. 
 \begin{figure}[H]
 \centering
-\includegraphics[width=5cm]{tree1.eps}
+\includegraphics[width=7cm]{tree1.eps}
 \end{figure}
 
 Tree diagrams are really hard to explain in writing, but I will try. Starting at the node on the left, the first two edges of the tree are $B_1$ and $B_2$. Their respective probabilities are written below, and are both 1/2, since the choice of bag is uniform. At the point, the tree branches again. Let's look at the top of the tree diagram, the part which follows $B_1$. The upper branch is labeled $R$, and indicates that the event $R$ follows $B_1$. The probability listed there is the conditional probability of $R$ given $B_1$, so $\P(R|B_1) = 1/4$. If we follow the arrows through $B_1$ and $R$, we reach the leaf of the tree which is labeled 1/8. This leaf represents the event $B_1 \cap R$, since we passed through both of those events to get there. The probability 1/8 listed there is the probability of $B_1 \cap R$. We get this by multiplying all the probabilties we passed through to get there. This follows the multiplication rule, since:
 \[
-\P(B_1 \cup R) = \P(B_1)\P(R|B_1) = (1/2)(1/4) = 1/8
+\P(B_1 \cap R) = \P(B_1)\P(R|B_1) = (1/2)(1/4) = 1/8
 \]
-The interpretation of the other branches of the tree is similar. It might help to see a version of the tree diagram with all the probabilites (conditional and otherwise) labeled: 
+The interpretation of the other branches of the tree is similar. Here is a version of the tree diagram with all the probabilites (conditional and otherwise) labeled: 
 \begin{figure}[H]
 \centering
-\includegraphics[width=5cm]{tree2.eps}
+\includegraphics[width=7cm]{tree2.eps}
 \end{figure}
 
-To find $\P(R)$, we just add up all the leaves that end passing through $R$. There are two such leaves, labeled 1/8 and 2/8, thus $\P(R) = 1/8 + 2/8 = 3/8$.\\
+To find $\P(R)$, we just add up all the leaves that end passing through $R$. There are two such leaves, labeled with probabilities 1/8 and 2/8, thus $\P(R) = 1/8 + 2/8 = 3/8$.\\
 
-If we prefer, we can look at this a little more formally using the addition rule. Recalling that the sample space is designated $\cals$ and that $B_1$ and $B_2$ are disjoint with $B_1 \cup B2 = \cals$ (you can only choose one bag, and you must choose a bag):
+In adding the probabilties above, we used the addition rule. To see how we used it, recall that the sample space is designated $\cals$ and that $B_1$ and $B_2$ are disjoint with $B_1 \cup B2 = \cals$ (you can only choose one bag, and you must choose a bag):
 \begin{align*}
 R &= R \cap \cals & \text{ intersecting with $\cals$ does nothing, since $A \subset \cals$}\\
 &= R \cap (B_1 \cup B_2) \\
@@ -828,7 +828,6 @@ Then since $R \cap B_1$ and $R \cap B_2$ are disjoint (why is this the case?), w
 \[
 \P(R) = \P(R \cap B_1) + \P(R \cap B_2) = 1/8 + 2/8 = 3/8
 \]
-\end{enumerate}
 
 \item What is the probability we chose Bag 1 in the first step given that we draw a red ball?\\\
 
@@ -836,7 +835,7 @@ Here we are looking for the conditional probability $\P(B_1|R)$. We computed $\P
 \[
 \P(B_1|R) = \frac{\P(B_1 \cap R)}{\P(R)} = \frac{1/8}{3/8} = \frac{1}{3}
 \]
-
+\end{enumerate}
 \end{example}
 
 \subsection{Bayes' Rule and the Law of Total Probability}
@@ -911,8 +910,8 @@ A = (A \cap E_1) \cup (A \cap E_2) \cup \cdots \cup (A \cap E_k)
 \]
 Then we can write:
 \begin{align*}
-\P(A) &= \P( (A \cap E_1) \cup (A \cap E_2) \cup \cdots \cup (A \cap E_k) )
-&= \P(A \cap E_1) + \P(A \cap E_2) + \dots + \P(A \cap E_k)
+\P(A) &= \P( (A \cap E_1) \cup (A \cap E_2) \cup \cdots \cup (A \cap E_k) ) \\
+&= \P(A \cap E_1) + \P(A \cap E_2) + \dots + \P(A \cap E_k) \\
 &= \P(A|E_1)\P(E_1) + \P(A|E_2)\P(E_2) + \dots + \P(A|E_k)\P(E_k) 
 \end{align*}
 where we have used the fact that the decomposition of $A$ is a union of disjoint sets, and have also used the definition of conditional probabilility.\\
@@ -928,7 +927,7 @@ Let $A$ and $B$ be two events, and let $\{E_1, E_2, \dots, E_k\}$ be a partition
 \end{align*}
 where $\P(B) \neq 0.$
 \end{framed}
-To get this, take Bayes' rule and expand $\P(B)$ in the denominator using our partition and the Law of Total Probability.
+To get this, take Bayes' rule and expand $\P(B)$ in the denominator using our partition and the Law of Total Probability.\\
 
 Let's revisit the drawing-balls-from-bags example one final time, using the total probability version of Bayes' rule.
 
