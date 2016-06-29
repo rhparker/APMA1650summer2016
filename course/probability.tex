@@ -537,7 +537,7 @@ The number of ways of dividing $n$ objects into $k$ distinct groups containing $
 \]
 The term on the left is called a \emph{multinomial coefficient}
 \end{framed}
-To see why this is the case, we will use the following argument:
+Note that this is the same as the binomial coefficient when $k = 2$. To see why this is true, we will use the following argument:
 \begin{enumerate}
 \item For the first group, we choose $n_1$ out of $n$ items. Since order does not matter, there are $\binom{n}{n_1}$ ways to do this.
 \item For each choice in step 1, there are $\binom{n - n_1}{n_2}$ choices for the second group, since we have already taken $n_1$ items out of the larger group.
