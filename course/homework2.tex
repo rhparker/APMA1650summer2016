@@ -1,0 +1,87 @@
+% \documentclass{book}
+
+\documentclass[12pt]{article}
+\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\usepackage[shortalphabetic]{amsrefs}%
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{cool}
+\usepackage{url}
+\usepackage{graphicx,epsfig}
+\usepackage{framed}
+\usepackage{hyperref}  
+
+\graphicspath{ {images/} }
+
+\begin{document}
+
+\title{}
+\author{\vspace{-10ex} }
+
+\begin{center}
+{\LARGE APMA 1650 -- Homework 2}\\
+\vspace{5mm}
+{\large Due Thursday, July 7, 2016}\\
+\vspace{5mm}
+Homework is due during class or by 3:45 pm in the homework drop box in 182 George St.\\
+Show all of your work used in deriving your solutions.
+\end{center}
+
+\begin{enumerate}
+
+\item You have a bag containing $r$ red marbles and $g$ green marbles. (Both $r$ and $g$ are positive integers.) You draw marbles from the bag, but there is a twist! Each time you draw a marble from the bag, you replace it with along with another marble of the same color. (You never run out of marbles to add to the bag.)
+\begin{enumerate}
+\item What is the probability of getting a red marble on the first draw?
+\item What is the probability of getting a red marble on the second draw?
+\item Make a guess for the probability of getting a red marble on the $n$th draw.
+\end{enumerate}
+
+\item You have $m$ red marbles which you will put uniformly at random into $n$ boxes. What is the expected number of boxes which are empty after all $m$ marbles have been distributed.
+
+\item You decide to use an ATM to get cash before leaving for vacation. Unfortunately, when you insert your ATM card, you realize you have forgotten your PIN (4-digit password). On the bright side, you know that it is one of 10 PINs which you use. You decide to try your PINs uniformly at random, never retrying a PIN you have already tried. The ATM will disable your card after 3 incorrect attempts. What is the probability that you get your PIN correct before your card is disabled.
+
+\item The eight Ivy-league schools (Brown, Columbia, Cornell, Dartmouth, Harvard, Penn, Princeton, and Yale) are having a badminton tournament. In the first round, the teams are paired off uniformly at random. How many possible outcomes are there for the first round? An ``outcome'' specifies both the team parings and the winners. Here is one such outcome:
+\begin{figure}[H]
+\centering
+\fbox{\begin{minipage}{15em}
+\begin{itemize}[noitemsep]
+\item Brown beats Yale
+\item Dartmouth beats Harvard
+\item Princeton beats Penn
+\item Columbia beats Cornell
+\end{itemize}
+\end{minipage}}
+\end{figure}
+
+\item You are the quality control manager for the Acme Widget Company. You have three factories which produce widgets. The table below gives the fraction of the total widget production allotted to each factory as well as the fraction of defective widgets produced by each factory.
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{lll}
+\toprule
+Factory & Fraction of total production & Fraction of defective widgets \\
+\midrule
+A & 0.20 & 0.020 \\
+B & 0.30 & 0.010 \\
+C & 0.50 & 0.005 \\
+\bottomrule
+\end{tabular}
+\end{figure}
+You test a randomly-selected widget and find that it is defective. What is the probability that it came from Factory A?
+
+\end{enumerate}
+\end{document}
+
