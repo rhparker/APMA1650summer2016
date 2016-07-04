@@ -237,7 +237,47 @@ We can illustrate the third relationship above, $\P(a \leq Y \leq b) = F(b) - F(
 \includegraphics[width=5cm]{normalcdfPab.pdf}
 \end{figure}
 
-You may ask why we bother at all with cdfs since it seems easier to work with densities. There are three good reasons to consider CDFs. From a mathematical standpoint, the cdf is a more fundamental object than the pdf; every continuous random variable has a cdf, while there are continuous random variables which have no density\footnote{All continuous random variables we will encounter in this course will have a density}. From a practical standpoint, the normal distribution, perhaps the most important distribution is all of probabiltiy, has a density which is unwieldy, thus we will use the cdf to compute probabilities involving that distribution. Finally, the cdf is used to define the \emph{median} and \emph{quartlies} of a probability distribution, which are important descriptors of a probability distribution
+You may ask why we bother at all with cdfs since it seems easier to work with densities. There are three good reasons to consider CDFs. From a mathematical standpoint, the cdf is a more fundamental object than the pdf; every continuous random variable has a cdf, while there are continuous random variables which have no density\footnote{All continuous random variables we will encounter in this course will have a density}. From a practical standpoint, the normal distribution, perhaps the most important distribution is all of probabiltiy, has a density which is unwieldy, thus we will use the cdf to compute probabilities involving that distribution. Finally, the cdf is used to define the \emph{median} and \emph{quartlies} of a probability distribution, which are important descriptors of a probability distribution.
+
+\subsection{Median and Quartiles}
+The \emph{median} is the ``middle'' of a probability distribution. It is the value which separates the upper half of the distribution from the lower half of the distribution. The median is more robust to outlier values than the mean, and so in some cases may be a better descriptor of a typical outcome than the mean. Mathematically, if $Y$ is a random variable, the we can define the median of $Y$ as the value $m$ such that $\P(Y \leq m) = \P(Y \geq m) = 1/2$. For a continuous random variable $Y$ with cdf $F(y)$, we can define the median using the cdf as the value $m$ for which $F(m) = 1/2$. Similarly we can define the 1st and 3rd quartiles (the median is sometimes called the 2nd quartile). 
+
+\begin{framed}
+\emph{Median and quartiles}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $Y$ be a continuous random variable with cdf $F(y)$. Then we define the \emph{median} $m$, \emph{first quartile} $Q_1$, and \emph{third quartile} $Q_3$ by the following relationships:
+\begin{align*}
+F(Q_1) &= \P(Y \leq Q_1) = 1/4\\
+F(m) &= \P(Y \leq m) = 1/2\\
+F(Q_3) &= \P(Y \leq Q_3) = 1/4
+\end{align*}
+\end{framed}
+
+Let's revisit our example from the previous section.
+
+\begin{example}
+Let $Y$ be a continuous random variable with density $f(y)$ defined by
+\[
+f(y) = \begin{cases}
+\frac{3}{8} y^2 & 0 \leq y\leq 2\\
+0 & \text{otherwise}
+\end{cases}
+\]
+Find the median of $Y$.\\
+
+Let $m$ be the median of $Y$. Since $F(m) = 1/2$, where $F(y)$ is the cdf of $Y$, we need to first find the cdf. For $y < 0$, $F(y) = 0$ and for $y > 2$, $F(y) = 1$ (do you see why this is the case?) For $0 \leq y \leq 2$, which is the region we care about, we integrate the density to get the cdf.
+\begin{align*}
+F(y) &= \int_0^y \frac{3}{8} t^2 dt \\
+&= \frac{3}{8} \frac{t^3}{3}\Bigr|_0^y \\
+&= \frac{y^3}{8}
+\end{align*}
+To find the median, we solve $F(m) = 1/2$ for $m$.
+\begin{align*}
+\frac{m^3}{8} = \frac{1}{2} \\
+m^3 &= 4 \\
+m &= 2^{2/3} \approx 1.59
+\end{align*}
+\end{example}
 
 \subsection{Expectation and Variance}
 Just as with discrete random variables, we can talk about the expected value and variance of a continuous random variable. They have the exact same intepretations as in the discrete case. Expectation and variance work almost exactly the same way in the continuous case as in the discrete case. In fact, we can use the exact same formulas, if we make two key changes:
@@ -622,5 +662,104 @@ Using this and the definition of conditional probability:
 &= \P(Y > b)
 \end{align*}
 
+\subsection{Bounds on Probabilities}
+Sometimes what we are interested in is the probability of an outlier event, i.e. the probability that a random variable deviates from the mean by more than a certain amount. Of course, if we know the exact probability distribution, this is not hard to calculate. However, even if we don't know the probability distribution, we can still obtain upper bounds on the probability of outlier events. In this section we will look at two inequalities which allow us to do exactly this. Markov's Inequality can be used if only the mean is known, but it gives us the weakest bound. Chebyshev's Inequality is a better bound, but required knowledge of both the mean and the variance. The moral of the story is: the more information we have about a probability distribution, the better estimates we can get.
+
+\subsubsection{Markov's Inequality}
+We first look at Markov's Inequality, which gives the probability that a nonnegative random variable exceeds a certain threshold in terms of the expected value of the random variable. To use Markov's Inequality, we only need to know the expected value.
+
+\begin{framed}
+\emph{Markov's Inequality}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $Y$ be a nonnegative random variable with expected value $E(Y)$. If $a > 0$, then
+\begin{align*}
+\P(Y \geq a) \leq \frac{\E(Y)}{a}
+\end{align*}
+\end{framed} 
+To see that this is true, let $I_a$ be the indicator random variable for the event $(Y \geq a)$, i.e. define $I_a$
+ by
+ \[
+I_a = \begin{cases}
+1 & Y \geq a \\
+0 & \text{otherwise, i.e. if }Y < a
+\end{cases}
+\]
+Next note that $a I_a \leq Y$. To see this is true, if $Y < a$, then $a I_a = 0 \leq Y$ since $Y$ is nonnegative (this is why we require $Y$ to be nonnegative). If $Y \geq a$, then $a I_a = a \leq Y$. Thus we have:
+\begin{align*}
+\E(a I_a) &\leq E(Y) \\
+a\left[ 1 \cdot \P(Y \geq a) + 0 \cdot \P(Y < a) \right] &\leq E(Y) \\
+a \P(Y \geq a) &\leq E(Y) \\
+\P(Y \geq a) &\leq E(Y)
+\end{align*}
+where in the second line we used the definition of the expected value of a discrete random variable.
+
+\begin{example}Suppose we randomly select an article from a journal where the mean article length is known to be 1000 words. Find an upper bound on the probability that an article exceeds 1400 words in length.\\
+
+Let $Y$ be the length of an article in this journal. We know nothing about $Y$ except that its mean is 1000. Certainly $Y$ is nonnegative, thus we can find an upper bound for $\P(Y \geq 1400)$ using Markov's inequality:
+\[
+\P(Y \geq 1400) \leq \frac{E(y)}{1400} = \frac{1000}{1400} \approx 0.71
+\]
+This is not a great upper bound, but it's better than nothing!
+\end{example}
+
+
+\subsubsection{Chebyshev's Inequality}
+The second inequality we will look at is Chebyshev's Inequality, which gives the probability that a random variable deviates from its mean by more than a certain amount. This does not require a nonnegative random variable, but it does require knowledge of both the mean and the variance of a random variable.
+
+\begin{framed}
+\emph{Chebyshev's Inequality}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $Y$ be a nonnegative random variable with expected value $\E(Y)$ and variance $Var(Y)$. If $a > 0$, then
+\begin{align*}
+\P(\abs{Y - E(Y)}\geq a) \leq \frac{Var(Y)}{a^2}
+\end{align*}
+\end{framed} 
+Note the absolute value sign inside the probability for Chebyshev's Inequality. This means that Chebyshev's Inequality gives a bound for the probability of deviating from the mean \emph{in either direction}. Contrast this to Markov's Inequality, which is a bound on the probaility of \emph{exceeding} a certain value.\\
+
+To see this is true, take the nonnegative random variable $(Y - \E(Y))^2$ and substitute it into Markov's Inequality along with the constant $a^2$. This gives us:
+\[
+\P([Y - \E(Y)]^2 \geq a^2) \leq \frac{E[(Y - E(Y)]^2}{a^2} = \frac{Var(Y)}{a^2}
+\]
+where the last equality uses the definition of variance. Then since $\abs{x} \geq a$ if and only if $x^2 \geq a^2$,
+\[
+\P(\abs{X - \E(X)} \geq a) = \P([X - \E(X)]^2 \geq a^2) \leq \frac{Var(Y)}{a^2}
+\]
+which is Chebyshev's Inequality.\\
+
+Sometimes we like to measure deviation from the mean in terms of ``numbers of standard deviations''. For the normal distribution, this is encapsulated in the 68-95-99.7 rule. We can state Chebyshev's Inequality in these terms if we like. Let $Y$ be a random variable with mean $\mu$ and variance $\sigma^2$. Recall that the standard deviation is the square root of the variance, so the standard deviation of $Y$ is $\sigma$. Then Chebyshev's Inequality states that the probability of deviating at least $k$ standard deviations from the mean is bounded by:
+\[
+\P(\abs{Y - \mu}\geq k \sigma) \leq \frac{1}{k^2}
+\]
+To see this is true, just take $a = k \sigma$ in Chebyshev's Inequality above.
+
+\begin{example}Suppose we randomly select an article from a journal article length is distributed with a mean 1000 words and a standard deviation of 150 words. Find an upper bound on the probability that an article is outside of the range 600 - 1400 words?\\
+
+Let $Y$ be the length of an article in this journal. Here we know both the mean and the standard deviation of $Y$, we can can use Chebyshev's Inequality. We are looking for the probability that $Y$ deviates from the mean by at least 400. Recalling that the variance is the square of the standard deviation:
+\[
+\P(Y \geq 1400 \cup Y \leq 600) = \P(\abs{Y - 1000} \geq 400 ) \leq \frac{Var(Y)}{400^2} = \frac{150^2}{400^2} \approx 0.14
+\]
+Let's compare this to the bound we got in the previous example using Markov's Inequality. Since $(Y \geq 1400) \subset (Y \geq 1400 \cup Y \leq 600)$, using the properties of probability:
+\[\
+\P(Y \geq 1400) \leq \P(Y \geq 1400 \cup Y \leq 600) \leq 0.14
+\]
+This is a much better bound than we got from Markov's Inequality. If we have reason to suspect that the distribution of $Y$ is symmetric about the mean, we can divide $\P(Y \geq 1400 \cup Y \leq 600)$ by 2 to get:
+\[
+\P(Y \geq 1400) \leq \frac{\P(Y \geq 1400 \cup Y \leq 600)}{2} \leq \frac{0.14}{2} = 0.07
+\]
+\end{example}
+which is even better! It is important that we can only do this is we have (or suspect we have) a symmetric probability distribution. This is not true in general.\\
+
+Just for comparison purposes, let's see how much better this bound is if we know the exact distribution of $Y$. Suppose $Y$ is normally distributed with the same parameters, i.e. $Y \sim \text{Normal}(1000, 150)$. Then, standardizing to the standard normal random variable $Z$ with cdf $F(y)$:
+\begin{align*}
+\P(600 \leq Y \leq 1400) &= \P \left( \frac{600 - 1000}{150} \leq Z \leq \frac{1400 - 1000}{150} \right) \\
+&= \P( -2.67 \leq Z \leq 2.67) \\
+&= F(2.67) - F(-2.67) \\
+&= 0.9962 - 0.0038 = 0.9924
+\end{align*}
+Thus we have:
+\[
+\P(Y \geq 1400 \cup Y \leq 600) = 1 - \P(600 \leq Y \leq 1400) \leq 0.0076
+\]
+Although Chebyshev's Inequality gives a decent bound on the probability of outliers, there is no substitute for knowing the actual probability distribution!
 \end{document}
 
