@@ -1,0 +1,244 @@
+\documentclass[12pt]{article}
+\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\usepackage[shortalphabetic]{amsrefs}%
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{cool}
+\usepackage{url}
+\usepackage{graphicx,epsfig}
+\usepackage{framed}
+\usepackage{hyperref}  
+
+\usetikzlibrary{automata,arrows,positioning,calc}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{exercise}{Exercise}%
+\newtheorem{problem}[exercise]{Problem}%
+\newtheorem*{example}{Example}
+
+\theoremstyle{remark}
+\newtheorem*{question}{Question}
+\newtheorem*{observation}{Observation}
+\newtheorem*{remark}{Remark}
+
+\graphicspath{ {images/} }
+
+\setlength{\parindent}{0cm}
+\renewcommand{\vec}[1]{\ensuremath{\mathbf{#1}}}
+
+\def\noi{\noindent}
+\def\T{{\mathbb T}}
+\def\R{{\mathbb R}}
+\def\N{{\mathbb N}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\P{{\mathbb P}}
+\def\E{{\mathbb E}}
+\def\Q{\mathbb{Q}}
+\def\ind{{\mathbb I}}
+
+\def\cale{{\mathcal E}}
+\def\cals{{\mathcal S}}
+\def\calc{{\mathcal C}}
+\def\caln{{\mathcal N}}
+\def\calb{{\mathcal B}}
+\def\calg{{\cal G}}
+
+\def\ds{\displaystyle}
+\def\ra{\rightarrow}
+\newcommand{\conv}{\mbox{\rm conv}}
+\newcommand{\spaan}{\mbox{\rm span}}
+\newcommand{\deet}{\mbox{\rm det}}
+\newcommand{\aff}{\mbox{\rm aff}}
+\newcommand{\cl}{\mbox{\rm cl}}
+\newcommand{\dimm}{\mbox{\rm dim}}
+\newcommand{\sm}{\setminus}
+\def\ci{\perp\!\!\!\perp}
+
+\newcommand{\ink}{\rule{.5\baselineskip}{.55\baselineskip}}
+
+\begin{document}
+
+\setcounter{section}{3}
+\section{Multivariate Distributions}
+
+\subsection{Introduction}
+Experimenters will often measure more than one quantity, and are often interested in the distribution of all observed quantities. As as example, a naturalist measures the height and weight of chimpanzees. They might be interested in the distribution of height-weight pairs. Since the distribution involves two quantities, we call it a \emph{bivariate distribution}. One question might be whether or not these two quantities are independent. (We suspect they are not, since a reasonable assumption is that taller chimpanzees tend to weigh more.)\\
+
+Another important application of multivariate distributions is statistical sampling. Suppose $Y_1, Y_2, \dots, Y_n$ are $n$ successive trials of an experiment. Statisticians are interested in the distribution of $(Y_1, Y_2, \dots, Y_n)$, and can use information about this distribution to infer characteristics of the experiment or the population from which the experiment sampled.\\
+
+In this section, we will primarily be interested in bivariate distributions, the probability distribution of two random variables. As before, we start with the discrete case and then consider the continuous case.
+
+\subsection{Distribution of Two Discrete Random Variable}
+First, let's define the joint probability distribution for a pair of discrete random variables.
+
+\begin{framed}
+\emph{Joint probabiltiy distribution, discrete case}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $Y_1$ and $Y_2$ be two discrete random variables. Then the \emph{joint distribution} of $Y_1$ and $Y_2$ is given by the function of two variables:
+\begin{align*}
+p(y_1, y_2) &= \P(Y_1 = y_1, Y_2 = y_2) & \text{for all possible pairs }(y_1, y_2)
+\end{align*}
+Sometimes this is called the \emph{joint probability mass function} (joint pmf). Note that $\P(Y_1 = y_1, Y_2 = y_2)$ means $\P(Y_1 = y_1 \cap Y_2 = y_2)$. This is standard notation for expressing the joint probability of two random variables. 
+\end{framed}
+
+We have already encountered one example of a bivariate distribution. Recall the distribution of the rolls of two standard, six-sided dice which we discussed several times in the section on discrete random variables. Let $X_1$ be the roll of the first die and $X_2$ the roll of the second die. Then since we have a discrete uniform distribution, the joint distribution of $X_1$ and $X_2$ is given by:
+\begin{align*}
+p(x_1, x_2) &= \frac{1}{36} & x_1, x_2 = 1, 2, 3, 4, 5, 6
+\end{align*}
+
+Just as in the case for a single discrete random variable, for a joint distribution of two discrete random variable, all the possible probabilties are nonnegative and they sum to 1.
+
+\begin{framed}
+Let $Y_1$ and $Y_2$ be discrete random variables with joint probability distribution $p(y_1, y_2)$. Then
+\begin{align*}
+0 \leq p(y_1, y_2) &\leq 1 \:\text{ for all }y_1, y_2 \\
+\sum_{\text{all } (y_1, y_2} p(y_1, y_2) &= 1
+\end{align*}
+where the sum is taken over all possible pairs $(y_1, y_2)$.
+\end{framed}
+
+Just as in the case of a single discrete random variable, we can construct a valid joint probability distribution of two discrete random variables by assigning probabilities that add up to 1. Let $Y_1$ be a discrete random variable with $m$ possible output values, and $Y_2$ a discrete random variable with $n$ possible output values. Then there are $mn$ possible joint outputs of the pair of random variables. Each of the outputs is an ordered pair of the form $(y_1, y_2)$. If we make an $m$x$n$ table and assign probabilities to each of the $mn$ possible joint outputs so they add up to 1, we have constructed a joint probability distribution for the two discrete random variables $Y_1$ and $Y_2$.\\
+
+Let's consider an example.
+
+\begin{example}Imagine we surveyed Brown undergraduates and asked them two questions. 
+\begin{enumerate}
+\item Do you have an exam this week? 
+\item How many cups of coffee have you drunk today?
+\end{enumerate}
+Let $X_1$ be the discrete random variable with values \{\texttt{yes}, \texttt{no}\} indicating whether or not a student has an exam this week. Let $X_2$ be the number of cups of coffee a student has drunk today. For simplicity, we will let $X_2$ take only the values \{0, 1, 2\} (Whether or not this is a realistic simplification is beyond the scope of this course!)\\
+
+We can display the joint probabiltiy distribution for the pair $(X_1, X_2)$ in a 2 x 3 table. There are 6 possible values for the pair $(x_1, x_2)$. We can choose any probabilties for the six pairs as long as they sum to 1. One possible choice is shown in the table below.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lllll}
+                       &                                 &      & $X_2$    &                           \\ \cline{3-5}
+                       &                                 & 0    & 1    & 2                         \\ \cline{3-5}
+\multicolumn{1}{l|}{}  & \multicolumn{1}{l|}{\texttt{yes}}    & 2/20 & 3/20 & \multicolumn{1}{l|}{3/20} \\
+\multicolumn{1}{l|}{$X_1$} & \multicolumn{1}{l|}{\texttt{no}} & 6/20 & 4/20 & \multicolumn{1}{l|}{2/20} \\ \cline{3-5}                  
+\end{tabular}
+\end{table}
+You can verify that the six probabilities do indeed sum to 1.
+\end{example}
+
+\subsubsection{Marginal distribution}
+Consider again a joint distribution $(Y_1, Y_2)$ of two discrete random variables with pmf $p(y_1, y_2)$. (You can think of the exam-coffee example above). $Y_1$ and $Y_2$ are themselves discrete random variables. What are their distributions? \\
+
+Suppose we wish to find the distribution for $Y_1$ by itself. We call this the \emph{marginal distribution} of $Y_1$. Essentially what we want to do is take $Y_2$ out of the picture entirely. How do we do that? All we have to do is sum over all the possible values of $Y_2$! The probability that $Y_1 = y_1$ is the sum of $p(y_1, y_2)$ over all possible values $y_2$ that $Y_2$ can take; this is the marginal distribution of $Y_1$, and is written $p_1(y_1)$. Similarly, we can sum over all possible values $Y_1$ to get $p_2(y_2)$, the marginal distribution of $Y_2$. This is summarized below.
+
+\begin{framed}
+\emph{Marginal distribution, discrete random variables}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $Y_1$ and $Y_2$ be discrete random variables with joint probability distribution $p(y_1, y_2)$. Then the marginal distribution of $Y_1$ is given by:
+\[
+p_1(y_1) = \sum_{\text{all } y_2} p(y_1, y_2)
+\]
+and the marginal distribution of $Y_2$ is given by.
+\[
+p_2(y_2) = \sum_{\text{all } y_1} p(y_1, y_2)
+\]
+In both cases, we just sum the joint distribution over all the possibilities of the other random variable.
+\end{framed}
+
+Let's return to our example above.
+
+\begin{example}In the exam-coffee example above, compute the marginal distributions for $X_1$ and $X_2$.\\
+
+To find the marginal distributions for each variable, we sum over all the possibilities of the other variable. If the joint distribution is presented in a two-dimensional table, this ie easy. To find the marginal distribution of $X_2$, we sum the values in each column. The bottom row, which we will label ``total'', is the marginal distribution of $X_2$. Similarly, we can find the marginal distribution for $X_1$ by summing each row. The rightmost column, also labeled ``total'', is the marginal distribution for $X_2$. In fact, the marginal distribution is called ``marginal'' because its values lie in the margins of the joint distribution table.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{llllll}
+                       &                                 &      & $X_2$   &                           &       \\ \cline{3-5}
+                       &                                 & 0    & 1    & 2                         & total \\ \cline{3-5}
+\multicolumn{1}{l|}{}  & \multicolumn{1}{l|}{\texttt{yes}}    & 2/20 & 3/20 & \multicolumn{1}{l|}{3/20} & 8/20  \\
+\multicolumn{1}{l|}{$X_1$} & \multicolumn{1}{l|}{\texttt{no}} & 6/20 & 4/20 & \multicolumn{1}{l|}{2/20} & 12/20 \\ \cline{3-5}
+                       & total                           & 8/20 & 7/20 & 5/20                      &      
+\end{tabular}
+\end{table}
+You can check that the two marginal distributions sum to 1 and are thus valid probability distributions for discrete random variables.
+
+\end{example}
+
+\subsubsection{Conditional distirbution}
+Suppose again we have a joint distribution $(Y_1, Y_2)$ of two discrete random variables with joint pmf $p(y_1, y_2)$. Another question we might ask is what is the distribution of $Y_1$ given that $Y_2 = y_2$. In other words, what is the conditional distribution of $Y_1$ given that $Y_2$ takes a specific value.\\
+
+Let's look once more a the exam-coffee example to see how we can do this.
+
+\begin{example}
+In the exam-coffee example above,what is the distribution of the number of cups of coffee drunk today ($X_2$) given that a student has a midterm this week ($X_1$ = \texttt{yes})?\\
+
+To do this, we look at the first row of the table, which corresponds to $X_1$ = \texttt{yes}. This is not a valid probability mass function, because the elements do not sum to 1. But we can fix that! All we have to do is divide by the marginal probability $p_1(\texttt{yes}) = \P(X_1 = \texttt{yes})$, which is conveniently located just to the right in the ``total'' column. If we do that, we get the conditional probability for $X_2$ given $X_1$ = \texttt{yes}, which we can write as $p(y_2 | \texttt{yes})$ or $p(y_2 | Y_1 = \texttt{yes})$:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}ll@{}}
+\toprule
+y & $p(y | \text{midterm})$ \\ \midrule
+0 & 2/8                                  \\
+1 & 3/8                                  \\
+2 & 3/8                                \\ \bottomrule
+\end{tabular}
+\end{table}
+\end{example}
+
+Now that we have seen an example, we will give the formal defintion of the conditional distribution of two discrete random variables.
+
+\begin{framed}
+\emph{Conditional distribution, discrete random variables}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $Y_1$ and $Y_2$ be discrete random variables with joint probability distribution $p(y_1, y_2)$. Let $p_2(y_2)$ be the marginal distribution of $Y_2$. Then the conditional distribution of $Y_1$ given $Y_2 = y_2$ is:
+\[
+p(y_1|y_2) = \P(Y_1 = y_1|Y_2 = y_2) = \frac{\P(Y_1 = y_1, Y_2 = y_2)}{\P(Y_2 = y_2)} = \frac{p(y_1, y_2)}{p_2(y_2)}
+\]
+where $p_2(y_2) > 0$. In words, to the conditional distribution is the joint distribution divided by the marginal distribution. We can similarly define the conditional distribution of $Y_2$ given $Y_1 = y_1$.
+\end{framed}
+
+\subsubsection{Independence}
+The final question to settle is independence. Roughly speaking, two random variables are independent of if the probabilities of each one are not affected by the value of the other one. The following will serve as our definition for independence of two discrete random variables.
+
+\begin{framed}
+\emph{Independence of discrete random variables}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $Y_1$ and $Y_2$ be discrete random variables with joint probability distribution $p(y_1, y_2)$. Let $p_1(y_1)$ and $p_2(y_2)$ be the marginal distributions of $Y_1$ and $Y_2$. Then $Y_1$ and $Y_2$ are independent if
+\begin{align*}
+p(y_1, y_2) &= p_1(y_1)p_2(y_2) & \text{for all }y_1, y_2
+\end{align*}
+In other words, two random variables are independent if their joint distribution is the product of the two marginal distributions.
+\end{framed}
+
+In the exam-coffee example above, using just about any pair of $y_1$ and $y_2$, we can show that $Y_1$ and $Y_2$ and not independent. Did we really expect them to be independent?
+
+\end{document}
