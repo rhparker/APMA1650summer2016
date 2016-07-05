@@ -99,7 +99,7 @@ Another important application of multivariate distributions is statistical sampl
 
 In this section, we will primarily be interested in bivariate distributions, the probability distribution of two random variables. As before, we start with the discrete case and then consider the continuous case.
 
-\subsection{Distribution of Two Discrete Random Variable}
+\subsection{Distribution of Two Discrete Random Variables}
 First, let's define the joint probability distribution for a pair of discrete random variables.
 
 \begin{framed}
@@ -223,7 +223,7 @@ Let $Y_1$ and $Y_2$ be discrete random variables with joint probability distribu
 \[
 p(y_1|y_2) = \P(Y_1 = y_1|Y_2 = y_2) = \frac{\P(Y_1 = y_1, Y_2 = y_2)}{\P(Y_2 = y_2)} = \frac{p(y_1, y_2)}{p_2(y_2)}
 \]
-where $p_2(y_2) > 0$. In words, to the conditional distribution is the joint distribution divided by the marginal distribution. We can similarly define the conditional distribution of $Y_2$ given $Y_1 = y_1$.
+where $p_2(y_2) > 0$. In words, the conditional distribution is the joint distribution divided by the marginal distribution. We can similarly define the conditional distribution of $Y_2$ given $Y_1 = y_1$.
 \end{framed}
 
 \subsubsection{Independence}
@@ -240,5 +240,301 @@ In other words, two random variables are independent if their joint distribution
 \end{framed}
 
 In the exam-coffee example above, using just about any pair of $y_1$ and $y_2$, we can show that $Y_1$ and $Y_2$ and not independent. Did we really expect them to be independent?
+
+\subsection{Distribution of Two Discrete Continuous Variables}
+We will essentially repeat the same discussion for a pair of continuous random variables. Since working with continuous random variables requires integration, this will require integration in two dimensions, i.e. multivariable calculus. Since it is likely that many of you have not taken multivariable calculus, all multivariable techniques will be taught as they are needed.
+
+\subsubsection{Joint Probability Density}
+Recall that in the discrete case, a probability distribution was described by a probability density function (pdf). For the joint distribution of two continuous random variable, we have a joint density funciton, which is the continuous analogue of the joint distribution function in the discrete case.
+
+\begin{framed}
+\emph{Joint probabiltiy density, continuous case}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $Y_1$ and $Y_2$ be two continuous random variables. Then the \emph{joint density} of $Y_1$ and $Y_2$ is a function of two variables $f(y_1, y_2)$ with the properties that:
+\begin{enumerate}
+\item $f(y_1, y_2) \geq 1$ for all $y_1, y_2$.
+\item \[
+\int_{-\infty}^\infty \int_{-\infty}^\infty f(y_1, y_2) dy_1 dy_2 = 1
+\]
+\end{enumerate}
+\end{framed}
+In other words, $f(y_1, y_2)$ is nonnegative and integrates to 1.\\
+
+In the bivariate case, instead of finding the probabiltiy that a single variable lies in an interval $[a, b]$, we find the probability that a pair of random variables lies within a region of the plane. To do this, we integrate the joint density over that region.
+
+\begin{framed}
+\emph{Probability of an event, continuous bivariate case}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $Y_1$ and $Y_2$ be two continuous random variables with joint density $f(y_1, y_2)$. Let $A$ be a region of the plane. Then
+\begin{align*}
+\P((Y_1, Y_2) \in A) = 1 \int \int_A f(y_1, y_2) dy_1 dy_2
+\end{align*}
+\end{framed}
+This notation may not be precise. Don't worry about it for now, we will do plenty of examples. Just remember the key idea: to find the probability that a pair of random variables lie in a region, integrate the joint density over that region.\\
+
+The extra complication here is the double integral. Whereas a single integral is defined on a closed interval, a double integral is defined on a two-dimensional region of the plane. The key to success for any double integral problem is to draw the region of integration before doing anything else. Since this is so important, I will repeat it: always draw the region of integration!\\
+
+We will learn how to handle this through a series of examples. We will keep coming back to this first example throughout this section.
+
+\begin{example}Let $X$ and $Y$ be random variables with joint distribution function $f(x, y)$ given by:
+\[
+f(x, y) = \begin{cases} 
+      k x y  & 0 \leq y \leq x \leq 1 \\
+      0 & \textrm{otherwise}
+   \end{cases}
+\]
+
+\begin{enumerate}
+\item Find the value of $k$ such that $f(x, y)$ is a valid joint probability density function. \\
+
+As defined above (and similar to the one-dimensional case), for a joint probability density function to be valid, its integral must be 1 over the region of integration, i.e.
+\[
+\int \int f(x, y) dx \: dy = 1
+\]
+The bounds of the density function are the following: $y \geq 0, y \leq x$, and $x \leq 1$. This describes the triangular region illustrated below.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{region1}
+\end{figure}
+
+Whenever we have a double integral, we have two choices when we do our integration. We can integrate in $x$ direction first, or we can integrate in the $y$ direction first. Both ways give the same answer, but sometimes one is easier than the other. We will show both of them here. \\
+
+Let's start by integrating in the $y$ direction first. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{region1vertfirst.pdf}
+\end{figure}
+Following the directions on the picture above, we integrate $y$ first; $y$ goes from 0 to the diagonal line $y = x$, so those are the limits for the integral with respect to $y$ (inner integral). Note that the upper limit is a function of $x$. Each integral in $y$ is a vertical ``slice'' of our region. Then we integrate with respect to $x$. Imagining this as stacking our vertical slices side-by-side in the horizontal direction, $x$ goes from 0 to 1, so those are the limits for the integral with respect to $x$ (outer integral). Putting this together, we have:
+\begin{align*}
+1 &= \int_0^1 \int_0^x k x y \: dy dx \\
+&= k \int_0^1 x \frac{y^2}{2} \Bigr|_0^x dx \\
+&= \frac{k}{2} \int_0^1 x^3 dx \\
+&= \frac{k}{2} \frac{x^4}{4} \Bigr|_0^1 = \frac{k}{8}  \\
+\end{align*}
+Multiplying by 8 gives us $k = 8$.\\
+
+Let's do the integral the other way and verify to see if we get the same result. This time we integrate in the $x$ direction first.
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{region1horizfirst}
+\end{figure}
+Once again following the directions on the picture above, we integrate $x$ first; $x$ starts at the diagonal line $y = x$ and goes to $x = 1$. The diagonal line has the eqution $y = x$, which we solve for $x$ to get $x = y$. Thus the lower limit is the function $x = y$. The upper limit is 1, so the limits of the integral with respect to $x$ (inner integral) are $y$ and 1. 
+Each integral in $x$ is a horizontal ``slice'' of our region. Then we integrate with respect to $y$. Imagining this as stacking our horizontal slices one on top of the other in the vertical direction, $y$ goes from 0 to 1, so those are the limits for the integral with respect to $y$ (outer integral). Putting this together, we have:
+\begin{align*}
+1 &= \int_0^1 \int_y^1 k x y \: dx dy \\
+&= k \int_0^1 y \frac{x^2}{2} \Bigr|_y^1 dy \\
+&= \frac{k}{2} \int_0^1 y(1 - y^2) dy \\
+&= \frac{k}{2} \int_0^1 (y - y^3) dy \\
+&= \frac{k}{2} \left( \frac{y^2}{2} - \frac{y^4}{4} \right) \Bigr|_0^1 = \frac{k}{8}  \\
+\end{align*}
+We get the same answer! Which one was easier? \\
+
+\item Find $\P(X < 0.6 \cap Y > 0.2)$.\\
+
+Here we are finding the probability that the pair $(X, Y)$ falls in a specific region of the plane. The first step (as always) is to draw the region.
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{region1prob.pdf}
+\end{figure}
+From this picture, we get the limits of integration. Let's integrate in the $y$ direction first. Recall that we found that $k = 8$above. This gives us the integral:
+\begin{align*}
+\P(X < 0.6 \cap Y > 0.2) &= \int_{0.2}^{0.6} \int_{0.2}^x 8 x y \: dy dx
+\end{align*}
+
+This integral can be evaluated like the one above. The most important thing to know is how to set the problem up with the correct limits, but for completeness we will do the computation below.
+\begin{align*}
+\P(X < 0.6 \cap Y > 0.2) &= \int_{0.2}^{0.6} \int_{0.2}^x 8 x y \: dy dx \\
+&= 8 \int_{0.2}^{0.6} x \frac{y^2}{2} \Bigr|_{0.2}^x dx \\
+&= 4 \int_{0.2}^{0.6} (x^3 - 0.04x) dx \\
+&= 4 \left( \frac{x^4}{4} - 0.04 \frac{x^2}{2} \right)\Bigr|_{0.2}^{0.6}\\
+&= \left(0.6^4 - 0.2^4\right) - 0.08\left(0.6^2 - 0.2^2\right) \\
+&= 0.1024
+\end{align*}
+
+We could also have integrated in the $x$ direction first.
+\end{enumerate}
+\end{example}
+
+\subsubsection{Marginal Distribution}
+Consider a joint distribution $(Y_1, Y_2)$ of two continuous random variables with joint density $f(y_1, y_2)$. $Y_1$ and $Y_2$ are themselves continuous random variables, and their distributions are called the \emph{marginal distributions} of $Y_1$ and $Y_2$. The probability densities of $Y_1$ and $Y_2$ are the \emph{marginal densities} of $Y_1$ and $Y_2$.\\
+
+How do we find the marginal densities? Recall that for the discrete case, we summed over the other variable, e.g. to find the marginal density of $Y_1$, we summed the joint distribution over all the values $Y_2$ can take. Here we do the exact same thing, except we replace summation with integration. To get the marginal density of $Y_1$, we integrate the joint density $f(y_1, y_2)$ over $y_2$. The marginal density of $Y_1$ is written $f_1(y_1)$, and is a function of $y_1$ alone. (If after the integration you still have terms involving $y_2$, something went wrong.) Similarly, we can find the marginal density of $Y_2$.
+
+\begin{framed}
+
+\emph{Marginal density, continuous random variables}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $Y_1$ and $Y_2$ be continuous random variables with joint density $f(y_1, y_2)$. Then the marginal density of $Y_1$ is given by:
+\[
+f_1(y_1) = \int f(y_1, y_2) dy_2
+\]
+and the marginal density of $Y_2$ is given by.
+\[
+f_2(y_2) = \int f(y_1, y_2) dy_1
+\]
+In both cases, we integrate the joint density over the other random variable to remove it from the picture entirely. Sometimes we call this ``integrating out'' the other random variable.
+\end{framed}
+
+Let's return to the first example from the joint density section.
+
+\begin{example}
+Let $X$ and $Y$ be random variables with joint distribution function $f(x, y)$ given by:
+\[
+f(x, y) = \begin{cases} 
+      8 x y  & 0 \leq y \leq x \leq 1 \\
+      0 & \textrm{otherwise}
+   \end{cases}
+\]
+\begin{enumerate}
+\item Find the marginal densities for $X$ and $Y$.\\
+
+Since our random variable are $X$ and $Y$, we will denote the two marginal densities by $f_X(x)$ and $f_Y(y)$. First, we find the marginal density for $X$ by integrating over $y$. Since we are integrating only in a single variable, there is only one choice for limits. Refer back to the picture of the region above. To integrate in $y$, we start at $y = 0$ and integrate until we reach the line $y = x$. Thus the limits of integration are 0 and $x$.
+
+\begin{align*}
+f_X(x) &= \int_0^x 8 x y \: dy \\
+&= 8x \frac{y^2}{2} \Bigr|_0^x \\
+&= 4 x^3
+\end{align*}
+
+With $Y$ out of the picture, the random variable $X$ is free to take values from 0 to 1. (The marginal distribution is one-dimensional, so there are no pesky regions to deal with!) The above expression for the marginal density is only valid for $0 \leq x \leq 1$. Outside that range, the marginal density is 0. Thus we write the marginal density $f_X(x)$ as:
+
+\begin{align*}
+f_X(x) &= \begin{cases}
+  4 x^3 & 0 \leq x \leq 1 \\
+  0 & \textrm{otherwise}
+   \end{cases}
+\end{align*}
+
+It is important that we write the marginal density in this way so that we know that the $X$ is 0 outside $[0, 1]$. Since the marginal density is a valid probabiltiy density, you can check that it does in fact integrate to 1. Also note that the marginal density for $X$ is a function of $x$ alone; $y$ does not appear anywhere since we integrated it out!\\
+
+Now we find the marginal density for $Y$ by integrating over $x$. The limits for $x$ are $x = 0$ and $x = y$. (See the picture of the region above if this is not clear.) 
+\begin{align*}
+f_Y(y) &= \int_y^1 8 x y \: dx \\
+&= 8y \frac{x^2}{2} \Bigr|_y^1 \\
+&= 4y(1 - y^2)
+\end{align*}
+
+With $X$ out of the picture, the random variable $Y$ can take values from 0 to 1, so we write the marginal density of $Y$ as
+\begin{align*}
+f_Y(y) &=  \begin{cases}
+  4y(1 - y^2) & 0 \leq y \leq 1 \\
+  0 & \textrm{otherwise}
+   \end{cases}
+\end{align*}
+
+\item Find the expected values for $X$ and $Y$.\\
+
+How do we find the expected values of $X$ and $Y$. We use the marginal densities and do the same thing we do every night, Pinky - try to take over the world! The marginal densities are just standard probability densities for continuous random variables; thus we find the expected values of $X$ and $Y$ using the marginal densities and the formula for the expected value of a continuous random variable.
+\begin{align*}
+\E(X) &= \int_{-\infty}^\infty f_X(x) dx \\
+\E(Y) &= \int_{-\infty}^\infty f_Y(y) dy
+\end{align*}
+
+First we find the expected value for $X$. Notice that the limits of integration become 0 and 1, since that is the region where the marginal density is nonzero.
+
+\begin{align*}
+\E(X) &= \int_{-\infty}^\infty x f_X(x) dx \\
+&= \int_0^1 x f_X(x) dx \\
+&= \int_0^1 x \: 4 x^3 dx \\
+&= 4 \int_0^1 x^4 dx \\
+&= 4/5
+\end{align*}
+
+Similarly, we find the expected value of $Y$.
+\begin{align*}
+\E(Y) &= \int_{-\infty}^\infty y f_Y(y) dy \\
+&= \int_0^1 y f_Y(y) \: dy \\
+&= \int_0^1 y \: 4y(1 - y^2) dx \\
+&= 4 \int_0^1 (y^2 - y^4) dx \\
+&= 8/15
+\end{align*}
+\end{enumerate}
+\end{example}
+
+\subsubsection{Conditional Distribution}
+Just as in the discrete case, we can talk about conditional distributions. In the continuous case, we will have a continuous density function. Suppose we have a joint distribution $(Y_1, Y_2)$ of two continuous random variables with conditional density $f(y_1, y_2)$. We might be interested in the distribution of $Y_1$ given that $Y_2 = y_2$. Since $Y_1$ is a continuous random variable, we will express this as a conditional probabiltiy density.\\
+
+\begin{framed}
+\emph{Conditional distribution, continuous random variables}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $Y_1$ and $Y_2$ be continuous random variables with joint probability density $f(y_1, y_2)$. Let $f_2(y_2)$ be the marginal density of $Y_2$. Then the conditional density of $Y_1$ given $Y_2 = y_2$ is:
+\[
+f(y_1|y_2) = \frac{f(y_1, y_2)}{f_2(y_2)}
+\]
+where $f_2(y_2) > 0$. As in the discrete case, the conditional density is the joint density divided by the marginal density. We can similarly define the conditional density of $Y_2$ given $Y_1 = y_1$.
+\end{framed}
+Note that the conditional density can (and often will) depend on the value of the random variable we are conditioning on. For example, $f(y_1|y_2)$ may depend on the value $y_2$. Furthermore, the range of valuee $y_1$ can take may also depend on $y_2$ (we will see this in the example below). Contrast this to the marginal density, where we eliminiate the other random variable entirely.\\
+
+Once again, let's return to our example.
+
+\begin{example}
+Let $X$ and $Y$ be random variables with joint distribution function $f(x, y)$ given by:
+\[
+f(x, y) = \begin{cases} 
+      8 x y  & 0 \leq y \leq x \leq 1 \\
+      0 & \textrm{otherwise}
+   \end{cases}
+\]
+\begin{enumerate}
+
+\item Find the conditional density of $X$ given $Y = y$.\\
+
+To find the conditional density $f(x|y)$, we divide the joint density $f(x, y)$ by the marginal density $f_Y(y)$. We found the marginal density above, so we have:
+\begin{align*}
+f(x|y) = \frac{f(x, y)}{f_Y(y)} = \frac{8 x y}{4y(1 - y^2) } = \frac{2x}{1 - y^2} 
+\end{align*}
+Note that this density does in fact depend on the value of $y$ we are conditioning on. However, we are not done. The bounds on the conditional density are important and must be specified. Referring back to the picture of the region, we note that if $Y = y$, then $X$ can only range from the diagonal line $y = x$ to 1, i.e. $X$ must be between $y$ and 1. Thus the conditional density of $X$ given $Y = y$ is given by:
+\begin{align*}
+f(x|y) &=  \begin{cases} 
+      \frac{2x}{1 - y^2} & y \leq x \leq 1 \\
+      0 & \textrm{otherwise}
+   \end{cases}
+\end{align*}
+
+\item Find the conditional density of $Y$ given $X = x$.\\
+
+Again, we divide the joint density by the marginal density, where we computed the marginal density $f_X(x)$ above.
+\begin{align*}
+f(y|x) = \frac{f(x, y)}{f_X(x)} = \frac{8 x y}{4x^3 } = \frac{2y}{x^2}  
+\end{align*}
+As with the other conditional density, this depends on $x$. The bounds of the conditional density will also depend on $x$. Looking at the picture of the region, if $X = x$, then $y$ can only range from 0 to the diagonal line $y = x$, i.e. $Y$ must be between 0 and $x$. Thus the conditional density is:
+\begin{align*}
+f(y|x) &=  \begin{cases} 
+      \frac{2y}{x^2}  & 0 \leq y \leq x \\
+      0 & \textrm{otherwise}
+   \end{cases}
+\end{align*}
+
+\item Find the expected value of $X$ given $Y = y$.
+
+A conditional density is just a probabiliy density of a continuous random variable, so we can find its expected value using the standard formula for the expected value of a continuous random variable.
+
+\begin{align*}
+E[X|Y = y] &= \int_{\infty}^{\infty} xf(x|y)dx\\
+&= \int_y^1 x \frac{2x}{1 - y^2} dx \\
+&= \frac{2}{1 - y^2} \int_y^1 x^2 \\
+&= \frac{2}{1 - y^2}\frac{x^3}{3}\Bigr|_y^1 \\
+&= \frac{2(1 - y^3)}{3(1 - y^2)}
+\end{align*}
+Note that we used the bounds on the conditional density in the second line above. Unsurprisingly, this depends on $y$.
+
+\end{enumerate}
+\end{example}
+
+\subsubsection{Independence}
+We have a similar defintion for independence in the case of continuous random variables.\\
+
+\begin{framed}
+\emph{Independence of continuous random variables}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $Y_1$ and $Y_2$ be continuous random variables with joint density $f(y_1, y_2)$. Let $f_1(y_1)$ and $f_2(y_2)$ be the marginal densities of $Y_1$ and $Y_2$. Then $Y_1$ and $Y_2$ are independent if
+\begin{align*}
+f(y_1, y_2) &= f_1(y_1)f_2(y_2) & \text{for all }y_1, y_2
+\end{align*}
+In other words, two continuous random variables are independent if their joint density is the product of the two marginal densities.
+\end{framed}
+
+In the example we have been looking at for the past three sections, the joint density is not the product of the marginal densities, so $X$ and $Y$ are not independent.
 
 \end{document}

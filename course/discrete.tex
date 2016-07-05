@@ -516,7 +516,7 @@ To verify this formula, we expand out the binomial in the definition of variance
 Var(Y) &= \E[ (Y - \mu)^2] \\
 &= \E( Y^2 - 2 \mu Y + \mu^2 ) \\
 &= \E(Y^2) - 2 \mu \E(Y) + \E(\mu^2) \\
-&= \E(Y^2) - 2 mu^2 + \mu^2 \\
+&= \E(Y^2) - 2 \mu^2 + \mu^2 \\
 &= \E(Y^2) - \mu^2
 \end{align*}
 where we used the fact that $\E(Y) = \mu$, and the expected value of a constant is just the constant.\\
@@ -658,7 +658,7 @@ The first question is answered by the binomial distribution, and the second by t
 
 The binomial distribution models the number of successes in a fixed number of Bernoulli trials. Let's start with an example.
 
-\begin{example}Suppose we are playing a slot machine in Las Vegas. Suppose the probability of winning on one play is $p$\footnote{This can be quite different depending on the type of slot machine you are playing, although all slot machines are designed so that you lose money on average. There are numerous websites devoted to slot machine odds.}. Suppose you play 10 times. What is the probability that you win 2 times?\\
+\begin{example}Suppose we are playing a slot machine in Las Vegas. Suppose $p$ is the probabiltiy of winning on one play\footnote{This can be quite different depending on the type of slot machine you are playing, although all slot machines are designed so that you lose money on average. There are numerous websites devoted to slot machine odds.}. Suppose you play 10 times. What is the probability that you win 2 times?\\
 
 First, this is an example of Bernoulli trials, since each play of the slot machine has two possible outcomes (win and loss), is independent, and the probability of winning is does not change as you continue to play. \\
 
@@ -777,6 +777,8 @@ The expected value of a binomial random variable is $np$. For this case, we have
 \]
 \end{enumerate} 
 \end{example}
+
+% end of class 5
 
 \subsection{Geometric Distribution}
 
