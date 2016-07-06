@@ -535,6 +535,168 @@ f(y_1, y_2) &= f_1(y_1)f_2(y_2) & \text{for all }y_1, y_2
 In other words, two continuous random variables are independent if their joint density is the product of the two marginal densities.
 \end{framed}
 
-In the example we have been looking at for the past three sections, the joint density is not the product of the marginal densities, so $X$ and $Y$ are not independent.
+In the example we have been looking at for the past three sections, the joint density is not the product of the marginal densities, so $X$ and $Y$ are not independent.\\
 
+\subsubsection{Another Example}
+Bivariate densities are important enough that we will provide more examples problems involving them.
+
+\begin{example}Let $X$ and $Y$ be random variables with joint distribution function $f(x, y)$ given by:
+\[
+f(x, y) = \begin{cases} 
+      c x  & 0 \leq x \leq y \leq 1 \\
+      0 & \textrm{otherwise}
+   \end{cases}
+\]
+
+\begin{enumerate}
+\item Find the value of $c$ such that $f(x, y)$ is a valid joint probability density function.\\
+
+The first step is always to draw the region.
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{region2.pdf}
+\end{figure}
+To find the value of $c$, we integrate the joint density over the region and set the result equal to 1. We will integrate in the $x$ direction first since there's already an $x$ in the integrand and integrating in the $x$ direction first allows both lower limits to be 0 (the other choice would work fine too):
+\begin{align*}
+1 &= \int_0^1 \int_0^y c x dx dy \\
+&= c \int_0^1 \frac{x^2}{2}\Bigr|_0^y dy \\
+&= c \int_0^1 \frac{y^2}{2} dy \\
+&= c \frac{y^3}{6}\Bigr|_0^1 \\
+&= \frac{c}{6}
+\end{align*}
+Thus we find that $c = 6$ for this to be a valid joint probability density function.
+
+\item Find the marginal densities for $X$ and $Y$.\\
+
+To do this, we integrate out each random variable in turn. Be careful to get the correct limits of integration (refer back to the picture of the region early and often.) For the marginal density of $X$ we first integrate out $y$.
+\begin{align*}
+f_X(x) = \int_x^1 6 x dy \\
+&= 6 x y\Bigr|_x^1 \\
+&= 6 x(1 - x)
+\end{align*}
+With $Y$ removed from the picture, $X$ can freely range from 0 to 1, so the marginal density of $X$ is:
+\begin{align*}
+f_X(x) &= \begin{cases}
+  6 x(1 - x) & 0 \leq x \leq 1 \\
+  0 & \textrm{otherwise}
+   \end{cases}
+\end{align*}
+
+For the marginal density of $Y$, we first integrate out $x$:
+\begin{align*}
+f_Y(y) &= \int_0^y 6 x dx \\
+&= 3 x^2\Bigr|_0^y \\
+&= 3 y^2
+\end{align*}
+Then, with $X$ removed from the picture, $Y$ can freely range from 0 to 1, so the marginal density of $Y$ is:
+\begin{align*}
+f_Y(y) &= \begin{cases}
+  3 y^2 & 0 \leq y \leq 1 \\
+  0 & \textrm{otherwise}
+   \end{cases}
+\end{align*}
+It is important that you give the correct bounds for the marginal densities.
+
+\item What is the expected value of $X$?
+
+To find $\E(X)$, we use the formula for expected value of a continuous random variable with the marginal density for $X$.
+\begin{align*}
+\E(X) &= \int_{\infty}^\infty f_X(x) dx \\
+&= \int_0^1 x 6 x(1 - x) dx \\
+&= 6 \int_0^1 (x^2 - x^3) dx \\
+&= 6 \left( \frac{x^3}{3} - \frac{x^4}{4} \right)\Bigr|_0^1 \\
+&= 6\left(\frac{1}{3} - \frac{1}{4} \right)\\
+&= \frac{1}{2}
+\end{align*}
+Similarly we can find the expected value of $Y$ using the marginal density for $Y$.
+
+\item What is the conditional density for $X$ given $Y = y$?\\
+
+To get the conditinal density $f(x|y)$, we first divide the joint density by the marginal density of $Y$:
+\[
+f(x|y) = \frac{ f(x, y) }{f_Y(y)} = \frac{ 6 x }{ 3 y^2 } = \frac{ 2 x }{ y^2 }
+\]
+What are the bounds on the conditional density? Refer back to the picture of the region above. Given that $Y = y$, $X$ can range from 0 to $y$, thus the conditional density is:
+\begin{align*}
+f(x|y) &=  \begin{cases} 
+      \dfrac{ 2 x }{ y^2 } & 0 \leq x \leq y \\
+      0 & \textrm{otherwise}
+   \end{cases}
+\end{align*}
+
+\item What is the expected value of $X$ given $Y = y$?\\
+
+Here, we use the formula for the expected value of a continuous random variable with the conditional density $f(x|y)$.
+\begin{align*}
+\E(X|Y = y) &= \int_{-\infty}^\infty f(x|y) dx \\
+&= \int_0^y \dfrac{ 2 x }{ y^2 } dx \\
+&= \dfrac{x^2}{y^2}\Bigr|0^y \\
+&= \dfrac{y^2}{y^2} = 1
+\end{align*}
+It is interesting to note that in this case, the conditional expected value does not depend on $y$.
+
+\end{enumerate}
+\end{example}
+
+\subsubsection{Joint Uniform Distribution}
+Here we will consider the bivariate uniform distribution. Recall the for the continuous uniform distribution, the probability of an interval is proportional to its length. For the two-dimensional uniform distribution, the probability of a region is proportional to its area. Let's look at an example.
+
+\begin{example}Let $X$ and $Y$ have a joint uniform distribution on the equilateral right triangle with sides of length 2. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=5cm]{uniformtriangle}
+\end{figure}
+
+\begin{enumerate}
+\item What is the probability that the pair $(X, Y)$ lies within the small square below (corners (1, 1) and (2, 0))?
+\begin{figure}[H]
+\centering
+\includegraphics[width=5cm]{uniformtriangle2}
+\end{figure}
+The small square is half the area of the right triangle, so since this is the uniform distribution, the probability that $(X, Y)$ lies within the small square is 1/2.
+
+\item What is the joint probability density of $(X, Y)$?\\
+
+Recall that in the one-dimensional case, the uniform probability density is a constant. If $X \sim \text{Uniform}(a, b)$ then $X$ has density $f(x) = \frac{1}{b-a}$. This is just 1 divided by the length of the interval. This extends to the two-dimensional case. For a joint uniform distribution over a region, the joint uniform density is given by $1/A$, where $A$ is the area of the region. Just as in the one dimensional case, the joint uniform density is only defined on a region with \emph{finite} area. \\
+
+Since the area of the triangle is 2, the joint uniform density is $f(x, y) = 1/2$. But we are not done! We need to specify the bounds of the uniform density, which will depend on the geometry of the region. Outside the region, the uniform density must be 0. Looking at the picture of the region above, we see that $y \geq 0$, $y \leq x$, and $x \leq 2$. Thus the joint density is:
+\[
+f(x, y) = \begin{cases} 
+      \dfrac{1}{2}  & 0 \leq y \leq x \leq 2 \\
+      0 & \textrm{otherwise}
+   \end{cases}
+\]
+
+\item What are the marginal densities of $X$ and $Y$?
+
+To find these, we take the joint density and integrate out each variable in turn. As always, we refer to the picture of the region to get the correct limits of integration. For the marginal density of $X$ we integrate over $y$:
+\begin{align*}
+f_X(x) &= \int_0^x \frac{1}{2} dy \\
+&= \frac{1}{2} y\Bigr|_0^x \\
+&= \frac{x}{2}
+\end{align*}
+With the correct bounds, the marginal density of $X$ is:
+\begin{align*}
+f_X(x) &= \begin{cases}
+  \frac{x}{2} & 0 \leq x \leq 2 \\
+  0 & \textrm{otherwise}
+   \end{cases}
+\end{align*}
+
+Why are these the correct bounds for the marginal density? For the marginal density of $Y$ we integrate over $x$:
+\begin{align*}
+f_Y(y) &= \int_y^2 \frac{1}{2} dx \\
+&= \frac{1}{2} x\Bigr|_y^1 \\
+&= \frac{2 - y}{2}
+\end{align*}
+With the correct bounds, the marginal density of $Y$ is:
+\begin{align*}
+f_Y(y) &= \begin{cases}
+ \frac{2 - y}{2} & 0 \leq y \leq 2 \\
+  0 & \textrm{otherwise}
+   \end{cases}
+\end{align*}
+
+\end{enumerate}
+\end{example}
 \end{document}

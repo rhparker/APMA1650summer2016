@@ -662,6 +662,16 @@ Using this and the definition of conditional probability:
 &= \P(Y > b)
 \end{align*}
 
+We can also use the cdf of the exponential distibution to find the median. To do this we solve $F(m) = 1/2$, where $F(y)$ is the exponential cdf.
+\begin{align*}
+F(m) &= \frac{1}{2} \\
+1 - e^{-\lambda m} &= \frac{1}{2} \\
+e^{-\lambda m} &= \frac{1}{2} \\
+- \lambda m &= \log\left( \frac{1}{2} \right) = -\log 2 \\
+m &= \frac{\log 2}{\lambda}
+\end{align*} 
+The median of the exponential distribution is thus a little smaller than the mean (by a factor of $\log 2 \approx 0.693)$.
+
 \subsection{Bounds on Probabilities}
 Sometimes what we are interested in is the probability of an outlier event, i.e. the probability that a random variable deviates from the mean by more than a certain amount. Of course, if we know the exact probability distribution, this is not hard to calculate. However, even if we don't know the probability distribution, we can still obtain upper bounds on the probability of outlier events. In this section we will look at two inequalities which allow us to do exactly this. Markov's Inequality can be used if only the mean is known, but it gives us the weakest bound. Chebyshev's Inequality is a better bound, but required knowledge of both the mean and the variance. The moral of the story is: the more information we have about a probability distribution, the better estimates we can get.
 

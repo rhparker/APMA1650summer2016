@@ -779,7 +779,6 @@ The expected value of a binomial random variable is $np$. For this case, we have
 \end{example}
 
 % end of class 5
-\end{document}
 
 \subsection{Geometric Distribution}
 
@@ -886,7 +885,7 @@ The geometric distribution is often used the model the distribution of how long 
 \begin{enumerate}
 \item What is the probability that the computer crashes within the first two hours after you start it up?
 
-Measuring time in one-hour intervals, let $X$ be the number of one-hour intervals until your computer crashes. We will model $X$ as a geometric random variable with parameter $p = 0.05$. We are looking for $\P(X \leq 2)$:
+Measuring time in one-hour intervals, let $X$ be the number of one-hour intervals until your computer crashes. We will model $X$ as a geometric random variable with parameter $p = 0.05$. (A ``success'' in this case is defined as your computer crashing!) We are looking for $\P(X \leq 2)$:
 \begin{align*}
 \P(X \leq 2) &= \P(X = 1) + \P(X = 2) \\
 &= p + (1-p)p \\
@@ -911,6 +910,13 @@ Alternatively, the probability that your computer is still running after two hou
 &= 0.9025
 \end{align*}
 There is a rougly 90\% chance your computer is still running after two hours. 
+
+\item What is the expected number of hours your computer will run until it crashes?\\
+
+We are looking for $\E(X)$. Since $X$ is a geometric random variable, its expected value is $1/p$, so:
+\[
+\E(X) = \frac{1}{p} = \frac{1}{0.05} = 20
+\]
 
 \item Given that your computer is still running at the 10-hour mark, what is the probability that it is still running after two more hours?\\
 
@@ -1081,6 +1087,36 @@ Now we let $z = y - 1$. Substituting this in, we get
 &= \lambda \sum_{z=0}^\infty e^{-\lambda} \frac{\lambda^{z}}{z!}\\
 &= \lambda
 \end{align*}
-where the sum in the second-to-last line is 1 since we are summing over the entire pmf of a Poisson random variable.
+where the sum in the second-to-last line is 1 since we are summing over the entire pmf of a Poisson random variable.\\
+
+Here is an example of where we can use the Poisson distribution.
+
+\begin{example}Customers arrive at your restaurant for dinner at an average rate of 5 customers per 15 minutes. Modeling this with a Poisson distribution:
+\begin{enumerate}
+\item What is the probability that no one arrives in a 15-minute period?\\
+
+Let $X$ be the number customers who arrive in a 15-minute period. Then $X\sim\text{Poisson}(5)$. If no customers arrive in that time, then $X=0$, so:
+\[
+\P(X = 0) = \frac{e^{-5}5^0}{0!} = e^{-5} \approx 0.0067
+\]
+So there is less than 1\% chance of this occurring.
+
+\item What is the probability that at least 3 customers arrive in a 15-minute period?\\
+
+Here we want $\P(X \geq 3)$. It is easier to compute the complement probability, i.e. the probability that 2 or fewer customers arrive in a 15-minute period.
+\begin{align*}
+\P(X \geq 3) &= 1 - \P(X \leq 2) = 1 - \P(X = 0) - \P(X = 1) - \P(X = 2) \\
+&= 1 - \frac{e^{-5}5^0}{0!} - \frac{e^{-5}5^1}{1!} - \frac{e^{-5}5^2}{2!} \\
+&\approx 1 - 0.0067 - 0.0337 - 0.0842 = 0.08754
+\end{align*}
+
+\item What is the probabilty that exactly 5 customers arrive in a 15-minute period?\\
+
+\[
+\P(X = 5) = \frac{e^{-5}5^5}{5!} \approx 0.175
+\]
+
+\end{enumerate}
+\end{example}
 
 \end{document}
