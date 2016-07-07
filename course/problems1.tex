@@ -1,0 +1,108 @@
+% \documentclass{book}
+
+\documentclass[12pt]{article}
+\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\usepackage[shortalphabetic]{amsrefs}%
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{cool}
+\usepackage{url}
+\usepackage{graphicx,epsfig}
+\usepackage{makecell}
+\usepackage{array}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+
+\title{}
+\author{\vspace{-10ex} }
+
+\begin{center}
+{\LARGE APMA 1650 -- Problem Session 1}\\
+\vspace{5mm}
+{\large Wednesday, July 6, 2016}\\
+% \vspace{5mm}
+\end{center}
+
+There are fifteen problems on this sheet. There is no particular order to them, so I recommend that you work on the ones you find the most interesting.
+
+\begin{enumerate}
+
+\item Suppose we have an unfair die. The die has been altered so that the number 5 is twice as likely to appear as any of the other five outcomes. What are the probabilities of each possible outcome?
+
+\item Suppose we are sending a digital signal which is a string of 0s and 1s of length five. (Example strings are 00101, 11000, 10101 are all 5 bit strings.) When we send the message, each bit (0 or 1) is sent independently and there is some chance that the bit is corrupted. Namely, each time we send a 0 there is a $5\%$ chance that a 1 is received and each time we send a 1 there is a $5\%$ chance a 0 is received.\\
+\begin{enumerate}
+\item Suppose we send a message of length 5, what is the probability that an incorrect message is received?
+\item Upon receiving a signal, we are not able to tell if some part is incorrect. To aid in error correction, we decide to send each bit three times. So if the original signal is 00101, we now send 000000111000111 (for ease of reading: 000-000-111-000-111).\\
+\linebreak
+When the message is received, the string is broken into pieces of length three and whichever bit appears more often is recorded. For example, if 001000101000111 is received, we consider\\
+\begin{center}
+001 000 101 000 111\\
+\end{center}
+and 00101 is recorded. If 110000101010001 is received, we then consider
+\begin{center}
+110 000 101 010 001\\
+\end{center}
+and 10100 is recorded.\\
+\linebreak
+Under this scheme, what is the probability that an incorrect message is recorded?
+\end{enumerate}
+
+\item A fleet of 9 taxis is to be dispatched to three airports in such a way that three go to airport A, five go to airport B, and one goes to airport C. In how many distinct ways can this be accomplished?
+
+\item A group of three undergraduate students and five graduate students are in a class. If four students are randomly selected to give a presentation, what is the probability that exactly two undergraduate students and two graduate students will be chosen?
+
+\item In Major League Baseball, four pairs of teams compete in the division series. Within each pair, the two teams play each other. The first to win 3 games is the winner of the pair. Thus each pair must play at least 3 games and at most 5 games. Assuming each team has a 50\% chance of winning a given game, and the outcome of each game is independent, what is the probability that all 4 pairs play 5 games, i.e. that all four division series games go to 5 games?
+
+\item Suppose a class has 300 students.\\
+\begin{enumerate}
+\item The professor will pick 100 students equally likely at random and give these 100 students a free Applied Math t-shirt. What is the probability that any group of 100 students is picked?\\
+\item Suppose that you are in the class. What is the probability that you will be one of the 100 students chosen and hence receive a free Applied Math t-shirt.\\
+\item The exams are handed back one by one in a random order (i.e. an ordering of the 300 students is chosen equally likely at random from all orderings and the exams are handed back in this order). If you and your arch-nemesis are two students in the class, what is the probability that you will get your test back before your arch-nemesis does?
+\end{enumerate}
+
+\item Each day the price of a stock moves up half a point with probability 2/3 and moves down half a point with probability 1/3. What is the probability that after 6 days the stock is at its original price?
+
+\item A population of voters contains $40\%$ Republicans and $60\%$ Democrats. It is reported that $30\%$ of the Republicans and $70\%$ of Democrats favor a certain ballot issue issue. A person chosen at random from this population is found to favor the ballot issue in question. Find the conditional probability that this person is a Democrat.
+
+\item Suppose a professor has 10 TAs to grade 10 homework problems. Lacking a better methodology, he assigns each problem to a TA equally likely at random. What is the expected number of TAs that did not get assigned a problem?
+
+\item Suppose that for a final exam half of all students study. If a student studies then they have a 3/4 probability of getting an A. If a student doesn’t study, they have a 1/4 probability of getting an A. What is the the probability that Alice studied, given that she gets an A?
+
+\item You and your roommate are playing a coin tossing game (good times!) You at flip a fair coin. If the coins are both $H$ you win 1 dollar. If the coins are both $T$ you win 2 dollars. If they don't match, you lose 1 dollar. Let $X$ be the random variable recording your winnings.
+\begin{enumerate}
+\item What is the expectation of $X$ if you play 1 time? 10 times? \\
+
+Suppose you have to pay $d$ dollars up front to play the game. Your net winnings is then defined as $W = X - d$. In general, a fair game is one in which the expectation of the net winnings is 0.
+\item How much should you pay to play 1 time, 10 times, to make a fair game?
+\end{enumerate}
+
+\item Suppose the flight statistics from Philadelphia to Providence are as follows: The probability of an on-time flight is 2/3, the probability of a one-hour delay is 1/6, the probability of a two-hour delay is 1/12, and the probability of a three-hour delay is 1/12. What is the expected delay of the flight?
+
+\item Suppose you roll a fair 6 sided die 100 times. Let $X$ be the number of times two consecutive rolls result in the same number. What is the the expected value of $X$?
+
+\item Suppose in a lottery you pick five different numbers from 1 to 90. Then five winning numbers are drawn equally likely at random. If you picked two of them, you win 20 dollars. For three, you win 150 dollars. For four, you win 5,000 dollars, and if all five match, you win a million dollars.
+\begin{enumerate}
+\item What is the probability that you picked exactly three of the winning numbers?
+\item What is your expected win?
+\end{enumerate}
+
+\item Suppose a bucket contains one white and one black ball. We pick out a ball equally likely at random and then put the ball back along with another of the same color. Then we repeat. What is the probability that the first time we pick a white ball is after the $n$th iteration?
+
+\end{enumerate}
+\end{document}
+
