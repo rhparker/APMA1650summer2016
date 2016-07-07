@@ -267,7 +267,7 @@ In the bivariate case, instead of finding the probabiltiy that a single variable
   \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
 Let $Y_1$ and $Y_2$ be two continuous random variables with joint density $f(y_1, y_2)$. Let $A$ be a region of the plane. Then
 \begin{align*}
-\P((Y_1, Y_2) \in A) = 1 \int \int_A f(y_1, y_2) dy_1 dy_2
+\P((Y_1, Y_2) \in A) =  \int \int_A f(y_1, y_2) dy_1 dy_2
 \end{align*}
 \end{framed}
 This notation may not be precise. Don't worry about it for now, we will do plenty of examples. Just remember the key idea: to find the probability that a pair of random variables lie in a region, integrate the joint density over that region.\\
@@ -699,4 +699,151 @@ f_Y(y) &= \begin{cases}
 
 \end{enumerate}
 \end{example}
+
+\subsection{Expected value of a function of two random variables}
+Recall that in the one-dimensional case, we defined the expected value of a function $g(y)$ of a random variable $Y$ to be:
+\begin{align*}
+\E[g(Y)] &= \sum_{\text{all }y}g(y)\:p(y) &\text{$Y$ is a discrete random variable with pmf $p(y)$}\\
+\E[g(Y)] &= \int_{\infty}^\infty g(y) f(y) dy &\text{$Y$ is a continuous random variable with density $f(y)$}
+\end{align*}
+
+The expected value of a function of two random variables is defined in the same way, except we use the joint pmf or joint density.
+
+\begin{framed}
+\emph{Expected value of a function random variables}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $Y_1$ and $Y_2$ be two discrete random variables with joint pmf $p(y_1, y_2)$. Let $g(y_1, y_2)$ be a real-valued function of $y_1$ and $y_2$. Then the expected value of $g(Y_1, Y_2)$ is given by:
+\begin{align*}
+\E[g(Y_1, Y_2)] = \sum_{\text{all }y_1} \sum_{\text{all }y_2} g(y_1, y_2) p(y_1, y_2)
+\end{align*}
+Let $Y_1$ and $Y_2$ be two continuous random variables with joint density $p(y_1, y_2)$. Let $g(y_1, y_2)$ be a real-valued function of $y_1$ and $y_2$. Then the expected value of $g(Y_1, Y_2)$ is given by:
+\begin{align*}
+\E[g(Y_1, Y_2)] = \int_{-\infty}^\infty \int_{-\infty}^\infty g(y_1, y_2) f(y_1, y_2) dy_1 dy_2
+\end{align*}
+\end{framed}
+
+A very useful function of two random variables is the product of the two random variables, i.e. $g(Y_1, Y_2) = Y_1 Y_2$. We will meet this function again when we discuss covariance, so let's do an example of this using the same random variables $X$ and $Y$ we have used in the sections on joint density, marginal, and conditional distributions.
+
+\begin{example}
+Let $X$ and $Y$ be random variables with joint distribution function $f(x, y)$ given by:
+\[
+f(x, y) = \begin{cases} 
+      8 x y  & 0 \leq y \leq x \leq 1 \\
+      0 & \textrm{otherwise}
+   \end{cases}
+\]
+Find $\E(XY)$.\\
+
+We are looking for the expected value of the function $g(XY) = XY$. Using the density $f(x, y)$ and the definition of the expected value of a function of two random variables, we have:
+\begin{align*}
+\E(XY) = \int_{-\infty}^\infty \int_{-\infty}^\infty x y f(x, y) dx dy
+\end{align*}
+As above, we need to choose an order of integration. We will choose here to integrate in the $y$ direction first. Looking at the picture of region above to get the correct limits, we have:
+\begin{align*}
+\E(XY) &= \int_0^1 \int_0^x x y (8 x y) dy dx \\
+&= 8 \int_0^1 \int_0^x x^2 y^2 dy dx \\
+&= 8 \int_0^1 x^2 \frac{y^3}{3}\Bigr|_0^x dx \\
+&= 8 \int_0^1 x^2 \frac{x^3}{3} dx \\
+&= \frac{8}{3} \int_0^1 x^5 dx \\
+&= \frac{8}{3} \frac{x^6}{6} \Bigr|_0^1 \\
+&= \frac{8}{18} = \frac{4}{9}
+\end{align*}
+\end{example}
+
+We can use the definition of the expected value of a function of two random variables to show that if two random variables are independent, the expected value of the product is the product of the expected values.
+
+\begin{framed}
+  \emph{Expected value of the product of independent random variables}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $Y_1$ and $Y_2$ be two independent random variables. Then
+\[
+\E(Y_1 Y_2) = \E(Y_1) \E(Y_2)
+\]
+An analagous result holds for the product of any number of independent random variables.
+\end{framed}
+
+\subsubsection{Covariance and Correlation}
+We have talked about independence of random variables several times. Heuristically, two random variables are independent if their outcomes do not affect each other. Suppose we have two random variables $X$ and $Y$. There are two extreme cases to consider.
+\begin{enumerate}
+\item $X$ and $Y$ are independent, so they don't affect each other at all. The classic example of this is if $X$ and $Y$ are the result of two sequential coin flips.
+\item $X$ and $Y$ are completely dependent, i.e. the output of one random variable completely determines the output of the other random variable. In this case, the two random variables are functions of each other. An example would be if $Y = 4X$. In this case, knowledge of output of either random variable gives you knowledge of the output of the other random variable.
+\end{enumerate}
+There is an entire spectrum between these two extremes. The \emph{covariance} of two random variables is a quantitative measure of the degree of dependence of two random variables. It is defined as follows.
+
+\begin{framed}
+\emph{Covariance of two random variables}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $Y_1$ and $Y_2$ be two random variables with expected values $\E(Y_1)$ and $\E(Y_2)$. Then the \emph{covariance} of $Y_1$ and $Y_2$ is defined by
+\begin{align*}
+Cov(Y_1, Y_2) = \E[ (Y_1 - \E(Y_1))(Y_2 - \E(Y_2))]
+\end{align*}
+\end{framed}
+
+A larger absolute value of the covariance indicates a greater dependence between $Y_1$ and $Y_2$. Unfortunately, covariance is difficult to intepret since the value of the covariance depends on the scale used to measure the random variables. To solve this problem, we standardize to get what we call the \emph{correlation coefficient}. When you read a scientific study which posits a relationship between two variables, the strength of that relationship is usually given in terms of the correlation coefficient.
+
+\begin{framed}
+\emph{Correlation coefficient}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $Y_1$ and $Y_2$ be two random variables, and let their standard deviations be $\sigma_1$ and $\sigma_2$. Then the \emph{correlation coefficient} is denoted $\rho$, and is defined by:
+\begin{align*}
+\rho = \frac{Cov(Y_1, Y_2) }{\sigma_1 \sigma_2}
+\end{align*}
+The correlation cofficient is always between -1 and 1, i.e. $-1 \leq \rho \leq 1$.
+\end{framed}
+How do we interpret the correllation coefficient?
+\begin{enumerate}
+\item If $\rho > 0$, then the two random variables are positively correlated, i.e. $Y_2$ increases as $Y_1$ increases. If $\rho = 1$, we have perfect correlation; $Y_2$ and $Y_1$ are completely dependent, and all points $(Y_1, Y_2)$ fall on a straight line with positive slope.
+\item If $\rho < 0$, then the two random variables are negatively correlated, i.e. $Y_2$ decreases as $Y_1$ increases. If $\rho = 1$, we again have perfect correlation; $Y_2$ and $Y_1$ are completely dependent, and all points $(Y_1, Y_2)$ fall on a straight line with negative slope.
+\item If $\rho = 0$, then there is no correlation between the two random variables. It is important to note that this does not necessarily imply that the two random variables are independent.
+\end{enumerate}
+
+Just like with the variance, the covariance is not generally computed directly. Instead, we use the Magic Covariance Formula, which is analagous to the Magic Variance Formula.
+
+\begin{framed}
+  \emph{Magic Covariance Formula}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $Y_1$ and $Y_2$ be two random variables with expected values $\E(Y_1)$ and $\E(Y_2)$. Then the \emph{covariance} of $Y_1$ and $Y_2$ is given by
+\[
+Cov(Y_1, Y_2) = \E(Y_1 Y_2) - \E(Y_1) \E(Y_2)
+\]
+\end{framed}
+To verify this formula, we expand the product in the definition of covariance and use linarity of expectation. Letting $\E(Y_1) = \mu_1$ and $\E(Y_2) = \mu_2$,
+\begin{align*}
+Cov(Y_1, Y_2) &= \E[ (Y_1 - \mu_1)(Y_2 - \mu_2)]\\
+&= \E(Y_1 Y_2 - \mu_1 Y_2 - \mu_2 Y_1 + \mu_1 \mu_2) \\
+&= \E(Y_1 Y_2) - \mu_1 \E(Y_2) - \mu_2 \E(Y_1) + \mu_1 \mu_2 \\
+&= \E(Y_1 Y_2) - \mu_1 \mu_2 - \mu_2 \mu_1 + \mu_1 \mu_2 \\
+&= \E(Y_1 Y_2) - \mu_1 \mu_2 
+\end{align*}
+
+Let's use the Magic Covariance Forumula to compute the covariance of the random variables $X$ and $Y$ which we used as an example above for joint, marginal, and conditional densities.
+
+\begin{example}
+Let $X$ and $Y$ be random variables with joint distribution function $f(x, y)$ given by:
+\[
+f(x, y) = \begin{cases} 
+      8 x y  & 0 \leq y \leq x \leq 1 \\
+      0 & \textrm{otherwise}
+   \end{cases}
+\]
+Find the covariance of $X$ and $Y$.\\
+
+In the section on marginal distributions of continuous random variables, we found that $\E(X) = 4/5$ and $\E(Y) = 8/15$. In the section on the expected value of a function of two random variables, we found that $\E(XY) = 4/9$. Using the Magic Covariance Formula,
+\[
+Cov(X, Y) = \E(XY) - \E(X) \E(Y) = 4/9 - (4/5)(8/15) = 4/225
+\]
+\end{example}
+
+What happens if two random variables are independent?
+
+\begin{framed}
+  \emph{Covariance of independent random variables}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $Y_1$ and $Y_2$ be two independent random variables. Then
+\[
+Cov(Y_1, Y_2) = 0
+\]
+\end{framed}
+To see this, we use the covariance of a 
+
 \end{document}
