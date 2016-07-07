@@ -111,12 +111,12 @@ For a continuous random variable, rather than talk about the probability that a 
 \includegraphics[width=8cm]{exppdf}
 \end{figure}
 
-A pdf is a nonnegative function $f(x)$ where the total area under the curve is 1 (this is analagous to the discrete case where the probabilities of all the outputs sum to 1). The probability that a random variable falls into an interval $[a, b]$ is the area under the density curve between $a$ and $b$. This is illustrated in red in the above pdfs. Since we are talking about areas under curves, we need to use calculus. In particular, we need to integrate! Here is the formal definition of a pdf:
+A pdf is a nonnegative function $f(x)$ where the total area under the curve is 1 (this is analogous to the discrete case where the probabilities of all the outputs sum to 1). The probability that a random variable falls into an interval $[a, b]$ is the area under the density curve between $a$ and $b$. This is illustrated in red in the above pdfs. Since we are talking about areas under curves, we need to use calculus. In particular, we need to integrate! Here is the formal definition of a pdf:
 
 \begin{framed}
 \emph{Probability Density Function (pdf)}\\
   \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
-The function $f(y)$ is a \emph{probabiltiy density function} (pdf) for a continuous random variable $Y$ if $f(y) \geq 0$ for all $y$, and
+The function $f(y)$ is a \emph{probability density function} (pdf) for a continuous random variable $Y$ if $f(y) \geq 0$ for all $y$, and
 \[
 \int_{-\infty}^\infty f(y) dy = 1
 \]
@@ -237,7 +237,7 @@ We can illustrate the third relationship above, $\P(a \leq Y \leq b) = F(b) - F(
 \includegraphics[width=5cm]{normalcdfPab.pdf}
 \end{figure}
 
-You may ask why we bother at all with cdfs since it seems easier to work with densities. There are three good reasons to consider CDFs. From a mathematical standpoint, the cdf is a more fundamental object than the pdf; every continuous random variable has a cdf, while there are continuous random variables which have no density\footnote{All continuous random variables we will encounter in this course will have a density}. From a practical standpoint, the normal distribution, perhaps the most important distribution is all of probabiltiy, has a density which is unwieldy, thus we will use the cdf to compute probabilities involving that distribution. Finally, the cdf is used to define the \emph{median} and \emph{quartlies} of a probability distribution, which are important descriptors of a probability distribution.
+You may ask why we bother at all with cdfs since it seems easier to work with densities. There are three good reasons to consider CDFs. From a mathematical standpoint, the cdf is a more fundamental object than the pdf; every continuous random variable has a cdf, while there are continuous random variables which have no density\footnote{All continuous random variables we will encounter in this course will have a density}. From a practical standpoint, the normal distribution, perhaps the most important distribution is all of probability, has a density which is unwieldy, thus we will use the cdf to compute probabilities involving that distribution. Finally, the cdf is used to define the \emph{median} and \emph{quartiles} of a probability distribution, which are important descriptors of a probability distribution.
 
 \subsection{Median and Quartiles}
 The \emph{median} is the ``middle'' of a probability distribution. It is the value which separates the upper half of the distribution from the lower half of the distribution. The median is more robust to outlier values than the mean, and so in some cases may be a better descriptor of a typical outcome than the mean. Mathematically, if $Y$ is a random variable, the we can define the median of $Y$ as the value $m$ such that $\P(Y \leq m) = \P(Y \geq m) = 1/2$. For a continuous random variable $Y$ with cdf $F(y)$, we can define the median using the cdf as the value $m$ for which $F(m) = 1/2$. Similarly we can define the 1st and 3rd quartiles (the median is sometimes called the 2nd quartile). 
@@ -280,9 +280,9 @@ m &= 2^{2/3} \approx 1.59
 \end{example}
 
 \subsection{Expectation and Variance}
-Just as with discrete random variables, we can talk about the expected value and variance of a continuous random variable. They have the exact same intepretations as in the discrete case. Expectation and variance work almost exactly the same way in the continuous case as in the discrete case. In fact, we can use the exact same formulas, if we make two key changes:
+Just as with discrete random variables, we can talk about the expected value and variance of a continuous random variable. They have the exact same interpretations as in the discrete case. Expectation and variance work almost exactly the same way in the continuous case as in the discrete case. In fact, we can use the exact same formulas, if we make two key changes:
 \begin{enumerate}
-\item The probabiltiy mass function $p(y)$ is replaced by the proability density function $f(y)$.
+\item The probability mass function $p(y)$ is replaced by the probability density function $f(y)$.
 \item Summation is replaced by integration.
 \end{enumerate}
 
@@ -316,7 +316,7 @@ Var(Y) = \E(Y^2) - [\E(Y)]^2
 \]
 \end{framed}
 
-Let's compute the expected value and variance of the continuous random variable we used in the secion on probabiltiy densities.
+Let's compute the expected value and variance of the continuous random variable we used in the section on probability densities.
 
 \begin{example}Let $Y$ be the continuous random variable defined by the pdf
 \[
@@ -431,7 +431,7 @@ The most important and most useful continuous probability distribution is the no
 Examples of the normal distribution from the natural (or artificial) world include:
 \begin{enumerate}
 \item Weights of chimpanzees (and just about any other species) follow the normal distribution.
-\item Errors in scientific measurment (due to imperfect instrument and imperfect scientists) are normally distributed.
+\item Errors in scientific measurement (due to imperfect instrument and imperfect scientists) are normally distributed.
 \item Scores on the SAT (and other standardized tests) are normally distributed (in this case by design).
 \end{enumerate}
 
@@ -466,7 +466,7 @@ Var(Y) &= \sigma^2
 $\sigma$ is the standard deviation of $Y$.
 \end{framed}
 
-The fact that this is a valid pdf, i.e. that it integrates to 1, is a standard exercise in multivariable calculus\footnote{The usual method is to square the integral, combine the integrands into a double integral, and change from cartesian to polar coordinates.}. The normal distribution with $\mu = 0$ and $\sigma = 1$ is so prevalent that it is called the \emph{standard normal distribution}. It is repesented by the letter $Z$. 
+The fact that this is a valid pdf, i.e. that it integrates to 1, is a standard exercise in multivariable calculus\footnote{The usual method is to square the integral, combine the integrands into a double integral, and change from cartesian to polar coordinates.}. The normal distribution with $\mu = 0$ and $\sigma = 1$ is so prevalent that it is called the \emph{standard normal distribution}. It is represented by the letter $Z$. 
 
 \begin{framed}
 \emph{Standard normal distribution}\\
@@ -481,7 +481,7 @@ Let $Z$ be a standard normal random variable, and suppose we wish to calculate $
 \begin{align*}
 \P(-1 \leq Z \leq 1) = \int_{-1}^1 \frac{1}{\sqrt{2 \pi}} e^{-\frac{z^2}{2}} dz
 \end{align*} 
-Unfortunatly, there is no nice antiderivative for the integrand, so we cannot compute the integral using the fundamental theorem of calculus. One option is to use numerical intergration techniques, which can be done using sofware packages such as Matlab or Mathematica. Another option is to use tables for the cdf of the standard normal distribition. Although this is perhaps a bit ``old-school'', it is important you know how to use these tables. There are many versions of the $Z$-table. The one I will provide (and the one which is on the course website) is the actual cdf for $Z$, i.e. is gives values for $F(z) = \P(Z \leq z)$. Since the standard normal is symmetric about 0, some tables only provide values on one side of the mean, since the others can be computed using symmetry. The table in the texbook by Wackerly et al (2008), for example, provides $\P(Z \geq z)$ for $z \geq 0$.\\
+Unfortunately, there is no nice antiderivative for the integrand, so we cannot compute the integral using the fundamental theorem of calculus. One option is to use numerical intergration techniques, which can be done using software packages such as Matlab or Mathematica. Another option is to use tables for the cdf of the standard normal distribution. Although this is perhaps a bit ``old-school'', it is important you know how to use these tables. There are many versions of the $Z$-table. The one I will provide (and the one which is on the course website) is the actual cdf for $Z$, i.e. is gives values for $F(z) = \P(Z \leq z)$. Since the standard normal is symmetric about 0, some tables only provide values on one side of the mean, since the others can be computed using symmetry. The table in the textbook by Wackerly et al (2008), for example, provides $\P(Z \geq z)$ for $z \geq 0$.\\
 
 How do we compute this using a $Z$-table? Letting $F(z)$ be the cdf for the standard normal distribution, recall that for any continuous probability distribution we have:
 \[
@@ -508,7 +508,7 @@ $\P(0 \leq Z \leq 1.73) = F(1.73) - F(0)$. From the $Z$-table, $F(1.73) = 0.9582
 \end{enumerate}
 \end{example}
 
-Before we go on, let us comment on two of the probabilities we alreadly calculated. Recall the the standard deviation of the standard normal random variable is 1. Then $\P(-1 \leq Z \leq 1)$ is the probabiltiy of falling within one standard deviation of the mean and $\P(-2 \leq Z \leq 2)$ is the probability of falling within to standard deviations of the mean. These are useful numbers to remember, since they are good guidelines for interpreting the normal distribution.
+Before we go on, let us comment on two of the probabilities we already calculated. Recall the the standard deviation of the standard normal random variable is 1. Then $\P(-1 \leq Z \leq 1)$ is the probability of falling within one standard deviation of the mean and $\P(-2 \leq Z \leq 2)$ is the probability of falling within to standard deviations of the mean. These are useful numbers to remember, since they are good guidelines for interpreting the normal distribution.
 
 \begin{framed}
 \emph{Guidelines for normal probabilities}\\
@@ -522,7 +522,7 @@ Let $Y$ be a random variable with a normal distribution. Then:
 This is known as the \emph{68-95-99.7 rule}
 \end{framed}
 
-What do we do when we don't have a normal random varible. We can transform \emph{any} random variable $Y \sim\text{Normal}(\mu, \sigma)$ into a standard normal random varible $Z$ using the following formula:
+What do we do when we don't have a normal random variable. We can transform \emph{any} random variable $Y \sim\text{Normal}(\mu, \sigma)$ into a standard normal random variable $Z$ using the following formula:
 \[
 Z = \frac{Y - \mu}{\sigma}
 \]
@@ -530,7 +530,7 @@ In other words, we subtract the mean and divide by the standard deviation.
 
 \begin{example}A machine produces ball bearings which diameters which are normally distributed with mean 3.0005 cm and standard deviation 0.0010 cm. Specifications require ball bearing diameters which lie in the interval $3.0000 \pm 0.0020$ cm. What fraction of the total production meets those specifications.\\
 
-Let $Y$ be the diameter of a ball bearing produced by the machine. Then $Y \sim\text{Normal}(3.0005, 0.0010)$. We want the proability that $Y$ is within the required range, i.e. $\P(2.9980 \leq Y \leq 3.0020)$. To do this, we convert this to an interval involving the standard normal random variable $Z$. 
+Let $Y$ be the diameter of a ball bearing produced by the machine. Then $Y \sim\text{Normal}(3.0005, 0.0010)$. We want the probability that $Y$ is within the required range, i.e. $\P(2.9980 \leq Y \leq 3.0020)$. To do this, we convert this to an interval involving the standard normal random variable $Z$. 
 \begin{align*}
 y &= 2.9980 & z = \frac{2.9980 - 3.0005}{0.0010} = -2.5\\
 y &= 3.0020 & z = \frac{3.0020 - 3.0005}{0.0010} = 1.5
@@ -615,7 +615,7 @@ Then since we are working in units of hours, the probability we want is $\P(X \g
 \end{align*}
 \end{example}
 
-Just as the geometric distribution is memoryless, the exponential distribution is memoryless. If we think of this in terms of the lifetime of, say, a light bulb, this means that the probability of the bulb burning out in the next 30 minutes is the same whether we just turned the light bulb on or whether it has been on for 5 days. To prove the memoryless property of the exponential distibution, it will be useful to have an expression for the cdf of the exponential distribution.
+Just as the geometric distribution is memoryless, the exponential distribution is memoryless. If we think of this in terms of the lifetime of, say, a light bulb, this means that the probability of the bulb burning out in the next 30 minutes is the same whether we just turned the light bulb on or whether it has been on for 5 days. To prove the memoryless property of the exponential distribution, it will be useful to have an expression for the cdf of the exponential distribution.
 
 \begin{framed}
 \emph{Cumulative distribution function (cdf) for the exponential distribution}\\
@@ -660,7 +660,7 @@ Using this and the definition of conditional probability:
 &= \P(Y > b)
 \end{align*}
 
-We can also use the cdf of the exponential distibution to find the median. To do this we solve $F(m) = 1/2$, where $F(y)$ is the exponential cdf.
+We can also use the cdf of the exponential distribution to find the median. To do this we solve $F(m) = 1/2$, where $F(y)$ is the exponential cdf.
 \begin{align*}
 F(m) &= \frac{1}{2} \\
 1 - e^{-\lambda m} &= \frac{1}{2} \\
@@ -722,7 +722,7 @@ Let $Y$ be a nonnegative random variable with expected value $\E(Y)$ and varianc
 \P(\abs{Y - E(Y)}\geq a) \leq \frac{Var(Y)}{a^2}
 \end{align*}
 \end{framed} 
-Note the absolute value sign inside the probability for Chebyshev's Inequality. This means that Chebyshev's Inequality gives a bound for the probability of deviating from the mean \emph{in either direction}. Contrast this to Markov's Inequality, which is a bound on the probaility of \emph{exceeding} a certain value.\\
+Note the absolute value sign inside the probability for Chebyshev's Inequality. This means that Chebyshev's Inequality gives a bound for the probability of deviating from the mean \emph{in either direction}. Contrast this to Markov's Inequality, which is a bound on the probability of \emph{exceeding} a certain value.\\
 
 To see this is true, take the nonnegative random variable $(Y - \E(Y))^2$ and substitute it into Markov's Inequality along with the constant $a^2$. This gives us:
 \[

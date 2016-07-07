@@ -93,16 +93,16 @@
 \begin{document}
 
 \section{Probability Essentials}
-In general parlance, the term \emph{probability} is used as a measure of a person's belief in the occurrence of an event. This is the \emph{subjective} notion of probability. Take a sentence such as, ``There is a 60\% probability of rain tomorrow''. Where did this come from? A professional meteorologist has used a sophisticated mathematical model to distill large amounts of atmospheric data down to a simple number indicating her belief that it is more likely to rain than to not rain tomorrow. We can intepret this number however we wish. We should be careful, however, to examine both our biases and those of the meterologist. Who does this meterologist work for? How reliable have their predictions been in the past? (We should be careful here since we might be more likely to recall rain when none was predicted than the other way around.) Are meterologists more likely to err on the side of predicting rain, since that way fewer people will be upset if they are wrong? We can use this number to make important life decisions such as whether or not to carry an umbrella. The downside of this is that it is in essence a subjective opinion, even if that opinion comes from an expert. In addition, for subjective probabilites to make sense, they have to be internally consistent. In this example, if we believe there is a 60\% chance of rain tomorrow, we must also believe that there is a 40\% chance of it not raining tomorrow.
+In general parlance, the term \emph{probability} is used as a measure of a person's belief in the occurrence of an event. This is the \emph{subjective} notion of probability. Take a sentence such as, ``There is a 60\% probability of rain tomorrow''. Where did this come from? A professional meteorologist has used a sophisticated mathematical model to distill large amounts of atmospheric data down to a simple number indicating her belief that it is more likely to rain than to not rain tomorrow. We can interpret this number however we wish. We should be careful, however, to examine both our biases and those of the meteorologist. Who does this meteorologist work for? How reliable have their predictions been in the past? (We should be careful here since we might be more likely to recall rain when none was predicted than the other way around.) Are meteorologists more likely to err on the side of predicting rain, since that way fewer people will be upset if they are wrong? We can use this number to make important life decisions such as whether or not to carry an umbrella. The downside of this is that it is in essence a subjective opinion, even if that opinion comes from an expert. In addition, for subjective probabilities to make sense, they have to be internally consistent. In this example, if we believe there is a 60\% chance of rain tomorrow, we must also believe that there is a 40\% chance of it not raining tomorrow.
 \\
 
-Let's look at a different example. What is the probability of rolling a 1 on a standard six-sided die? We can argue based on symmetry that since dice are cubical, there should be no reason for one face to be preferred over another. Thus this probability is 1/6. This is the \emph{classical} notion of probability. In this interpretation, we use symmetry arguments to divide our experiment (a single die roll, in this case) into elementary events which are equally probable (the six distint die rolls). We can compute the proability of any event using these elementary, equiprobably events. The limitation of this approach is that is requires a symmetry argument to be effective; thus it works for coin flips and die rolls, but not for more complicated scenarios.\\
+Let's look at a different example. What is the probability of rolling a 1 on a standard six-sided die? We can argue based on symmetry that since dice are cubical, there should be no reason for one face to be preferred over another. Thus this probability is 1/6. This is the \emph{classical} notion of probability. In this interpretation, we use symmetry arguments to divide our experiment (a single die roll, in this case) into elementary events which are equally probable (the six distinct die rolls). We can compute the probability of any event using these elementary, equiprobable events. The limitation of this approach is that is requires a symmetry argument to be effective; thus it works for coin flips and die rolls, but not for more complicated scenarios.\\
 
 We can look at the die roll experiment in another way. Imaging rolling a standard six-sided die repeatedly. The empirical probability of rolling a 1 is the ratio of the number of times a 1 is rolled to the total number of rolls. In general, we have:
 \[
 \text{empirical probability of a certain event} = \frac{ \text{number of times the event occurs }}{\text{total number of trials}}
 \]
-Intuitively, as we perform more and more dice rolls, the empirical probability of rolling a 1 should approach some mythical quantity which we call the \emph{true probability} of rolling a 1. This approach is the \emph{empirical}, or \emph{frequentist}, approach to probability. For a standard, six-sided die, it stands to reason that the empirical probabilty should approach the classical probabiliy of 1/6 as the number of rolls approaches infinity. This result is called the \emph{law of large numbers} and will be discussed later in the course. The empirical approach has a critical advantage over the classical approach in that we do not require symmetry to compute our probabilities. As an example of this, think of how you would determine the probability of rolling a 1 if someone handed you a loaded die. The empirical approach does, however, have its limits. Returing to the weather example, there is no way to think of the chance of rain tomorrow as the limit of a sequence of independent experiements. Unless we are in the movie Groundhog Day, tomorrow can only happen once!\\
+Intuitively, as we perform more and more dice rolls, the empirical probability of rolling a 1 should approach some mythical quantity which we call the \emph{true probability} of rolling a 1. This approach is the \emph{empirical}, or \emph{frequentist}, approach to probability. For a standard, six-sided die, it stands to reason that the empirical probability should approach the classical probability of 1/6 as the number of rolls approaches infinity. This result is called the \emph{law of large numbers} and will be discussed later in the course. The empirical approach has a critical advantage over the classical approach in that we do not require symmetry to compute our probabilities. As an example of this, think of how you would determine the probability of rolling a 1 if someone handed you a loaded die. The empirical approach does, however, have its limits. Returning to the weather example, there is no way to think of the chance of rain tomorrow as the limit of a sequence of independent experiments. Unless we are in the movie Groundhog Day, tomorrow can only happen once!\\
 
 For our purposes, we require a more rigorous, mathematical construction of probability. This is known as \emph{axiomatic probability} and will unify some of the aspects of the other approaches to probability. For this, we turn to the language of \emph{set theory}.
 
@@ -132,7 +132,7 @@ first roll & \multicolumn{1}{l|}{3} & (3, 1) & (3, 2) & (3, 3)         & (3, 4) 
 \item Number of free throw attempts it takes for me to make a single basket: $\cals = \{1, 2, 3, ...\}$. This set is often denoted $\N$ for the natural numbers (positive integers)
 \item Number of minutes late my RIPTA bus arrives: $\cals = [0, \infty)$. 
 \end{enumerate}
-Note that the first three sample spaces contain only a finite number of elements (2, 6, and 36 elements, respectively). These are called \emph{finite sample spaces}. The fourth and fifth sample spaces both contain an infinite number of elements, but there is a fundamental difference between the two. The set $\N$ can be written out in its entirety in an infinitely long list; another way to think about this is that we can start at 1 and count up to any number in the set (as long as we have enough time!). A set with this property is called \emph{countable}. For the set $[0, \infty)$, it makes intuitive sense that we cannot do this, i.e. we cannot list all the elements and, say, ``count up to $\pi$''. A proof of this fact is left for another course. Such an infinite set is called \emph{uncountable}\footnote{An uncountable set is a ``larger infinity'' than a countable set, which leads to the concept of ``sizes of infinity''. John Green alludes to this in his novel \emph{The Fault in Our Stars}, but unforunately gets the math wrong. If you find this interesting, I recommend the Vi Hart video \url{https://www.youtube.com/watch?v=23I5GS4JiDg}}. A sample space which is either finite or countable is called \emph{discrete}.\\
+Note that the first three sample spaces contain only a finite number of elements (2, 6, and 36 elements, respectively). These are called \emph{finite sample spaces}. The fourth and fifth sample spaces both contain an infinite number of elements, but there is a fundamental difference between the two. The set $\N$ can be written out in its entirety in an infinitely long list; another way to think about this is that we can start at 1 and count up to any number in the set (as long as we have enough time!). A set with this property is called \emph{countable}. For the set $[0, \infty)$, it makes intuitive sense that we cannot do this, i.e. we cannot list all the elements and, say, ``count up to $\pi$''. A proof of this fact is left for another course. Such an infinite set is called \emph{uncountable}\footnote{An uncountable set is a ``larger infinity'' than a countable set, which leads to the concept of ``sizes of infinity''. John Green alludes to this in his novel \emph{The Fault in Our Stars}, but unfortunately gets the math wrong. If you find this interesting, I recommend the Vi Hart video \url{https://www.youtube.com/watch?v=23I5GS4JiDg}}. A sample space which is either finite or countable is called \emph{discrete}.\\
 
 \subsection{Events and Subsets}
 An \emph{event} is a subset of a sample space. Events are usually designated by capital letters, and we write the relationship ``$A$ is a subset of $\cals$'' by $A \subset \cals$. For two events $A$ and $B$, $A \subset B$ if every element in $A$ is also contained in $B$. The \emph{empty set}, denoted $\emptyset$, is the set containing no elements, and it is a subset of every set.
@@ -146,7 +146,7 @@ Let us consider the sample space $\cals = \{1, 2, 3, 4, 5, 6\}$, representing th
 \end{enumerate}
 The event $C$ consists of a single element in the sample space. Such an event is called a \emph{simple event} and cannot be decomposed. The events $A$ and $B$ are each composed of three simple events.\\
 
-Next, consider the sample space repesenting rolls of two dice. Let $E$ be the event that the sum of the two dice is 7. We can represent this event graphically; in the figure below, the event $E$ consists of the squares which are highlighted in yellow.
+Next, consider the sample space representing rolls of two dice. Let $E$ be the event that the sum of the two dice is 7. We can represent this event graphically; in the figure below, the event $E$ consists of the squares which are highlighted in yellow.
 
 % Please add the following required packages to your document preamble:
 % \usepackage[table,xcdraw]{xcolor}
@@ -211,7 +211,7 @@ A \cup (B \cap C) &= (A \cup B) \cap (A \cup C)
 \end{enumerate}
 
 \subsection{Axiomatic Definition of Probability}
-Equipped with our our knowlege of set theory, we can define probability axiomatically as follows. Given any event $A$ in our sample space $\cals$, we assign a probability $\P(A)$ to that event such that the following rules hold\footnote{You can construct a coherent notion of probabiltiy with fewer axioms and derive the remaining rules from these; I like this version of probability rules, since it codifies what we want to be true given our intuitive notion of probability.}:
+Equipped with our our knowledge of set theory, we can define probability axiomatically as follows. Given any event $A$ in our sample space $\cals$, we assign a probability $\P(A)$ to that event such that the following rules hold\footnote{You can construct a coherent notion of probability with fewer axioms and derive the remaining rules from these; I like this version of probability rules, since it codifies what we want to be true given our intuitive notion of probability.}:
 \begin{enumerate}
 \item $0 \leq \P(A) \leq 1$ \\
 
@@ -242,16 +242,16 @@ From these we can derive a very important rule:
 \]
 Sometimes it is easier to calculate the probability of an event \emph{not} happening than the probability of the event itself!\\
 
-These rules tell us the properties that we want probability to have. However, given a sample space, they do not actually tell us how to assign probabilities to each event in the sample space. Doing that in a way that is consistent with the above rules can be a bit tricky \footnote{In fact, for an uncountable sample space such as $\cals = [0, 1]$, you can show that you cannot construtct a notion of probability which is consistent with all the rules; this is the starting point for the development of measure theory, and is beyond the scope of this course.}, but luckily for a discrete sample space we can do this with no problem. Since a discrete sample space is composed of a finite (or countable) number of simple events, all we have to do is assign probabilities to each simple event in such a way that they all add up to 1.
+These rules tell us the properties that we want probability to have. However, given a sample space, they do not actually tell us how to assign probabilities to each event in the sample space. Doing that in a way that is consistent with the above rules can be a bit tricky \footnote{In fact, for an uncountable sample space such as $\cals = [0, 1]$, you can show that you cannot construct a notion of probability which is consistent with all the rules; this is the starting point for the development of measure theory, and is beyond the scope of this course.}, but luckily for a discrete sample space we can do this with no problem. Since a discrete sample space is composed of a finite (or countable) number of simple events, all we have to do is assign probabilities to each simple event in such a way that they all add up to 1.
 
-\begin{example}Consider once again tossing a single die. The sample space for this is $\cals = \{1, 2, 3, 4, 5, 6\}$. This sample space contains 6 simple events: $\{1\}, \{2\}, \{3\},\{4\}, \{5\}$, and $\{6\}$. We can assign any probabilties we want to these simple events, as long as they add up to 1. For example, assuming we have a fair die, we can let $\P(\{i\}) = 1/6$ for $i = 1, \dots, 6$. If we like, we can check that all the above rules hold. If we have a loaded die, which rolls a 6, say, half the time, we could assign probabilites: $\P(\{6\}) = 1/2, \P(\{i\}) = 1/10$ for $i = 1, \dots, 5$.
+\begin{example}Consider once again tossing a single die. The sample space for this is $\cals = \{1, 2, 3, 4, 5, 6\}$. This sample space contains 6 simple events: $\{1\}, \{2\}, \{3\},\{4\}, \{5\}$, and $\{6\}$. We can assign any probabilities we want to these simple events, as long as they add up to 1. For example, assuming we have a fair die, we can let $\P(\{i\}) = 1/6$ for $i = 1, \dots, 6$. If we like, we can check that all the above rules hold. If we have a loaded die, which rolls a 6, say, half the time, we could assign probabilities: $\P(\{6\}) = 1/2, \P(\{i\}) = 1/10$ for $i = 1, \dots, 5$.
 \end{example}
 
 \begin{example}Consider this time a countable sample space $\cals = \N = \{1, 2, 3, \dots\}$. One possibility is to assign probabilities $\P(\{i\}) = 1/2^i$ for $i = 1, 2, 3, \dots$, i.e. $\P(\{1\}) = 1/2$, $\P(\{2\}) = 1/4$, $\P(\{3\}) = 1/8$, etc. Perhaps you recall from calculus that this is a geometric series with first element $1/2$ and common ratio $1/2$, and so we know its sum is:
 \[
 \sum_{i = 1}^{\infty} \P(\{i\}) = \sum_{i = 1}^{\infty} \frac{1}{2^i} = \frac{1}{2}\frac{1}{1 - 1/2} = 1
 \]
-Since the sum of the probabilities of all the simple events is 1, we are all set! If you have not seen this before, we will cover this in more detail when we discuss the geometric distribution. In the meantime, here is a nice picture to convince you that the sum is indeeed 1.
+Since the sum of the probabilities of all the simple events is 1, we are all set! If you have not seen this before, we will cover this in more detail when we discuss the geometric distribution. In the meantime, here is a nice picture to convince you that the sum is indeed 1.
 \begin{figure}[H]
 \centering
 \includegraphics[width=5cm]{Geometric_series}
@@ -264,7 +264,7 @@ Since the sum of the probabilities of all the simple events is 1, we are all set
 \subsection{Discrete Uniform Distribution}
 The first probability distribution we will consider is the uniform distribution on a \emph{finite} sample space. In the discrete uniform distribution, every simple event is equally likely to occur. \\
 
-Suppose we have a finite sample space $cals$ with $n$ simple events. The discrete uniform distribution assigns each simple event a probability of $1/n$. Why is this the case? If each simple event has probability $p$ and there are $n$ simple events $A_1, \dots A_n$ in our sample space, then using the fact that the sample space $S$ must have probability 1 and that the simple events are pairwise disjoint:
+Suppose we have a finite sample space $\cals$ with $n$ simple events. The discrete uniform distribution assigns each simple event a probability of $1/n$. Why is this the case? If each simple event has probability $p$ and there are $n$ simple events $A_1, \dots A_n$ in our sample space, then using the fact that the sample space $S$ must have probability 1 and that the simple events are pairwise disjoint:
 \begin{align*}
 1 &= \P(S) \\
 &= \P(A_1 \cup A_2 \cup \cdots \cup A_n) \\
@@ -288,7 +288,7 @@ How do we find the probability of an event that is not a simple event? Again, co
 \]
 \end{enumerate}
 \end{example}
-In the previous example, it is relatively straightforward to draw the sample space, so we can essentially compute any probabily we want simply by looking at the picture and counting which boxes comprise our event of interest. For more complicated problems, this is not as easy. Consider the following example:
+In the previous example, it is relatively straightforward to draw the sample space, so we can essentially compute any probability we want simply by looking at the picture and counting which boxes comprise our event of interest. For more complicated problems, this is not as easy. Consider the following example:
 
 \begin{example}A communication system consists of $n$ antennas arranged in a line. Exactly $m$ out of the $n$ antennas are defective. The system is functional if no two consecutive antennas are defective. Assuming that each linear arrangement of the antennas is equally likely, what is the probability that the system will be functional?\\
 
@@ -321,7 +321,7 @@ To see this, draw a grid of boxes with the $m$ outcomes from the first experimen
 \includegraphics[width=6cm]{mnrule.eps}
 \end{figure}
 
-We have already seen the basic principle of counting in play when we looked at the sample space for two dice. Each of the two die rolls is a separate experiement. Since there are 6 outcomes for each die roll, the total number of outcomes is $6 \cdot 6 = 36$. We can extend this to three or more dice. For three dice, for example, the total number of oucomes is $6 \cdot 6 \cdot 6 = 6^3 = 216$. If you like, you can visualize this as a cube. For $n$ dice, there are $6^n$ possible outcomes. I have trouble visualizing this for $n > 3$, but perhaps you can.\\
+We have already seen the basic principle of counting in play when we looked at the sample space for two dice. Each of the two die rolls is a separate experiment. Since there are 6 outcomes for each die roll, the total number of outcomes is $6 \cdot 6 = 36$. We can extend this to three or more dice. For three dice, for example, the total number of outcomes is $6 \cdot 6 \cdot 6 = 6^3 = 216$. If you like, you can visualize this as a cube. For $n$ dice, there are $6^n$ possible outcomes. I have trouble visualizing this for $n > 3$, but perhaps you can.\\
 
 We can also think of the basic principle of counting in terms of choosing items from groups. If there are $m$ items in Group 1 and $n$ items in Group 2, there are $mn$ pairs of items consisting of one item from each group. Again, this can be extended to any number of groups.\\
 
@@ -358,9 +358,9 @@ n \cdot (n-1) \cdot (n-2) \cdots 2 \cdot 1 = n!
 The symbol $n!$ is the \emph{factorial} operation, and it is defined exactly as written above.
 \end{example}
 
-\begin{example}Every December (since 1996), the city of Ithaca, NY hosts the International Rutabega Curl\footnote{\url{http://www.rutabagacurl.com}} (contestants must supply their own rutabega). Gold, silver, and bronze medals are given to the top three finishers. If 100 contentants enter the rutabega curl, how many possibilities are there for the winners?\\
+\begin{example}Every December (since 1996), the city of Ithaca, NY hosts the International Rutabaga Curl\footnote{\url{http://www.rutabagacurl.com}} (contestants must supply their own rutabaga). Gold, silver, and bronze medals are given to the top three finishers. If 100 contestants enter the rutabaga curl, how many possibilities are there for the winners?\\
 
-For the gold medalist, we have 100 contestants to choose from. Since you cannot win more than one medal, we choose from 99 contentants for the silver medal and 98 contestants for the bronze medal. The number of medal possibilities is:
+For the gold medalist, we have 100 contestants to choose from. Since you cannot win more than one medal, we choose from 99 contestants for the silver medal and 98 contestants for the bronze medal. The number of medal possibilities is:
 \[
 100 \cdot 99 \cdot 98 = 970,200
 \]
@@ -387,13 +387,13 @@ nPr = n (n-1)(n-2)\cdots(n - r + 1)\frac{(n-r)!}{(n-r)!} = \frac{n!}{(n-r)!}
 where $n! = n(n-1)\cdots2\cdot1$, and we define $0! = 1.$\footnote{This may seem a little arbitrary, but it is convenient. It also makes some sense that there is exactly one way to arrange no items.}
 
 \subsubsection{Combinations}
-Consider the following example, which is modification of the Rutabega Curl example above.
+Consider the following example, which is modification of the Rutabaga Curl example above.
 
 \begin{example}100 students buy raffle tickets. Three names are chosen from a hat uniformly at random to win a free sandwich at Eastside Pockets\footnote{A popular eatery on Thayer St. near Brown University}. How many possibilities are there for the winners?\\
 
-How is this problem fundamentally different from the Rutabega Curl? Here, the three prizes are identical, as opposed to the three distinct medals in the Rutabega Curl. We can think of this problem as selecting 3 items from a group of 100, but \emph{the order in which we select them does not matter}. Let's look at this in a few stages:
+How is this problem fundamentally different from the Rutabaga Curl? Here, the three prizes are identical, as opposed to the three distinct medals in the Rutabaga Curl. We can think of this problem as selecting 3 items from a group of 100, but \emph{the order in which we select them does not matter}. Let's look at this in a few stages:
 \begin{enumerate}
-\item Let's pretend for a moment that the order of selection matters. Then, as in the Rutabega Curl, there are $100 \cdot 99 \cdot 98$ possibilities.
+\item Let's pretend for a moment that the order of selection matters. Then, as in the Rutabaga Curl, there are $100 \cdot 99 \cdot 98$ possibilities.
 \item Compared to the the case where order matters, is the number of possibilities greater, fewer, or the same? There must be fewer possibilities since, for example, choosing the numbers $(1, 2, 3)$ from the hat in that order is the same as choosing them in the order $(3, 2, 1)$.
 \item How many permutations correspond to choosing the numbers 1, 2, and 3 from the hat? We can write out all the permutations:
 \[
@@ -509,7 +509,7 @@ $* * * | | * * * | | * *$ & 3 everything, 3 poppy, 2 sesame\\
 $* * * * * * * * * * | | | |$ & 10 everything\\
 \end{tabular}
 \end{figure}
-From the picture, we see that an assortement of 10 bagels can be represented as a linear string of 14 symbols: 10 * representing the bagels and 4 $|$ representing the dividers. The number of assortments is the same as the number of distinct orderings of this linear string: $\binom{14}{4} = 1001$
+From the picture, we see that an assortment of 10 bagels can be represented as a linear string of 14 symbols: 10 * representing the bagels and 4 $|$ representing the dividers. The number of assortments is the same as the number of distinct orderings of this linear string: $\binom{14}{4} = 1001$
 \end{example}
 
 % end of class 2
@@ -591,7 +591,7 @@ I & S & I & P & M & P & S & I & S & S & I \\
 \end{tabular}
 \end{figure} 
 
-Note that there is a perfect correspondance between each appropriate collection of four subsets and each arrangement of MISSISSIPPI. Thus we can use the multinomial coefficient for this problem, and we get that the total number of distinct rearrangements is:
+Note that there is a perfect correspondence between each appropriate collection of four subsets and each arrangement of MISSISSIPPI. Thus we can use the multinomial coefficient for this problem, and we get that the total number of distinct rearrangements is:
 \[
 \binom{11}{1 \: 2\: 4 \: 4} = \frac{11!}{1!\:2!\:4!\:4!} = 34,650
 \]
@@ -601,7 +601,7 @@ Note that there is a perfect correspondance between each appropriate collection 
 Sometimes the probability of an event will depend on whether or not another event has occurred. There are many real-life examples of this:
 \begin{enumerate}
 \item In weather prediction, the probability of rain tomorrow depends on whether or not it is raining today. This especially makes sense during the tropical storm season when it will often rain for days on end.
-\item In the field of public health, probabilties of developing disease depend on many outside factors. The probability of developing lung cancer, for example, depends on factors such as smoking history, exposure to second-hand smoke, and occupational exposure to asbestos.
+\item In the field of public health, probabilities of developing disease depend on many outside factors. The probability of developing lung cancer, for example, depends on factors such as smoking history, exposure to second-hand smoke, and occupational exposure to asbestos.
 \item Poker players are constantly thinking about conditional probability. For example, what is the probability of an inside straight draw on the final two cards given the cards the player has already seen?
 \end{enumerate}
 
@@ -656,16 +656,16 @@ Let $A$ be the event that the sum is greater than or equal to 11, and $B$ the ev
 \centering
 \includegraphics[width=8cm]{2dice1.eps}
 \end{figure}
-First let's use the sample space reduction method. Given that $B$ has occurred, i.e. the first roll is a 6, we reduce our sample space to $B$, i.e. to the bottom row of the picture. There are six squares in the bottom row, and since we still have the uniform distribution, each is equally likely. Of those 6, 2 of them (the rightmost two) have a sum of dice greater than or equal to 11. Thus the conditional probabaility is $\P(A|B) = 2/6 = 1/3$.\\
+First let's use the sample space reduction method. Given that $B$ has occurred, i.e. the first roll is a 6, we reduce our sample space to $B$, i.e. to the bottom row of the picture. There are six squares in the bottom row, and since we still have the uniform distribution, each is equally likely. Of those 6, 2 of them (the rightmost two) have a sum of dice greater than or equal to 11. Thus the conditional probability is $\P(A|B) = 2/6 = 1/3$.\\
 
-We can also use our definition of conditional probabiltiy. Using the uniform distribution, $\P(B) = 6/36$. Since $A \cap B$ is the two rightmost square on the bottom row, $\P(A \cap B) = 2/36$. By the definition of conditional probability:
+We can also use our definition of conditional probability. Using the uniform distribution, $\P(B) = 6/36$. Since $A \cap B$ is the two rightmost square on the bottom row, $\P(A \cap B) = 2/36$. By the definition of conditional probability:
 \[
 \P(A|B) = \frac{ \P(A \cap B)}{\P(B)} = \frac{2/36}{6/36} = \frac{1}{3}
 \]
 Thus again we get the same answer using either method.
 \end{example}
 
-Sometimes using a reduced sample space is much easier that using the definition of conditional probabiltiy. Consider the following example.
+Sometimes using a reduced sample space is much easier that using the definition of conditional probability. Consider the following example.
 
 \begin{example}In the card game bridge (which is near and dear to my heart), 52 cards are dealt out equally to 4 players (called North, South, East and West). Given that North and South have a total of 8 spades between them (out of 13 total spades), what is the probability that East has 3 spades.\\
 
@@ -676,7 +676,7 @@ Here it is easiest to work with a reduced sample space. If North and South have 
 \end{example}
 
 \subsection{Independence}
-Two events $A$ and $B$ are independent if the whether or not one event occurs is unaffected by whether or not the other event occurs. We will make this mathematically precise in a momement, but here are some intuitive examples:
+Two events $A$ and $B$ are independent if the whether or not one event occurs is unaffected by whether or not the other event occurs. We will make this mathematically precise in a moment, but here are some intuitive examples:
 \begin{enumerate}
 \item You are flipping coins repeatedly. Each coin flip is independent of all other coin flips, since there is no way for coin flips to affect each other. Now imagine you flip 10 heads in a row. It is tempting to say that the streak of heads must break, and that it is more likely than not that the 11th flip is a tail. This is known as the \emph{gambler's fallacy}, and is false since the flips are independent, and each flip has a 1/2 probability of heads. A famous example of this occurred in the Monte Carlo casino in Monaco on August 18, 1913. In a game of roulette, the ball landed on black 26 times in a row, and gamblers lost a lot of money betting that the streak would break.
 \item In blackjack, if a player is dealt an ace, the next deal is less likely to be an ace, since the cards are drawn without replacement. Successive deals of cards are thus not independent. This is the basis for counting cards in blackjack and other games.
@@ -725,7 +725,7 @@ Let us roll two fair, six-sided dice, and consider the following events:
 \begin{enumerate}
 \item Are $A$ and $B$ independent? \\
 
-Here we use the ``product of probabilites'' test for independence. $\P(A \cap B) = 1/36$, since if we know the first die is 4 and the two dice sum to 6, the second die must be a 2; this corresponds to a single point in the sample space. $\P(A) = 1/6$, since a single die has a 1/6 chance of rolling any number. $B$ comprises 5 simple events, as we can see graphically below; thus $\P(B) = 5/36$. 
+Here we use the ``product of probabilities'' test for independence. $\P(A \cap B) = 1/36$, since if we know the first die is 4 and the two dice sum to 6, the second die must be a 2; this corresponds to a single point in the sample space. $\P(A) = 1/6$, since a single die has a 1/6 chance of rolling any number. $B$ comprises 5 simple events, as we can see graphically below; thus $\P(B) = 5/36$. 
 \begin{figure}[H]
 \centering
 \includegraphics[width=4cm]{2dice2.eps}
@@ -739,7 +739,7 @@ Here, we have again that $\P(A \cap C) = 1/36$, since if we know the first die i
 \end{example}
 
 \subsection{Multiplicative and Additive Laws of Probability}
-The multiplicative and additive laws of probability give the probabilties of intersections and unions of events, and are important in constructing probabilies for more complicated events.
+The multiplicative and additive laws of probability give the probabilities of intersections and unions of events, and are important in constructing probabilities for more complicated events.
 
 \begin{framed}
 \emph{The multiplicative law of probability}\\
@@ -806,11 +806,11 @@ We can do this directly using the multiplication and addition rules if we wish, 
 \includegraphics[width=7cm]{tree1.eps}
 \end{figure}
 
-Tree diagrams are really hard to explain in writing, but I will try. Starting at the node on the left, the first two edges of the tree are $B_1$ and $B_2$. Their respective probabilities are written below, and are both 1/2, since the choice of bag is uniform. At the point, the tree branches again. Let's look at the top of the tree diagram, the part which follows $B_1$. The upper branch is labeled $R$, and indicates that the event $R$ follows $B_1$. The probability listed there is the conditional probability of $R$ given $B_1$, so $\P(R|B_1) = 1/4$. If we follow the arrows through $B_1$ and $R$, we reach the leaf of the tree which is labeled 1/8. This leaf represents the event $B_1 \cap R$, since we passed through both of those events to get there. The probability 1/8 listed there is the probability of $B_1 \cap R$. We get this by multiplying all the probabilties we passed through to get there. This follows the multiplication rule, since:
+Tree diagrams are really hard to explain in writing, but I will try. Starting at the node on the left, the first two edges of the tree are $B_1$ and $B_2$. Their respective probabilities are written below, and are both 1/2, since the choice of bag is uniform. At the point, the tree branches again. Let's look at the top of the tree diagram, the part which follows $B_1$. The upper branch is labeled $R$, and indicates that the event $R$ follows $B_1$. The probability listed there is the conditional probability of $R$ given $B_1$, so $\P(R|B_1) = 1/4$. If we follow the arrows through $B_1$ and $R$, we reach the leaf of the tree which is labeled 1/8. This leaf represents the event $B_1 \cap R$, since we passed through both of those events to get there. The probability 1/8 listed there is the probability of $B_1 \cap R$. We get this by multiplying all the probabilities we passed through to get there. This follows the multiplication rule, since:
 \[
 \P(B_1 \cap R) = \P(B_1)\P(R|B_1) = (1/2)(1/4) = 1/8
 \]
-The interpretation of the other branches of the tree is similar. Here is a version of the tree diagram with all the probabilites (conditional and otherwise) labeled: 
+The interpretation of the other branches of the tree is similar. Here is a version of the tree diagram with all the probabilities (conditional and otherwise) labeled: 
 \begin{figure}[H]
 \centering
 \includegraphics[width=7cm]{tree2.eps}
@@ -818,7 +818,7 @@ The interpretation of the other branches of the tree is similar. Here is a versi
 
 To find $\P(R)$, we just add up all the leaves that end passing through $R$. There are two such leaves, labeled with probabilities 1/8 and 2/8, thus $\P(R) = 1/8 + 2/8 = 3/8$.\\
 
-In adding the probabilties above, we used the addition rule. To see how we used it, recall that the sample space is designated $\cals$ and that $B_1$ and $B_2$ are disjoint with $B_1 \cup B2 = \cals$ (you can only choose one bag, and you must choose a bag):
+In adding the probabilities above, we used the addition rule. To see how we used it, recall that the sample space is designated $\cals$ and that $B_1$ and $B_2$ are disjoint with $B_1 \cup B2 = \cals$ (you can only choose one bag, and you must choose a bag):
 \begin{align*}
 R &= R \cap \cals & \text{ intersecting with $\cals$ does nothing, since $A \subset \cals$}\\
 &= R \cap (B_1 \cup B_2) \\
@@ -839,7 +839,7 @@ Here we are looking for the conditional probability $\P(B_1|R)$. We computed $\P
 \end{example}
 
 \subsection{Bayes' Rule and the Law of Total Probability}
-Given two events $A$ and $B$, Bayes' rule is a mathematical forumala for relating the two conditional probabilities $\P(A|B)$ and $P(B|A)$. In it's simplest form, Bayes' rule may be stated as follows:
+Given two events $A$ and $B$, Bayes' rule is a mathematical formula for relating the two conditional probabilities $\P(A|B)$ and $P(B|A)$. In it's simplest form, Bayes' rule may be stated as follows:
 
 \begin{framed}
 \emph{Bayes' rule}\\
@@ -858,14 +858,14 @@ Both sides of this equation are equal to $\P(A\cap B)$ by the definition of cond
 
 \begin{example}You have two bags of balls. The first bag contains one red ball and three white balls. The second bag contains two red balls and two white balls. You choose a bag uniformly at random and then draw a ball from the chosen bag. What is the probability that you choose the Bag 1 in the first step given that the ball drawn is red?\\
 
-Using the same events as above, we are looking for conditional probabiltiy $\P(B_1|R)$. For the opposite conditional probability, $\P(R | B_1) = 1/4$ since we know exactly what happens if we draw from Bag 1. $\P(B_1) = 1/2$, since we are choosing the bags uniformly at random. To use Bayes' rule, the only remaining probability we need is $\P(R)$, which is harder to compute. Luckily we found it above using the tree diagram, so we know $\P(R) = 3/8$. (We will learn a formula later which gets around this pesky probabilility.) Thus we plug everything into Bayes' rule to get:
+Using the same events as above, we are looking for conditional probability $\P(B_1|R)$. For the opposite conditional probability, $\P(R | B_1) = 1/4$ since we know exactly what happens if we draw from Bag 1. $\P(B_1) = 1/2$, since we are choosing the bags uniformly at random. To use Bayes' rule, the only remaining probability we need is $\P(R)$, which is harder to compute. Luckily we found it above using the tree diagram, so we know $\P(R) = 3/8$. (We will learn a formula later which gets around this pesky probability.) Thus we plug everything into Bayes' rule to get:
 \[
 \P(B_1| R) = \frac{ \P(R|B_1)\P(B_1)}{\P(R)} = \frac{ (1/4)(1/2) }{3/8} = \frac{1}{3}
 \]
 which agrees what we obtained above.
 \end{example}
 
-Bayes' rule is most often used in conjunction with the \emph{Law of Total Probabiltiy}, which we state below. First we need to define a \emph{partition} of a sample space.
+Bayes' rule is most often used in conjunction with the \emph{Law of Total Probability}, which we state below. First we need to define a \emph{partition} of a sample space.
 
 \begin{framed}
 \emph{Partition of a sample space}\\
@@ -897,9 +897,9 @@ where this union consists of disjoint sets (since the partition consists of disj
 We are now ready to state the Law of Total Probability.
 
 \begin{framed}
-\emph{Law of total probabiltiy}\\
+\emph{Law of total probability}\\
   \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
-Let $\{E_1, E_2, \dots, E_k\}$ be a partition of $\cals$ such that $\P(E_i) > 0$ for all $i$. Then for any event $A$, we can decompose the probabiliy of $A$ according to our partition as:
+Let $\{E_1, E_2, \dots, E_k\}$ be a partition of $\cals$ such that $\P(E_i) > 0$ for all $i$. Then for any event $A$, we can decompose the probability of $A$ according to our partition as:
 \[
 \P(A) = \sum_{i = 1}^k \P(A|E_i)\P(E_i)
 \]
@@ -914,7 +914,7 @@ Then we can write:
 &= \P(A \cap E_1) + \P(A \cap E_2) + \dots + \P(A \cap E_k) \\
 &= \P(A|E_1)\P(E_1) + \P(A|E_2)\P(E_2) + \dots + \P(A|E_k)\P(E_k) 
 \end{align*}
-where we have used the fact that the decomposition of $A$ is a union of disjoint sets, and have also used the definition of conditional probabilility.\\
+where we have used the fact that the decomposition of $A$ is a union of disjoint sets, and have also used the definition of conditional probability.\\
 
 We can now combine Bayes' rule and the Law of Total Probability to get another version of Bayes' rule.
 
@@ -933,7 +933,7 @@ Let's revisit the drawing-balls-from-bags example one final time, using the tota
 
 \begin{example}You have two bags of balls. The first bag contains one red ball and three white balls. The second bag contains two red balls and two white balls. You choose a bag uniformly at random and then draw a ball from the chosen bag. What is the probability that you choose the Bag 1 in the first step given that the ball drawn is red?\\
 
-Using the same events as in the above two versions, we are once again looking for conditional probabiltiy $\P(B_1|R)$. Our partition is $\{B_1, B_2\}$ since one of these two events must occur (so the union is $\cals$), but both cannot occur (so they are disjoint). Writing out Bayes' rule, we get:
+Using the same events as in the above two versions, we are once again looking for conditional probability $\P(B_1|R)$. Our partition is $\{B_1, B_2\}$ since one of these two events must occur (so the union is $\cals$), but both cannot occur (so they are disjoint). Writing out Bayes' rule, we get:
 \[
 \P(B_1|R) = \frac{ \P(R|B_1)\P(B_1)}{ \P(R|B_1)\P(B_1) + \P(R|B_2)\P(B_2) }
 \]
@@ -958,7 +958,7 @@ which agrees with both versions above!
 \end{enumerate}
 The three cards are shuffled and one is randomly chosen and it put down on a table. If the face-up side of the chosen card is red, what is the probability that the other side is black?\\
 
-Let $RR$, $BB$, and $RB$ denote the events that the chosen card is all red, all black, or red-black (respectively). Let $R$ be the event that the face-up side of the chosen card is red. Note that $\{RR, BB, RB\}$ is a partition of our sample space. We are interested in whether the red-black card has been chosen, i.e. $\P(RB|R)$. First we write out the total probability version of Bayes' rule, then we plug in the probabilties we know:
+Let $RR$, $BB$, and $RB$ denote the events that the chosen card is all red, all black, or red-black (respectively). Let $R$ be the event that the face-up side of the chosen card is red. Note that $\{RR, BB, RB\}$ is a partition of our sample space. We are interested in whether the red-black card has been chosen, i.e. $\P(RB|R)$. First we write out the total probability version of Bayes' rule, then we plug in the probabilities we know:
 \begin{align*}
 \P(RB|R) &= \frac{ \P(R|RB) \P(RB) }{ \P(R|RR)\P(RR) + \P(R|BB)\P(BB) + \P(R|RB)\P(RB) } \\
 &= \frac{(1/2)(1/3)}{ (1)(1/3) + 0(1/3) + (1/2)(1/3) } \\
@@ -980,7 +980,7 @@ Here is another application of Bayes' theorem which concerns medical testing. Th
 The OraQuick HIV test is a rapid test for HIV, which can give a result in 20 minutes. The test has the following properties:
 \begin{enumerate}
 \item Sensitivity (probability of a positive test given that you have the disease): 0.996 (99.6\%)
-\item Specificitiy (probability of a negative test given that you don't have the disease): 0.999 (99.9\%)
+\item Specificity (probability of a negative test given that you don't have the disease): 0.999 (99.9\%)
 \end{enumerate}
 What is the positive predictive value of the test, i.e. the probability that a patient has HIV given that the OraQuick test is positive\footnote{Sensitivity, specificity, and positive predictive value are public health terms; you don't have to know them. Data here is from the CDC website.}.\\
 

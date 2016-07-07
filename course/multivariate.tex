@@ -103,7 +103,7 @@ In this section, we will primarily be interested in bivariate distributions, the
 First, let's define the joint probability distribution for a pair of discrete random variables.
 
 \begin{framed}
-\emph{Joint probabiltiy distribution, discrete case}\\
+\emph{Joint probability distribution, discrete case}\\
   \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
 Let $Y_1$ and $Y_2$ be two discrete random variables. Then the \emph{joint distribution} of $Y_1$ and $Y_2$ is given by the function of two variables:
 \begin{align*}
@@ -117,7 +117,7 @@ We have already encountered one example of a bivariate distribution. Recall the 
 p(x_1, x_2) &= \frac{1}{36} & x_1, x_2 = 1, 2, 3, 4, 5, 6
 \end{align*}
 
-Just as in the case for a single discrete random variable, for a joint distribution of two discrete random variable, all the possible probabilties are nonnegative and they sum to 1.
+Just as in the case for a single discrete random variable, for a joint distribution of two discrete random variable, all the possible probabilities are nonnegative and they sum to 1.
 
 \begin{framed}
 Let $Y_1$ and $Y_2$ be discrete random variables with joint probability distribution $p(y_1, y_2)$. Then
@@ -139,7 +139,7 @@ Let's consider an example.
 \end{enumerate}
 Let $X_1$ be the discrete random variable with values \{\texttt{yes}, \texttt{no}\} indicating whether or not a student has an exam this week. Let $X_2$ be the number of cups of coffee a student has drunk today. For simplicity, we will let $X_2$ take only the values \{0, 1, 2\} (Whether or not this is a realistic simplification is beyond the scope of this course!)\\
 
-We can display the joint probabiltiy distribution for the pair $(X_1, X_2)$ in a 2 x 3 table. There are 6 possible values for the pair $(x_1, x_2)$. We can choose any probabilties for the six pairs as long as they sum to 1. One possible choice is shown in the table below.
+We can display the joint probability distribution for the pair $(X_1, X_2)$ in a 2 x 3 table. There are 6 possible values for the pair $(x_1, x_2)$. We can choose any probabilities for the six pairs as long as they sum to 1. One possible choice is shown in the table below.
 
 \begin{table}[H]
 \centering
@@ -176,7 +176,7 @@ Let's return to our example above.
 
 \begin{example}In the exam-coffee example above, compute the marginal distributions for $X_1$ and $X_2$.\\
 
-To find the marginal distributions for each variable, we sum over all the possibilities of the other variable. If the joint distribution is presented in a two-dimensional table, this ie easy. To find the marginal distribution of $X_2$, we sum the values in each column. The bottom row, which we will label ``total'', is the marginal distribution of $X_2$. Similarly, we can find the marginal distribution for $X_1$ by summing each row. The rightmost column, also labeled ``total'', is the marginal distribution for $X_2$. In fact, the marginal distribution is called ``marginal'' because its values lie in the margins of the joint distribution table.
+To find the marginal distributions for each variable, we sum over all the possibilities of the other variable. If the joint distribution is presented in a two-dimensional table, this is easy. To find the marginal distribution of $X_2$, we sum the values in each column. The bottom row, which we will label ``total'', is the marginal distribution of $X_2$. Similarly, we can find the marginal distribution for $X_1$ by summing each row. The rightmost column, also labeled ``total'', is the marginal distribution for $X_2$. In fact, the marginal distribution is called ``marginal'' because its values lie in the margins of the joint distribution table.
 
 \begin{table}[H]
 \centering
@@ -192,7 +192,7 @@ You can check that the two marginal distributions sum to 1 and are thus valid pr
 
 \end{example}
 
-\subsubsection{Conditional distirbution}
+\subsubsection{Conditional distribution}
 Suppose again we have a joint distribution $(Y_1, Y_2)$ of two discrete random variables with joint pmf $p(y_1, y_2)$. Another question we might ask is what is the distribution of $Y_1$ given that $Y_2 = y_2$. In other words, what is the conditional distribution of $Y_1$ given that $Y_2$ takes a specific value.\\
 
 Let's look once more a the exam-coffee example to see how we can do this.
@@ -214,7 +214,7 @@ y & $p(y | \text{midterm})$ \\ \midrule
 \end{table}
 \end{example}
 
-Now that we have seen an example, we will give the formal defintion of the conditional distribution of two discrete random variables.
+Now that we have seen an example, we will give the formal definition of the conditional distribution of two discrete random variables.
 
 \begin{framed}
 \emph{Conditional distribution, discrete random variables}\\
@@ -245,10 +245,10 @@ In the exam-coffee example above, using just about any pair of $y_1$ and $y_2$, 
 We will essentially repeat the same discussion for a pair of continuous random variables. Since working with continuous random variables requires integration, this will require integration in two dimensions, i.e. multivariable calculus. Since it is likely that many of you have not taken multivariable calculus, all multivariable techniques will be taught as they are needed.
 
 \subsubsection{Joint Probability Density}
-Recall that in the discrete case, a probability distribution was described by a probability density function (pdf). For the joint distribution of two continuous random variable, we have a joint density funciton, which is the continuous analogue of the joint distribution function in the discrete case.
+Recall that in the discrete case, a probability distribution was described by a probability density function (pdf). For the joint distribution of two continuous random variable, we have a joint density function, which is the continuous analogue of the joint distribution function in the discrete case.
 
 \begin{framed}
-\emph{Joint probabiltiy density, continuous case}\\
+\emph{Joint probability density, continuous case}\\
   \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
 Let $Y_1$ and $Y_2$ be two continuous random variables. Then the \emph{joint density} of $Y_1$ and $Y_2$ is a function of two variables $f(y_1, y_2)$ with the properties that:
 \begin{enumerate}
@@ -260,7 +260,7 @@ Let $Y_1$ and $Y_2$ be two continuous random variables. Then the \emph{joint den
 \end{framed}
 In other words, $f(y_1, y_2)$ is nonnegative and integrates to 1.\\
 
-In the bivariate case, instead of finding the probabiltiy that a single variable lies in an interval $[a, b]$, we find the probability that a pair of random variables lies within a region of the plane. To do this, we integrate the joint density over that region.
+In the bivariate case, instead of finding the probability that a single variable lies in an interval $[a, b]$, we find the probability that a pair of random variables lies within a region of the plane. To do this, we integrate the joint density over that region.
 
 \begin{framed}
 \emph{Probability of an event, continuous bivariate case}\\
@@ -319,7 +319,7 @@ Let's do the integral the other way and verify to see if we get the same result.
 \centering
 \includegraphics[width=10cm]{region1horizfirst}
 \end{figure}
-Once again following the directions on the picture above, we integrate $x$ first; $x$ starts at the diagonal line $y = x$ and goes to $x = 1$. The diagonal line has the eqution $y = x$, which we solve for $x$ to get $x = y$. Thus the lower limit is the function $x = y$. The upper limit is 1, so the limits of the integral with respect to $x$ (inner integral) are $y$ and 1. 
+Once again following the directions on the picture above, we integrate $x$ first; $x$ starts at the diagonal line $y = x$ and goes to $x = 1$. The diagonal line has the equation $y = x$, which we solve for $x$ to get $x = y$. Thus the lower limit is the function $x = y$. The upper limit is 1, so the limits of the integral with respect to $x$ (inner integral) are $y$ and 1. 
 Each integral in $x$ is a horizontal ``slice'' of our region. Then we integrate with respect to $y$. Imagining this as stacking our horizontal slices one on top of the other in the vertical direction, $y$ goes from 0 to 1, so those are the limits for the integral with respect to $y$ (outer integral). Putting this together, we have:
 \begin{align*}
 1 &= \int_0^1 \int_y^1 k x y \: dx dy \\
@@ -406,7 +406,7 @@ f_X(x) &= \begin{cases}
    \end{cases}
 \end{align*}
 
-It is important that we write the marginal density in this way so that we know that the $X$ is 0 outside $[0, 1]$. Since the marginal density is a valid probabiltiy density, you can check that it does in fact integrate to 1. Also note that the marginal density for $X$ is a function of $x$ alone; $y$ does not appear anywhere since we integrated it out!\\
+It is important that we write the marginal density in this way so that we know that the $X$ is 0 outside $[0, 1]$. Since the marginal density is a valid probability density, you can check that it does in fact integrate to 1. Also note that the marginal density for $X$ is a function of $x$ alone; $y$ does not appear anywhere since we integrated it out!\\
 
 Now we find the marginal density for $Y$ by integrating over $x$. The limits for $x$ are $x = 0$ and $x = y$. (See the picture of the region above if this is not clear.) 
 \begin{align*}
@@ -453,7 +453,7 @@ Similarly, we find the expected value of $Y$.
 \end{example}
 
 \subsubsection{Conditional Distribution}
-Just as in the discrete case, we can talk about conditional distributions. In the continuous case, we will have a continuous density function. Suppose we have a joint distribution $(Y_1, Y_2)$ of two continuous random variables with conditional density $f(y_1, y_2)$. We might be interested in the distribution of $Y_1$ given that $Y_2 = y_2$. Since $Y_1$ is a continuous random variable, we will express this as a conditional probabiltiy density.\\
+Just as in the discrete case, we can talk about conditional distributions. In the continuous case, we will have a continuous density function. Suppose we have a joint distribution $(Y_1, Y_2)$ of two continuous random variables with conditional density $f(y_1, y_2)$. We might be interested in the distribution of $Y_1$ given that $Y_2 = y_2$. Since $Y_1$ is a continuous random variable, we will express this as a conditional probability density.\\
 
 \begin{framed}
 \emph{Conditional distribution, continuous random variables}\\
@@ -464,7 +464,7 @@ f(y_1|y_2) = \frac{f(y_1, y_2)}{f_2(y_2)}
 \]
 where $f_2(y_2) > 0$. As in the discrete case, the conditional density is the joint density divided by the marginal density. We can similarly define the conditional density of $Y_2$ given $Y_1 = y_1$.
 \end{framed}
-Note that the conditional density can (and often will) depend on the value of the random variable we are conditioning on. For example, $f(y_1|y_2)$ may depend on the value $y_2$. Furthermore, the range of valuee $y_1$ can take may also depend on $y_2$ (we will see this in the example below). Contrast this to the marginal density, where we eliminiate the other random variable entirely.\\
+Note that the conditional density can (and often will) depend on the value of the random variable we are conditioning on. For example, $f(y_1|y_2)$ may depend on the value $y_2$. Furthermore, the range of values $y_1$ can take may also depend on $y_2$ (we will see this in the example below). Contrast this to the marginal density, where we eliminate the other random variable entirely.\\
 
 Once again, let's return to our example.
 
@@ -496,7 +496,7 @@ f(x|y) &=  \begin{cases}
 
 Again, we divide the joint density by the marginal density, where we computed the marginal density $f_X(x)$ above.
 \begin{align*}
-f(y|x) = \frac{f(x, y)}{f_X(x)} = \frac{8 x y}{4x^3 } = \frac{2y}{x^2}  
+f(y|x) = \frac{f(x, y)}{f_X(x)} = \frac{8 x y}{4x^3} = \frac{2y}{x^2}  
 \end{align*}
 As with the other conditional density, this depends on $x$. The bounds of the conditional density will also depend on $x$. Looking at the picture of the region, if $X = x$, then $y$ can only range from 0 to the diagonal line $y = x$, i.e. $Y$ must be between 0 and $x$. Thus the conditional density is:
 \begin{align*}
@@ -508,7 +508,7 @@ f(y|x) &=  \begin{cases}
 
 \item Find the expected value of $X$ given $Y = y$.
 
-A conditional density is just a probabiliy density of a continuous random variable, so we can find its expected value using the standard formula for the expected value of a continuous random variable.
+A conditional density is just a probability density of a continuous random variable, so we can find its expected value using the standard formula for the expected value of a continuous random variable.
 
 \begin{align*}
 E[X|Y = y] &= \int_{\infty}^{\infty} xf(x|y)dx\\
@@ -523,7 +523,7 @@ Note that we used the bounds on the conditional density in the second line above
 \end{example}
 
 \subsubsection{Independence}
-We have a similar defintion for independence in the case of continuous random variables.\\
+We have a similar definition for independence in the case of continuous random variables.\\
 
 \begin{framed}
 \emph{Independence of continuous random variables}\\
@@ -612,7 +612,7 @@ Similarly we can find the expected value of $Y$ using the marginal density for $
 
 \item What is the conditional density for $X$ given $Y = y$?\\
 
-To get the conditinal density $f(x|y)$, we first divide the joint density by the marginal density of $Y$:
+To get the conditional density $f(x|y)$, we first divide the joint density by the marginal density of $Y$:
 \[
 f(x|y) = \frac{ f(x, y) }{f_Y(y)} = \frac{ 6 x }{ 3 y^2 } = \frac{ 2 x }{ y^2 }
 \]
@@ -779,7 +779,7 @@ Cov(Y_1, Y_2) = \E[ (Y_1 - \E(Y_1))(Y_2 - \E(Y_2))]
 \end{align*}
 \end{framed}
 
-A larger absolute value of the covariance indicates a greater dependence between $Y_1$ and $Y_2$. Unfortunately, covariance is difficult to intepret since the value of the covariance depends on the scale used to measure the random variables. To solve this problem, we standardize to get what we call the \emph{correlation coefficient}. When you read a scientific study which posits a relationship between two variables, the strength of that relationship is usually given in terms of the correlation coefficient.
+A larger absolute value of the covariance indicates a greater dependence between $Y_1$ and $Y_2$. Unfortunately, covariance is difficult to interpret since the value of the covariance depends on the scale used to measure the random variables. To solve this problem, we standardize to get what we call the \emph{correlation coefficient}. When you read a scientific study which posits a relationship between two variables, the strength of that relationship is usually given in terms of the correlation coefficient.
 
 \begin{framed}
 \emph{Correlation coefficient}\\
@@ -788,16 +788,16 @@ Let $Y_1$ and $Y_2$ be two random variables, and let their standard deviations b
 \begin{align*}
 \rho = \frac{Cov(Y_1, Y_2) }{\sigma_1 \sigma_2}
 \end{align*}
-The correlation cofficient is always between -1 and 1, i.e. $-1 \leq \rho \leq 1$.
+The correlation coefficient is always between -1 and 1, i.e. $-1 \leq \rho \leq 1$.
 \end{framed}
-How do we interpret the correllation coefficient?
+How do we interpret the correlation coefficient?
 \begin{enumerate}
 \item If $\rho > 0$, then the two random variables are positively correlated, i.e. $Y_2$ increases as $Y_1$ increases. If $\rho = 1$, we have perfect correlation; $Y_2$ and $Y_1$ are completely dependent, and all points $(Y_1, Y_2)$ fall on a straight line with positive slope.
 \item If $\rho < 0$, then the two random variables are negatively correlated, i.e. $Y_2$ decreases as $Y_1$ increases. If $\rho = 1$, we again have perfect correlation; $Y_2$ and $Y_1$ are completely dependent, and all points $(Y_1, Y_2)$ fall on a straight line with negative slope.
 \item If $\rho = 0$, then there is no correlation between the two random variables. It is important to note that this does not necessarily imply that the two random variables are independent.
 \end{enumerate}
 
-Just like with the variance, the covariance is not generally computed directly. Instead, we use the Magic Covariance Formula, which is analagous to the Magic Variance Formula.
+Just like with the variance, the covariance is not generally computed directly. Instead, we use the Magic Covariance Formula, which is analogous to the Magic Variance Formula.
 
 \begin{framed}
   \emph{Magic Covariance Formula}\\
@@ -807,7 +807,7 @@ Let $Y_1$ and $Y_2$ be two random variables with expected values $\E(Y_1)$ and $
 Cov(Y_1, Y_2) = \E(Y_1 Y_2) - \E(Y_1) \E(Y_2)
 \]
 \end{framed}
-To verify this formula, we expand the product in the definition of covariance and use linarity of expectation. Letting $\E(Y_1) = \mu_1$ and $\E(Y_2) = \mu_2$,
+To verify this formula, we expand the product in the definition of covariance and use linearity of expectation. Letting $\E(Y_1) = \mu_1$ and $\E(Y_2) = \mu_2$,
 \begin{align*}
 Cov(Y_1, Y_2) &= \E[ (Y_1 - \mu_1)(Y_2 - \mu_2)]\\
 &= \E(Y_1 Y_2 - \mu_1 Y_2 - \mu_2 Y_1 + \mu_1 \mu_2) \\
@@ -816,7 +816,7 @@ Cov(Y_1, Y_2) &= \E[ (Y_1 - \mu_1)(Y_2 - \mu_2)]\\
 &= \E(Y_1 Y_2) - \mu_1 \mu_2 
 \end{align*}
 
-Let's use the Magic Covariance Forumula to compute the covariance of the random variables $X$ and $Y$ which we used as an example above for joint, marginal, and conditional densities.
+Let's use the Magic Covariance Formula to compute the covariance of the random variables $X$ and $Y$ which we used as an example above for joint, marginal, and conditional densities.
 
 \begin{example}
 Let $X$ and $Y$ be random variables with joint distribution function $f(x, y)$ given by:
@@ -844,6 +844,40 @@ Let $Y_1$ and $Y_2$ be two independent random variables. Then
 Cov(Y_1, Y_2) = 0
 \]
 \end{framed}
-To see this, we use the covariance of a 
+To see this, we use the Magic Covariance Formula together with the result from above that the expected value of a product of two independent random variables is the product of the expected values.
+\begin{align*}
+Cov(Y_1, Y_2) &= \E(Y_1 Y_2) - \E(Y_1)\E(Y_2)\\
+&= \E(Y_1)\E(Y_2) - \E(Y_1)\E(Y_2) = 0
+\end{align*}
+The converse, however, is not generally true (except in a few very special circumstances). In other words, if the covariance of two random variables is 0, we \emph{cannot} conclude that the random variables are independent. You will have a homework problem about this.\\
+
+The final result in this section concerns the variance of the sum of two random variables. Part of result was stated earlier and was used to prove the variance of the binomial distribution. The full result is below.
+
+\begin{framed}
+  \emph{Variance of the sum of two random variables}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $Y_1$ and $Y_2$ be two random variables. Then
+\[
+Var(Y_1 + Y_2) = Var(Y_1) + Var(Y_2) + 2 Cov(Y_1, Y_2)
+\]
+If $Y_1$ and $Y_2$ are independent, then 
+\[
+Var(Y_1 + Y_2) = Var(Y_1) + Var(Y_2)
+\]
+We can extend the first result to the case of a sum of more than two random variables, but the result is cumbersome. In the second case, however, the result extends easily.
+If $Y_1, Y_2, \dots, Y_n$ are independent random variables, then 
+\[
+Var(Y_1 + Y_2 + \cdots + Y_n) = Var(Y_1) + Var(Y_2) + \cdots + Var(Y_n)
+\]
+\end{framed}
+To see this, we use the Magic Variance Formula and linearity of expectation:
+\begin{align*}
+Var(Y_1 + Y_2) &= \E[(Y_1 + Y_2)^2] - [\E(Y_1 + Y_2)]^2\\
+&= \E(Y_1^2 + 2 Y_1 Y_2 + Y_2^2) - [\E(Y_1) + \E(Y_2)]^2 \\
+&= \E(Y_1^2) + 2 \E(Y_1 Y_2) + \E(Y_2^2) - [\E(Y_1)]^2 - 2 \E(Y_1)\E(Y_2) - [\E(Y_2)]^2\\
+&= (\E(Y_1^2) - [\E(Y_1)]^2) + ( \E(Y_2^2) - \E(Y_2)]^2 ) + 2[\E(Y_1 Y_2) - \E(Y_1)\E(Y_2)]\\
+&= Var(Y_1) + Var(Y_2) + 2 Cov(Y_1, Y_2)
+\end{align*}
+where in the last line we used both the Magic Variance Formula and the Magic Covariance Formula. If $Y_1$ and $Y_2$ are independent, the covariance is 0, so we get $Var(Y_1 + Y_2) = Var(Y_1) + Var(Y_2)$.
 
 \end{document}

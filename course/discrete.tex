@@ -122,7 +122,7 @@ Uppercase letters, such as $Y$, are used to designate random variables. We use l
 \item $(Y = 2) = \{ (H, H) \}$
 \end{itemize}
 
-Since $(Y = y)$ is an event in our sample space, we can talk about its probabiltiy, i.e. $\P(Y = y)$. In fact, the point of random variables is to do just this! 
+Since $(Y = y)$ is an event in our sample space, we can talk about its probability, i.e. $\P(Y = y)$. In fact, the point of random variables is to do just this! 
 
 \begin{framed}
   \emph{Probability of a discrete random variable }\\
@@ -132,13 +132,13 @@ Since $(Y = y)$ is an event in our sample space, we can talk about its probabilt
   $\P(Y = y)$ is the sum of the probabilities of all the simple events in $\cals$ which are assigned the value $y$ by the random variable $Y$.
 \end{framed}
 
-Back to our two-coin-toss problem, let's look at the probabilties of the random variable $Y$. For convenience, here is a picture of the sample space probabilities next to a graphical representation of $Y$. Since we are using the discrete uniform distribution for coin tosses, each simple event in our sample space has probability 1/4.
+Back to our two-coin-toss problem, let's look at the probabilities of the random variable $Y$. For convenience, here is a picture of the sample space probabilities next to a graphical representation of $Y$. Since we are using the discrete uniform distribution for coin tosses, each simple event in our sample space has probability 1/4.
 \begin{figure}[H]
 \centering
 \includegraphics[width=8cm]{numberofheads2.eps}
 \end{figure}
 
-Using the rule above, we can compute the following probabilties for $Y$ by adding up the probabilities of the underlying simple events. In this case, since we are using the discrete uniform distribution, we could also just count the number of simple events which lead to each output of $Y$ and divide by 4, the size of the sample space.
+Using the rule above, we can compute the following probabilities for $Y$ by adding up the probabilities of the underlying simple events. In this case, since we are using the discrete uniform distribution, we could also just count the number of simple events which lead to each output of $Y$ and divide by 4, the size of the sample space.
 \begin{itemize}[noitemsep]
 \item $\P(Y = 0) = 1/4$
 \item $\P(Y = 1) = 1/4 + 1/4 = 1/2$
@@ -148,7 +148,7 @@ Using the rule above, we can compute the following probabilties for $Y$ by addin
 \begin{framed}
   \emph{Probability mass function }\\
   \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
-  The \emph{probablity mass function (pmf)} is a function which gives the probabiltiy that a discrete random variable $Y$ is exactly equal to a value $y$. The pmf can be represented as a function, table, or graph which gives the values $p(y) = \P(Y = y)$ for all possible values $y$ which $Y$ can take.
+  The \emph{probability mass function (pmf)} is a function which gives the probability that a discrete random variable $Y$ is exactly equal to a value $y$. The pmf can be represented as a function, table, or graph which gives the values $p(y) = \P(Y = y)$ for all possible values $y$ which $Y$ can take.
 \end{framed}
 
 In the two-coin-flip example, we can represent the pmf of $Y$ in a table:
@@ -172,7 +172,7 @@ We can also represent the pmf graphically as a histogram\footnote{I will undoubt
 \end{figure}
 
 
-A discrete random variable induces a probability distribution on the sample space of all possible values the random variable can take. This is a different sample space from the original sample space. Back to our two-coin-flip example, the random variable $Y$ induces a probability distribution on a new sample space $\mathcal{T} = \{0, 1, 2\}$. The probabilities of the sample points in $\mathcal{T}$ are the probabilties $p(y)$ for $y = 0, 1, 2$. We can illustrate this new sample space in a picture.
+A discrete random variable induces a probability distribution on the sample space of all possible values the random variable can take. This is a different sample space from the original sample space. Back to our two-coin-flip example, the random variable $Y$ induces a probability distribution on a new sample space $\mathcal{T} = \{0, 1, 2\}$. The probabilities of the sample points in $\mathcal{T}$ are the probabilities $p(y)$ for $y = 0, 1, 2$. We can illustrate this new sample space in a picture.
 
 \begin{figure}[H]
 \centering
@@ -210,7 +210,7 @@ The random variable $X$ induces a probability distribution on the set of integer
 \includegraphics[width=7cm]{sumoftwodice.pdf}
 \includegraphics[width=7cm]{maxoftwodice.pdf}
 \end{figure}
-Both of these distributions are nonuniform, even though the underlying distribution of the two dice is uniform. The first distribution, that of the random variable $X$, is a familiar one to afficionados of board games such at Settlers of Catan and Monopoly. We can also write the pmfs in table form. For the random variable $Y$, we have:
+Both of these distributions are nonuniform, even though the underlying distribution of the two dice is uniform. The first distribution, that of the random variable $X$, is a familiar one to aficionados of board games such at Settlers of Catan and Monopoly. We can also write the pmfs in table form. For the random variable $Y$, we have:
 \begin{figure}[H]
 \centering
 \begin{tabular}{l@{\hskip 2cm}l}
@@ -261,7 +261,7 @@ where used the fact from the discrete uniform distribution that $\P(X = x)$ = 1/
 
 \begin{example}Let $Y$ be the random variable above representing the maximum of two dice. What is the expected value of $Y$.\\
 
-To find the expected value, we do a weighted average using the probabities in the table above.
+To find the expected value, we do a weighted average using the probabilities in the table above.
 \begin{align*}
 \E(Y) &= \sum_{y = 1}^6 y \P(Y = y) \\
 &= 1 \cdot \frac{1}{36} + 2 \cdot \frac{3}{36} + 3 \cdot \frac{5}{36} + 4 \cdot \frac{7}{36} + 5 \cdot \frac{9}{36} + 6 \cdot \frac{11}{36} \\
@@ -336,7 +336,7 @@ The key to this method is that $\E(X_i)$ does not depend on $i$. Why does this m
 
 How do you know when to use the method of indicator random variables and linearity of expectation? Like everything in probability, it is difficult to come up with hard-and-fast rules for when to use a given tool. That being said, here are a few guidelines for when this method is useful:
 \begin{enumerate}
-\item You are looking for an \emph{expected value} involving a group of people or objects (not a probabiltiy).
+\item You are looking for an \emph{expected value} involving a group of people or objects (not a probability).
 \item You have a symmetric group of people or objects, i.e. you can swap them around without affecting the result.
 \end{enumerate}
 
@@ -378,7 +378,7 @@ Let $Y$ be a discrete random variable with probability function $p(y)$, and let 
 \[
 \E[g(Y)] = \sum_{\text{all }y}g(y)\:p(y)
 \]
-where the sum is taken over all possible values $y$ can take. Note that the \emph{only} difference from the expected value of $Y$ is that we have $g(y)$ in place of $y$ in the sum. The probabilties $p(y)$ are \emph{unchanged}. This is again a weighted average, but this time we are taking a weighted average of the possible values of $g(Y)$.
+where the sum is taken over all possible values $y$ can take. Note that the \emph{only} difference from the expected value of $Y$ is that we have $g(y)$ in place of $y$ in the sum. The probabilities $p(y)$ are \emph{unchanged}. This is again a weighted average, but this time we are taking a weighted average of the possible values of $g(Y)$.
 \end{framed}
 
 \begin{example}Let $X$ be the output of a standard six-sided die, and let $g(x) = x^2$. Find $E[g(X)]$.\\
@@ -412,7 +412,7 @@ If $Y$ is a random variable, and $a$ and $b$ are constants, then
 
 \subsection{Variance}
 
-So far we have seen one quantititive descriptor of the distribution of a random variable: the expected value. In this section, we discuss another descriptor: the variance. To begin, let's compare the pmfs of two discrete random variables.
+So far we have seen one quantitative descriptor of the distribution of a random variable: the expected value. In this section, we discuss another descriptor: the variance. To begin, let's compare the pmfs of two discrete random variables.
 
 \begin{example}Let $X$ be the number of heads observed when a fair coin is flipped 6 times, and let $Y$ be the uniform distribution on the integers $\{0, 1, 2, 3, 4, 5, 6\}$. Since $Y$ is the uniform distribution on a finite set with 7 elements, $\P(Y = y) = 1/7$ for all $Y$. $X$ takes the same values as $Y$ since the number of heads observed in 6 coin flips is an integer between 0 and 6. What is $\P(X = x)$? Since there are two possibilities for each flip, there are $2^6$ possible flip-sequences. The number of flip-sequences which give us $x$ heads is given by the binomial coefficient $\binom{6}{x}$ (why is this true?). Thus we have:
 \[
@@ -565,12 +565,12 @@ i.e. the variance of a sum is the sum of the variances. This is only true for in
 \end{framed}
 
 \subsection{Bernoulli Trials}
-One of the simplest models in probability is that of a sequence \emph{Bernoulli trials}. Essentially Bernouilli trials are the generalization of repeated coin tossing. 
+One of the simplest models in probability is that of a sequence \emph{Bernoulli trials}. Essentially Bernoulli trials are the generalization of repeated coin tossing. 
 
 \begin{framed}
-  \emph{Bernouilli trials}\\
+  \emph{Bernoulli trials}\\
   \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
-A sequence of Bernoulli trials is a sequence of experiements satisfying the following assumptions:
+A sequence of Bernoulli trials is a sequence of experiments satisfying the following assumptions:
 \begin{enumerate}
 \item Each trial has exactly two possible outcomes, designated \emph{success} and \emph{failure}.
 \item The trials are independent, i.e. the outcome of one trial does not influence the outcome of any other trial.
@@ -588,7 +588,7 @@ Since Bernoulli trials have only two possible outcomes, we can think of them as 
 \item Repeated free throw attempts by your instructor, assuming that he never improves.
 \end{enumerate}
 
-Here are some examples of trials which are not Bernouilli trials. Why are these not Bernouilli trials?
+Here are some examples of trials which are not Bernoulli trials. Why are these not Bernoulli trials?
 \begin{enumerate}
 \item Drawing cards one at a time from a standard deck of 52 playing cards, where we designate success as drawing an ace.
 \item Calling a list of 100 registered voters one-at-a-time and asking them if they are voting for Hillary Clinton.
@@ -612,7 +612,7 @@ $y$ & $p(y)$\\
 \bottomrule
 \end{tabular}
 \end{figure}
-To indicate that $Y$ is a Bernoulli random variable with paramater $p$, we will sometimes write $Y \sim$ Bernoulli($p$).
+To indicate that $Y$ is a Bernoulli random variable with parameter $p$, we will sometimes write $Y \sim$ Bernoulli($p$).
 \end{framed}
 
 What is the mean and variance of a Bernoulli random variable? Let $Y \sim$ Bernoulli($p$). Then for the expected value:
@@ -637,7 +637,7 @@ Summarizing, these results, we have:
 \begin{framed}
   \emph{Characteristics of a Bernoulli random variable}\\
   \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
-Let $Y$ be a Bernouilli random variable with parameter $p$. Then:
+Let $Y$ be a Bernoulli random variable with parameter $p$. Then:
 \begin{align*}
 \E(Y) &= p \\
 Var(Y) &= p(1-p) = pq
@@ -658,7 +658,7 @@ The first question is answered by the binomial distribution, and the second by t
 
 The binomial distribution models the number of successes in a fixed number of Bernoulli trials. Let's start with an example.
 
-\begin{example}Suppose we are playing a slot machine in Las Vegas. Suppose $p$ is the probabiltiy of winning on one play\footnote{This can be quite different depending on the type of slot machine you are playing, although all slot machines are designed so that you lose money on average. There are numerous websites devoted to slot machine odds.}. Suppose you play 10 times. What is the probability that you win 2 times?\\
+\begin{example}Suppose we are playing a slot machine in Las Vegas. Suppose $p$ is the probability of winning on one play\footnote{This can be quite different depending on the type of slot machine you are playing, although all slot machines are designed so that you lose money on average. There are numerous websites devoted to slot machine odds.}. Suppose you play 10 times. What is the probability that you win 2 times?\\
 
 First, this is an example of Bernoulli trials, since each play of the slot machine has two possible outcomes (win and loss), is independent, and the probability of winning is does not change as you continue to play. \\
 
@@ -679,7 +679,7 @@ We now generalize this. Suppose we have a sequence of $n$ Bernoulli trials, with
 \P(\text{$y$ successes out of $n$ trials})= \binom{n}{y} p^y (1-p)^{n-y}
 \]
 
-This probability distribution, which repesents the number of successes in a fixed number $n$ Bernouilli trials, is called the \emph{binomial probability distribution}. A random variable $Y$ with this distribution is called a \emph{binomial random variable}.
+This probability distribution, which represents the number of successes in a fixed number $n$ Bernoulli trials, is called the \emph{binomial probability distribution}. A random variable $Y$ with this distribution is called a \emph{binomial random variable}.
 
 \begin{framed}
   \emph{Binomial distribution}\\
@@ -753,7 +753,7 @@ These are not symmetric. Since $p < 1/2$, the distributions are skewed to the le
 \begin{enumerate}
 \item You cross-fertilize 20 of these pea plants. What is the the probability that none of them are white?\\
 
-We can model this problem as a sequence of 20 Bernoulli trials, with ``success'' defined as a cross-fertilization producing a white flower. (Are all the assumptions of Bernouilli trials satisfied here?) Since we are looking for the number of successes in a \emph{fixed} number of trials, this is a binomial distribution. Let $X \sim Binomial(20, 1/4)$. Then, using the binomial pmf:
+We can model this problem as a sequence of 20 Bernoulli trials, with ``success'' defined as a cross-fertilization producing a white flower. (Are all the assumptions of Bernoulli trials satisfied here?) Since we are looking for the number of successes in a \emph{fixed} number of trials, this is a binomial distribution. Let $X \sim Binomial(20, 1/4)$. Then, using the binomial pmf:
 \[
 \P(X = 0) = \binom{20}{0}\left(\frac{1}{4}\right)^0 \left(\frac{3}{4}\right)^{20} = \left(\frac{3}{4}\right)^{20} \approx 0.0032
 \]
@@ -845,7 +845,7 @@ In this case, the first term is $a$ and the common ratio is $r$. If $\abs{r} < 1
 \]
 \end{framed}
 
-Let's use this result to show that the probabilties of a geometric random variable sum to 1. Let $Y$ be a geometric random variable with parameter $p$. Then
+Let's use this result to show that the probabilities of a geometric random variable sum to 1. Let $Y$ be a geometric random variable with parameter $p$. Then
 \begin{align*}
 \sum_{y=1}^{\infty} p(y) &= \sum_{y=1}^{\infty} p (1-p)^{k-1}\\
 &= \frac{p}{1 - (1 - p)} \\
@@ -854,7 +854,7 @@ Let's use this result to show that the probabilties of a geometric random variab
 \end{align*}
 where we used the formula above with the first term $a = p$ and the common ratio $r = p-1$.
 
-For the expected value and variance of a geomtric random variable we have the following.
+For the expected value and variance of a geometric random variable we have the following.
 
 \begin{framed}
 \emph{Properties of geometric distribution}\\
@@ -929,7 +929,7 @@ since if $X > 12$, then it must also be true that $X > 10$. Using the same logic
 \begin{align*}
 \P(X > 12 | X > 10) = \frac{(1-p)^{12}}{(1-p)^{10}} = (1-p)^2 = \P(X > 2) = 0.9025
 \end{align*}
-Thus the probability that the computer is still running after two more hours given that it has already been running for 10 hours is the same as the probabiltiy that the computer is still running two hours after startup. This property of the geometric distribution is called \emph{memorylessness}
+Thus the probability that the computer is still running after two more hours given that it has already been running for 10 hours is the same as the probability that the computer is still running two hours after startup. This property of the geometric distribution is called \emph{memorylessness}
 \end{enumerate}
 \end{example}
 
@@ -956,7 +956,7 @@ Consider the following example.
 
 \begin{example}You have a bag of 20 marbles, 12 of which are red and 8 of which are black.
 \begin{enumerate}
-\item You draw a single marble from the bag five times, replacing it before each new draw. What is the probabiltiy that 3 of the 5 marbles drawn are red?\\
+\item You draw a single marble from the bag five times, replacing it before each new draw. What is the probability that 3 of the 5 marbles drawn are red?\\
 
 This can be modeled with a binomial random variable. Since the marbles are replaced before each draw, the probability of drawing a red marble is constant at $12/20 = 0.6$. The draws are thus independent, so we have a sequence of 5 Bernoulli trials. Considering a draw of a red marble as a success, let $X\sim\text{Binomial}(5, 0.6)$. Then:
 \[
@@ -965,14 +965,14 @@ This can be modeled with a binomial random variable. Since the marbles are repla
 
 \item You draw five marbles from the bag without replacement. What is the probability that 3 of the 5 marbles drawn are red?\\
 
-This time we cannot use the binomial distibution since the probability of drawing a red marble changes as marbles are drawn from the bag. Using combinatorics, there are $\binom{20}{5}$ possible draws. There are $\binom{12}{3}$ ways to choose 3 of the 12 red marbles, and $\binom{8}{2}$ ways to choose 2 of the 12 black marbles. Letting $Y$ be the number of red marbles in our sample of 5, we have
+This time we cannot use the binomial distribution since the probability of drawing a red marble changes as marbles are drawn from the bag. Using combinatorics, there are $\binom{20}{5}$ possible draws. There are $\binom{12}{3}$ ways to choose 3 of the 12 red marbles, and $\binom{8}{2}$ ways to choose 2 of the 12 black marbles. Letting $Y$ be the number of red marbles in our sample of 5, we have
 \[
 \P(Y = 3) = \frac{ \binom{12}{3}\binom{8}{2}}{\binom{20}{5}} \approx 0.397
 \]
 \end{enumerate}
 \end{example}
 
-The probabilties here are quite different (by about 5\%). Since we are sampling 1/4 of the total marbles, it is unsurprising that there is a significant difference between sampling without replacement and sampling with replacement. What would happen if sampled a smaller fraction of the total marbles?
+The probabilities here are quite different (by about 5\%). Since we are sampling 1/4 of the total marbles, it is unsurprising that there is a significant difference between sampling without replacement and sampling with replacement. What would happen if sampled a smaller fraction of the total marbles?
 
 \begin{example}Repeat the previous problem if we instead have a bag of 200 marbles, 120 of which are red and 80 of which are black.\\
 
@@ -982,7 +982,7 @@ If we sample with replacement, the probability will not change; if $X$ is the nu
 \]
 \end{example}
 
-In this case, the two probabililies differ by only about 0.5\%, which is much smaller. The take-home message here is that if we sample a fraction of the total population, sampling without replacement is approximately equivalent to sampling with replacement, i.e. we can approximate sampling without replacement by a binomial distribution.\\
+In this case, the two probabilities differ by only about 0.5\%, which is much smaller. The take-home message here is that if we sample a fraction of the total population, sampling without replacement is approximately equivalent to sampling with replacement, i.e. we can approximate sampling without replacement by a binomial distribution.\\
 
 The distribution for sampling without replacement in this scenario is known as the \emph{hypergeometric distribution}. It applies whenever we sample without replacement from a population which can be divided into two distinct groups. Examples of the hypergeometric distribution include:
 \begin{enumerate}
@@ -1011,7 +1011,7 @@ The Poisson distribution is the final discrete probability distribution we will 
 \item The average rate of occurrence of the events is constant.
 \item The events occur independently from each other.
 \end{enumerate}
-Often the event in question is relatively rare. Examples of situations in which a Poisson distirbution is a good model include:
+Often the event in question is relatively rare. Examples of situations in which a Poisson distribution is a good model include:
 \begin{enumerate}
 \item The number of phone calls received per hour at a call center.
 \item The number of pieces of non-junk mail received per day.
@@ -1053,7 +1053,7 @@ $Y$ is called a \emph{Poisson random variable} with parameter $\lambda$, which i
 \end{framed}
 Note that the Poisson distribution can output a value of 0, which corresponds to no events happening in the fixed span of time.\\
 
-As with the other discrete distributions, we will check that this distribution is well definied by veritying that the probabilities sum to 1.
+As with the other discrete distributions, we will check that this distribution is well defined by verifying that the probabilities sum to 1.
 
 \begin{align*}
 \sum_{y=0}^\infty p(y) &= \sum_{y=0}^\infty e^{-\lambda}\frac{\lambda^y}{y!} \\
@@ -1061,7 +1061,7 @@ As with the other discrete distributions, we will check that this distribution i
 &= e^{-\lambda}e^{\lambda} = 1
 \end{align*}
 
-The mean of the Possion distribution is $\lambda$, which makes sense since that is the average rate of occurrence of the events which we used when we constructed the Poissin distribution as a limit of the binomial distribution. Not only is the mean of a Poisson distribution $\lambda$, but the variance is also $\lambda$. Thus we have the following properties.
+The mean of the Poisson distribution is $\lambda$, which makes sense since that is the average rate of occurrence of the events which we used when we constructed the Poisson distribution as a limit of the binomial distribution. Not only is the mean of a Poisson distribution $\lambda$, but the variance is also $\lambda$. Thus we have the following properties.
 
 \begin{framed}
 \emph{Properties of the Poisson distribution}\\
@@ -1110,7 +1110,7 @@ Here we want $\P(X \geq 3)$. It is easier to compute the complement probability,
 &\approx 1 - 0.0067 - 0.0337 - 0.0842 = 0.08754
 \end{align*}
 
-\item What is the probabilty that exactly 5 customers arrive in a 15-minute period?\\
+\item What is the probability that exactly 5 customers arrive in a 15-minute period?\\
 
 \[
 \P(X = 5) = \frac{e^{-5}5^5}{5!} \approx 0.175
