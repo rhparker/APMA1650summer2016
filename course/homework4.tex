@@ -1,0 +1,120 @@
+% \documentclass{book}
+
+\documentclass[12pt]{article}
+\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\usepackage[shortalphabetic]{amsrefs}%
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{cool}
+\usepackage{url}
+\usepackage{graphicx,epsfig}
+\usepackage{makecell}
+\usepackage{array}
+
+\graphicspath{ {images/} }
+
+\def\noi{\noindent}
+\def\T{{\mathbb T}}
+\def\R{{\mathbb R}}
+\def\N{{\mathbb N}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\P{{\mathbb P}}
+\def\E{{\mathbb E}}
+\def\Q{\mathbb{Q}}
+\def\ind{{\mathbb I}}
+
+\begin{document}
+
+\title{}
+\author{\vspace{-10ex} }
+
+\begin{center}
+{\LARGE APMA 1650 -- Homework 4}\\
+\vspace{5mm}
+{\large Due Monday, July 18, 2016}\\
+\vspace{5mm}
+Homework is due during class or by 3:45 pm in the homework drop box in 182 George St.\\
+Show all of your work used in deriving your solutions.
+\end{center}
+
+\begin{enumerate}
+
+\item Let $X$ be a continuous random variable which has a probability density $f(x)$ given by
+\[
+f(x) = \begin{cases}
+c x^3 & 0 \leq x \leq 1 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+\begin{enumerate}
+\item Find the value of $c$ which makes this a valid probability density function.
+\item What is $\P(0 \leq X \leq \frac{1}{4})$?
+\item Find the expected value and variance of $X$.
+\item Find the median of $X$.
+\end{enumerate}
+
+\item Suppose we are playing a game of darts. We throw darts at a circular dartboard with radius 1. Suppose the darts land uniformly at random on the dartboard, i.e. the probability of landing in a subset of the dartboard is equal to the area of the subset divided by the area of the dartboard.
+\begin{enumerate}
+\item What is the probability that the dart hits the exact center of the dartboard?
+\item What is the probability that the dart lands closer to the center than to the edge of the dartboard?
+\item For $a < b < 1$, what is the probability that the dart lies at a distance between $a$ and $b$ of the center of the dartboard?
+\end{enumerate}
+
+\item A company that manufactures and bottles juice uses a machine that automatically fills 16-ounce bottles. There is some variation in the amount of liquid dispensed by the machine. The amount of juice dispensed has been observed to follow a normal distribution with mean of 16 ounces and standard deviation of 0.6 ounces.
+\begin{enumerate}
+\item What is the probability that the machine dispenses more than 17 ounces?
+\item What is the probability that the machine dispenses between 15.5 and 16.5 ounces?
+\item Suppose you wish to be 95\% confident that the machine dispenses between 15.5 and 16.5 ounces. What standard deviation must your machine have for this to be the case?
+\end{enumerate}
+
+\item Yet another time, you find yourself the quality control manager for the Acme Widget Company. You are concerned about the number of defective widgets being produced by one of your factories.
+\begin{enumerate}
+\item You have determined that the number of defective widgets produced per day by your factory has a mean of 10. You claim that the probability that your factory produces 15 or more defective widgets per day is less than or equal to 0.5. Is this claim justified? Explain your answer mathematically.
+
+\item In addition, you have determined that the number of defective widgets produced per day by your factory has a variance of 5. You claim that the probability that your factory produces 15 or more defective widgets per day is less than or equal to 0.1. Is this claim justified? Explain your answer mathematically.
+
+\item In addition, you have determined that the number of defective widgets produced per day by your factory has a distribution which is symmetric about its mean. You claim that the probability that your factory produces 15 or more defective widgets per day is less than or equal to 0.1. Is this claim justified? Explain your answer mathematically.
+
+\item Finally, you have have determined that the number of defective widgets produced per day by your factory is approximately a normal distribution (with the mean and variance above). You claim that the probability that your factory produces 15 or more defective widgets per day is less than or equal to 0.02. Is this claim justified? Explain your answer mathematically.
+
+\end{enumerate}
+
+\item In the previous homework we gave an example of approximating a binomial distribution by a Poisson distribution. In this problem, we will approximate a binomial distribution by a normal distribution. From looking at the pmfs of the binomial distribution (in class and in the notes), for large values of $n$ the histogram of the binomial pmf looks ``bell-shaped''. It turns out that the normal distribution is a good approximation for the binomial approximation for large $n$. It also works for small $n$ as long as $p$ is not too far from 0.5.\\
+
+\begin{enumerate}
+\item Let $X \sim$ Binomial(25, 0.4). Compute $\P(X = 10)$.
+\item We will approximate $X$ with a normal random variable. Let $Y$ be a normal random variable with the same mean and variance as $X$. Compute $\P(9.5 \leq Y \leq 10.5)$. We will use this as an approximation for $\P(X = 10)$.
+\item Briefly explain why we used the event $(9.5 \leq Y \leq 10.5)$ to approximate the event $(X = 10)$.
+\item Compute the relative error in your approximation. You may refer back to the previous problem set for the definition of relative error.
+
+The general rule is that the normal approximation is ``good enough'' if
+\[
+0 < p \pm 3 \sqrt{\frac{pq}{n}} < 1
+\]
+
+\item Show that $0 \leq p \pm 3 \sqrt{\frac{pq}{n}} \leq 1$ implies that
+\[
+n > 9\left( \frac{p}{q} \right) \text{ and } n > 9\left( \frac{q}{p} \right)
+\]
+
+\item Using this rule, how large should $n$ be to approximate a binomial distribution with $p = 0.4$, $p = 0.8$, $p = 0.9$, and $p = 0.99$? Was our approximation in part (b) justified according to this rule?
+
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
+
