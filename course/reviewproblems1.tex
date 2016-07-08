@@ -1,0 +1,154 @@
+% \documentclass{book}
+
+\documentclass[12pt]{article}
+\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\usepackage[shortalphabetic]{amsrefs}%
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{cool}
+\usepackage{url}
+\usepackage{graphicx,epsfig}
+\usepackage{makecell}
+\usepackage{array}
+
+\def\noi{\noindent}
+\def\T{{\mathbb T}}
+\def\R{{\mathbb R}}
+\def\N{{\mathbb N}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\P{{\mathbb P}}
+\def\E{{\mathbb E}}
+\def\Q{\mathbb{Q}}
+\def\ind{{\mathbb I}}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+
+\title{}
+\author{\vspace{-10ex} }
+
+\begin{center}
+{\LARGE APMA 1650 -- Review Session 1}\\
+\vspace{5mm}
+{\large Friday, July 8, 2016}\\
+% \vspace{5mm}
+\end{center}
+
+Some of the problems I will go over in the review session are from the recitation sheet. Here are some other problems.
+
+\begin{enumerate}
+
+\item You have 5 different and distinguishable pairs of socks in your drawer. If you randomly select four socks from the drawer, what is the probability that there is no matching pair?\\
+
+There are $\binom{10}{4}$ ways to choose 4 socks out of 10 socks (order does not matter), so that is the size of the sample space. To get no socks of the same type, your selection must include 4 of the 5 types of socks. There are $\binom{5}{4}$ ways to choose 4 of the 5 sock types. For each of the 4 sock types chosen, there are 2 individual socks to choose from, since the socks come in pairs. Thus there are $\binom{5}{4}\cdot2\cdot2\cdot2\cdot2 = \binom{5}{4}2^4$ ways to choose no socks of the same type. Dividing we get
+\[
+\frac{\binom{5}{4}2^4}{\binom{10}{4}}
+\]
+
+\item Suppose we have a group of 22 high school students. We will divide them into two teams of 11 to play soccer.
+\begin{enumerate}
+\item If we divide them into a JV (junior varsity) and varsity team, how many ways are there to do this.\\
+
+Here we use the multinomial coefficient. Recall the the multinomial coefficient is the number of ways of splitting a group into \emph{distinct} subgroups, i.e. order matters. In this case, we have two distinct subgroups (JV and varsity teams), so we can use the multinomial to get:
+\[
+\binom{22}{11 \: 11} = \frac{22!}{11! 11!}
+\]
+\item If we divide them into two soccer teams, how many ways are there to do this?\\
+
+In this case, order does not matter. The two teams are not distinguished from each other in any way. So if we use the multinomial, we will overcount the number of possibilities. Recall the modification we make whenever we want order to not matter. Since there are 2 groups which are indistinguishable in this problem, we divide the multinomial (where order matters) by 2!, the number of orderings of 2 groups (if you want, you can think of this as $2P2$, which is just 2!). Thus, the number of possibilities is:
+\[
+\frac{ \binom{22}{11 \: 11}}{2!} = \frac{22!}{2! 11! 11!}
+\]
+\end{enumerate}
+
+\item At a certain intersection, the a traffic light is red for 15 seconds, yellow for 5 seconds, and green for 30 seconds.  
+\begin{enumerate}
+\item Find the probability that out of the next 10 cars which arrive randomly at the light, exactly 4 will be stopped by a red light.\\
+
+Here we have a sequence of Bernoulli trials, where ``success'' is defined as being stopped by a red light. Since the trials are independent and the probability of success does not change, these are in fact Bernoulli trials. The probability of success in this case is $p = 15 / 50 = 3/10$. We want the number of successes in $n = 10$ trials, so this can be modeled by a binomial random variable. Let $X \sim$Binomial(10, 3/10). Then
+\[
+\P(X = 4) = \binom{10}{4}(3/10)^4(7/10)^6
+\]
+
+\item What is the expected number of the next 10 cars which will be stopped by the light. What is the variance?\\
+
+Using the formulas for the expected value and variance of a binomial random variable,
+\begin{align*}
+\E(X) &= np = (10)(3/10) = 3 \\
+Var(X) &= np(1-p) = 10(3/10)(7/10) = 21/10
+\end{align*}
+\end{enumerate}
+
+\item A bag contains 20 marbles; 5 are red and 15 are white. You draw marbles from the bag one at a time, replacing them after each draw.
+
+\begin{enumerate}
+\item If you make 10 draws from the bag, what is the probability that fewer than 3 of them will be red?\\
+
+This is a case of Bernoulli trials, since we are drawing without replacement. Letting ``success'' be defined as drawing a red ball, we can model this with a binomial distribution since we want the number of successes out of a fixed number of trials. Let $X \sim $Binomial(10, 1/4) be the number of red balls drawn out of 10 draws. Then using the binomial pmf:
+\begin{align*}
+\P(X < 3) &= \P(X = 0) + \P(X = 1) + \P(X = 2) \\
+&= \binom{10}{0}(1/4)^0(3/4)^{10} + \binom{10}{1}(1/4)^1(3/4)^9 + \binom{10}{2}(1/4)^2(3/4)^8
+\end{align*}
+
+\item What is the expected value and variance of the number of red balls drawn out of 10?\\
+
+Using the formulas for the expected value and variance of a binomial random variable,
+\begin{align*}
+\E(X) &= np = (10)(1/4) = 5/2 \\
+Var(X) &= np(1-p) = 10(1/4)(3/4) = 15/8
+\end{align*}
+
+Now suppose you keep drawing from the bag (with replacement) until you get a red ball.
+
+\item What is the probability that you will get a red ball on the first 3 draws?\\
+
+Here we use the geometric distribution, since we want the probability of the first success. Let $Y \sim$Geometric(1/4) be the number of trials until you get the first red ball. Then using the geometric pmf,
+\begin{align*}
+\P(Y \leq 3) &= \P(Y = 1) + \P(Y = 2) + \P(Y = 3) \\
+&= p + (1-p)p + (1-p)^2 p \\
+&= (1/4) + (3/4)(1/4) + (3/4)^2 (1/4)
+\end{align*}
+
+\item What is the probability that it takes longer than 10 draws to get a red ball?\\
+
+Here we want $\P(Y > 10)$. Taking longer than 10 draws to get a red ball is equivalent to drawing a white ball (``failure'') on the first 10 draws. Thus
+\[
+\P(Y > 10) = (1-p)^{10} = (3/4)^{10}
+\]
+
+\item What is the expected value and variance of the number of draws it takes to get the first red ball?\\
+
+Using the formulas for the expected value and variance of a geometric random variable,
+\begin{align*}
+\E(X) &= 1/p = 1/(1/4) = 4 \\
+Var(X) &= (1-p)/p^2 = (3/4)/(1/16) = 12
+\end{align*}
+
+\end{enumerate}
+
+\item Suppose I make an average of 2 spelling mistakes per page in my class notes. Modeling this with an appropriate probability distribution, what is the probability that any given page has 2 or fewer spelling mistakes on it?\\
+
+We will model this with a Poisson distribution. Let $X$ be the number of errors per page in my notes. Then $X \sim$ Poisson(2).
+\begin{align*}
+\P(X \leq 2) &= \P(X = 1) + \P(X = 2) + \P(X = 3)\\
+&= \frac{e^{-2}2^0}{0!} + \frac{e^{-2}2^1}{1!} + \frac{e^{-2}2^2}{2!}
+\end{align*}
+
+\end{enumerate}
+\end{document}
+

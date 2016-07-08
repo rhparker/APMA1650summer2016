@@ -1,0 +1,245 @@
+% \documentclass{book}
+
+\documentclass[12pt]{article}
+\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\usepackage[shortalphabetic]{amsrefs}%
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{cool}
+\usepackage{url}
+\usepackage{graphicx,epsfig}
+\usepackage{makecell}
+\usepackage{array}
+
+\def\noi{\noindent}
+\def\T{{\mathbb T}}
+\def\R{{\mathbb R}}
+\def\N{{\mathbb N}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\P{{\mathbb P}}
+\def\E{{\mathbb E}}
+\def\Q{\mathbb{Q}}
+\def\ind{{\mathbb I}}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+
+\title{}
+\author{\vspace{-10ex} }
+
+\begin{center}
+{\LARGE APMA 1650 -- Problem Session 1}\\
+\vspace{5mm}
+{\large Wednesday, July 6, 2016}\\
+% \vspace{5mm}
+\end{center}
+
+There are fifteen problems on this sheet. There is no particular order to them, so I recommend that you work on the ones you find the most interesting.
+
+\begin{enumerate}
+
+\item Suppose we have an unfair die. The die has been altered so that the number 5 is twice as likely to appear as any of the other five outcomes. What are the probabilities of each possible outcome?\\
+
+Let $p$ be the probability of a 1, 2, 3, 4, or 6. Then the probability of a 5 is $2p$. Since these must all sum to 7, $p$ = 1/7.
+
+\item Suppose we are sending a digital signal which is a string of 0s and 1s of length five. (Example strings are 00101, 11000, 10101 are all 5 bit strings.) When we send the message, each bit (0 or 1) is sent independently and there is some chance that the bit is corrupted. Namely, each time we send a 0 there is a $5\%$ chance that a 1 is received and each time we send a 1 there is a $5\%$ chance a 0 is received.\\
+\begin{enumerate}
+\item Suppose we send a message of length 5, what is the probability that an incorrect message is received?\\
+
+We have a series of $n = 5$ Bernoulli trials with a probability of success $p = 0.95$, where ``success'' is sending a bit correctly. Let $X$ be the number of correct bits received (out of 5). Then $X \sim $Binomial(5, 0.95). The probability that an incorrect message is received is:
+\[
+\P(X < 5) = 1 - \P(X = 5) = \binom{5}{5}0.95^5 0.05^0
+\]
+
+\item Upon receiving a signal, we are not able to tell if some part is incorrect. To aid in error correction, we decide to send each bit three times. So if the original signal is 00101, we now send 000000111000111 (for ease of reading: 000-000-111-000-111).\\
+\linebreak
+When the message is received, the string is broken into pieces of length three and whichever bit appears more often is recorded. For example, if 001000101000111 is received, we consider\\
+\begin{center}
+001 000 101 000 111\\
+\end{center}
+and 00101 is recorded. If 110000101010001 is received, we then consider
+\begin{center}
+110 000 101 010 001\\
+\end{center}
+and 10100 is recorded.\\
+\linebreak
+Under this scheme, what is the probability that an incorrect message is recorded?
+\end{enumerate}
+
+This will still be a binomial distribution. The only thing that will change is $p$, since we will have a different probabiltiy of a read error. Suppose that we intend to send 1. (The other case is symmetric). Then the following 4 strings of length 3 will be read correctly as 1:
+\begin{figure}[H]
+\centering
+\begin{tabular}{l@{\hskip 2cm}l}
+\toprule
+String & Probabiltiy\\
+\midrule
+111 & $0.95^3$ \\
+110 & $0.95 \cdot 0.95 \cdot 0.05 = (0.95^2) 0.05 $\\
+101 & $0.95 \cdot 0.05 \cdot 0.95 = (0.95^2) 0.05 $ \\
+011 & $0.05 \cdot 0.95 \cdot 0.95 = (0.95^2) 0.05 $\\ 
+\bottomrule
+\end{tabular}
+\end{figure}
+Adding these up, we get our new value for $p$:
+\[
+p = 0.95^3 + 3 (0.95^2) 0.05 = 0.99275
+\]
+So we just redo the part above with $p = 0.99275$. Note that the probability of a successful transmission is higher. This is good, otherwise it would be wasteful to send three bits instead of 1.
+
+\item A fleet of 9 taxis is to be dispatched to three airports in such a way that three go to airport A, five go to airport B, and one goes to airport C. In how many distinct ways can this be accomplished?
+\[
+\binom{9}{3\:5\:1} = \frac{9!}{3!5!1!}
+\]
+
+\item A group of three undergraduate students and five graduate students are in a class. If four students are randomly selected to give a presentation, what is the probability that exactly two undergraduate students and two graduate students will be chosen?
+\[
+\dfrac{\binom{3}{2}\binom{5}{2}}{\binom{8}{4}}
+\]
+
+\item In Major League Baseball, four pairs of teams compete in the division series. Within each pair, the two teams play each other. The first to win 3 games is the winner of the pair. Thus each pair must play at least 3 games and at most 5 games. Assuming each team has a 50\% chance of winning a given game, and the outcome of each game is independent, what is the probability that all 4 pairs play 5 games, i.e. that all four division series games go to 5 games?\\
+
+For one pair of teams to go to 5 games, each team as to win 2 times and lose 2 times. The order of this does not matter. There are $\binom{4}{2}$ distinct orderings of the string \texttt{WWLL}, and the probability of any of these is $0.5^4$. Thus the probability that one pair of teams goes to 5 games is $\binom{4}{2} 0.5^4$. To get the probability that all 4 pais go to five games, we multiply this by itself 4 times to get $[\binom{4}{2} 0.5^4]^4 $.
+
+\item Suppose a class has 300 students.\\
+\begin{enumerate}
+\item The professor will pick 100 students equally likely at random and give these 100 students a free Applied Math t-shirt. What is the probability that any group of 100 students is picked?
+\[
+\binom{300}{100}
+\]
+\item Suppose that you are in the class. What is the probability that you will be one of the 100 students chosen and hence receive a free Applied Math t-shirt.
+\[
+\frac{1}{3}
+\]
+\item The exams are handed back one by one in a random order (i.e. an ordering of the 300 students is chosen equally likely at random from all orderings and the exams are handed back in this order). If you and your arch-nemesis are two students in the class, what is the probability that you will get your test back before your arch-nemesis does?\\
+
+Imagine all 300 students lining up to get their exams back. All that matters is whether you are in front of your arch-nemesis or behind them. None of the other students' positions matter. The chance that you are ahead of your archnemesis is 1/2, since both arrangements (you ahead of arch-nemesis, arch-nemesis ahead of you) are equally likely.
+\end{enumerate}
+
+\item Each day the price of a stock moves up half a point with probability 2/3 and moves down half a point with probability 1/3. What is the probability that after 6 days the stock is at its original price?\\
+
+We can use the binomial distribution. Let $X$ be the number of days out of 6 that the stock goes up. Then $X \sim$Binomial(6, 2/3). For the stock to return to its original price after exactly 6 days, we need the stock to go up three days and down three days, but the order does not matter. Thus we want the probability that $X = 3$. Using the binomial pmf:
+\[
+\P(X = 3) = \binom{6}{3}(2/3)^3(1/3)^3
+\]
+
+\item A population of voters contains $40\%$ Republicans and $60\%$ Democrats. It is reported that $30\%$ of the Republicans and $70\%$ of Democrats favor a certain ballot issue issue. A person chosen at random from this population is found to favor the ballot issue in question. Find the conditional probability that this person is a Democrat.
+
+Let $D$ be the event that you are a Democrat, $R$ the event that you are a Republican, and $B$ the event that you favor the ballot issue. Then by Bayes and Total Probability, using partition $\{D, R\}$ (there are no independents in this sample):
+\[
+\P(D|B) = \frac{ \P(B|D)\P(D)}{\P(\P(B|D)\P(D) + \P(B|R)\P(R)} = \frac{(0.7)(0.6)}{(0.7)(0.6) + (0.3)(0.4)}
+\]
+
+\item Suppose a professor has 10 TAs to grade 10 homework problems. Lacking a better methodology, he assigns each problem to a TA equally likely at random. What is the expected number of TAs that did not get assigned a problem?\\
+
+Linearity of expectation with indicator random variables. $X$ is number of TAs not assigned any problems. $X_i$ is indicator random variable for each TA, $i = 1, \dots, 10$, where:
+\[
+X_1 = \begin{cases}
+1 & \text{TA $i$ is not given any problems}\\
+0 & \text{TA $i$ is assigned problems}
+\end{cases}
+\]
+By construction, $X = X_1 + \cdots + X_{10}$. Then by linearity of expectation:
+\[
+\E(X) = \E(X_1) + \cdots + \E(X_{10}) 
+\]
+Let's find one of the expectations. By the definition of expected value of a discrete random variable,
+\[
+\E(X_i) = 0 \cdot \P(X_i = 0) + 1 \cdot \P(X_i = 1) = \P(X_i = 1)
+\]
+For $X_i$ to be 1, all 10 problems must be assigned to one of the other 9 TAs. Since problems are assigned uniformly at random, there is a 9/10 probability that an individual problem is assigned to one of the other 9 TAs. Thus there is a $(9/10)^10$ probability that all 10 problems are assigned to one of the other 9 TAs since the assignment of problems to TAs is independent. Thus we have:
+\[
+\E(X_i) = \P(X_i = 1) = (9/10)^10
+\]
+Adding 10 of these identical expectations together, we get
+\[
+\E(X) = 10 (9/10)^10
+\]
+
+\item Suppose that for a final exam half of all students study. If a student studies then they have a 3/4 probability of getting an A. If a student doesn’t study, they have a 1/4 probability of getting an A. What is the the probability that Alice studied, given that she gets an A?\\
+
+Let $A$ be the event that you got an A, $S$ the event that you studied. Then by Bayes and Total Probability, using partition $\{S, S^c\}$:
+\[
+\P(S|A) = \frac{ \P(A|S)\P(S)}{\P(\P(A|S)\P(S) + \P(A|S^c)\P(S^c)} = \frac{(3/4)(1/2)}{(3/4)(1/2) + (1/4)(1/2)}
+\]
+
+\item You and your roommate are playing a coin tossing game (good times!) You at flip a fair coin. If the coins are both $H$ you win 1 dollar. If the coins are both $T$ you win 2 dollars. If they don't match, you lose 1 dollar. Let $X$ be the random variable recording your winnings.
+\begin{enumerate}
+\item What is the expectation of $X$ if you play 1 time? 10 times? \\
+
+Probability of two heads or two tails is 1/4, probability of mismatch is 1/2. The expected value of $X$ is:
+\[
+\E(X) = 1(1/4) + 2(1/4) + (-1)(1/2) = 1/4
+\]
+Since you expect to win money after one round, you should be willing to play this game! If you play 10 games, each game has expected winnings of 1/4. Thus by linearity of expectation, the expected value of $X$ for 10 games is 10/4. One way to see this is to let $X_i$ be the winnings from each game. Then $X = X_1 + \cdots X_{10}$. Since $\E(X_i)$ = 1/4 for all $i$ since all games are the same, by linearity we just add up all 10 expected values (all of which are 1/4) to get an expected winnings of 1/4.
+
+Suppose you have to pay $d$ dollars up front to play the game. Your net winnings is then defined as $W = X - d$. In general, a fair game is one in which the expectation of the net winnings is 0.
+\item How much should you pay to play 1 time, 10 times, to make a fair game?\\
+
+For this to be a fair game, you should pay 1/4 dollar, i.e. one quarter, to play 1 time. If you pay a quarter per round, the game is always fair for any number of rounds. Mathematically, if you play one round, then by linearity of expectation and the expected value of a constant, $\E(W) = \E(X - d) = \E(X) - d = 1/4 - d$. For this to be 0, we need to have $d = 1/4$.
+
+\end{enumerate}
+
+\item Suppose the flight statistics from Philadelphia to Providence are as follows: The probability of an on-time flight is 2/3, the probability of a one-hour delay is 1/6, the probability of a two-hour delay is 1/12, and the probability of a three-hour delay is 1/12. What is the expected delay of the flight?\\
+
+Let $X$ represent the amount of delay. Then using the formula for the expected value of a discrete random variable,
+\[
+\E(X) = 0(2/3) + 1(1/6) + 2(1/12) + 3(1/12) = 5/18
+\]
+
+\item Suppose you roll a fair 6 sided die 100 times. Let $X$ be the number of times two consecutive rolls result in the same number. What is the the expected value of $X$?\\
+
+Once again, use linearity of expectation and indicator random variables. Let $X$ be the number of consecutive rolls. Let $X_i$ be the indicator random variable defined for $i = 1, \dots, 99$ by:
+\[
+X_i =\begin{cases}
+1 & \text{rolls $i$ and $i+1$ are the same}\\
+0 & \text{rolls $i$ and $i+1$ are different}
+\end{cases}
+\]
+Then $X = X_1 + \dots + X_{99}$, so by linearity of expectation, $\E(X) = \E(X_1) + \dots + \E(X_{99})$. As in problem 9 (the TA-homework problem), $\E(X_i) = \P(X_i = 1)$. This is the probability that two consecutive dice rolls are the same. Since dice rolls are independent, this probability is 1/6 (if you do not see this, draw my favorite probability space and count the number of doubles.) Thus $\E(X_i) = \P(X_i = 1) = 1/6$. By linearity,
+\[
+\E(X) = \E(X_1) + \dots + \E(X_{99}) = 99 \left(\frac{1}{6}\right) = \frac{99}{6} = \frac{33}{2}
+\]
+
+\item Suppose in a lottery you pick five different numbers from 1 to 90. Then five winning numbers are drawn equally likely at random. If you picked two of them, you win 20 dollars. For three, you win 150 dollars. For four, you win 5,000 dollars, and if all five match, you win a million dollars.
+\begin{enumerate}
+\item What is the probability that you picked exactly three of the winning numbers?
+Since you pick 5 different numbers, this is drawing without replacement. Essentially, this is the same as Powerball, except without the Powerball. To pick exactly 3 winning numbers, you need to pick 3 of the 5 winning numbers, and 2 of the 85 non-winning numbers. the probability is
+\[
+\dfrac{ \binom{5}{3} \binom{80}{2} }{ \binom{90}{5} }
+\]
+\item What is your expected win?\\
+Let $X$ be your winnings. Computing the other probabilities similiarly to the one above and using the formula for expected value of a discrete random variable (we don't care about the ways to win 0 dollars, since that just multiplies some probability by 0, which is 0):
+\begin{align*}
+\E(X) &= 20\cdot\P(\text{match 2}) + 150\cdot\P(\text{match 3}) + 5000\cdot\P(\text{match 5}) + 1,000,000\cdot\P(\text{match 5})\\
+&= 20 \dfrac{ \binom{5}{2} \binom{80}{3} }{ \binom{90}{5} } + 150 \dfrac{ \binom{5}{3} \binom{80}{2} }{ \binom{90}{5} } + 5000\dfrac{ \binom{5}{4} \binom{80}{1} }{ \binom{90}{5} } + 1,000,000\dfrac{ \binom{5}{5} \binom{80}{0} }{ \binom{90}{5} }
+\end{align*}
+\end{enumerate}
+
+\item Suppose a bucket contains one white and one black ball. We pick out a ball equally likely at random and then put the ball back along with another of the same color. Then we repeat. What is the probability that the first time we pick a white ball is after the $n$th iteration?\\
+
+To get a white ball for the first time at the $n$th iteration, we have to get a black ball at all previous iterations. Let $B_i$ and $W_i$ be the events that we get a black ball or a white ball at iteration $i$. We want the probability of getting $B_1, ..., B_{n-1}, W_n$ (here we use a comma instead of $\cap$ to denote ``and''). Using the multiplication rule:
+\begin{align*}
+\P(B_1, ..., B_{n-1}, W_n) &= \P(B_1)\P(B_2|B_1)\P(B_3|B_1, B_2)\P(B_{n-1}|B_1, \dots, B_{n-2})\cdots \P(W_n|B_1, \dots, B_{n-1}) \\
+&= \frac{1}{2} \: \frac{2}{3} \: \frac{3}{4} \dots \frac{n-1}{n} \:\frac{1}{n+1} \\
+&= \frac{1}{n(n+1)}
+\end{align*}
+where everything cancels except the $n$ and $n+1$ in the final two denominators. If you want, you can check that if you sum all of these probabilties from $n = 1$ to infinity, you get 1.
+
+\end{enumerate}
+\end{document}
+
