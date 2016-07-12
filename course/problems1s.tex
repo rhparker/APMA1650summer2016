@@ -119,7 +119,7 @@ For one pair of teams to go to 5 games, each team as to win 2 times and lose 2 t
 \begin{enumerate}
 \item The professor will pick 100 students equally likely at random and give these 100 students a free Applied Math t-shirt. What is the probability that any group of 100 students is picked?
 \[
-\binom{300}{100}
+\frac{1}{\binom{300}{100}}
 \]
 \item Suppose that you are in the class. What is the probability that you will be one of the 100 students chosen and hence receive a free Applied Math t-shirt.
 \[
@@ -167,7 +167,7 @@ For $X_i$ to be 1, all 10 problems must be assigned to one of the other 9 TAs. S
 \]
 Adding 10 of these identical expectations together, we get
 \[
-\E(X) = 10 (9/10)^10
+\E(X) = 10 (9/10)^{10}
 \]
 
 \item Suppose that for a final exam half of all students study. If a student studies then they have a 3/4 probability of getting an A. If a student doesn’t study, they have a 1/4 probability of getting an A. What is the the probability that Alice studied, given that she gets an A?\\
@@ -185,7 +185,7 @@ Probability of two heads or two tails is 1/4, probability of mismatch is 1/2. Th
 \[
 \E(X) = 1(1/4) + 2(1/4) + (-1)(1/2) = 1/4
 \]
-Since you expect to win money after one round, you should be willing to play this game! If you play 10 games, each game has expected winnings of 1/4. Thus by linearity of expectation, the expected value of $X$ for 10 games is 10/4. One way to see this is to let $X_i$ be the winnings from each game. Then $X = X_1 + \cdots X_{10}$. Since $\E(X_i)$ = 1/4 for all $i$ since all games are the same, by linearity we just add up all 10 expected values (all of which are 1/4) to get an expected winnings of 1/4.
+Since you expect to win money after one round, you should be willing to play this game! If you play 10 games, each game has expected winnings of 1/4. Thus by linearity of expectation, the expected value of $X$ for 10 games is 10/4. One way to see this is to let $X_i$ be the winnings from each game. Then $X = X_1 + \cdots X_{10}$. Since $\E(X_i)$ = 1/4 for all $i$ since all games are the same, by linearity we just add up all 10 expected values (all of which are 1/4) to get an expected winnings of 10/4.
 
 Suppose you have to pay $d$ dollars up front to play the game. Your net winnings is then defined as $W = X - d$. In general, a fair game is one in which the expectation of the net winnings is 0.
 \item How much should you pay to play 1 time, 10 times, to make a fair game?\\
@@ -198,7 +198,7 @@ For this to be a fair game, you should pay 1/4 dollar, i.e. one quarter, to play
 
 Let $X$ represent the amount of delay. Then using the formula for the expected value of a discrete random variable,
 \[
-\E(X) = 0(2/3) + 1(1/6) + 2(1/12) + 3(1/12) = 5/18
+\E(X) = 0(2/3) + 1(1/6) + 2(1/12) + 3(1/12) = 7/12
 \]
 
 \item Suppose you roll a fair 6 sided die 100 times. Let $X$ be the number of times two consecutive rolls result in the same number. What is the the expected value of $X$?\\
@@ -220,13 +220,13 @@ Then $X = X_1 + \dots + X_{99}$, so by linearity of expectation, $\E(X) = \E(X_1
 \item What is the probability that you picked exactly three of the winning numbers?
 Since you pick 5 different numbers, this is drawing without replacement. Essentially, this is the same as Powerball, except without the Powerball. To pick exactly 3 winning numbers, you need to pick 3 of the 5 winning numbers, and 2 of the 85 non-winning numbers. the probability is
 \[
-\dfrac{ \binom{5}{3} \binom{80}{2} }{ \binom{90}{5} }
+\dfrac{ \binom{5}{3} \binom{85}{2} }{ \binom{90}{5} }
 \]
 \item What is your expected win?\\
 Let $X$ be your winnings. Computing the other probabilities similiarly to the one above and using the formula for expected value of a discrete random variable (we don't care about the ways to win 0 dollars, since that just multiplies some probability by 0, which is 0):
 \begin{align*}
 \E(X) &= 20\cdot\P(\text{match 2}) + 150\cdot\P(\text{match 3}) + 5000\cdot\P(\text{match 5}) + 1,000,000\cdot\P(\text{match 5})\\
-&= 20 \dfrac{ \binom{5}{2} \binom{80}{3} }{ \binom{90}{5} } + 150 \dfrac{ \binom{5}{3} \binom{80}{2} }{ \binom{90}{5} } + 5000\dfrac{ \binom{5}{4} \binom{80}{1} }{ \binom{90}{5} } + 1,000,000\dfrac{ \binom{5}{5} \binom{80}{0} }{ \binom{90}{5} }
+&= 20 \dfrac{ \binom{5}{2} \binom{85}{3} }{ \binom{90}{5} } + 150 \dfrac{ \binom{5}{3} \binom{85}{2} }{ \binom{90}{5} } + 5000\dfrac{ \binom{5}{4} \binom{85}{1} }{ \binom{90}{5} } + 1,000,000\dfrac{ \binom{5}{5} \binom{85}{0} }{ \binom{90}{5} }
 \end{align*}
 \end{enumerate}
 
