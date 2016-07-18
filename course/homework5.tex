@@ -1,0 +1,108 @@
+% \documentclass{book}
+
+\documentclass[12pt]{article}
+\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\usepackage[shortalphabetic]{amsrefs}%
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{cool}
+\usepackage{url}
+\usepackage{graphicx,epsfig}
+\usepackage{makecell}
+\usepackage{array}
+
+\graphicspath{ {images/} }
+
+\def\noi{\noindent}
+\def\T{{\mathbb T}}
+\def\R{{\mathbb R}}
+\def\N{{\mathbb N}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\P{{\mathbb P}}
+\def\E{{\mathbb E}}
+\def\Q{\mathbb{Q}}
+\def\ind{{\mathbb I}}
+
+\begin{document}
+
+\title{}
+\author{\vspace{-10ex} }
+
+\begin{center}
+{\LARGE APMA 1650 -- Homework 5}\\
+\vspace{5mm}
+{\large Due Thursday, July 21, 2016}\\
+\vspace{5mm}
+Homework is due during class or by 3:45 pm in the homework drop box in 182 George St.\\
+Show all of your work used in deriving your solutions.
+\end{center}
+
+\begin{enumerate}
+
+\item Suppose that the random variables $Y_1$ and $Y_2$ have joint density function:\
+\[
+f(y_1, y_2) = \begin{cases}
+y_1 + y_2 & 0 \leq y_1 \leq 1, 0 \leq y_2 \leq 1 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+\begin{enumerate}
+\item Show this is a valid joint probability density. 
+\item Find the marginal densities for $Y_1$ and $Y_2$.
+\item Find the probability that $Y_1 < 1/2$ and $Y_2 > 1/2$.
+\item Find the conditional density for $Y_1$ given $Y_2 = y_2$.
+\item Find the probability that $Y_1 < 1/2$ given $Y_2 = 1/2$.
+\end{enumerate}
+
+\item Suppose that the random variables $Y_1$ and $Y_2$ have joint density function:\
+\[
+f(y_1, y_2) = \begin{cases}
+c(1 - y_2) & 0 \leq y_1 \leq y_2 \leq 1 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+\begin{enumerate}
+\item Find the value of $c$ that makes this a valid joint probability density. 
+\item Find the marginal densities for $Y_1$ and $Y_2$.
+\item Find the conditional density for $Y_1$ given $Y_2 = y_2$.
+\item Find the expected values $\E(Y_1)$ and $\E(Y_2)$.
+\item Find the conditional expected value $\E(Y_1 | Y_2 = y_2)$.
+\end{enumerate}
+
+\item Suppose that the random variables $Y_1$ and $Y_2$ have joint density function:
+\[
+f(y_1, y_2) = \begin{cases}
+e^{-(y_1 + y_2)} & y_1 > 0, y_2 > 0 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+\begin{enumerate}
+\item Find the marginal densities for $Y_1$ and $Y_2$. What kind of random variables are $Y_1$ and $Y_2$?
+\item Find the conditional density of $Y_1$ given that $Y_2 = y_2$ for $y_2 > 0$.
+\item Are $Y_1$ and $Y_2$ independent? Justify your answer.
+\end{enumerate}
+
+\item You are again the quality control manager for the Acme Widget Company. You have just launched a new line of MiniWidgets. Your MiniWidgets are produced by a MiniWidget machine. The MiniWidgets produced by the machine have masses which are normally distributed with a standard deviation of 0.2 grams. The machine can be adjusted so that the MiniWidgets it produces have an average mass of $\mu$ grams. What setting for $\mu$ should you use so that the masses of the MiniWidgets will exceed 10 grams at most 2\% of the time?
+
+\item Let $X_1$ and $X_2$ be two independent geometric random variables, both with parameter $p$. Find a nice, closed-form formula for
+\[
+\P(X_1 = i | X_1 + X_2 = n)
+\]
+Your formula should not involve a sum. Hint: use the definition of conditional probability.
+\end{enumerate}
+\end{document}
+
