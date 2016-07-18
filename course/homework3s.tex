@@ -150,7 +150,7 @@ Using the pmf table above and the formula for the expected value of a discrete r
 Since we have events occurring with a constant average rate in a fixed span of time, and the events occur independently from each other (or at least roughly: two friends could come into your coffee shop together), we will model this with a Poisson distribution with parameter $\lambda = 10$. Let $X \sim$Poisson(10). Then:
 \begin{align*}
 \P(X < 5) &= \P(X = 0) + \P(X = 1) + \P(X = 2) + \P(X = 3) + \P(X = 4)\\
-&= \frac{e^{-10} 10^0}{0!} + \frac{e^{-10} 10^1}{1!} + \frac{e^{-10} 10^2}{2!} + \frac{e^{-10} 10^3}{3!} + \frac{e^{-10} 10^4}{5!}&\approx 0.029
+&= \frac{e^{-10} 10^0}{0!} + \frac{e^{-10} 10^1}{1!} + \frac{e^{-10} 10^2}{2!} + \frac{e^{-10} 10^3}{3!} + \frac{e^{-10} 10^4}{4!}\\&\approx 0.029
 \end{align*} 
 Don't forget that a Poisson random variable can take the value 0.
 
@@ -162,7 +162,7 @@ Suppose it takes 4 minutes to serve one customer. The total service time is the 
 
 The total service time is just the number of customers multiplied by 4. Let $Y$ be the total service time. Then $Y = 4X$. Using linearity of expectation,
 \[
-\E(Y) = \E(4X) = 4\E(X) = 4(10) = 10
+\E(Y) = \E(4X) = 4\E(X) = 4(10) = 40
 \]
 where we used the fact that the expected value of a Poisson random variable is its parameter $\lambda$, which is 10 in this problem.
 
