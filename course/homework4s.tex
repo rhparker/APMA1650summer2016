@@ -1,0 +1,282 @@
+% \documentclass{book}
+
+\documentclass[12pt]{article}
+\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\usepackage[shortalphabetic]{amsrefs}%
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{cool}
+\usepackage{url}
+\usepackage{graphicx,epsfig}
+\usepackage{makecell}
+\usepackage{array}
+
+\graphicspath{ {images/} }
+
+\def\noi{\noindent}
+\def\T{{\mathbb T}}
+\def\R{{\mathbb R}}
+\def\N{{\mathbb N}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\P{{\mathbb P}}
+\def\E{{\mathbb E}}
+\def\Q{\mathbb{Q}}
+\def\ind{{\mathbb I}}
+
+\begin{document}
+
+\title{}
+\author{\vspace{-10ex} }
+
+\begin{center}
+{\LARGE APMA 1650 -- Homework 4}\\
+\vspace{5mm}
+{\large Due Monday, July 18, 2016}\\
+\vspace{5mm}
+Homework is due during class or by 3:45 pm in the homework drop box in 182 George St.\\
+Show all of your work used in deriving your solutions.
+\end{center}
+
+\begin{enumerate}
+
+\item Let $X$ be a continuous random variable which has a probability density $f(x)$ given by
+\[
+f(x) = \begin{cases}
+c x^3 & 0 \leq x \leq 1 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+\begin{enumerate}
+\item Find the value of $c$ which makes this a valid probability density function.\\
+
+We integrate the density from 0 to 1 and set the integral equal to 1:
+\begin{align*}
+1 &= \int_0^1 c x^3 dx \\
+&= c \frac{x^4}{4}\Bigr|_0^1 \\
+&= \frac{c}{4}
+\end{align*}
+From this we see that $c = 4$.
+
+\item What is $\P(0 \leq X \leq \frac{1}{4})$?\\
+
+To find this probability, we integrate the density from 0 to 1/4.
+\begin{align*}
+\P(0 \leq X \leq \frac{1}{4}) &= \int_0^{1/4} 4 x^3 dx \\
+&= x^4 \Bigr|_0^{1/4} \\
+&= \frac{1}{4^4}
+\end{align*}
+
+\item Find the expected value and variance of $X$.
+
+\begin{align*}
+\E(X) &= \int_0^1 x f(x) dx \\
+&= \int_0^1 x 4x^3 dx \\
+&= \int_0^1 4x^4 dx \\
+&= 4 \frac{x^5}{5}\Bigr|_0^1 \\
+&= \frac{4}{5}
+\end{align*}
+
+To find the variance, we use the Magic Variance Formula.
+\begin{align*}
+\E(X^2) &= \int_0^1 x^2 f(x) dx \\
+&= \int_0^1 x^2 4x^3 dx \\
+&= \int_0^1 4x^5 dx \\
+&= 4 \frac{x^6}{6}\Bigr|_0^1 \\
+&= \frac{4}{6} &= \frac{2}{3}
+\end{align*}
+By the Magic Variance Formula,
+\begin{align*}
+Var(X) &= \E(X^2) - (\E(X))^2 \\
+&= \frac{2}{3} - \left( \frac{4}{5} \right) \\
+&= \frac{2}{3} - \frac{16}{25} \\
+&= \frac{2}{75}
+\end{align*}
+
+\item Find the median of $X$.\\
+First we find the CDF.
+\begin{align*}
+F(x) &= \int_0^x f(t) dt \\
+&= \int_0^x 4t^3 dt \\
+&= t^4 \Bigr|_0^x \\
+&= x^4
+\end{align*}
+
+To find the median, set the CDF equal to 1/2. Let $m$ be the median. Then
+\begin{align*}
+1/2 &= F(m) \\
+&= m^4
+\end{align*}
+Thus $m = (1/2)^{1/4}$.
+
+\end{enumerate}
+
+\item Suppose we are playing a game of darts. We throw darts at a circular dartboard with radius 1. Suppose the darts land uniformly at random on the dartboard, i.e. the probability of landing in a subset of the dartboard is equal to the area of the subset divided by the area of the dartboard.
+\begin{enumerate}
+\item What is the probability that the dart hits the exact center of the dartboard?\\
+
+The center is a single point with area of 0, so the probability is 0.
+
+\item What is the probability that the dart lands closer to the center than to the edge of the dartboard?\\
+
+To land closer to the center than the edge, the dart must land in a circle of radius 1/2, which has area $\pi (1/2)^2 = \pi/4$. Since the dartboard has area of $\pi 1^2 = \pi$, we divide these to get a probability of 1/4.
+
+\item For $a < b < 1$, what is the probability that the dart lies at a distance between $a$ and $b$ of the center of the dartboard?\\
+
+To land between a distance $a$ and $b$ of the center, we need to land in a ring with inner radius $a$ and outer radius $b$. This ring has area $\pi b^2 - \pi a^2$. Dividing by the area of the circle $\pi$ once again, the probability that the dart lands in this ring is $b^2 - a^2$.
+
+\end{enumerate}
+
+\item A company that manufactures and bottles juice uses a machine that automatically fills 16-ounce bottles. There is some variation in the amount of liquid dispensed by the machine. The amount of juice dispensed has been observed to follow a normal distribution with mean of 16 ounces and standard deviation of 0.6 ounces.
+\begin{enumerate}
+\item What is the probability that the machine dispenses more than 17 ounces?\\
+
+Let $X$ be the amount of liquid dispensed by the machine. Then $X \sim$ Normal(16, 0.6). Converting to the standard normal distribution,
+\begin{align*}
+\P(X > 17) &= \P\left( Z > \frac{17 - 16}{0.6} \right) = \P(Z > 1.67)\\
+&= 1 - \P(Z \leq 1.67) = 1 - 0.9525 = 0.0475
+\end{align*}
+where we used the $Z$-table to get the probabilities in the second line.
+
+\item What is the probability that the machine dispenses between 15.5 and 16.5 ounces?
+\begin{align*}
+\P(15.5 \leq X \leq 16.5) &= \P\left( \frac{15.5 - 16}{0.6} \leq Z \leq \frac{16.5 - 16}{0.6} \right) = \P\left( -0.83 \leq Z \leq 0.83)\right)\\
+&= 0.7967 - 0.2033 = 0.5934
+\end{align*}
+
+\item Suppose you wish to be 95\% confident that the machine dispenses between 15.5 and 16.5 ounces. What standard deviation must your machine have for this to be the case?\\
+
+Here we can just use the 68-95-99.7 rule. For 95\% confidence, we want the range to be 2 standard deviations on either side of the mean, so since two standard deviations are 0.5, the machine must have a standard deviation of 0.25.
+\end{enumerate}
+
+\item Yet another time, you find yourself the quality control manager for the Acme Widget Company. You are concerned about the number of defective widgets being produced by one of your factories.
+\begin{enumerate}
+\item You have determined that the number of defective widgets produced per day by your factory has a mean of 10. You claim that the probability that your factory produces 15 or more defective widgets per day is less than or equal to 0.5. Is this claim justified? Explain your answer mathematically.\\
+
+Let $X$ be the number of defective widgets produced per day. Since we only know the mean, the best estimate we can get comes from Markov's Inequality:
+\[
+\P(X \geq 15) \leq \frac{\E(X)}{15} = \frac{10}{15} = \frac{2}{3}
+\]
+The claim is not justified since the best bound we can get is 2/3.
+
+\item In addition, you have determined that the number of defective widgets produced per day by your factory has a variance of 5. You claim that the probability that your factory produces 15 or more defective widgets per day is less than or equal to 0.1. Is this claim justified? Explain your answer mathematically.\\
+
+Here we know the variance as well, so we can use Chebyshev's Inequality. Recalling that Chebyshev's Inequality gives us a bound on deviation from the mean:
+\[
+\P(|X - 10| \geq 5) \leq \frac{Var(X)}{5^2} = \frac{5}{5^2} = \frac{1}{5} = 0.20
+\]
+We are interested in $\P(X \geq 15)$ which we know must be less than or equal to the probability above. Thus the best bound we can get is:
+\[
+\P(X \geq 15) \leq \P(|X - 10| \geq 5) \leq 0.20
+\]
+which is not good enough. Thus the claim is not justified.
+
+\item In addition, you have determined that the number of defective widgets produced per day by your factory has a distribution which is symmetric about its mean. You claim that the probability that your factory produces 15 or more defective widgets per day is less than or equal to 0.1. Is this claim justified? Explain your answer mathematically.\\
+
+Since the distribution is symmetric about its mean, $\P(X \geq 15) = \frac{1}{2} \P(|X - 10| \geq 5)$, thus using the result of Chebyshev's Inequality above,
+\[
+\P(X \geq 15) = \frac{1}{2} \P(|X - 10| \geq 5) \leq \frac{1}{2} 0.20 = 0.10
+\]
+Thus in this case the claim is justified.
+
+\item Finally, you have have determined that the number of defective widgets produced per day by your factory is approximately a normal distribution (with the mean and variance above). You claim that the probability that your factory produces 15 or more defective widgets per day is less than or equal to 0.02. Is this claim justified? Explain your answer mathematically.\\
+
+To check this claim, we convert to the standard normal distribution. The variance is 5, so the standard deviation is $\sqrt{5}$. Thus we have:
+\begin{align*}
+\P(X \geq 15) &= \P\left(Z \geq \frac{15 - 10}{\sqrt{5}}\right) \\
+&= \P\left(Z \geq \frac{5}{\sqrt{5}}\right) \\
+&= \P\left(Z \geq \sqrt{5})\right)\\
+&= \P(Z \geq 2.24)\\
+&= 1 - \P(Z \leq 2.24)\\
+&= 1 - 0.9875\\
+&= 0.0125
+\end{align*}
+where we used the $Z$-table to find our probability above. Thus the claim is justified. The take-home message from this problem is that the more information we have about a random variable, the better bound we can get on the probability of an outlier value.
+\end{enumerate}
+
+\item In the previous homework we gave an example of approximating a binomial distribution by a Poisson distribution. In this problem, we will approximate a binomial distribution by a normal distribution. From looking at the pmfs of the binomial distribution (in class and in the notes), for large values of $n$ the histogram of the binomial pmf looks ``bell-shaped''. It turns out that the normal distribution is a good approximation for the binomial approximation for large $n$. It also works for small $n$ as long as $p$ is not too far from 0.5. For convenience, we will let $q = 1-p$.\\
+
+\begin{enumerate}
+\item Let $X \sim$ Binomial(25, 0.4). Compute $\P(X = 10)$.\\
+
+\[
+\P(X = 10) = \binom{25}{10}0.4^{10}0.6^{15} = 0.161158
+\]
+
+\item We will approximate $X$ with a normal random variable. Let $Y$ be a normal random variable with the same mean and variance as $X$. Compute $\P(9.5 \leq Y \leq 10.5)$. We will use this as an approximation for $\P(X = 10)$.\\
+
+The mean and variance of $X$ can be found from the probability distribution table. From that, we get:
+\begin{align*}
+\E(X) &= np = 25(0.4) = 10
+Var(X) &= np(1-p) = 25(0.4)(0.6) = 6
+\end{align*}
+The standard deviation is $\sigma = \sqrt{6}$. We use the same parameters for $Y$, i.e. $Y \sim$ Normal(10, $\sqrt{6})$. Converting to the standard normal random variable, we have:
+\begin{align*}
+\P(9.5 \leq Y \leq 10.5) &= \P\left( \frac{9.5 - 10}{\sqrt{6}} \leq Z \leq \frac{10.5 - 10}{\sqrt{6}} \right) \\
+&= \P\left( -0.20 \leq Z \leq 0.20 \right) \\
+&= 0.5793 - 0.4207 \\
+&= 0.1586
+\end{align*}
+
+\item Briefly explain why we used the event $(9.5 \leq Y \leq 10.5)$ to approximate the event $(X = 10)$.\\
+
+The binomial distribution is discrete and the normal distribution is continuous, so we need a range of values in the normal distribution to approximate a value in the binomial distribution. The symmetric interval $[9.5, 10.5]$ centered about 10 is a reasonable approximation.
+
+\item Compute the relative error in your approximation. You may refer back to the previous problem set for the definition of relative error.
+
+\[
+\text{Relative Error} \frac{| 0.1612 - 0.1586 |}{0.1612} = 0.016
+\]
+This is between 1 and 2 percent, which is pretty good.
+
+The general rule is that the normal approximation is ``good enough'' if
+\[
+0 \leq p \pm 3 \sqrt{\frac{pq}{n}} \leq 1
+\]
+
+\item Show that $0 \leq p \pm 3 \sqrt{\frac{pq}{n}} \leq 1$ implies that
+\[
+n \geq 9\left( \frac{p}{q} \right) \text{ and } n \geq 9\left( \frac{q}{p} \right)
+\]
+Using the left inequality with the minus sign:
+\begin{align*}
+0 &\leq p - 3 \sqrt{\frac{pq}{n}}\\
+p &\geq 3 \sqrt{\frac{pq}{n}}\\
+p^2 &\geq 9 \frac{pq}{n} \\
+n &\geq 9 \frac{q}{p}
+\end{align*}
+Using the right inequality with the plus sign:
+\begin{align*}
+\leq p + 3 \sqrt{\frac{pq}{n}} &\leq 1 \\
+3 \sqrt{\frac{pq}{n}} &\leq 1 - p = q \\
+9 \frac{pq}{n} &\leq q^2 \\
+n &\geq 9 \frac{p}{q}
+\end{align*}
+
+\item Using this rule, how large should $n$ be to approximate a binomial distribution with $p = 0.4$, $p = 0.8$, $p = 0.9$, and $p = 0.99$? Was our approximation in part (b) justified according to this rule?\\
+
+\begin{itemize}[noitemsep]
+\item For $p = 0.4$, $n \geq 9 \cdot 0.4/0.6 = 6$ and $n \geq 9 \cdot 0.9/0.4 = 13.5$, so need $n \geq 13.5$. Since it makes no sense for $n$ to be a non-integer, we need $n \geq 14$.
+\item For $p = 0.8$, $n \geq 9 \cdot 0.8/0.2 = 36$ and $n \geq 9 \cdot 0.2/0.8 = 2.25$, so need $n \geq 36$. You really only need to check the first inequality since you can see it will give a larger bound.
+\item For $p = 0.9$, $n \geq 9 \cdot 0.9/0.1 = 81$ and $n \geq 9 \cdot 0.1/0.9 = 1$, so need $n \geq 81$.
+\item For $p = 0.99$, $n \geq 9 \cdot 0.99/0.01 = 891$ and $n \geq 9 \cdot 0.01/0.99 = 0.0909$, so need $n \geq 891$.
+\end{itemize}
+For part (b), we need $n \geq 14$ based on the above. Since $n = 25$ in our binomial distribution, we are justified in making our approximation.
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
+

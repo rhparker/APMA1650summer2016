@@ -356,8 +356,6 @@ We could also have integrated in the $x$ direction first.
 \end{enumerate}
 \end{example}
 
-\end{document}
-
 \subsubsection{Marginal Distribution}
 Consider a joint distribution $(Y_1, Y_2)$ of two continuous random variables with joint density $f(y_1, y_2)$. $Y_1$ and $Y_2$ are themselves continuous random variables, and their distributions are called the \emph{marginal distributions} of $Y_1$ and $Y_2$. The probability densities of $Y_1$ and $Y_2$ are the \emph{marginal densities} of $Y_1$ and $Y_2$.\\
 
@@ -631,14 +629,16 @@ f(x|y) &=  \begin{cases}
 Here, we use the formula for the expected value of a continuous random variable with the conditional density $f(x|y)$.
 \begin{align*}
 \E(X|Y = y) &= \int_{-\infty}^\infty f(x|y) dx \\
-&= \int_0^y \dfrac{ 2 x }{ y^2 } dx \\
-&= \dfrac{x^2}{y^2}\Bigr|0^y \\
-&= \dfrac{y^2}{y^2} = 1
+&= \int_0^y x \dfrac{ 2 x }{ y^2 } dx \\
+&= \int_0^y \dfrac{ 2 x^2 }{ y^2 } dx \\
+&= \dfrac{2x^3}{3 y^2}\Bigr|_0^y \\
+&= \dfrac{2y}{3}
 \end{align*}
-It is interesting to note that in this case, the conditional expected value does not depend on $y$.
 
 \end{enumerate}
 \end{example}
+
+\end{document}
 
 \subsubsection{Joint Uniform Distribution}
 Here we will consider the bivariate uniform distribution. Recall the for the continuous uniform distribution, the probability of an interval is proportional to its length. For the two-dimensional uniform distribution, the probability of a region is proportional to its area. Let's look at an example.
