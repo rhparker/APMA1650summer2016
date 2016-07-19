@@ -220,7 +220,7 @@ where we used the $Z$-table to find our probability above. Thus the claim is jus
 
 The mean and variance of $X$ can be found from the probability distribution table. From that, we get:
 \begin{align*}
-\E(X) &= np = 25(0.4) = 10
+\E(X) &= np = 25(0.4) = 10\\
 Var(X) &= np(1-p) = 25(0.4)(0.6) = 6
 \end{align*}
 The standard deviation is $\sigma = \sqrt{6}$. We use the same parameters for $Y$, i.e. $Y \sim$ Normal(10, $\sqrt{6})$. Converting to the standard normal random variable, we have:
@@ -269,7 +269,7 @@ n &\geq 9 \frac{p}{q}
 \item Using this rule, how large should $n$ be to approximate a binomial distribution with $p = 0.4$, $p = 0.8$, $p = 0.9$, and $p = 0.99$? Was our approximation in part (b) justified according to this rule?\\
 
 \begin{itemize}[noitemsep]
-\item For $p = 0.4$, $n \geq 9 \cdot 0.4/0.6 = 6$ and $n \geq 9 \cdot 0.9/0.4 = 13.5$, so need $n \geq 13.5$. Since it makes no sense for $n$ to be a non-integer, we need $n \geq 14$.
+\item For $p = 0.4$, $n \geq 9 \cdot 0.4/0.6 = 6$ and $n \geq 9 \cdot 0.6/0.4 = 13.5$, so need $n \geq 13.5$. Since it makes no sense for $n$ to be a non-integer, we need $n \geq 14$.
 \item For $p = 0.8$, $n \geq 9 \cdot 0.8/0.2 = 36$ and $n \geq 9 \cdot 0.2/0.8 = 2.25$, so need $n \geq 36$. You really only need to check the first inequality since you can see it will give a larger bound.
 \item For $p = 0.9$, $n \geq 9 \cdot 0.9/0.1 = 81$ and $n \geq 9 \cdot 0.1/0.9 = 1$, so need $n \geq 81$.
 \item For $p = 0.99$, $n \geq 9 \cdot 0.99/0.01 = 891$ and $n \geq 9 \cdot 0.01/0.99 = 0.0909$, so need $n \geq 891$.
