@@ -1,0 +1,264 @@
+\documentclass[12pt]{article}
+\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\usepackage[shortalphabetic]{amsrefs}%
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{cool}
+\usepackage{url}
+\usepackage{graphicx,epsfig}
+\usepackage{framed}
+\usepackage{hyperref}  
+
+\usetikzlibrary{automata,arrows,positioning,calc}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{exercise}{Exercise}%
+\newtheorem{problem}[exercise]{Problem}%
+\newtheorem*{example}{Example}
+
+\theoremstyle{remark}
+\newtheorem*{question}{Question}
+\newtheorem*{observation}{Observation}
+\newtheorem*{remark}{Remark}
+
+\graphicspath{ {images/} }
+
+\setlength{\parindent}{0cm}
+\renewcommand{\vec}[1]{\ensuremath{\mathbf{#1}}}
+
+\def\noi{\noindent}
+\def\T{{\mathbb T}}
+\def\R{{\mathbb R}}
+\def\N{{\mathbb N}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\P{{\mathbb P}}
+\def\E{{\mathbb E}}
+\def\Q{\mathbb{Q}}
+\def\ind{{\mathbb I}}
+
+\def\cale{{\mathcal E}}
+\def\cals{{\mathcal S}}
+\def\calc{{\mathcal C}}
+\def\caln{{\mathcal N}}
+\def\calb{{\mathcal B}}
+\def\calg{{\cal G}}
+
+\def\ds{\displaystyle}
+\def\ra{\rightarrow}
+\newcommand{\conv}{\mbox{\rm conv}}
+\newcommand{\spaan}{\mbox{\rm span}}
+\newcommand{\deet}{\mbox{\rm det}}
+\newcommand{\aff}{\mbox{\rm aff}}
+\newcommand{\cl}{\mbox{\rm cl}}
+\newcommand{\dimm}{\mbox{\rm dim}}
+\newcommand{\sm}{\setminus}
+\def\ci{\perp\!\!\!\perp}
+
+\newcommand{\ink}{\rule{.5\baselineskip}{.55\baselineskip}}
+
+\begin{document}
+
+\setcounter{section}{5}
+\section{Estimation}
+
+\subsection{Introduction}
+The purpose of statistics is to make inferences about populations based on data from a small sample of that population. Populations are characterized by probability distributions which can be described by numerical parameters. The population mean $\mu$ and population variance $\sigma^2$ are parameters common to all probability distributions. In addition, some populations can be described by other natural parameters. One example is the population of all registered voters in Rhode Island. If we are interested in the yes/no question ``Are you going to vote for Clinton?'', a natural parameter is $p$, the proportion of the population who plans on voting for Clinton.\\
+
+The setup is exactly the same as with sampling. Suppose we are studying a population whose distribution is characterized by a parameter of interest which we will denote $\theta$ (this could be the population mean, population variance, proportion of voters supporting Clinton, or some other parameter). We will take $n$ independent, identically distributed samples $Y_1, \dots, Y_n$ from our population. An \emph{estimator} is a function of our $n$ samples which is designed to give us information about the population parameter. There are two types of estimators we will discuss:
+\begin{enumerate}
+\item A \emph{point estimator} produces a single number which we think is close to the parameter of interest. We will learn several ways to quantitatively evaluate the ``goodness'' of a point estimator
+\item An \emph{interval estimate} produces an interval (often called a confidence interval) in which we believe our parameter of interest lies. We will learn how to construct confidence intervals which include the parameter of interest with a given probability.
+\end{enumerate}
+
+
+\subsection{Point Estimators}
+We start our discussion with point estimators. We have already met one point estimator, the sample mean $\bar{Y}$. The sample mean is an estimator since it is a function of our $n$ samples. It is an estimator for the population mean. For another example, suppose we are polling $n$ voters out of a population of registered voters and asking them if they are voting for Clinton. The parameter of interest is $p$, the proportion of registered voters who will vote for Clinton. Let $Y$ be the number of voters in our sample who are voting for Clinton. Then the sample proportion $\hat{p} = Y/n$ is an estimator for the population proportion $p$. (The ``hat'' over the $p$ indicates that it is an estimator for the parameter $p$).\\
+
+Since we are applied mathematicians, we need quantitative tools to tell whether an estimator is any good. Let $\hat{\theta}$ be an estimator for the parameter $\theta$. The first criterion we can use to evaluate an estimator is \emph{bias}. We would like the expected value of our estimator to be the actual value of the parameter we are trying to estimate, i.e. $\E(\hat{\theta}) = \theta$. An estimator which has this property is called \emph{unbiased}
+
+\begin{framed}
+\emph{Bias of an Estimator}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $\hat{\theta}$ be an estimator for a parameter $\theta$. The estimator $\hat{\theta}$ is \emph{unbiased} if $\E(\hat{\theta}) = \theta$. Otherwise, the estimator $\hat{\theta}$ is \emph{biased}. The \emph{bias} of $\hat{\theta}$ is given by
+\[
+Bias(\hat{\theta}) = \E(\hat{\theta}) - \theta
+\]
+\end{framed}
+
+Let's look at the estimators we have seen so far. The sample mean $\bar{Y}$ is an estimator for the population mean $\mu$ (here we abandon our ``hat''-convention, and call this $\bar{Y}$ rather than $\hat{\mu}$). We showed in the last section that $\E(\bar{Y}) = \mu$, thus the sample mean is an unbiased estimator for the population mean.\\
+
+What about the sample proportion estimator we use in polling? Suppose we poll $n$ voters in a population, and let $Y$ be the number of voters in our sample who are voting for Clinton. As long as the sample is small enough (less than 1/20 of the population size), we can take $Y$ to be a binomial random variable with parameters $n$ and $p$. For our estimator $\hat{p} = Y/n$, 
+\[
+\E(\hat{p}) = \E\left( \frac{Y}{n} \right) = \frac{1}{n}\E(Y) = \frac{np}{n} = p
+\]
+where we have used the expected value of a binomial random variable. Since $\E(\hat{p}) = p$, this estimator is unbiased as well. We will see an example of a biased estimator later.\\
+
+A perhaps better measure of the ``goodness'' of an estimator is its \emph{mean square error}, the average of the square distance of the estimator from the parameter of interest.
+
+\begin{framed}
+\emph{Mean Square Error}\\
+  \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
+Let $\hat{\theta}$ be an estimator for a parameter $\theta$. The \emph{mean square error} of $\hat{\theta}$ is defined by
+\[
+MSE(\hat{\theta}) = \E[ (\hat{\theta} - \theta)^2]
+\]
+If $Bias(\hat{\theta})$ is the bias of $\hat{\theta}$ and $Var(\hat{\theta})$ is the variance of $\hat{\theta}$, then
+\[
+MSE(\hat{\theta}) = [Bias(\hat{\theta})]^2 + Var(\hat{\theta})
+\] 
+\end{framed}
+Note that the MSE can be divided into two components: variance and bias squared. Both of these are positive. We have discussed above how low bias is a good quality for an estimator. Low variance is a desired quality for an estimator as well since ideally we would like the distribution of the estimator to cluster tightly about the parameter of interest. In general, if we keep the sample size fixed, there is a tradeoff between bias and variance. For a given MSE, if we wish our estimator to have lower bias, then we must accept a higher variance and vice versa.\\
+
+To show the relationship between MSE, bias, and variance, we take the definition of MSE and add and subtract $\E(\hat{\theta})$ inside the parentheses.
+
+\begin{align*}
+MSE(\hat{\theta}) &= \E[ (\hat{\theta} - \theta)^2 ] \\
+&= \E[ (\hat{\theta} - \E(\hat{\theta})) + (\E(\hat{\theta}) - \theta)]^2 \\
+&= \E[ (\hat{\theta} - \E(\hat{\theta}))^2] + 2 \E [ (\hat{\theta} - \E(\hat{\theta})) (\underbrace{\E(\hat{\theta}) - \theta)}_{\text{constant}} ] + \E[ \underbrace{(\E(\hat{\theta}) - \theta)^2}_{\text{constant}} ] \\
+&= Var(\hat{\theta} ) + 2 (\E(\hat{\theta}) - \theta) \E [ (\hat{\theta} - \E(\hat{\theta})) ] + (\E(\hat{\theta}) - \theta)^2\\
+&= Var(\hat{\theta} ) + 2 (\E(\hat{\theta}) - \theta) (\underbrace{\E(\hat{\theta}) - \E(\hat{\theta})}_{=0}) + [Bias(\hat{\theta})]^2 \\
+&= Var(\hat{\theta} ) + [Bias(\hat{\theta})]^2
+\end{align*}
+
+Let's look at the MSE of the two estimators we discussed above.
+\begin{enumerate}
+\item Sample mean $\bar{Y} = \frac{1}{n}\sum_{i=1}^n Y_i$\\
+
+We showed that this estimator is unbiased, so the MSE is equal to the variance. We showed in a previous section that the variance of the sample mean is $\sigma^2 / n$, where $\sigma^2$ is the population variance. Thus we have
+\[
+MSE(\bar{Y}) = \frac{sigma^2}{n}
+\]
+Note that the MSE goes to 0 as $n \rightarrow \infty$, i.e. the error of our estimator decreases as our sample gets larger. This makes intuitive sense that a larger sample provides a better estimator for the population mean.
+
+\item Sample proportion. $\hat{p} = \frac{Y}{n}$. \\
+
+Recall that we are assuming that $Y \sim\text{ Binomial}(n, p)$. We showed above that this estimator is also unbiased, thus once again the MSE is equal to the variance. Recalling that the variance of a binomial random variable is $np(1-p)$,
+\begin{align*}
+MSE(\hat{p}) &= Var\left(\frac{Y}{n}\right) \\
+&= \frac{1}{n^2} Var(Y) \\
+&= \frac{np(1-p)}{n^2}\\
+&= \frac{p(1-p)}{n}
+\end{align*}
+
+\end{enumerate}
+
+Sometimes we are interested in studying the difference between two populations. Here are some examples of that.
+
+\begin{enumerate}
+\item Suppose we are interested in whether Brown University first-year students or seniors get more sleep. In this case, the parameter of interest is the \emph{difference} in the mean amount of sleep between first-years and seniors. If $\mu_1$ and $\sigma^2_1$ are the mean and variance of the amount of sleep of first-years and $\mu_2$ and $\sigma^2_2$ are the same for seniors, then mathematically our parameter of interest is $\mu_1 - \mu_2$. If we take a sample of $n_1$ first-year students and $n_2$ seniors and compute the sample means $\bar{Y}_1$ and $\bar{Y}_2$, then $\bar{Y}_1 - \bar{Y}_2$ is an estimator for $\mu_1 - \mu_2$. By linearity of expectation and our result for the expected value of the sample mean, the expected value of the sample mean is $\mu_1 - \mu_2$, so this estimator is unbiased. For the variance of this estimator, we use the formula for the variance of a sum (assuming the samples are independent), and recall that constants are squared when they are pulled out of the variance:
+\begin{align*}
+Var(\bar{Y}_1 - \bar{Y}_2) &= Var(\bar{Y}_1) + Var(-\bar{Y}_2) \\
+&= Var(\bar{Y}_1) + (-1)^2 Var(\bar{Y}_2) \\
+&= Var(\bar{Y}_1) + Var(\bar{Y}_2) \\
+&= \frac{\sigma^2_1}{n_1} + \frac{\sigma^2_2}{n_2}
+\end{align*}
+
+\item Suppose we are interested in the preference for Clinton in rural versus urban voters in Pennsylvania. The parameter of interest here is the difference in the proportion of Clinton supporters between rural and urban areas. First, we have to define ``rural'' and ``urban''. Suppose we take ``urban'' to mean living in a city with population of 250,000 or more (in Pennsylvania, this would only include Philadelphia and Pittsburgh). What are advantages or drawbacks to this definition? If $p_1$ is the proportion of Clinton supports in rural areas and $p_2$ is the proportion of Clinton supporters in urban areas, then the parameter of interest is $p_1 - p_2$. Suppose we sample $n_1$ voters from rural areas and $n_2$ voters from urban areas. Let $Y_1$ and $Y_2$ be the proportion of rural and urban voters (respectively) who support Clinton. Then
+\[
+\hat{p}_1 - \hat{p}_2 = \frac{Y_1}{n_1} - \frac{Y_2}{n_2}
+\]
+is an estimator for $p_1 - p_2$. By linearity of expectation and the result for a single population, the expected value of this estimator is $p_1 - p_2$, so this estimator is unbiased. What is the variance of this estimator? As above, using the formula for the variance of a sum of two independent random variables,
+\begin{align*}
+Var(\hat{p}_1 - \hat{p}_2 ) &= Var(\hat{p}_1) + Var(- \hat{p}_2) \\
+&= Var(\hat{p}_1) + (-1)^2 Var(\hat{p}_2)\\
+&= Var(\hat{p}_1) + Var(\hat{p}_2) \\
+&= \frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}
+\end{align*}
+\end{enumerate}
+
+As another example, let's look at our estimators for population variance. Recall from the previous section that the sample variance is given by:
+\[
+S^2 = \frac{1}{n-1} \sum_{i=1}^n (Y_i - \bar{Y})^2
+\]
+where $\bar{Y}$ is the sample mean. The factor of $(n-1)$ in the denominator seems peculiar. It seems more natural to divide by $n$ and use the following estimator for the population variance:
+\[
+S'^2 = \frac{1}{n} \sum_{i=1}^n (Y_i - \bar{Y})^2
+\]
+We will show that while they are both estimators for the sample variance, $S'^2$ is biased whereas $S^2$ is unbiased. Since $S^2$ is unbiased, we call it the sample variance.\\
+
+First we show $S'^2$ is biased by computing its expected value. This is done in several steps.
+\begin{enumerate}
+\item First we find a nice formula for $\sum_{i=1}^n (Y_i - \bar{Y})^2$.
+\begin{align*}
+\sum_{i=1}^n (Y_i - \bar{Y})^2 &= \sum_{i=1}^n (Y_i^2 - 2 Y_i \bar{Y} + \bar{Y}^2) \\
+&= \sum_{i=1}^n Y_i^2 - 2 \bar{Y} \sum_{i=1}^n Y_i + \sum_{i=1}^n \bar{Y}^2 \\
+&= \sum_{i=1}^n Y_i^2 - 2 n \bar{Y}^2 + n \bar{Y}^2 \\
+&= \sum_{i=1}^n Y_i^2 - n \bar{Y}^2
+\end{align*}
+\item Next we take the expected value of this. By linearity of expectation,
+\begin{align*}
+\E\left[ \sum_{i=1}^n (Y_i - \bar{Y})^2 \right] &= \E\left( \sum_{i=1}^n Y_i^2 \right) - n \E(\bar{Y}^2) \\
+&= \sum_{i=1}^n \E(Y_i^2) - n \E(\bar{Y}^2)
+\end{align*}
+\item Next we use the Magic Variance Formula ``in reverse'' to compute $\E(Y_i^2)$ and $\E(\bar{Y}^2)$.
+\begin{align*}
+Var(Y_i) &= \E(Y_i^2) - [\E(Y_i)]^2 \\
+\E(Y_i^2) &= Var(Y_i) + [\E(Y_i)]^2 \\
+&= \sigma^2 + \mu^2
+\end{align*}
+Similarly,
+\begin{align*}
+\E(\bar{Y}^2) &= Var(\bar{Y}) + [\E(\bar{Y})]^2 \\
+&= \frac{\sigma^2}{n} + \mu^2
+\end{align*}
+\item We then plug these into the expression from step 3.
+\begin{align*}
+\E\left[ \sum_{i=1}^n (Y_i - \bar{Y})^2 \right] &= \sum_{i=1}^n (\sigma^2 + \mu^2) - n \left(\frac{\sigma^2}{n} + \mu^2\right) \\
+&= n\sigma^2 + n\mu^2 - \sigma^2 - n\mu^2 \\
+&= (n-1)\sigma^2
+\end{align*}
+\item Finally we use this result to compute the expected value of $S'^2$.
+\begin{align*}
+\E(S'^2) &= \E \left[ \frac{1}{n} \sum_{i=1}^n (Y_i - \bar{Y})^2 \right]\\
+&= \frac{1}{n} \E  \left[ \sum_{i=1}^n (Y_i - \bar{Y})^2 \right] \\
+&= \frac{1}{n} (n-1)\sigma^2 \\
+&= \frac{n-1}{n} \sigma^2
+\end{align*}
+\end{enumerate}
+Since $\E(S'^2) \neq \sigma^2$, this estimator is biased. For large $n$, however, $(n-1)/n \approx 1$, so the bias is minimal. We can convert this to an unbiased estimator by multiplying by $n / (n-1)$. This is legitimate since $n$ is a known constant (the sample size) and not one of the parameters we are trying to estimate:
+\begin{align*}
+\E\left( \frac{n}{n-1} S'^2 \right) &= \frac{n}{n-1} \E(S'^2) \\
+&= \frac{n}{n-1} \frac{n-1}{n} \sigma^2 \\
+&= \sigma^2
+\end{align*}
+So we have found an unbiased estimator for $\sigma^2$. But we also have:
+\begin{align*}
+\frac{n}{n-1} S'^2 &= \frac{n}{n-1} \frac{1}{n} \sum_{i=1}^n (Y_i - \bar{Y})^2 \\
+&= \frac{1}{n-1} \sum_{i=1}^n (Y_i - \bar{Y})^2 \\
+&= S^2
+\end{align*}
+Thus $S^2$ is an unbiased estimator for the population variance $\sigma^2$.
+
+\end{document}
+
