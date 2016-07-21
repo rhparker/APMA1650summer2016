@@ -1,0 +1,331 @@
+% \documentclass{book}
+
+\documentclass[12pt]{article}
+\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\usepackage[shortalphabetic]{amsrefs}%
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{cool}
+\usepackage{url}
+\usepackage{graphicx,epsfig}
+\usepackage{makecell}
+\usepackage{array}
+
+\graphicspath{ {images/} }
+
+\def\noi{\noindent}
+\def\T{{\mathbb T}}
+\def\R{{\mathbb R}}
+\def\N{{\mathbb N}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\P{{\mathbb P}}
+\def\E{{\mathbb E}}
+\def\Q{\mathbb{Q}}
+\def\ind{{\mathbb I}}
+
+\begin{document}
+
+\title{}
+\author{\vspace{-10ex} }
+
+\begin{center}
+{\LARGE APMA 1650 -- Homework 5}\\
+\vspace{5mm}
+{\large Due Thursday, July 21, 2016}\\
+\vspace{5mm}
+Homework is due during class or by 3:45 pm in the homework drop box in 182 George St.\\
+Show all of your work used in deriving your solutions.
+\end{center}
+
+\begin{enumerate}
+
+\item Suppose that the random variables $Y_1$ and $Y_2$ have joint density function:\
+\[
+f(y_1, y_2) = \begin{cases}
+y_1 + y_2 & 0 \leq y_1 \leq 1, 0 \leq y_2 \leq 1 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+\begin{enumerate}
+\item Show this is a valid joint probability density. \\
+
+The region of interest is a square with opposite corners $(0,0)$ and $(1,1)$, so the limits on both $y_1$ and $y_2$ will be from 0 to 1. As always, draw the region! It does not matter if we integrate with respect to $y_1$ or $y_2$ first, so will start with $y_1$.
+\begin{align*}
+\int_0^1 \int_0^1 (y_1 + y_2) dy_1 dy_2 &= \int_0^1 \left(\frac{y_1^2}{2} + y_2 y_1 \right) \Bigr|_0^1 dy_2\\
+&= \int_0^1 \left(\frac{1}{2} + y_2 \right) dy_2 \\
+&= \left( \frac{1}{2}y_2 + \frac{y_2^2}{2} \right)_0^1 \\
+&= \frac{1}{2} + \frac{1}{2} = 1
+\end{align*}
+
+\item Find the marginal densities for $Y_1$ and $Y_2$.\\
+
+To find the marginal density of $Y_1$, we integrate with respect to $y_2$ to get rid of it.
+\begin{align*}
+f_1(y_1) &= \int_0^1 (y_1 + y_2) dy_2 \\
+&= \left( y_1 y_2 + \frac{y_2^2}{2} \right)_0^1 \\
+&= y_1 + \frac{1}{2}
+\end{align*}
+Thus the marginal density of $Y_1$ is
+\[
+f_1(y_1) = \begin{cases}
+y_1 + \frac{1}{2} & 0 \leq y_1 \leq 1 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+By symmetry, the marginal density of $Y_2$ is
+\[
+f_2(y_2) = \begin{cases}
+y_2 + \frac{1}{2} & 0 \leq y_2 \leq 1 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+\item Find the probability that $Y_1 < 1/2$ and $Y_2 > 1/2$.\\
+
+Here we integrate the joint density with respect to $y_1$ from 0 to 1/2 and with respect to $y_2$ from 1/2 to 1.
+\begin{align*}
+\P(Y_1 < 1/2, Y_2 > 1/2) &= \int_{1/2}^1 \int_0^{1/2} (y_1 + y_2) dy_1 dy_2 \\
+&= \int_{1/2}^1 \left(\frac{y_1^2}{2} + y_2 y_1 \right) \Bigr|_0^{1/2} dy_2 \\
+&= \int_{1/2}^1 \left( \frac{1}{8} + \frac{1}{2}y_1 \right) dy_1 \\
+&= \left( \frac{1}{8}y_1 + \frac{1}{4}y_1^2 \right)\Bigr|_{1/2}^1 \\
+&= \left( \frac{1}{8} + \frac{1}{4} \right) - \left( \frac{1}{16} + \frac{1}{16} \right)
+&= \frac{1}{4}
+\end{align*}
+
+\item Find the conditional density for $Y_1$ given $Y_2 = y_2$.
+
+The conditional density is the joint density divided by the marginal density.
+\[
+f(y_1|y_2) = \frac{f(y_1, y_2)}{f_2(y_2)} = \frac{y_1 + y_2}{y_2 + 1/2}
+\]
+We need to put bounds on this, but they are still from 0 to 1 in this case.
+\[
+f(y_1|y_2) = \begin{cases}
+\frac{y_1 + y_2}{y_2 + 1/2} & 0 \leq y_1 \leq 1 \\
+0 & \text{otherwise}
+\end{cases}  
+\]
+
+\item Find the probability that $Y_1 < 1/2$ given $Y_2 = 1/2$.
+
+To find this probability, we work with the conditional density from the previous part. Plugging in $y_2 = 1/2$ into the conditional density, we get $f(y_1|Y_2 1/2) = y_1 + 1/2$. Integrating this from 0 to 1/2 we get:
+\begin{align*}
+\P(Y_1 < 1/2 | Y_2 = 1/2) &= \int_0^{1/2} (y_1 + 1/2) dy_1 \\
+&= \left( \frac{y_1^2}{2} + \frac{y_1}{2} \right)\Bigr|_0^{1/2} \\
+&= \frac{1}{8} + \frac{1}{4} = \frac{3}{8}
+\end{align*}
+\end{enumerate}
+
+\item Suppose that the random variables $Y_1$ and $Y_2$ have joint density function:\
+\[
+f(y_1, y_2) = \begin{cases}
+c(1 - y_2) & 0 \leq y_1 \leq y_2 \leq 1 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+\begin{enumerate}
+\item Find the value of $c$ that makes this a valid joint probability density. \\
+
+The first step is to draw the region so that you have the correct limits of integration. This region is drawn in my course notes, so you can refer to the drawing there. We will integrate in the $y_1$ direction first since that lets us use 0 as the lower limit of integration twice.
+
+\begin{align*}
+1 &= \int_0^1 \int_0^{y_2} c(1 - y_2) dy_1 dy_2 \\
+&= c \int_0^1 (y_1 - y_2 y_1)\Bigr|_0^{y_2} dy_2 \\
+&= c \int_0^1 (y_2 - y_2^2) dy_2 \\
+&= c \left( \frac{y_2^2}{2} - \frac{y_2^3}{3} \right)\Bigr|_0^1 \\
+&= c \left( \frac{1}{2} - \frac{1}{3} \right)\\
+&= \frac{c}{6}
+\end{align*}
+From this we conclude that $c = 6$.
+
+\item Find the marginal densities for $Y_1$ and $Y_2$.
+To do this we integrate with respect to the other variable. Do not forget to look at the picture to make sure you have the correct limits!
+\begin{align*}
+f_1(y_1) &= \int_{y_1}^1 6(1 - y_2) dy_2 \\
+&= (6 y_2 - 3 y_2^2) \Bigr|_{y_1}^1 \\
+&= (6 - 3) - (6 y_1 - 3 y_1^2) \\
+&= 3 - 6y_1 + 3 y_1^2
+\end{align*}
+The marginal density of $Y_1$ is:
+\[
+f_1(y_1) = \begin{cases}
+3 - 6y_1 + 3 y_1^2 & 0 \leq y_1 \leq 1 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+\begin{align*}
+f_1(y_1) &= \int_{0}^{y_2} 6(1 - y_2) dy_1 \\
+&= 6( y_1 - y_2 y_1) \Bigr|_0^{y_2} \\
+&= 6( y_2 - y_2^2)
+\end{align*}
+The marginal density of $Y_2$ is:
+\[
+f_2(y_2) = \begin{cases}
+6( y_2 - y_2^2) & 0 \leq y_2 \leq 1 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+\item Find the conditional density for $Y_1$ given $Y_2 = y_2$.\\
+
+For the conditional density, we divide the joint density by the marginal density.
+\[
+f(y_1|y_2) = \frac{6(1 - y_2)}{6( y_2 - y_2^2) } = \frac{(1 - y_2)}{( y_2(1 - y_2) } = \frac{1}{y_2}
+\]
+We need to put bounds on this. Looking at the picture, we see that if $Y_2 = y_2$, $Y_1$ can only range from 0 to $y_2$. Thus we have:
+\[
+f(y_1|y_2) = \begin{cases}
+\frac{1}{y_2} & 0 \leq 1 \leq y_2 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+Note that we also have to assume that $y_2 \neq 0$.
+
+\item Find the expected values $\E(Y_1)$ and $\E(Y_2)$.\\
+
+To find these expected values, use the marginal densities with the formula for the expected value of a continuous random variable.
+\begin{align*}
+\E(Y_1) &= \int_0^1 y_1(3 - 6y_1 + 3 y_1^2) dy_1 \\
+&= 3 \int_0^1 (y_1 - 2y_1^2 + y_1^3) dy_1 \\
+&= 3 \left( \frac{y_1^2}{2} - 2 \frac{y_1^3}{3} + \frac{y_1^4}{4} \right)\Bigr|_0^1 \\
+&= \frac{1}{4}
+\end{align*}
+\begin{align*}
+\E(Y_2) &= \int_0^1 y_2 6( y_2 - y_2^2) dy_2 \\
+&= 6 \int_0^1 (y_2^2 - y_2^3) dy_2 \\
+&= 6 \left( \frac{y_2^3}{3} - \frac{y_2^4}{4} \right) \\
+&= 6 \left( \frac{1}{3} - \frac{1}{4} \right) \\
+&= \frac{1}{2}
+\end{align*}
+
+\item Find the conditional expected value $\E(Y_1 | Y_2 = y_2)$.\\
+
+To find the conditional expected value, we integrate the conditional density. Don't forget that the bounds on the conditional density are the limits of integration.
+
+\begin{align*}
+\E(Y_1 | Y_2 = y_2) &= \int_0^{y_2} y_1 \frac{1}{y_2} dy_1 \\
+&= \frac{1}{y^2} \frac{y_1^2}{2} \Bigr|_0^{y_2} \\\
+&= \frac{1}{y^2} \frac{y_2^2}{2} \\
+&= \frac{y_2}{2}
+\end{align*}
+
+\end{enumerate}
+
+\item Suppose that the random variables $Y_1$ and $Y_2$ have joint density function:
+\[
+f(y_1, y_2) = \begin{cases}
+e^{-(y_1 + y_2)} & y_1 > 0, y_2 > 0 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+\begin{enumerate}
+\item Find the marginal densities for $Y_1$ and $Y_2$. What kind of random variables are $Y_1$ and $Y_2$?\\
+
+For the marginal density of $Y_1$, we integrate with respect to $y_2$.
+\begin{align*}
+f_1(y_1) &= \int_0^\infty e^{-(y_1 + y_2)} dy_2 \\
+&= \int_0^\infty e^{-y_1} e^{-y_2} dy_2 \\
+&= e^{-y_1} \lim_{t \rightarrow \infty}(-e^{-y_2})_0^t \\
+&= e^{-y_1} (1 - \lim_{t \rightarrow \infty} e^{-t} ) \\
+&= e^{-y_1} 
+\end{align*}
+With appropriate bounds, we have marginal density
+\[
+f_1(y_1) = \begin{cases}
+e^{-y_1} & y_1 > 0 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+By symmetry,
+\[
+f_2(y_2) = \begin{cases}
+e^{-y_2} & y_2 > 0 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+We recognize both of these densities as exponential random variables with parameter $\lambda = 1$.
+
+\item Find the conditional density of $Y_1$ given that $Y_2 = y_2$ for $y_2 > 0$.\\
+
+Dividing the joint density by the marginal density,
+\[
+f(y_1 | y_2) = \frac{ e^{-(y_1 + y_2)} }{ e^{-y_2} } = \frac{e^{-y_1}e^{-y_2} } { e^{-y_2} } = e^{-y_1}
+\]
+So with bounds, this is
+\[
+f_1(y_1|y_2) = \begin{cases}
+e^{-y_1} & y_1 > 0 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+This is the same as the marginal density of $Y_1$.
+
+\item Are $Y_1$ and $Y_2$ independent? Justify your answer.
+Since the conditional density of $Y_1$ given $Y_2 = y_2$ is the same as the marginal density of $y_1$, the random variables $Y_1$ and $Y_2$ are independent. Alternatively, since the joint density is the product of the two marginal densities, the two random variables are independent.
+\end{enumerate}
+
+\item You are again the quality control manager for the Acme Widget Company. You have just launched a new line of MiniWidgets. Your MiniWidgets are produced by a MiniWidget machine. The MiniWidgets produced by the machine have masses which are normally distributed with a standard deviation of 0.2 grams. The machine can be adjusted so that the MiniWidgets it produces have an average mass of $\mu$ grams. What setting for $\mu$ should you use so that the masses of the MiniWidgets will exceed 10 grams at most 2\% of the time?\\
+
+Let $X$ be the mass of the MiniWidgets. Then, converting to the standard normal random variable:
+\begin{align*}
+0.02 &= \P(X > 10) \\
+0.98 &= \P(X \leq 10)\\
+&= \P\left( Z \leq \frac{10 - \mu}{0.2} \right)
+\end{align*}
+Looking at the $Z$ table for a probability of 0.98 we find that $z = 2.02$ (this corresponds to a probability of 0.9798, which is the closest we can get; in addition, it is likely best to err on the low side than the high side since we want to be confident that the MiniWidget mass will not be too large.) Setting the quantity above to 2.02, we find:
+
+\begin{align*}
+\frac{10 - \mu}{0.2} &= 2.02 \\
+10 - \mu &= (2.02)(0.2) = 0.404 \\
+\mu &= 10 - 0.404 = 9.596
+\end{align*}
+
+
+\item Let $X_1$ and $X_2$ be two independent geometric random variables, both with parameter $p$. Find a nice, closed-form formula for
+\[
+\P(X_1 = i | X_1 + X_2 = n)
+\]
+Your formula should not involve a sum. Hint: use the definition of conditional probability.\\
+
+By the definition of conditional probability,
+\begin{align*}
+\P(X_1 = i | X_1 + X_2 = n) &= \frac{ \P(X_1 = i, X_1 + X_2 = n) }{ \P(X_1 + X_2 = n) } \\
+&= \frac{ \P(X_1 = i, X_2 = n - i ) }{ \P(X_1 + X_2 = n) } \\
+&= \frac{ \P(X_1 = i) \P(X_2 = n - i ) }{ \P(X_1 + X_2 = n) }
+\end{align*}
+where in the last line we have used the independence of $X_1$ and $X_2$. We can compute all these probabilities using the geometric pmf.
+\begin{align*}
+\P(X_1 = i) & = (1-p)^{i-1} p \\
+\P(X_1 = n - i) & = (1-p)^{n-i-1} p
+\end{align*}
+For the denominator, note that if $X_1 + X_2 = n$, there are $(n-1)$ mutually exclusive ways this can occur: $(X_1 = 1, X_2 = n - 1), (X_1 = 2, X_2 = n - 2), \dots, (X_1 = n-1, X_2 = 1)$. Thus we have:
+\begin{align*}
+\P(X_1 + X_2 = n) &= \sum_{k=1}^{n-1} \P(X_1 = k, X_2 = n-k) \\
+&= \sum_{k=1}^{n-1} \P(X_1 = k) \P(X_2 = n-k) \\
+&= \sum_{k=1}^{n-1} (1-p)^{k-1} p (1-p)^{n-k-1} p \\
+&= \sum_{k=1}^{n-1} (1-p)^{n-2}p^2 \\
+&= (n-1)(1-p)^{n-2}p^2
+\end{align*} 
+since all terms in the sum are the same. Plugging all of this in, we get:
+\begin{align*}
+\P(X_1 = i | X_1 + X_2 = n) &= \frac{ (1-p)^{i-1} p (1-p)^{n-i-1} p }{ (n-1)(1-p)^{n-2}p^2 } \\
+&= \frac{ (1-p)^{n-2} p^2 }{ (n-1)(1-p)^{n-2}p^2 } \\
+&= \frac{1}{n-1}
+\end{align*}
+\end{enumerate}
+\end{document}
+
