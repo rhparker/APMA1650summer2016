@@ -189,7 +189,7 @@ f(y_1|y_2) = \frac{6(1 - y_2)}{6( y_2 - y_2^2) } = \frac{(1 - y_2)}{( y_2(1 - y_
 We need to put bounds on this. Looking at the picture, we see that if $Y_2 = y_2$, $Y_1$ can only range from 0 to $y_2$. Thus we have:
 \[
 f(y_1|y_2) = \begin{cases}
-\frac{1}{y_2} & 0 \leq 1 \leq y_2 \\
+\frac{1}{y_2} & 0 \leq y_1 \leq y_2 \\
 0 & \text{otherwise}
 \end{cases}
 \]
@@ -286,12 +286,12 @@ Let $X$ be the mass of the MiniWidgets. Then, converting to the standard normal 
 0.98 &= \P(X \leq 10)\\
 &= \P\left( Z \leq \frac{10 - \mu}{0.2} \right)
 \end{align*}
-Looking at the $Z$ table for a probability of 0.98 we find that $z = 2.02$ (this corresponds to a probability of 0.9798, which is the closest we can get; in addition, it is likely best to err on the low side than the high side since we want to be confident that the MiniWidget mass will not be too large.) Setting the quantity above to 2.02, we find:
+Looking at the $Z$ table for a probability of 0.98 we find that $z = 2.06$. Setting the quantity above to 2.06, we find:
 
 \begin{align*}
 \frac{10 - \mu}{0.2} &= 2.02 \\
-10 - \mu &= (2.02)(0.2) = 0.404 \\
-\mu &= 10 - 0.404 = 9.596
+10 - \mu &= (2.06)(0.2) = 0.412 \\
+\mu &= 10 - 0.412 = 9.588
 \end{align*}
 
 
