@@ -139,10 +139,11 @@ Var(\hat{p}_1) &= Var\left( \frac{1}{n+2}X + \frac{1}{n+2} \right) \\
 &= \frac{1}{(n+2)^2} Var(X) \\
 &= \frac{np(1-p)}{(n+2)^2}
 \end{align*}
-Adding the two together, we get the MSE:
-\[
-MSE(\hat{p}_1) = \frac{1 - 2p}{n+2} + \frac{np(1-p)}{(n+2)^2}
-\]
+Adding the bias squared and the variance, we get the MSE:
+\begin{align*}
+MSE(\hat{p}_1) &= \left( \frac{1 - 2p}{n+2} \right)^2 + \frac{np(1-p)}{(n+2)^2} \\
+&= \frac{(1-2p)^2 + np(1-p)}{(n+2)^2}
+\end{align*}
 
 \item The standard, unbiased estimator for $p$ is 
 \[
