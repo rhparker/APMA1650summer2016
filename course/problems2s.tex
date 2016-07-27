@@ -1,0 +1,189 @@
+% \documentclass{book}
+
+\documentclass[12pt]{article}
+\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\usepackage[shortalphabetic]{amsrefs}%
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{cool}
+\usepackage{url}
+\usepackage{graphicx,epsfig}
+\usepackage{makecell}
+\usepackage{array}
+
+\def\noi{\noindent}
+\def\T{{\mathbb T}}
+\def\R{{\mathbb R}}
+\def\N{{\mathbb N}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\P{{\mathbb P}}
+\def\E{{\mathbb E}}
+\def\Q{\mathbb{Q}}
+\def\ind{{\mathbb I}}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+
+\title{}
+\author{\vspace{-10ex} }
+
+\begin{center}
+{\LARGE APMA 1650 -- Problem Session 2, Solutions}\\
+\vspace{5mm}
+{\large Wednesday, July 20, 2016}\\
+% \vspace{5mm}
+\end{center}
+
+These are the solutions to the problems from the recitation which were not done in the review session. For the solutions to the remaining recitaiton problems, see the solution to the review session problems.
+
+\begin{enumerate}
+
+\item For a certain section of a pine forest, the number of diseased trees per acre, $Y$, has a Poisson distribution with mean $\lambda = 10$. The diseased trees are sprayed with an insecticide at a cost of \$3 per tree, plus a fixed overhead cost for equipment rental of \$50. Letting $C$ denote the total spraying cost for a randomly selected acre, find the expected value and variance for $C$. Within what interval would you expect $C$ to lie with probability of at least $0.75$?\\
+
+Let $Y \sim$ Poisson(10). Then the cost $C = 3 Y + 50$. The expected value and variance of $C$ are:
+\begin{align*}
+\E(C) &= \E(3Y + 50) = 3 \E(Y) + 50 = 3(10) + 50 = 80 \\
+Var(C) &= Var(3Y + 50) = 3^2 Var(Y) = 9(10) = 90
+\end{align*}
+For the interval $C$ will lie in with probability of at least 0.75, we use Chebyshev's Inequality, and want the deviation from the mean to be less than 1 - 0.75 = 0.25:
+\begin{align*}
+\P( |C - 80| \geq k ) \leq \frac{Var(C)}{k^2} = 0.25
+\end{align*}
+Thus we have:
+\begin{align*}
+\frac{Var{C}}{k^2} &= \frac{90}{k^2} = 0.25\\
+k^2 &= \frac{90}{0.25} = 360\\
+k &\approx 19
+\end{align*}
+So $C$ will lie in the interval $[80 - 19, 80 + 19] = [61, 99]$ with probability at least 0.75.
+
+\item Lifetimes of automotive tires are given in miles; higher performance tires are rated to last more miles. A manufacturer of tires wants to advertise a mileage interval that includes 90\% of the mileage on tires they manufacture. All they know is that, for a large number of tires tested, the mean mileage was 25,000 miles, and the standard deviation was 4000 miles. What interval would you suggest?\\
+
+Here we can use Chebyshev's Inequality. Let $Y$ be the lifetime of a tire. Note that the variance is the square of the standard deviation. Like in the previous question, Chebyshev's Inequality gives us:
+\begin{align*}
+\P( |Y - 25000| \geq k) \geq k) \leq \frac{Var(Y)}{k^2} = 0.10
+\end{align*}
+Thus we have
+\begin{align*}
+\frac{Var{Y}}{k^2} &= \frac{4000^2}{k^2} = 0.10\\
+k^2 &= \frac{4000^2}{0.10}\\
+k &\approx 12650
+\end{align*}
+So the range we need is $[25000 - 12650, 25000 + 12650] = [12350, 37650]$.
+
+\item A machine used to fill cereal boxes dispenses, on average, $\mu$ ounces per box. Let $Y$ be the amount of ounces of cereal dispensed by the machine. The manufacturer wants $Y$ to be within 1 ounce of $\mu$ at least 75\% of the time. What is the largest value of the standard deviation $\sigma$ of $Y$ that can be tolerated if the manufacturer's objectives are met.\\
+
+One method is to assume that the amount of cereal is normally distributed and use the Z table. This is not unreasonable (since machines in factories often produce output which is normally distributed), although if you do this on a homework or exam you need to state that you are making this assumption. We can also use Chebyshev's Inequality.
+\begin{align*}
+\P(|Y - \mu| \geq 1) \leq \frac{Var(Y)}{1^2} = 0.25
+\end{align*}
+Here we have $Var(Y) = 0.25$, thus $\sigma = \sqrt{0.25} = 0.5$ ounces.
+
+\item Beginning at 12:00 midnight, a call center is up for one hour and then down for two hours on a regular cycle. A person who is unaware of this schedule dials the center at a random time between 12:00 midnight at 5:00 am. What is the probability that the call center is up when the person's call comes in?\\
+
+Between 12:00 midnight at 5:00 am the call center is up for two hours and down for 3 hours. Thus the probability that the call center is up is 2/5.
+
+\item Weekly CPU time used by a hedge fund can be modeled by a random variable $Y$ which has probability density function (measured in hours) given by:
+\[
+f(y) = \begin{cases}
+c y^2(4-y) & 0 \leq y \leq 4 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+\begin{enumerate}
+\item Find the value of $c$ such that this is a valid density function.\\
+
+\begin{align*}
+1 &= \int_0^4 c y^2(4 - y) dy\\
+&= c \int_0^4 (4 y^2 - y^3) dy\\
+&= c \left( \frac{4}{3}y^3 - \frac{1}{4}y^4 \right)\Bigr|_0^4\\
+&= c \left( \frac{4}{3}4^3 - \frac{1}{4}4^4 \right)\\
+&= c \frac{64}{3}
+\end{align*}
+So we have c = 3/64.
+
+\item Find the expected value and variance of $Y$.\\
+
+For these I will just give the integrals and the values, and will not show the steps.
+\[
+\E(Y) = \int_0^4 y \frac{3}{64} y^2(4 - y)dy = \frac{12}{5}
+\]
+\[
+\E(Y^2) = \int_0^4 y^2 \frac{3}{64} y^2(4 - y)dy = \frac{32}{5}
+\]
+By the Magic Variance Formula,
+\[
+Var(Y) = \E(Y^2) - \E(Y)^2 = \frac{32}{5} - \left( \frac{12}{5} \right)^2 = \frac{16}{25}
+\]
+\item The CPU time costs the firm \$200 per hour. Find the expected value and variance of the weekly cost for CPU time.\\
+
+Let $C$ be the cost. Then $C = 200Y$.
+\begin{align*}
+\E(C) &= \E(200 Y) = 200 \E(Y) = 200 \frac{12}{5} = 480\\
+Var(C) &= Var(200 Y) = 200^2 Var(Y) = 200^2 \frac{16}{25} = 25600
+\end{align*}
+\end{enumerate}
+
+\item The magnitude of earthquakes can be modeled as an exponential distribution with mean 2.4 (as measured on the Richter scale). 
+\begin{enumerate}
+\item Find the probability that an earthquake will exceed 3.0 on the Richter scale.\\
+
+Let $Y$ be the magnitude of an earthquake. Since the exponential parameter $\lambda$ is the reciprocal of the mean, we have $\lambda = 1/\E(Y) = 1/2.4 = 5/12$. Thus $Y \sim$ Exponential(5/12).
+\begin{align*}
+\P(Y \geq 3.0) = \int_3^\infty \frac{5}{12} e^{-\frac{5}{12}y} = \frac{1}{e^{5/4}}
+\end{align*}
+
+\item Find the probability that an earthquake will fall between 2.0 and 3.0 on the Richter scale.\\
+
+\begin{align*}
+\P(2.0 \leq Y \leq 3.0) &= \int_2^3 \frac{5}{12} e^{-\frac{5}{12}y}
+&= -e^{-\frac{5}{12}y}\Bigr|_2^3 = e^{-5/6} - e^{-5/4}
+\end{align*}
+\end{enumerate}
+
+\item Scores on an examination are (roughly) normally distributed with mean 78 and variance 36.
+\begin{enumerate}
+\item What is the probability that a student scores higher than 72?\\
+
+Let $Y$ be the score on an exam. The standard deviation is $\sqrt{36} = 6$, so $Y \sim$ Normal(78, 6).
+\begin{align*}
+\P(Y \geq 72) &= \P\left( Z \geq \frac{72 - 78}{6} \right) \\
+&= \P(Z \geq -1) \\
+&= 1 - \P(Z \leq -1) \\
+&= 1 - 0.1587 \\
+&= 0.8413
+\end{align*}
+
+\item Suppose that students in the top 20\% will receive an A on the exam? (This is now how I grade my exams.) What is the minimum score needed to receive an A?\\
+
+Here we want:
+\begin{align*}
+0.2 = \P(Y \geq k) &= \P\left( Z \geq \frac{k - 78}{6} \right)
+\end{align*}
+Looking at the $Z$ table, this corresponds to a $z$ value of 0.84 (closest probability is 0.2005). Thus:
+\begin{align*}
+\frac{k - 78}{6} &= 0.84 \\
+k - 78 &= 5.04 \\
+k &= 83.04
+\end{align*}
+The minimum score to receive an A is (roughly) 83.
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
+
