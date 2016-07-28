@@ -1,0 +1,95 @@
+% \documentclass{book}
+
+\documentclass[12pt]{article}
+\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\usepackage[shortalphabetic]{amsrefs}%
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{cool}
+\usepackage{url}
+\usepackage{graphicx,epsfig}
+\usepackage{framed}
+\usepackage{hyperref}  
+
+\graphicspath{ {images/} }
+
+\begin{document}
+
+\title{}
+\author{\vspace{-10ex} }
+
+\begin{center}
+{\LARGE APMA 1650 -- Homework 7}\\
+\vspace{5mm}
+{\large Due Monday, August 1, 2016}\\
+\vspace{5mm}
+Homework is due during class or by 3:45 pm in the homework drop box in 182 George St.\\
+Show all of your work used in deriving your solutions.
+\end{center}
+
+\begin{enumerate}
+
+\item Let $Y_1, Y_2, \dots, Y_n$ be a random sample from a population with probability density function parameterized by $\theta$ given by
+\[
+f_\theta(y) = \begin{cases}
+\theta y^{\theta - 1} & 0 < y < 1 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+where $\theta > 0$ is the parameter of interest. 
+\begin{enumerate}
+\item Show that the sample mean $\bar{Y}$ is an unbiased estimator for $\frac{\theta}{\theta + 1}$.
+\item Show that the sample mean $\bar{Y}$ is a consistent estimator for $\frac{\theta}{\theta + 1}$.
+\end{enumerate}
+
+\item Let $Y_1, Y_2, \dots, Y_n$ be a random sample from a population with probability density function parameterized by $\theta$ given by
+\[
+f_\theta(y) = \begin{cases}
+(\theta + 1)y^\theta & 0 < y < 1 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+where $\theta > -1$ is the parameter of interest. Find an estimator for $\theta$ using the method of moments.
+
+\item Let $Y_1, Y_2, \dots, Y_n$ be a random sample from a population with probability density function parameterized by $\theta$ given by
+\[
+f_\theta(y) = \begin{cases}
+(\theta + 1)y^\theta & 0 < y < 1 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+where $\theta > -1$ is the parameter of interest. Find the maximum likelihood estimator (MLE) for $\theta$. Compare this to your answer from the previous problem.
+
+\item Once again, you are the quality control manager for the Acme Widget Company. Your line of MiniWidgets has been so successful that the MiniWidget machines are running nonstop to satisfy the high customer demand. For a properly functioning MiniWidget machine, the probability of producing a defective MiniWidget is 1\% (or less). As part of the quality control process, you will take a sample of 100 MiniWidgets from a machine to determine whether it needs repair. To make a statistically-sound decision, you design a hypothesis test to aid you in this process. You desire a level of $\alpha = 0.05$ for your hypothesis test.
+
+\begin{enumerate}
+\item State the alternative hypothesis, null hypothesis, and test statistic for your hypothesis test. 
+\item You sample 100 MiniWidgets from one of your machines and find that 3 of them are defective. At the level of $\alpha = 0.05$, does this machine need to be repaired?
+\item What is the $p$-value for this hypothesis test?
+\end{enumerate}
+
+\item A random sample of 500 measurements on the length of stay in hospitals had a sample mean of 5.4 days and a sample standard deviation of 3.1 days. A federal regulatory agency hypothesizes that the average length of stay is greater than 5 days.
+\begin{enumerate}
+\item Do the data support this hypothesis with a level of $\alpha = 0.05$?
+\item What is the $p$-value for this hypothesis test?
+\item Using the rejection region found in the previous part, calculate $\beta$ for the specific value of the alternative hypothesis $\mu_a = 5.5$.
+\item How large should the sample size be if we require that $\alpha = 0.01$ and $\beta = 0.05$, where we use the specific value of the alternative hypothesis $\mu_a = 5.5$.
+\end{enumerate}
+
+
+\end{enumerate}
+\end{document}
+
