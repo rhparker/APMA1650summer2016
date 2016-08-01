@@ -1,0 +1,99 @@
+% \documentclass{book}
+
+\documentclass[12pt]{article}
+\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\usepackage[shortalphabetic]{amsrefs}%
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{cool}
+\usepackage{url}
+\usepackage{graphicx,epsfig}
+\usepackage{framed}
+\usepackage{hyperref}  
+
+\graphicspath{ {images/} }
+
+\begin{document}
+
+\title{}
+\author{\vspace{-10ex} }
+
+\begin{center}
+{\LARGE APMA 1650 -- Homework 8}\\
+\vspace{5mm}
+{\large Due Thursday, August 4, 2016}\\
+\vspace{5mm}
+Homework is due during class or by 3:45 pm in the homework drop box in 182 George St.\\
+Show all of your work used in deriving your solutions.
+\end{center}
+
+\begin{enumerate}
+
+\item You are naturalist studying feeding habits of white-tailed deer. You have noticed that these deer live and feed within relatively narrow ranges, approximately 150 to 200 acres (there are 640 acres per square mile, so these ranges are indeed small!)You study two geographically isolated populations of white-tailed deer and measure the distance they range by using small, radio transmitters that you attach to each deer. (No deer are harmed in the course of your study.) For each of the two populations, you study 40 deer. To quantify the ranges for each deer, you measure the distance $Y$ between where the deer was released after being fit with the radio transmitter and where the radio transmitter was found one month later. The following table gives the data from the study:
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{l@{\hskip 2cm}l@{\hskip 2cm}l}
+\toprule
+& Location 1 & Location 2\\
+\midrule
+Sample size & 40 & 40 \\
+Sample mean (feet) & 2980 & 3205 \\
+Sample standard deviation (feet) & 1140 & 963 \\
+\bottomrule
+\end{tabular}
+\end{figure}  
+
+You wish to determine statistically whether there is any difference in the ranges of the two deer populations.
+\begin{enumerate}
+\item What is the parameter of interest in this study?
+\item What is the null hypothesis, alternative hypothesis, and test statistic?
+\item Do the data provide sufficient evidence that the mean ranges of the two populations are different? Use a level of $\alpha = 0.10$ for your hypothesis test.
+\end{enumerate}
+
+\item You are for one final time the quality control manager for the Acme Widget Company. Since MiniWidgets were so successful, you decide to launch a line of MegaWidgets. Same great idea, (approximately) 100 times the size! Your MegaWidget machine is designed to produce MegaWidgets which have an average mass of 800 grams. You suspect that your MegaWidget machine is producing MegaWidgets which are too small. Since MegaWidgets are more expensive and take longer to produce than MiniWidgets, you decide to take a sample of 5 MegaWidgets from the machine. Their masses (in grams) are 785, 805, 790, 793, and 802 grams.
+\begin{enumerate}
+\item Do the data indicate that the average mass of MegaWidgets produced by the machine is less than 800 grams? Use a hypothesis test with a level of significant $\alpha = 0.05$.
+\item What assumption did you have to make in order to use the hypothesis test you used in part (a)?
+\end{enumerate}
+
+\item A soft-drink machine fills cups with an average of 7 ounces per cup. (This is one of those machines where you press the button and it fills the entire cup.) In a test of the machine, 10 cupfuls of delicious soft drink were dispensed from the machine and measured. The mean and standard deviation of the ten measurements were 7.1 ounces and 0.12 ounces. Is there sufficient evidence that the mean amount of soft drink dispensed from the machine differs from 7 ounces? Use a level of significance $\alpha = 0.05$.
+
+\item Let $Y_1, Y_2, \dots, Y_n$ be a sample from a population having an exponential distribution with parameter $\lambda$.
+\begin{enumerate}
+\item Using the Neyman-Pearson lemma, derive the most powerful test for the null hypothesis $H_0: \lambda = \lambda_0$ versus the alternative hypothesis $H_a: \lambda = \lambda_a$, where $\lambda_a > \lambda_0$. Write the test in the form $W \leq k$, where $W$ is the test statistic derived from the Neyman-Pearson lemma, and $k$ is the boundary of the rejection region. Do not solve for $k$.
+\item The mean of the exponential distribution is $\mu = 1 / \lambda$, thus $\lambda = 1 / \mu$. A reasonable test statistic, therefore, is $1 / \bar{Y}$. (This is the method of moments estimator.) Using some algebraic manipulation, argue that the hypothesis test $\bar{Y} \leq m$, where $m$ is the boundary of the rejection region, is equivalent to the hypothesis test in part (a).
+\end{enumerate}
+
+\item Let $Y_1, Y_2, \dots, Y_n$ be a sample from a population having a uniform distribution on the interval $[0, b]$. 
+\begin{enumerate}
+\item Using the Neyman-Pearson lemma, find the most powerful test for testing the null hypothesis $H_0: b = b_0$ versus the alternative hypothesis $H_a: b = b_a$, where $b_a < b_0$. Write the test in the form $W \leq k$, where $W$ is the test statistic derived from the Neyman-Pearson lemma, and $k$ is the boundary of the rejection region. Do not solve for $k$. Hint: look at the section in the notes on the MLE for uniform distribution. As in the case of the MLE for the uniform distribution, this will involve the largest order statistic $Y_{(n)} = \max_{i = 1, \dots, n} Y_i$.
+\item For a specified level $\alpha$, the rejection region will be of the form:
+\[
+\{ Y_{(n)} \leq m \}
+\]
+where $m$ is the boundary of the rejection region, and is different from $k$ in part (a)\footnote{You do not have to show this, but take a minute to think why this makes sense.}. In class (in the MLE section), we showed that for $n$ samples $Y_1, \dots, Y_n$ drawn from a uniform distribution on the interval $[0, b]$, the probability density function of the largest order statistic $Y_{(n)}$ is given by:
+\[
+f_{(n)}(y) = \begin{cases}
+n y^{n-1} \frac{1}{b^n} & 0 \leq y \leq b \\
+0 & \text{otherwise}
+\end{cases}
+\]
+Using this density and the definition of $\alpha$, solve for the boundary of the rejection region $m$ in terms of $\alpha$ and $b_0$. 
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
