@@ -1,0 +1,217 @@
+% \documentclass{book}
+
+\documentclass[12pt]{article}
+\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\usepackage[shortalphabetic]{amsrefs}%
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{cool}
+\usepackage{url}
+\usepackage{graphicx,epsfig}
+\usepackage{framed}
+\usepackage{hyperref}
+
+\def\noi{\noindent}
+\def\T{{\mathbb T}}
+\def\R{{\mathbb R}}
+\def\N{{\mathbb N}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\P{{\mathbb P}}
+\def\E{{\mathbb E}}
+\def\Q{\mathbb{Q}}
+\def\ind{{\mathbb I}}  
+
+\graphicspath{ {images/} }
+
+\begin{document}
+
+\title{}
+\author{\vspace{-10ex} }
+
+\begin{center}
+{\LARGE APMA 1650 -- Homework 8}\\
+\vspace{5mm}
+{\large Due Thursday, August 4, 2016}\\
+\vspace{5mm}
+Homework is due during class or by 3:45 pm in the homework drop box in 182 George St.\\
+Show all of your work used in deriving your solutions.
+\end{center}
+
+\begin{enumerate}
+
+\item You are naturalist studying feeding habits of white-tailed deer. You have noticed that these deer live and feed within relatively narrow ranges, approximately 150 to 200 acres (there are 640 acres per square mile, so these ranges are indeed small!)You study two geographically isolated populations of white-tailed deer and measure the distance they range by using small, radio transmitters that you attach to each deer. (No deer are harmed in the course of your study.) For each of the two populations, you study 40 deer. To quantify the ranges for each deer, you measure the distance $Y$ between where the deer was released after being fit with the radio transmitter and where the radio transmitter was found one month later. The following table gives the data from the study:
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{l@{\hskip 2cm}l@{\hskip 2cm}l}
+\toprule
+& Location 1 & Location 2\\
+\midrule
+Sample size & 40 & 40 \\
+Sample mean (feet) & 2980 & 3205 \\
+Sample standard deviation (feet) & 1140 & 963 \\
+\bottomrule
+\end{tabular}
+\end{figure}  
+
+You wish to determine statistically whether there is any difference in the ranges of the two deer populations.
+\begin{enumerate}
+\item What is the parameter of interest in this study?\\
+
+You are interested in the difference between the population means $\mu_1 - \mu_2$.
+\item What is the null hypothesis, alternative hypothesis, and test statistic?\\
+
+The null hypothesis is $\mu_1 - \mu_2 = 0$. The alternative hypothesis is $\mu_1 - \mu_2 \neq 0$. The test statistic is $\bar{Y}_1 - \bar{Y}_2$.
+
+\item Do the data provide sufficient evidence that the mean ranges of the two populations are different? Use a level of $\alpha = 0.10$ for your hypothesis test.\\
+
+For this, we do a two-tailed hypothesis test, since we have no reason to suspect that one population has a larger range than the other. First, we need the standard deviation of the estimator $\bar{Y}_1 - \bar{Y}_2$. Using the formula from the table in the notes, and estimating the population standard deviations with the sample standard deviations:
+\begin{align*}
+\sigma_{\bar{Y}_1 - \bar{Y}_2} &= \sqrt{\frac{\sigma_1^2}{n_1^2} + \frac{\sigma_1^2}{n_1} } \approx \sqrt{\frac{\S_1^2}{n_1} + \frac{S_1^2}{n_1^2} } \\
+&= \sqrt{\frac{1140^2}{40} + \frac{963^2}{40} } = 236
+\end{align*}
+Since this is a two-tailed test, we split our $\alpha$. From the $Z$-table, $z_{\alpha/2} = z_{0.05} = 1.64$. (You could also use 1.64). Since the null hypothesis is that the difference in means is 0, the rejection region is:
+\begin{align*}
+|(\bar{Y}_1 - \bar{Y}_2) - 0| &\geq \sigma_{\bar{Y}_1 - \bar{Y}_2}z_{\alpha/2} \\
+|\bar{Y}_1 - \bar{Y}_2 | \geq 236 (1.64) = 387
+\end{align*}
+For our samples, $|\bar{Y}_1 - \bar{Y}_2| = |2980 - 3205| = 225 $. This does not fall in the rejection region, so at the level of 0.10, we fail to reject the null hypothesis, so there is not sufficient evidence that the mean ranges are different.
+\end{enumerate}
+
+\item You are for one final time the quality control manager for the Acme Widget Company. Since MiniWidgets were so successful, you decide to launch a line of MegaWidgets. Same great idea, (approximately) 100 times the size! Your MegaWidget machine is designed to produce MegaWidgets which have an average mass of 800 grams. You suspect that your MegaWidget machine is producing MegaWidgets which are too small. Since MegaWidgets are more expensive and take longer to produce than MiniWidgets, you decide to take a sample of 5 MegaWidgets from the machine. Their masses (in grams) are 785, 805, 790, 793, and 802 grams.
+\begin{enumerate}
+\item Do the data indicate that the average mass of MegaWidgets produced by the machine is less than 800 grams? Use a hypothesis test with a level of significant $\alpha = 0.05$.\\
+
+The sample mean is $\bar{Y} = 795$, and the sample standard deviation (using the unbiased estimator) is $S = 8.337$. For the hypothesis test, the null hypothesis is $\mu = 800$, the alternative hypothesis is $\mu < 800$, and the test statistic is $\bar{Y}$. This is a lower-tail test, and since we have a normally distributed population (we need to assume this!), unknown population variance, and a small sample, we will use the $t$-test. We have 5 samples, so we need to use the $t$-distribution with $5 - 1 = 4$ df. Looking at the $t$-table (and noting that the distribution is symmetric about the mean), we have $t_{\alpha} = t_{0.05} = 2.132$. The rejection region is $\bar{Y} \leq k$, where $k$ is given by:
+\begin{align*}
+k &= \mu - t_{\alpha} \frac{S}{\sqrt{n}} \\
+&= 800 - 2.133 \frac{8.337}{\sqrt{5}} = 792
+\end{align*}
+note that we use the value of $\mu = 800$ from the null hypothesis. Since $795 > 792$, the test statistic does not fall in the rejection region, so we fail to reject the null hypothesis with a level of 0.05. Thus we conclude that we do not need to repair the MegaWidget machine at present.
+
+\item What assumption did you have to make in order to use the hypothesis test you used in part (a)?\\
+
+We needed to assume that the masses of the MegaWidgets produced by the machine are normally distributed.
+\end{enumerate}
+
+\item A soft-drink machine fills cups with an average of 7 ounces per cup. (This is one of those machines where you press the button and it fills the entire cup.) In a test of the machine, 10 cupfuls of delicious soft drink were dispensed from the machine and measured. The mean and standard deviation of the ten measurements were 7.1 ounces and 0.12 ounces. Is there sufficient evidence that the mean amount of soft drink dispensed from the machine differs from 7 ounces? Use a level of significance $\alpha = 0.05$.\\
+
+The null hypothesis is $\mu = 7$, the alternative hypothesis is $\mu \neq 7$, and the test statistic is $\bar{Y}$. We again assume that the amount of soda dispensed is normally distributed. Since the sample size is small and the population variance is unknown, we use the $t$-distribution with $10 - 1 = 9$ df. This is a two-tailed test, since we don't know (in advance) whether the machine will dispense too much or too little soft drink. Dividing our $\alpha$ into two (since) there are two tails to our test, we find from the $t$-table that for 9 df, $t_{\alpha/2} = t_{0.025} = 2.262$. The rejection region is:
+\begin{align*}
+|\bar{Y} - 7| \geq t_{\alpha/2} \frac{S}{\sqrt{n}} \\
+|\bar{Y} - 7| \geq 2.262 \frac{0.12}{\sqrt{10}} = 0.0858
+\end{align*}
+Since we measured $|\bar{Y} - 7| = |7.1 - 7| - 0.1 > 0.0858$, we reject the null hypothesis, thus there is sufficient evidence at the level 0.05 that the mean amount of soft drink dispensed from the machine differs from 7 ounces.
+
+\item Let $Y_1, Y_2, \dots, Y_n$ be a sample from a population having an exponential distribution with parameter $\lambda$.
+\begin{enumerate}
+\item Using the Neyman-Pearson lemma, derive the most powerful test for the null hypothesis $H_0: \lambda = \lambda_0$ versus the alternative hypothesis $H_a: \lambda = \lambda_a$, where $\lambda_a > \lambda_0$. Write the test in the form $W \leq k$, where $W$ is the test statistic derived from the Neyman-Pearson lemma, and $k$ is the boundary of the rejection region. Do not solve for $k$.\\
+
+The likelihood of the null hypothesis is:
+\begin{align*}
+L(Y_1, \dots, Y_n | \lambda_0) &= \prod_{i=1}^n \lambda_0 e^{-\lambda_0 Y_i} \\
+&= \lambda_0^n e^{-\lambda_0 \sum_{i=1}^n Y_i}\\
+&= \lambda_0^n e^{-\lambda_0 n \bar{Y}}
+\end{align*}
+Similarly, the likelihood of the alternative hypothesis is:
+\[
+L(Y_1, \dots, Y_n | \lambda_a) = \lambda_a^n e^{-\lambda_a n \bar{Y}}
+\]
+The likelihood ratio is:
+\begin{align*}
+LR &= \frac{ \lambda_0^n e^{-\lambda_0 n \bar{Y}} }{ \lambda_a^n e^{-\lambda_a n \bar{Y}} } \\
+&= \left( \frac{ \lambda_0 }{\lambda_a }\right)^n e^{-\lambda_0 n \bar{Y}} e^{\lambda_a n \bar{Y}} \\
+&= \left( \frac{ \lambda_0 }{\lambda_a }\right)^n e^{-n (\lambda_0 - \lambda_a) n \bar{Y}}
+\end{align*}
+The likelihood ratio test is given by $LR < k$, where $LR$ is given above:
+\[
+\left( \frac{ \lambda_0 }{\lambda_a }\right)^n e^{-n (\lambda_0 - \lambda_a) \bar{Y}} < k
+\]
+
+\item The mean of the exponential distribution is $\mu = 1 / \lambda$, thus $\lambda = 1 / \mu$. A reasonable test statistic, therefore, is $1 / \bar{Y}$. (This is the method of moments estimator.) Using some algebraic manipulation, argue that the hypothesis test $\bar{Y} \leq m$, where $m$ is the boundary of the rejection region, is equivalent to the hypothesis test in part (a).\\
+
+All we will do is solve for $\bar{Y}$ in the likelihood ratio test above:
+\begin{align*}
+\left( \frac{ \lambda_0 }{\lambda_a }\right)^n e^{-n (\lambda_0 - \lambda_a) \bar{Y}} &< k\\
+e^{-n (\lambda_0 - \lambda_a) \bar{Y}} &< k \left( \frac{ \lambda_a }{\lambda_0 }\right)^n\\
+-n (\lambda_0 - \lambda_a) \bar{Y} &< \log\left[ k \left( \frac{ \lambda_a }{\lambda_0 }\right)^n \right]\\
+n (\lambda_a - \lambda_0) \bar{Y} &< \log(k) + n\log\left( \frac{ \lambda_a }{\lambda_0 } \right)\\
+\bar{Y} &< \frac{1}{n(\lambda_a - \lambda_0)} \left[ \log(k) + n\log\left( \frac{ \lambda_a }{\lambda_0 } \right) \right]
+\end{align*}
+Thus we have written this in the form $\bar{Y} \leq m$, where $m$ is equal to the stuff on the right hand side in the last line above (all of those things are constants). The idea here is that the simpler-looking (and easier to deal with) hypothesis test $\bar{Y} \leq m$ is equivalent to the likelihood ratio test, so by the Neyman-Pearson lemma, it is also the most powerful test.
+\end{enumerate}
+
+\item Let $Y_1, Y_2, \dots, Y_n$ be a sample from a population having a uniform distribution on the interval $[0, b]$. 
+\begin{enumerate}
+\item Using the Neyman-Pearson lemma, find the most powerful test for testing the null hypothesis $H_0: b = b_0$ versus the alternative hypothesis $H_a: b = b_a$, where $b_a < b_0$. Write the test in the form $W \leq k$, where $W$ is the test statistic derived from the Neyman-Pearson lemma, and $k$ is the boundary of the rejection region. Do not solve for $k$. Hint: look at the section in the notes on the MLE for uniform distribution. As in the case of the MLE for the uniform distribution, this will involve the largest order statistic $Y_{(n)} = \max_{i = 1, \dots, n} Y_i$.\\
+
+We can assume that all samples are nonnegative since they are coming from a uniform distribution on $[0, b]$. Let $Y_{(n)} = \max_{i = 1, \dots, n}Y_i$ be the largest order statistic. Then, referring to the section on the MLE of the uniform distribution, the likelihood of the null hypothesis is:
+\begin{align*}
+L(Y_1, \dots, Y_n | b_0) = \begin{cases}
+\frac{1}{b_0^n} & Y_{(n)} \leq b_0 \\
+0 & \text{otherwise}
+\end{cases}
+\end{align*}
+Similarly, the likelihood of the alternative hypothesis is:
+\begin{align*}
+L(Y_1, \dots, Y_n | b_a) = \begin{cases}
+\frac{1}{b_a^n} & Y_{(n)} \leq b_a \\
+0 & \text{otherwise}
+\end{cases}
+\end{align*}
+Note that $b_a < b_0$. Taking the likelihood ratio, and paying special attention to the bounds on the two likelihood functions, we have:
+\[
+LR = \begin{cases}
+\left( \frac{b_a}{b_0} \right) & Y_{(n)} \leq b_a \\
+\infty & b_a < Y_{(n)} \leq b_0 \\
+\text{undefined} & Y_{(n)} > b_0
+\end{cases}
+\]
+where we get $\infty$ by dividing a positive number by 0 and ``undefined'' by dividing 0 by 0. The likelihood ratio test is of the form $LR < k$, which is not especially useful in this case
+
+\item For a specified level $\alpha$, the rejection region will be of the form:
+\[
+\{ Y_{(n)} \leq m \}
+\]
+where $m$ is the boundary of the rejection region, and is different from $k$ in part (a)\footnote{You do not have to show this, but take a minute to think why this makes sense.}. In class (in the MLE section), we showed that for $n$ samples $Y_1, \dots, Y_n$ drawn from a uniform distribution on the interval $[0, b]$, the probability density function of the largest order statistic $Y_{(n)}$ is given by:
+\[
+f_{(n)}(y) = \begin{cases}
+n y^{n-1} \frac{1}{b^n} & 0 \leq y \leq b \\
+0 & \text{otherwise}
+\end{cases}
+\]
+Using this density and the definition of $\alpha$, solve for the boundary of the rejection region $m$ in terms of $\alpha$ and $b_0$. 
+\end{enumerate}
+
+Using the definition of $\alpha$ and the density for $Y_{(n)}$
+\begin{align*}
+\alpha &= \P(Y_{(n)} \text{ is in rejection region given null hypothesis is true}) \\
+&= \P(Y_{(n)} \leq m \text{ given } b = b_0) \\
+&= \int_0^m n y^{n-1} \frac{1}{b_0^n} dy \\
+&= \frac{n}{b_0^n} \frac{y^n}{n}\Bigr|_0^m \\
+&= \frac{m^n}{b_0^n}
+\end{align*}
+Solving this for $m$, we get:
+\[
+m = b_0 \alpha^{1/n}
+\]
+Thus the rejection region is given by:
+\[
+\{ Y_{(n)} \leq b_0 \alpha^{1/n} \}
+\]
+\end{enumerate}
+\end{document}

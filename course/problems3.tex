@@ -1,0 +1,122 @@
+% \documentclass{book}
+
+\documentclass[12pt]{article}
+\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\usepackage[shortalphabetic]{amsrefs}%
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{cool}
+\usepackage{url}
+\usepackage{graphicx,epsfig}
+\usepackage{makecell}
+\usepackage{array}
+
+\def\noi{\noindent}
+\def\T{{\mathbb T}}
+\def\R{{\mathbb R}}
+\def\N{{\mathbb N}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\P{{\mathbb P}}
+\def\E{{\mathbb E}}
+\def\Q{\mathbb{Q}}
+\def\ind{{\mathbb I}}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+
+\title{}
+\author{\vspace{-10ex} }
+
+\begin{center}
+{\LARGE APMA 1650 -- Problem Session 3}\\
+\vspace{5mm}
+{\large Wednesday, August 3, 2016}\\
+% \vspace{5mm}
+\end{center}
+
+There are 11 problems on this sheet. There is no particular order to them, so I recommend that you work on the ones you find the most interesting.
+
+\begin{enumerate}
+
+\item Suppose we have a population which is exponentially distributed with unknown parameter $\lambda$. What is the method of moments estimator for $\lambda$?
+
+\item Suppose we have a population which is exponentially distributed with unknown parameter $\lambda$. Take $n$ samples $Y_1, \dots, Y_n$ from the population. Find the maximum likelihood estimator (MLE) for $\lambda$.
+
+\item Suppose we poll Brown students and ask whether or not they think all undergrads should be required to take statistics. We ask 1000 students, of which 300 say yes. Provide a 95\% confidence interval for true proportion of the student body which would say yes.
+
+\item You are interested in the proportion of defective items produced by two factories. Independent random samples of 50 items were selected from each factory. The samples from factory A yielded 7 defectives, and the samples from Factory B yielded 10 defectives. Find a 98\% confidence inteval for the true difference in proportions of defective items between the two factories.
+
+\item The hourly wages in a particular industry are normally distributed with mean \$13.20 and standard deviation \$2.50. A company in this industry employs 40 workers, paying them an average of \$12.20 per hour. Can this company be accused of paying substandard wages? Use an $\alpha = 0.01$ level test. 
+
+\item The output voltage for an electric circuit is specified to be 130 V. A sample of 40 independent readings on the voltage for this circuit gave a sample mean 128.6 V and standard deviation 2.1 V. 
+\begin{enumerate}
+\item Test the hypothesis that the average output voltage is 130 Cagainst the alternative that it is less than 130 V. Use a test with level $\alpha = 0.05$.
+\item If the voltage falls as low as 128 V, Serious Consequences may result. For testing $H_0: \mu = 130$ versus $H_a: \mu = 128$, find $\beta$, the probability of a type II error, for the rejection region used in part (a).
+\end{enumerate}
+
+\item Shear strength measurements derived from unconfined compression tests for two types of soils gave the results shown in the following table (measurements in tons per square foot). 
+\begin{figure}[H]
+\centering
+\begin{tabular}{l@{\hskip 2cm}l@{\hskip 2cm}l}
+\toprule
+& Soil Type 1 & Soil Type 2\\
+\midrule
+Sample size & 30 & 35 \\
+Sample mean & 1.65 & 1.43 \\
+Sample standard deviation & 0.26 & 0.22 \\
+\bottomrule
+\end{tabular}
+\end{figure} 
+
+\begin{enumerate}
+\item Do the soils appear to differ with respect to average shear strength, at the 1\% significance level?
+\item What is the $p$-value for this test?
+\end{enumerate}
+
+\item A random sample of 37 second graders who participated in sports had manual dexterity scores with mean 32.19 and standard deviation 4.34. An independent sample of 37 second graders who did not participate in sports had manual dexterity scores with mean 31.68 and standard deviation 4.56.
+\begin{enumerate}
+\item Test to see whether sufficient evidence exists to indicate that second graders who participate in sports have a higher mean dexterity score. Use a level of $\alpha = .05$.
+\item For the rejection region used in part (a), calculate $\beta$ when $\mu_1 − \mu_2 = 3$.
+\end{enumerate}
+
+\item High airline occupancy rates on scheduled flights are essential for profitability. Suppose that a scheduled flight must average at least 60\% occupancy to be profitable. An examination of the occupancy rates for 120 10:00 A.M. flights from Atlanta to Dallas showed mean occupancy rate per flight of 58\% and standard deviation of 11\%. Test to see if sufficient evidence exists to support a claim that the flight is unprofitable. Find the $p$-value associated with the test. What would you conclude if you wished to implement the test at the $\alpha = 0.10$ level?
+
+\item A pharmaceutical company conducted an experiment to compare the mean times (in days) necessary to recover from the effects and complications that follow the onset of the common cold. This experiment compared persons on a daily dose of 500 milligrams (mg) of vitamin C to those who were not given a vitamin supplement. For each treatment category, 35 adults were randomly selected, and the mean recovery times and standard deviations for the two groups were found to be as given in the accompanying table.
+\begin{figure}[H]
+\centering
+\begin{tabular}{l@{\hskip 2cm}l@{\hskip 2cm}l}
+\toprule
+& No Supplement & 500 mg Vitamin C \\
+\midrule
+Sample size & 35 & 35 \\
+Sample mean (days) & 6.9 & 5.8 \\
+Sample standard deviation (days) & 2.9 & 1.2 \\
+\bottomrule
+\end{tabular}
+\end{figure} 
+\begin{enumerate}
+\item Do the data indicate that the use of vitamin C reduces the mean time required to recover? Find the $p$-value for the test.
+\item What would the company conclude at the $\alpha = 0.05$ level?
+\end{enumerate}
+
+\item Nutritional information provided by Kentucky Fried Chicken (KFC) claims that each small bag of potato wedges contains 4.8 ounces of food and 280 calories. A sample of 10 orders from KFC restaurants in New York and New Jersey averaged 358 calories.
+If the sample standard deviation was 54 calories, is there sufficient evidence to indicate that the average number of calories in small bags of KFC potato wedges is greater than advertised? Test at the 1\% level of significance.
+
+\end{enumerate}
+\end{document}
+
