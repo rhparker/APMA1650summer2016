@@ -81,7 +81,7 @@ The null hypothesis is $\mu_1 - \mu_2 = 0$. The alternative hypothesis is $\mu_1
 
 For this, we do a two-tailed hypothesis test, since we have no reason to suspect that one population has a larger range than the other. First, we need the standard deviation of the estimator $\bar{Y}_1 - \bar{Y}_2$. Using the formula from the table in the notes, and estimating the population standard deviations with the sample standard deviations:
 \begin{align*}
-\sigma_{\bar{Y}_1 - \bar{Y}_2} &= \sqrt{\frac{\sigma_1^2}{n_1^2} + \frac{\sigma_1^2}{n_1} } \approx \sqrt{\frac{\S_1^2}{n_1} + \frac{S_1^2}{n_1^2} } \\
+\sigma_{\bar{Y}_1 - \bar{Y}_2} &= \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2} } \approx \sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2} } \\
 &= \sqrt{\frac{1140^2}{40} + \frac{963^2}{40} } = 236
 \end{align*}
 Since this is a two-tailed test, we split our $\alpha$. From the $Z$-table, $z_{\alpha/2} = z_{0.05} = 1.64$. (You could also use 1.64). Since the null hypothesis is that the difference in means is 0, the rejection region is:
@@ -135,7 +135,7 @@ The likelihood ratio is:
 \begin{align*}
 LR &= \frac{ \lambda_0^n e^{-\lambda_0 n \bar{Y}} }{ \lambda_a^n e^{-\lambda_a n \bar{Y}} } \\
 &= \left( \frac{ \lambda_0 }{\lambda_a }\right)^n e^{-\lambda_0 n \bar{Y}} e^{\lambda_a n \bar{Y}} \\
-&= \left( \frac{ \lambda_0 }{\lambda_a }\right)^n e^{-n (\lambda_0 - \lambda_a) n \bar{Y}}
+&= \left( \frac{ \lambda_0 }{\lambda_a }\right)^n e^{-n (\lambda_0 - \lambda_a) \bar{Y}}
 \end{align*}
 The likelihood ratio test is given by $LR < k$, where $LR$ is given above:
 \[
@@ -176,7 +176,7 @@ L(Y_1, \dots, Y_n | b_a) = \begin{cases}
 Note that $b_a < b_0$. Taking the likelihood ratio, and paying special attention to the bounds on the two likelihood functions, we have:
 \[
 LR = \begin{cases}
-\left( \frac{b_a}{b_0} \right) & Y_{(n)} \leq b_a \\
+\left( \frac{b_a}{b_0} \right)^n & Y_{(n)} \leq b_a \\
 \infty & b_a < Y_{(n)} \leq b_0 \\
 \text{undefined} & Y_{(n)} > b_0
 \end{cases}
