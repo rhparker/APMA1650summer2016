@@ -1,0 +1,298 @@
+% \documentclass{book}
+
+\documentclass[12pt]{article}
+\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\usepackage[shortalphabetic]{amsrefs}%
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{cool}
+\usepackage{url}
+\usepackage{graphicx,epsfig}
+\usepackage{makecell}
+\usepackage{array}
+
+\def\noi{\noindent}
+\def\T{{\mathbb T}}
+\def\R{{\mathbb R}}
+\def\N{{\mathbb N}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\P{{\mathbb P}}
+\def\E{{\mathbb E}}
+\def\Q{\mathbb{Q}}
+\def\ind{{\mathbb I}}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+
+\title{}
+\author{\vspace{-10ex} }
+
+\begin{center}
+{\LARGE APMA 1650 -- Problem Session 3}\\
+\vspace{5mm}
+{\large Wednesday, August 3, 2016}\\
+% \vspace{5mm}
+\end{center}
+
+There are 12 problems on this sheet. There is no particular order to them, so I recommend that you work on the ones you find the most interesting.
+
+\begin{enumerate}
+
+\item Suppose we have a population which is exponentially distributed with unknown parameter $\lambda$. What is the method of moments estimator for $\lambda$?\\
+
+For the method of moments, we set $\bar{Y} = \mu$, where $\mu$ is the population mean. Since for an exponential distribution with parameter $\lambda$, the population mean is $1/\lambda$, we have $\bar{Y} = 1 / \lambda$. Solving for $\lambda$, the method of moments estimator for $\lambda$ is:
+\[
+\hat{\lambda} = \dfrac{1}{\bar{Y}}
+\]
+
+\item Suppose we have a population which is exponentially distributed with unknown parameter $\lambda$. Take $n$ samples $Y_1, \dots, Y_n$ from the population. Find the maximum likelihood estimator (MLE) for $\lambda$.\\
+
+To get the likelihood function, we plug the data $Y_i$ in to the exponential density and multiply them together:
+\begin{align*}
+L(Y_1, \dots, Y_n|\lambda) &= \prod_{i=1}^n \lambda e^{-\lambda Y_i}\\
+&= \lambda^n e^{-\lambda Y_1}e^{-\lambda Y_2}\cdots e^{-\lambda Y_n}\\
+&= \lambda^n e^{-\lambda(Y_1 + Y_2 + \cdots + Y_n)} \\
+&= \lambda^n e^{-\lambda n \bar{Y}}
+\end{align*}
+Since we have a product of things involving $\lambda$, and we need to maximize with respect to $\lambda$ by taking the derivative with respect to $\lambda$ and setting it equal to 0, we recall that is is equivalent (and easier in this case!) to maximize the log likelihood function.
+\begin{align*}
+\log L(Y_1, \dots, Y_n|\lambda) &= n \log \lambda - \lambda n \bar{Y}
+\end{align*}
+Taking the derivative and setting it equal to 0:
+\begin{align*}
+\frac{n}{\lambda} - n \bar{Y} &= 0 \\
+\lambda = \frac{1}{\bar{Y}}
+\end{align*}
+So in this case the MLE is the same as the method of moments estimator.
+
+\item Suppose we poll Brown students and ask whether or not they think all undergrads should be required to take statistics. We ask 1000 students, of which 300 say yes. Provide a 95\% confidence interval for true proportion of the student body which would say yes.\\
+
+This is a large sample confidence interval, so we can use the $Z$ distribution. The estimator is $\hat{p}$, the sample proportion, which is 0.3 in this case. The formula for the large sample confidence interval is:
+\[
+[\hat{p}_L, \hat{p}_U] = [ \hat{p} - z_{\alpha/2} \sigma_{\hat{p}}, \hat{p} + z_{\alpha/2} \sigma_{\hat{p}} ]
+\]
+Since $\alpha = 0.05$, from the $Z$-table, we have $z_{\alpha/2} = z_{0.025} = 1.96$. For the standard deviation of the estimator,
+\begin{align*}
+\sigma_\hat{p} &= \sqrt{ \dfrac{p(1-p)}{n}} \approx \sqrt{ \dfrac{\hat{p}(1-\hat{p})}{n}}\\
+&= \sqrt{ \dfrac{ (0.3)(0.7) }{ 1000 } } = 0.014
+\end{align*}
+where we approximated $p$ with $\hat{p}$, which we can do since we have a large sample size. The 95\% confidence interval is:
+\begin{align*}
+[\hat{p}_L, \hat{p}_U] &= [ 0.3 - 1.96(0.014),  0.3 + 1.96(0.014)]\\
+&= [0.273, 0.327]
+\end{align*}
+
+\item You are interested in the proportion of defective items produced by two factories. Independent random samples of 50 items were selected from each factory. The samples from factory A yielded 7 defectives, and the samples from Factory B yielded 10 defectives. Find a 98\% confidence interval for the true difference in proportions of defective items between the two factories.\\
+
+This is a confidence interval for the the difference of proportions of two populations; since we took 50 samples from each population, this is a large sample confidence interval, so again we use the $Z$ distribution. The estimator is $\hat{p}_2 - \hat{p}_1$ (the order does not matter, but this way we get a positive number, which I prefer), which in this case is $10/50 - 7/50 = 0.20 - 0.14 = 0.06$. Since $\alpha = 0.02$, from the $Z$-table, we have $z_{\alpha/2} = z_{0.01} = 2.33$. For the standard deviation of the estimator,
+\begin{align*}
+\sigma_{\hat{p}_2 - \hat{p}_1} &= \sqrt{ \dfrac{p_1(1-p_1)}{n_1} + \dfrac{p_2(1-p_2)}{n_2} } \approx \sqrt{ \dfrac{\hat{p_1}(1-\hat{p_1})}{n_1} + \dfrac{\hat{p_2}(1-\hat{p_2})}{n_2} } \\
+&= \sqrt{ \dfrac{ (0.2)(0.8) }{ 50 } + \dfrac{(0.14)(0.86) }{ 50 } } = 0.075
+\end{align*}
+where we approximated $p_1$ with $\hat{p}_1$ and $p_2$ with $\hat{p}_2$ since the sample size is large. The 98\% confidence interval therefore is:
+\begin{align*}
+[ 0.06 - 2.33(0.075),  0.06 + 2.33(0.075) ] = [ -0.115, 0.235 ]
+\end{align*}
+This confidence interval contains 0, so we cannot be 98\% certain that there is a difference in the proportion of defectives between the two factories.
+
+
+\item The hourly wages in a particular industry are normally distributed with mean \$13.20 and standard deviation \$2.50. A company in this industry employs 40 workers, paying them an average of \$12.20 per hour. Can this company be accused of paying substandard wages? Use an $\alpha = 0.01$ level test. \\
+
+Here we have a lower-tail hypothesis test, since we hypothesize that the average wage is less than a certain amount. The null hypothesis is $\mu = 13.20$, alternative hypothesis is $\mu < 13.20$, and the test statistic is $\bar{Y}$. In this case, the population standard deviation is known. Since the sample size is large, we can assume $\bar{Y}$ has a normal distribution with mean 13.20 and standard deviation $\sigma_{\bar{Y}} = \sigma / \sqrt{n} = 2.50 / \sqrt{40} = 0.395$. Since we want a level of 0.01, we have $z_\alpha = z_{0.01} = 2.33$. The rejection region is given by:
+\begin{align*}
+\bar{Y} &\leq \mu_0 - z_{\alpha} \sigma_\bar{Y} \\
+&= 13.20 - 2.33 (0.395) \\
+&= 12.28
+\end{align*}
+Since our test statistic falls inside the rejection region, we can reject the null hypothesis to conclude that at the level of $\alpha = 0.01$, the company is paying substandard wages.
+
+\item The output voltage for an electric circuit is specified to be 130 V. A sample of 40 independent readings on the voltage for this circuit gave a sample mean 128.6 V and standard deviation 2.1 V. 
+\begin{enumerate}
+\item Test the hypothesis that the average output voltage is 130 V against the alternative that it is less than 130 V. Use a test with level $\alpha = 0.05$.\\
+
+Here we have a lower-tail hypothesis test, since we hypothesize that the average voltage is less than a certain amount. The null hypothesis is $\mu = 130$, alternative hypothesis is $\mu < 130$, and the test statistic is $\bar{Y}$. In this case, the population standard deviation is unknown, but we can use the sample standard deviation of 2.1 instead since the sample size is large. Since the sample size is large, we can assume $\bar{Y}$ has a normal distribution with mean 130 and standard deviation $\sigma_{\bar{Y}} \approx S / \sqrt{n} = 2.1 / \sqrt{40} = 0.332$. Since we want a level of 0.05, we have $z_\alpha = z_{0.05} = 1.65$. The rejection region is given by:
+\begin{align*}
+\bar{Y} &\leq \mu_0 - z_{\alpha} \sigma_\bar{Y} \\
+&= 130 - 1.65 (0.332) \\
+&= 129.5
+\end{align*}
+Since our test statistic falls inside the rejection region, we can reject the null hypothesis to conclude that at the level of $\alpha = 0.05$ that the mean voltage is lower than 130.
+
+\item If the voltage falls as low as 128 V, Serious Consequences may result. For testing $H_0: \mu = 130$ versus $H_a: \mu = 128$, find $\beta$, the probability of a type II error, for the rejection region used in part (a).\\
+
+Here we want the probability that we are \emph{outside} the rejection region, given that the true population mean is $\mu = 128$. For this, we compute:
+\begin{align*}
+\P(\bar{Y} > 129.5 | \mu = 128) &= \P \left( \dfrac{ \bar{Y} - 128 }{ \sigma_\bar{Y} } > \dfrac{ 129.5 - 128 }{ \sigma_\bar{Y} }\right) \\
+&= \P \left( \dfrac{ \bar{Y} - 128 }{ \sigma_\bar{Y} } > \dfrac{ 129.5 - 128 }{ \sigma_\bar{Y} }\right) \\
+&= \P \left Z > \dfrac{ 129.5 - 128 }{ 0.332 } \right) \\
+&= \P (Z > 4.51)
+\end{align*}
+This is not even on the $Z$ table (more than 4 standard deviations above the mean), so the probability of type II error is insignificantly small.
+\end{enumerate}
+
+\item Shear strength measurements derived from unconfined compression tests for two types of soils gave the results shown in the following table (measurements in tons per square foot). 
+\begin{figure}[H]
+\centering
+\begin{tabular}{l@{\hskip 2cm}l@{\hskip 2cm}l}
+\toprule
+& Soil Type 1 & Soil Type 2\\
+\midrule
+Sample size & 30 & 35 \\
+Sample mean & 1.65 & 1.43 \\
+Sample standard deviation & 0.26 & 0.22 \\
+\bottomrule
+\end{tabular}
+\end{figure} 
+
+\begin{enumerate}
+\item Do the soils appear to differ with respect to average shear strength, at the 1\% significance level?\\
+
+This is a two-tailed hypothesis test involving the difference of two means. The null hypothesis is $\mu_1 - \mu_2 = 0$, the alternative hypothesis is $\mu_1 - \mu_2 \neq 0$, and the test statistic is $\bar{Y}_1 - \bar{Y}_2$, which in this case is $1.65 - 1.43 = 0.22$. Since this is a two-tailed test, we split our $\alpha$ in half so that each tail gets half the $\alpha$. Thus we have $z_{\alpha/2} = z_{0.005} = 2.58$. The standard deviation of the estimator is:
+\begin{align*}
+\sigma_{\bar{Y}_1 - \bar{Y}_2} &= \sqrt{ \dfrac{\sigma^2_1}{n_1} + \dfrac{\sigma^2_2}{n_2} } \approx \sqrt{ \dfrac{S^2_1}{n_1} + \dfrac{S^2_2}{n_2} } \\
+&= \sqrt{ \dfrac{0.26^2}{30} + \dfrac{0.22^2}{35} } = 0.06
+\end{align*}
+The rejection region is given by:
+\begin{align*}
+|(\bar{Y}_1 - \bar{Y}_2) - 0| &\geq z_{\alpha/2} \sigma_{\bar{Y}_1 - \bar{Y}_2} \\
+|\bar{Y}_1 - \bar{Y}_2| &\geq 2.58 (0.06) = 0.155
+\end{align*}
+Since our test statistic falls inside the rejection region, we reject the null hypothesis to conclude that the soils differ with respect to average shear strength at a level of 1\%.
+
+\item What is the $p$-value for this test?
+
+For the $p$-value, we want the smallest value of $\alpha$ for which we reject the null hypothesis given the value of the test statistic we measured, i.e. given $\bar{Y}_1 - \bar{Y}_2 = 0.22$. Recall that this is a two-tailed test, so our $\alpha$ is split in half. Thus we want:
+\begin{align*}
+\frac{p}{2} &= \P( \bar{Y}_1 - \bar{Y}_2 > 0.22) \\
+&= \P\left( \dfrac{ (\bar{Y}_1 - \bar{Y}_2) - 0 }{ \sigma_{\bar{Y}_1 - \bar{Y}_2} } > \dfrac{ 0.22 - 0 }{ \sigma_{\bar{Y}_1 - \bar{Y}_2} } \right) \\
+&= \P\left(Z  > \dfrac{ 0.22 }{ 0.06 } \right)\\
+&= \P(Z > 3.66 ) < 0.0002 \\
+p &< 0.0004
+\end{align*}
+Since the $Z$ table does not go all the way to 3.66, we can estimate the $p$-value with this inequality, which is a really low $p$-value!
+\end{enumerate}
+
+\item A random sample of 37 second graders who participated in sports had manual dexterity scores with mean 32.19 and standard deviation 4.34. An independent sample of 37 second graders who did not participate in sports had manual dexterity scores with mean 31.68 and standard deviation 4.56.
+\begin{enumerate}
+\item Test to see whether sufficient evidence exists to indicate that second graders who participate in sports have a higher mean dexterity score. Use a level of $\alpha = .05$.\\
+
+This is a one-tailed test for the difference of two means. The null hypothesis is $\mu_1 - \mu_2 = 0$, the alternative hypothesis is $\mu_1 - \mu_2 > 0$, and the test statistic is $\bar{Y}_1 - \bar{Y}_2$, which in this case is $32.19 - 31.68 = 0.51$. Since this is a large sample, we can use the $Z$ distribution, so the value of $Z$ we need is $z_\alpha = z_{0.05} = 1.65$. The standard deviation of the estimator is:
+\begin{align*}
+\sigma_{\bar{Y}_1 - \bar{Y}_2} &= \sqrt{ \dfrac{\sigma^2_1}{n_1} + \dfrac{\sigma^2_2}{n_2} } \approx \sqrt{ \dfrac{S^2_1}{n_1} + \dfrac{S^2_2}{n_2} } \\
+&= \sqrt{ \dfrac{4.34^2}{37} + \dfrac{4.56^2}{37} } = 1.03
+\end{align*}
+The rejection region is given by:
+\begin{align*}
+\bar{Y}_1 - \bar{Y}_2 > 0 + z_\alpha \sigma_{\bar{Y}_1 - \bar{Y}_2} = 1.65(1.03) = 1.70
+\end{align*}
+Since the test statistic does not fall within the rejection region, we do not reject the null hypothesis, i.e. there is not significant evidence at a level of 0.05 that there is a difference between the two populations.
+
+\item For the rejection region used in part (a), calculate $\beta$ when $\mu_1 - \mu_2 = 3$.\\
+
+We want the probability the we are not in the rejection region when the true difference in means is 3.
+\begin{align*}
+\beta &= \P( \bar{Y}_1 - \bar{Y}_2  \leq 1.70 | \mu_1 - \mu_2 = 3 ) \\
+&= \P \left( \dfrac{ (\bar{Y}_1 - \bar{Y}_2) - 3 }{ \sigma_{\bar{Y}_1 - \bar{Y}_2} } \leq \dfrac{ 1.70 - 3 }{ \sigma_{\bar{Y}_1 - \bar{Y}_2} }  \right)\\
+&= \P \left( Z \leq \dfrac{ 1.70 - 3 }{ 1.03 }  \right) \\
+&= \P (Z < -1.26)\\
+&= 0.1038
+\end{align*}
+
+
+\end{enumerate}
+
+\item High airline occupancy rates on scheduled flights are essential for profitability. Suppose that a scheduled flight must average at least 60\% occupancy to be profitable. An examination of the occupancy rates for 120 10:00 A.M. flights from Atlanta to Dallas showed mean occupancy rate per flight of 58\% and standard deviation of 11\%. Test to see if sufficient evidence exists to support a claim that the flight is unprofitable. Find the $p$-value associated with the test. What would you conclude if you wished to implement the test at the $\alpha = 0.10$ level?\\
+
+Here we have a lower tail hypothesis test. The null hypothesis is $\mu = 60$, the alternative hypothesis is $\mu < 60$, and the test statistic is $\bar{Y}$. The standard deviation of the estimator is:
+\[
+\sigma_{\bar{Y}} = \frac{\sigma}{\sqrt{n}} = \frac{11}{\sqrt{120}} = 1.00
+\]
+The $p$-value is given by:
+\begin{align*}
+p &= \P(\bar{Y} < 58 | \mu = 60)\\
+&= \P \left(\dfrac{ \bar{Y} - 60 }{\sigma_\bar{Y} } <  \dfrac{ 58 - 60 }{\sigma_\bar{Y} }  \right) \\
+&= \P \left( Z <   \dfrac{ 58 - 60 }{1.00 }  \right) \\
+&= \P (Z < 2.00 ) = 0.0228
+\end{align*}
+Since the $p$-value is the smallest value for $\alpha$ for which we reject the null hypothesis, and our $\alpha = 0.10$ is greater than this, we reject the null hypothesis and conclude that the flight is unprofitable at a level of $\alpha = 0.10$.
+
+\item A pharmaceutical company conducted an experiment to compare the mean times (in days) necessary to recover from the effects and complications that follow the onset of the common cold. This experiment compared persons on a daily dose of 500 milligrams (mg) of vitamin C to those who were not given a vitamin supplement. For each treatment category, 35 adults were randomly selected, and the mean recovery times and standard deviations for the two groups were found to be as given in the accompanying table.
+\begin{figure}[H]
+\centering
+\begin{tabular}{l@{\hskip 2cm}l@{\hskip 2cm}l}
+\toprule
+& No Supplement & 500 mg Vitamin C \\
+\midrule
+Sample size & 35 & 35 \\
+Sample mean (days) & 6.9 & 5.8 \\
+Sample standard deviation (days) & 2.9 & 1.2 \\
+\bottomrule
+\end{tabular}
+\end{figure} 
+\begin{enumerate}
+\item Do the data indicate that the use of vitamin C reduces the mean time required to recover? Find the $p$-value for the test.\\
+
+Here we have a difference of two means and an upper tail test, since we want to show the recovery time is longer if you don't take vitamin C. Let $\mu_1$ be the mean of the placebo group and $\mu_2$ the mean of the group who got vitamin C. The null hypothesis is $\mu_1 - \mu_2 = 0$, the alternative hypothesis is $\mu_1 - \mu_2 > 0$, and the test statistic is $\bar{Y}_1 - \bar{Y}_2$, which in this case is $6.9 - 5.8 = 1.1$. The standard deviation of the estimator is:
+\begin{align*}
+\sigma_{\bar{Y}_1 - \bar{Y}_2} &= \sqrt{ \dfrac{\sigma^2_1}{n_1} + \dfrac{\sigma^2_2}{n_2} } \approx \sqrt{ \dfrac{S^2_1}{n_1} + \dfrac{S^2_2}{n_2} } \\
+&= \sqrt{ \dfrac{2.9^2}{35} + \dfrac{1.2^2}{35} } = 0.53
+\end{align*}
+The $p$-value is:
+\begin{align*}
+p &= \P( \bar{Y}_1 - \bar{Y}_2 > 1.1 | \mu = 0 )\\
+&= \P \left(\dfrac{ (\bar{Y}_1 - \bar{Y}_2) - 0 }{ \sigma_{\bar{Y}_1 - \bar{Y}_2} } > \dfrac{ 1.1 - 0 }{ \sigma_{\bar{Y}_1 - \bar{Y}_2}  }  \right) \\
+&= \P \left( Z > \dfrac{ 1.1 }{ 0.53}  \right) \\
+&= \P (Z > 2.08 ) = 0.0188
+\end{align*}
+
+\item What would the company conclude at the $\alpha = 0.05$ level?\\
+
+Since the $p$-value is less than the desired $\alpha = 0.05$, we can reject the null hypothesis at the level of 0.05.
+\end{enumerate}
+
+\item Nutritional information provided by Kentucky Fried Chicken (KFC) claims that each small bag of potato wedges contains 4.8 ounces of food and 280 calories. A sample of 10 orders from KFC restaurants in New York and New Jersey averaged 358 calories.
+If the sample standard deviation was 54 calories, is there sufficient evidence to indicate that the average number of calories in small bags of KFC potato wedges is greater than advertised? Test at the 1\% level of significance.\\
+
+Here we have a small sample size. The population standard deviation is unknown, so if we assume that the population is normally distributed, we can use the $t$-distribution. The null hypothesis is $\mu = 280$, the alternative hypothesis is $\mu > 280$, and the test statistic is $\bar{Y}$. Since the sample size is 10, we use the $t$-distribution with $10 - 1 = 9$ df, so the value of $t$ we need is $t_\alpha = t_{0.01} = 2.821$. The rejection region using the $t$-distribution is:
+\begin{align*}
+\bar{Y} &\geq \mu_0 + t_\alpha \frac{S}{\sqrt{n}} \\
+&\geq 280 + 2.821 \frac{54}{\sqrt{10}} = 328
+\end{align*}
+Since our test statistic falls in the rejection region, we reject null hypothesis at a level of 0.01, and conclude that there is sufficient evidence at this level that the average number of calories is greater than advertised.
+
+\item Suppose we have a population which can be divided into two subgroups $A$ and $B$, where $p$ is the (unknown) proportion of people who belong to subgroup $A$. Taking a sample of size $n$ from this population, Let $Y \sim \text{ Binomial}(n, p)$ be the number people in sample who belong to subgroup $A$. Suppose we are interested in testing the null hypothesis $H_0: p = p_0$ versus the alternative hypothesis $H_a: p = p_a$, where $p_a < p_0$. What is the form of the $\alpha$-most powerful hypothesis test?\\
+
+Since we are comparing two simple hypotheses, the Neyman-Pearson lemma states that the likelihood ratio is the most powerful test. The likelihood function here is:
+\[
+L(Y|p) = \binom{n}{Y} p^Y (1-p)^{n-Y}
+\]
+Thus the likelihood ratio for the Neyman-Pearson lemma is:
+\begin{align*}
+\lambda &= \frac{L(Y|p_0)}{L(Y|p_a)} \\
+&= \dfrac{ \binom{n}{Y} p_0^Y (1-p_0^{n-Y} }{ \binom{n}{Y} p_a^Y (1-p_a)^{n-Y} } \\
+&= \left( \dfrac{p_0}{p_a} \right)^Y \left( \dfrac{1 - p_0}{1 - p_a} \right)^{n - Y} \\
+&= \left[ \dfrac{p_0(1 - p_a)}{p_a(1 - p_0)} \right]^Y \left( \dfrac{1 - p_0}{1 - p_a} \right)^n
+\end{align*}
+The likelihood ratio test is of the form $\lambda < k$, so we have:
+\[
+\left[ \dfrac{p_0(1 - p_a)}{p_a(1 - p_0)} \right]^Y \left( \dfrac{1 - p_0}{1 - p_a} \right)^n < k
+\]
+
+\end{enumerate}
+\end{document}
+
