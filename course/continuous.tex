@@ -42,7 +42,7 @@
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
-\newtheorem{exercise}{Exercise}%
+\newtheorem{exercise}{exercise}%
 \newtheorem{problem}[exercise]{Problem}%
 \newtheorem*{example}{Example}
 
@@ -624,7 +624,7 @@ Just as the geometric distribution is memoryless, the exponential distribution i
 Let $Y$ be an exponential random variable with parameter $\lambda > 0$. Then its cdf $F(y)$ is given by:
 \begin{align*}
 F(y) = \begin{cases}
-1 - e^{\lambda y} & y > 0 \\
+1 - e^{-\lambda y} & y > 0 \\
 0 & y \leq 0
 \end{cases}
 \end{align*}
