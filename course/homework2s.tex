@@ -81,8 +81,8 @@ If the first two draws have the same probability of getting a red marble, it sta
 Let $X$ be the number of empty boxes. Since there is no essential difference between the boxes (we can swap them around without affecting the expected value), since we are looking for an expected value, and since the expected value involves counting these boxes, we will use the method of indicator random variables together with linearity of expectation. Define the indicator random variables $X_i, i = 1, \dots, n$, where
 \[
 X_i = \begin{cases}
-0 & \text{box $i$ is empty}\\
-1 & \text{box $i$ is not empty}
+0 & \text{box $i$ is not empty}\\
+1 & \text{box $i$ is empty}
 \end{cases}
 \]
 Then since $X$ counts the number of empty boxes, $X = X_1 + \cdots + X_n$. By linearity of expectation:
