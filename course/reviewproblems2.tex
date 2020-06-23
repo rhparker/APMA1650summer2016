@@ -1,0 +1,336 @@
+% \documentclass{book}
+
+\documentclass[12pt]{article}
+\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\usepackage[shortalphabetic]{amsrefs}%
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{cool}
+\usepackage{url}
+\usepackage{graphicx,epsfig}
+\usepackage{makecell}
+\usepackage{array}
+
+\def\noi{\noindent}
+\def\T{{\mathbb T}}
+\def\R{{\mathbb R}}
+\def\N{{\mathbb N}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\P{{\mathbb P}}
+\def\E{{\mathbb E}}
+\def\Q{\mathbb{Q}}
+\def\ind{{\mathbb I}}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+
+\title{}
+\author{\vspace{-10ex} }
+
+\begin{center}
+{\LARGE APMA 1650 -- Review Session 2}\\
+\vspace{5mm}
+{\large Monday, July 25, 2016}\\
+% \vspace{5mm}
+\end{center}
+
+\begin{enumerate}
+
+\item The following series of questions refers to the SAT, everyone's favorite standardized test.
+\begin{enumerate}
+\item The mean score on the SAT math section is 511. What is an upper bound on the probability that a student scores over 700? \\
+
+Let $X$ be the score on the SAT math section. Since we only know the mean, the best estimate we can get comes from Markov's Inequality:
+\begin{align*}
+\mathbb{P}(X \geq 700) &\leq  \dfrac{\E(X)}{700} = \dfrac{511}{700} \\
+\mathbb{P}(X \geq 700) &\leq 0.73
+\end{align*}
+This is not a very tight bound, but it is an upper bound nonetheless.
+
+\item The standard deviation is 120 of the SAT math section is 120. Can you get a better upper bound on the probability that a student scores over 700?\\
+
+The variance is the square of the standard deviation, so $Var[X] = 120^2$. To get a score over 700, we need to exceed the mean by 189 points. Chebyshev's inequality gives us the probability of deviating from the mean by a certain amount, not the probability of exceeding the mean. We can, however, still use it. Chebyshev's inequality says that:
+\begin{align*}
+\mathbb{P}( | X - 511 |  \geq 189) &\leq \dfrac{Var(X)}{189^2} = \dfrac{120^2}{189^2} \\
+\mathbb{P}( | X - 511 |  \geq 189) &\leq 0.40
+\end{align*}
+Since $\mathbb{P}(X \geq 700) < \mathbb{P}( | X - 511 |  \geq 189)$, we can also conclude that:
+\[
+\mathbb{P}(X \geq 700) \leq 0.40
+\]
+This is still not the greatest bound, but it is much better than the bound from Markov's inequality. If we happen to know (or suspect) that the distribution of SAT scores is symmetric about its mean, then we could divide this by 2 to get:
+\[
+\mathbb{P}(X \geq 700) = \frac{1}{2} \mathbb{P}( | X - 511 |  \geq 189) = \frac{0.40}{2} = 0.20
+\]
+
+\item The College Board makes great effort to ensure that SAT scores are roughly normally distributed. Assuming this is the case, what is the probability that a student scores over 700 on the SAT math section?\\
+
+\begin{align*}
+\P(X \geq 700) &= \P\left( Z \geq \frac{700 - 511}{120} \right)\\
+&= \P( Z \geq 1.575) \\
+&= 0.0571
+\end{align*}
+where we used the $Z$ table and rounded 1.575 up to 1.58. The take-home message from this problem (and the similar one on the homework) is that the more information we know about a probability distribution, the better bound we can obtain on outlier probabilities.
+\end{enumerate}
+
+\item You are a barista at a local coffee shop. The average number of customers per hour who enter your shop is 10. Assume customers arrive one-at-a-time and their arrivals are independent from each other.
+\begin{enumerate}
+\item What is the probability that fewer than 3 customers will enter your coffee shop in one hour?\\
+
+Let $X$ be the number of customers who enter your coffee shop in one hour. The best distribution to model $X$ is a Poisson distribution with parameter $\lambda = 10$. Then
+\begin{align*}
+\P(X < 3) &= \P(X = 0) + \P(X = 1) + \P(X = 2) \\
+&= \frac{e^{-10} 10^0}{0!} + \frac{e^{-10} 10^1}{1!} + \frac{e^{-10} 10^2}{2!}
+\end{align*}
+
+\item What is the average time between the arrival of two customers?\\
+
+Let $Y$ be the time between the arrival of two customers. Then $Y$ is an exponential random variable with the same parameter as the Poisson random variable $X$, i.e. an exponential random variable with parameter $\lambda = 10$. Using the table of common distributions, we have $E(Y) = 1/\lambda = 1/10$ hours (i.e. 6 minutes)
+
+\item What is the probability that there will be an interval of 10 minutes or more between the arrival of one customer and the next?\\
+
+Using the exponential density, and using the fact that 10 minutes is 1/6 hours,
+\begin{align*}
+\P(Y > 10) &= \int_{1/6}^\infty 10 e^{-10 y} dy \\
+&= \lim_{t\rightarrow\infty}-e^{-10y}\Bigr|_{1/6}^t \\
+&= e^{-10/6} = e^{-5/3} \approx 0.189
+\end{align*}
+
+\end{enumerate}
+
+\item Let $X$ and $Y$ have a joint density function given by
+\[
+f(x,y) = \begin{cases}
+c x & 0 \leq y \leq x \leq 3 \\
+0 & otherwise
+\end{cases}
+\]
+\begin{enumerate}
+\item Find the value of $c$ such that this is valid joint density function.\\
+
+Integrate the joint density and set the integral equal to 1. Don't forget to draw the region so that you have the correct limits of integration.
+
+\begin{align*}
+1 &= \int_0^3 \int_0^x c x dy dx \\
+&= \int_0^3 c x y \Bigr|_0^x dx \\
+&= \int_0^3 c x^2 dx \\
+&= \frac{c x^3}{3}\Bigr|_0^3 \\
+&= 9c
+\end{align*}
+From this we conclude that $c = 1/9$.
+
+\item Find the marginal densities of $X$ and $Y$.\\
+
+\begin{align*}
+f_X(x) &= \int_0^x \frac{1}{9} x dy \\
+&= \frac{1}{9}xy\Bigr|_0^x \\
+&= \frac{1}{9}x^2 
+\end{align*}
+With the appropriate bounds, this is
+\[
+f_X(x) = \begin{cases}
+\frac{1}{9}x^2 & 0 \leq x \leq 3 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+\begin{align*}
+f_Y(y) &= \int_y^3 \frac{1}{9} x dx \\
+&= \frac{1}{9}\frac{x^2}{2}\Bigr|_y^3 \\
+&= \frac{1}{18}(9 - y^2) 
+\end{align*}
+With the appropriate bounds, this is
+\[
+f_Y(y) = \begin{cases}
+\frac{1}{18}(9 - y^2) & 0 \leq y \leq 3 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+\item Find the expected values of $X$ and $Y$.\\
+
+\begin{align*}
+\E{X} &= \int_0^3 x f_X(x) dx \\
+&= \int_0^3 x \frac{1}{9}x^2 dx \\
+&= \frac{1}{9} \int_0^3 x^3 dx \\
+&= \frac{1}{9} \frac{x^4}{4}\Bigr|_0^3 \\
+&= \frac{1}{9}\frac{3^4}{4} \\
+&= \frac{9}{4}
+\end{align*}
+\begin{align*}
+\E{Y} &= \int_0^3 y f_Y(y) dy \\
+&= \int_0^3 y \frac{1}{18}(9 - y^2) dy \\
+&= \frac{1}{18} \int_0^3 (9y - y^3) dy \\
+&= \frac{1}{18} \left( \frac{9y^2}{2} - \frac{y^4}{4} \right)|_0^3 \\
+&= \frac{2}{3^2} \left( \frac{3^4}{2} - \frac{3^4}{4} \right) \\
+&= \frac{3^2}{2} \left( \frac{1}{2} - \frac{1}{4} \right) \\
+&= \frac{9}{8}
+\end{align*}
+
+\item Find the conditional density of $Y$ given $X = x$.
+
+\begin{align*}
+F(y|x) = \frac{\frac{1}{9} x}{\frac{1}{9} x^2} = \frac{1}{x}
+\end{align*}
+With the appropriate bounds, this becomes:
+\[
+F(y|x) = \begin{cases}
+\frac{1}{x} & 0 \leq y \leq x \\
+0 & \text{otherwise}
+\end{cases}
+\]
+In addition, we require that $x \neq 0$. We note that this is a Uniform[0, $x$] random variable.
+
+\item Find $\P(Y \leq  1/2 | X = 1)$
+
+Plugging 1 in for $x$ in the conditional density, we have:
+\[
+F(y|X = 1) = \begin{cases}
+1 & 0 \leq y \leq 1 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+This is the density of a Uniform[0,1] random variable! Thus $\P(Y \leq  1/2 | X = 1) = 1/2$.
+
+\item Find the conditional expected value $\E(Y|X = x)$.\\
+
+\begin{align*}
+\E(y|X = x) &= \int_0^x y \frac{1}{x} dy \\
+&= \frac{1}{x} \frac{y^2}{2} \Bigr|_0^x \\
+&= \frac{1}{x} \frac{x^2}{2} \\
+&= \frac{x}{2}
+\end{align*}
+This makes sense given that the conditional distribution is a Uniform[0, $x$] random variable.
+\end{enumerate}
+
+\item Let $X$ and $Y$ be random variables with joint density given by
+\[
+f(x, y) = \begin{cases}
+6(1-y) & 0 \leq x \leq y \leq 1\\
+0 & \text{otherwise}
+\end{cases}
+\]
+Find the covariance of $X$ and $Y$. Are $X$ and $Y$ independent?\\
+
+To do this, we use the Magic Covariance Formula:
+\[
+Cov(X, Y) = \E(XY) - \E(X)\E(Y)
+\]
+This requires finding both marginal densities. Do not forget to draw the region first!
+\begin{align*}
+f_X(x) &= \int_x^1 6(1-y) dy \\
+&= (6y - 3 y^2)\Bigr|_x^1 \\
+&= (6 - 3) - (6x - 3x^2)  \\
+&= 3 - 6x + 3x^2
+\end{align*}
+\begin{align*}
+f_Y(y) &= \int_0^y 6(1-y) dx \\
+&= 6(1-y)x \Bigr|_0^y \\
+&= 6y(1-y)
+\end{align*}
+
+The bounds on both marginal densities are from 0 to 1. Now compute the expected values.
+\begin{align*}
+\E(X) &= \int_0^1 x (3 - 6x + 3x^2) dx\\
+&= \int_0^1 (3x - 6x^2 + 3x^3) dx\\
+&= \left(\frac{3x^2}{2} - 2x^3 + \frac{3x^4}{4}\right)\Bigr|_0^1\\
+&= \frac{1}{4}
+\end{align*}
+\begin{align*}
+\E(Y) &= \int_0^1 y 6y(1-y) dy\\
+&= \int_0^1 (6y^2 - 6 y^3) dy \\
+&= \left( 2y^3 - \frac{6}{4}y^4 \right)\Bigr|_0^1 \\
+&= \frac{1}{2}
+\end{align*}
+
+Finally we find $\E(XY)$. Recalling the formula for the expected value of a function of two random variables,
+\begin{align*}
+\E(XY) &= \int_0^1 \int_0^y xy 6(1-y) dx dy \\
+&= \int_0^1 6y(1-y) \int_0^y x dx dy \\
+&= \int_0^1 6y(1-y) \frac{x^2}{2}\Bigr|_0^y dy \\
+&= \int_0^1 3y^3(1-y) dy \\
+&= 3 \left(\frac{y^4}{4} - \frac{y^5}{5} \right) \Bigr|_0^1 \\
+&= \frac{3}{20}
+\end{align*}
+Thus the covariance is
+\[
+Cov(X, Y) = \E(XY) - \E(X)\E(Y) = \frac{3}{20} - \frac{1}{4}\frac{1}{2} = \frac{1}{40}
+\]
+The covariance is not 0, so $X$ and $Y$ are not independent. Furthermore, the joint density is not the product of the marginal densities.
+
+\item A forester studying the effects of fertilization on pine forests is interested in estimating the average basal area of pine trees (basal area is the area of a given section of land that is occupied by the cross-section of tree trunks at their base). She has discovered that these measurements (in square inches) are normally distributed with standard deviation of 4 square inches.
+\begin{enumerate}
+\item If she samples $n = 9$ trees, what is the probability that the sample mean will be within 2 square inches of the population mean.\\
+
+The sample mean $\bar{Y}$ is normally distributed with standard deviation of $\sigma / \sqrt{n} = 4 / \sqrt{9} = 4 / 3$. The probability we want is:
+\begin{align*}
+\P(|\bar{Y} - \mu| \leq 2) &= \P \left( \left| \frac{ \bar{Y} - \mu }{ 4/3 } \right| \leq \frac{2}{4/3} \right) \\
+&= \P(\left|Z\right| \leq 1.5) \\
+&= \P( -1.5 \leq Z \leq 1.5) \\
+&= 0.9332 - 0.0668 \\
+&= 0.8664
+\end{align*}
+
+\item If she would like the sample mean to be within 1 square inch of the population mean with probability 0.90, how many trees must she measure in order to ensure this degree of accuracy?\\
+
+Here we want $\P(|\bar{Y} - \mu| \leq 1) = 0.90$. In this case the standard deviation is $4 / \sqrt{n}$, where $n$ is unknown. Dividing by this, we get:
+\begin{align*}
+0.90 = \P(|\bar{Y} - \mu| \leq 1) &= \P \left( \left| \frac{ \bar{Y} - \mu }{ 4 / \sqrt{n} } \right| \leq \frac{1}{4 / \sqrt{n}} \right) \\
+&= \P(|Z| \leq \sqrt{n}/4)
+\end{align*}
+By symmetry, we have $\P(Z \leq -\sqrt{n}/4) = 0.05$. Looking up the $Z$ value on the $z$ table, we get a $z$ value of -1.64 (taking the one for 0.0495 instead of 0.0505; either one will do.) Thus we have:
+\begin{align*}
+\sqrt{n}/4 &= 1.64 \\
+\sqrt{n} &= 6.56\\
+n &= 43.03
+\end{align*}
+So she needs to measure 44 trees (rounding this up to the nearest integer).
+\end{enumerate}
+
+\item There are 3 boxes on a table, containing $0, \theta$, and $\theta+1$ jellybeans.  Each of $n$ people opens a box uniformly at random and takes the amount of jellybeans in the box. (The boxes are reset after each person takes their turn.) Let $X_1, \dots, X_n$ be the number of jellybeans taken by each of the $n$ people.\\
+\begin{enumerate}
+\item Show $\hat{\theta} = \bar{X} = (1/n) \sum_{i=1}^n X_i$ is a biased estimator for $\theta$. \\
+
+\begin{align*}
+\mathbb{E}(\hat{\theta}) &= \mathbb{E}\left( \frac{1}{n} \sum_{i=1}^n X_i \right) \\
+&= \frac{1}{n} \sum_{i=1}^n \mathbb{E}[X_i] \\
+&=  \frac{1}{n} \sum_{i=1}^n \left( 0 \cdot \frac{1}{3} + \theta \cdot \frac{1}{3} + (\theta+1) \cdot \frac{1}{3} \right) \\
+&=  \frac{1}{n} \sum_{i=1}^n \frac{1}{3}(2 \theta + 1) \\
+&= \frac{2}{3} \theta + \frac{1}{3} 
+\end{align*}
+This is not equal to $\theta$ (unless $\theta = 1$), thus this is a biased estimator.
+\item Based on the above, how can we modify $\hat{\theta}$ to convert it into an unbiased estimator.\\
+
+If we look at the expression for $\mathbb{\theta}$ above, we can turn it into $\theta$ by first subtracting 1/3 and then multiplying by 3/2. This gives us our unbiased estimator:
+\[
+\hat{\theta}_{\mbox{unbiased}} = \frac{3}{2} \left( \bar{X} - \frac{1}{3} \right)
+\]
+\end{enumerate}
+
+\item Suppose that the number of minutes late a RIPTA bus arrives is uniformly distributed on an interval [0, 12]. Suppose you measured the delay of a RIPTA bus 64 times and computed the sample mean $\bar{Y}$. What is the probability that the sample mean is between 5 and 7 minutes?\\
+
+The mean and variance of a Uniform[0, 12] random variable are 6 and $(12 - 0)^2 / 12 = 12$. By the central limit theorem, since the number of samples is large ($\geq 30$), we can assume that $\bar{Y}$ is (approximately) normally distributed with mean 6 and standard deviation $\sigma / \sqrt{n} = \sqrt{12} / \sqrt{64} = \sqrt{12} / {8}$. The probability that the sample mean is between 5 and 7 minutes is:
+\begin{align*}
+\P(|\bar{Y} - 6| \leq 1) &= \P \left( \left| \frac{\bar{Y} - 6}{\sqrt{12} / {8}} \right| \leq \frac{1}{\sqrt{12} / {8}} \right) \\
+&= \P(|Z| \leq 8 / \sqrt{12} ) \\
+&= \P(|Z| \leq 2.31 ) \\
+&= \P( -2.31 \leq Z \leq 2.31 ) \\
+&= 0.9896 - 0.0104 \\
+&= 0.9792
+\end{align*}
+
+\end{enumerate}
+\end{document}

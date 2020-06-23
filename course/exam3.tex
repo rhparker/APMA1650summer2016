@@ -1,0 +1,176 @@
+% \documentclass{book}
+
+\documentclass[12pt]{article}
+\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\usepackage[shortalphabetic]{amsrefs}%
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{cool}
+\usepackage{url}
+\usepackage{graphicx,epsfig}
+\usepackage{makecell}
+\usepackage{array}
+
+\graphicspath{ {images/} }
+\renewcommand{\arraystretch}{3}
+
+\begin{document}
+
+\title{}
+\author{\vspace{-10ex} }
+
+\begin{center}
+{\LARGE APMA 1650 -- Final Exam}\\
+\vspace{5mm}
+{\large Thursday, August 11, 2016 }\\
+\vspace{10mm}
+{\large Name: }
+\vspace{3cm}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{xkcd3}
+\end{figure}
+
+\end{center}
+\pagebreak
+
+\begin{center}
+{\LARGE Instructions}\\
+\vspace{5mm}
+\end{center}
+
+\begin{itemize}
+\item The exam begins at 1:00 pm and ends at 4:00 pm. You have 3 hours to complete the exam.
+\item You may use a calculator if you wish (although the exam is designed to be done without one, so I am not sure how helpful one will be). Other electronic devices may not be used. You may not use any books or notes. 
+\item Train schedules in this exam do not reflect real-world data. The instructor assumes no responsibility if you make plans based on these schedules.
+\item Write all answers in the space below the question. If you need more space, feel free to use the back of the page. Scrap paper and blank paper for additional pages will be provided.
+\item Correct expressions are sufficient. You do not need to simplify your answers. You can leave answers in terms of binomial coefficients such as $\binom{64}{5}$, exponents such as $(1/2)^{10}$ or $2^{16}$, and factorials such as $12!$.
+\item There are 5 questions. Each question is worth 10 points. Partial credit will be given for partially correct answers.
+\item Unless you have found an error on the exam, in the interest of fairness, I will likely not answer any questions you have about the test.
+\item All answers must be fully justified. Show all of your work. Points will be deducted for unjustified answers.
+\item I recommend you look through the entire exam first before answering any questions. That way you can start with the questions you find to be easiest.
+\item The list of the common probability distributions, together with their pmfs/densities, expected values, and variances, is included at the back of the exam. A $Z$-table and a $t$-table is also included at the back of the exam.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\label{my-label}
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+Problem & $\:\:1\:\:$ & $\:\:2\:\:$ & $\:\:3\:\:$ & $\:\:4\:\:$ & $\:\:5\:\:$ & Total \\ \hline
+Points  &   &   &   &   &   &       \\ \hline
+\end{tabular}
+\end{figure}
+
+\pagebreak
+
+\begin{enumerate}
+
+\item (10 points) You are an education researcher, and you believe that good students get more sleep. To test this hypothesis, you survey students at a local high school. In a sample of 100 honors students, the average number of hours of sleep per night is 7, with a variance of 0.5. In a sample of 100 non-honors students, the average number of hours of sleep per night is 6.75, with a variance of 0.5. You hypothesize that honors students get more hours of sleep per night than non-honors students.
+\begin{enumerate}
+\item State the null hypothesis, alternative hypothesis, and test statistic. Give the form of the rejection region.
+\item At the level of $\alpha = 0.05$, is there sufficient evidence to support the hypothesis that honors students get more hours of sleep per night than non-honors students? 
+\item What is the $p$-value for this test?
+\item Suppose we have reason to believe that honors students get 0.4 more hours of sleep per night than non-honors students. Using this as the alternative hypothesis, and using the same rejection region as found above, what is the value of $\beta$ for this test?
+\end{enumerate}
+
+\pagebreak
+
+\item (10 points) Suppose we have a population which is described by the probability density function
+\[
+f(x) = \begin{cases}
+\dfrac{2}{\theta} \left( 1 - \dfrac{x}{\theta} \right) & 0 \leq x \leq \theta \\
+0 & \text{otherwise}
+\end{cases}
+\]
+where $\theta > 0$ is an unknown parameter.
+\begin{enumerate}
+\item Suppose you take $n$ samples $X_1, \dots, X_n$ from the population. Let $\bar{X}$ be the sample mean. Find the method of moments estimator for $\theta$.
+\item What is the variance of the method of moments estimator you found in part (a)?
+\item Suppose you take a \emph{single} sample $X$ from the population. Find the maximum likelihood estimator (MLE) for $\theta$.
+\end{enumerate}
+
+\pagebreak
+
+\item (10 points) Suppose we have population whose distribution is a Poisson distribution with unknown parameter $\lambda$. You take a group of $n$ samples $X_1, \dots, X_n$ and a group of $m$ samples $Y_1, \dots, Y_m$ from the population. All samples are independent. You form the following estimator for $\lambda$:
+\[
+\hat{\lambda} = a \frac{X_1 + \cdots + X_n}{n} + b \frac{Y_1 + \cdots + Y_m}{m} 
+\]
+where $a$ and $b$ are constants.
+\begin{enumerate}
+\item What condition is needed on $a$ and $b$ so that $\hat{\lambda}$ is unbiased?
+\item What is the mean squared error (MSE) for $\hat{\lambda}$? Do not assume that $a$ and $b$ satisfy the condition you found in part (a), i.e. do not assume the estimator $\hat{\lambda}$ is unbiased.
+\end{enumerate}
+
+\pagebreak
+
+\item (10 points) A bag contains $w$ white marbles and $r$ red marbles. You draw a sample of $n$ marbles from the bag without replacement, where $n \leq w + r$.
+\begin{enumerate}
+\item What is the probability that your sample contains exactly $y$ red marbles, where $0 \leq y \leq r$?
+\item Suppose one of the red marbles in the bag is labeled with the number 1. What is the probability that your sample contains the red marble which is labeled with the number 1?
+\item What is the expected number of red marbles in your sample?
+\end{enumerate}
+
+\pagebreak
+
+\item (10 points) Consider the following timetable for the train from Zurich to Geneva, Switzerland. Only times between 8:00 and 9:00 are shown.
+\begin{figure}[H]
+\centering
+\label{my-label}
+\begin{tabular}{|l|l|l|}
+\hline
+8:00 & 8:30 & 9:00 \\ \hline
+\end{tabular}
+\end{figure}
+Since these are Swiss trains, they are always exactly on time! Suppose you arrive at the Zurich train station uniformly at random between 8:20 and 9:00 and wait for the train to Geneva. 
+\begin{enumerate}
+\item What is the probability density function for the amount of time you spend waiting for the train? Be sure to give appropriate bounds on the density function. You may describe the density function any way you wish, as long as the values and bounds of the density function are clear.
+\item What is the expected amount of time you spend waiting for the train?
+\end{enumerate}
+\end{enumerate}
+
+\pagebreak 
+
+
+\begin{figure}[H]
+\caption{Discrete Distributions}
+\begin{tabular}{l c c c c}
+\hline
+Distribution & Parameters & Probability Mass Function (pmf) & Mean & Variance \\
+\hline
+Binomial & $n, p$ & \makecell{ $\displaystyle p(y) = \binom{n}{y}p^y(1-p)^{n-y}$\\$ \displaystyle y = 0, 1, \dots, n$} & $np$ & $np(1-p)$ \\
+Geometric & $p$ & \makecell{ $\displaystyle p(y) = (1-p)^{y-1}p$ \\ $y = 1, 2, \dots$} & $ \displaystyle \frac{1}{p}$ & $\displaystyle \frac{1 - p}{p^2}$ \\
+Poisson & $\lambda$ & \makecell{ $\displaystyle p(y) = \frac{e^{-\lambda} \lambda^y }{y!}$ \\ $y = 0, 1, 2, \dots$ } & $\lambda$ & $\lambda$ \\
+\end{tabular}
+\end{figure}
+
+\vspace{2cm}
+
+\begin{figure}[H]
+\caption{Continuous Distributions}
+\begin{tabular}{l c c c c}
+\hline
+Distribution & Parameters & Probability Density Function (pdf) & Mean & Variance \\
+\hline
+Uniform & $a, b$ & \makecell{ $\displaystyle f(y) = \frac{1}{b-a}$ \\ $a \leq y \leq b$ }& $\displaystyle \frac{a + b}{2}$ & $\displaystyle \frac{(b - a)^2}{12}$ \\
+Exponential & $\lambda$ & \makecell{ $\displaystyle f(y) = \lambda e^{-\lambda y}$ \\ $0 \leq y < \infty$} & $\displaystyle \frac{1}{\lambda}$ & $\displaystyle \frac{1}{\lambda^2}$ \\
+Normal & $\mu, \sigma$ & $\displaystyle f(y) = \frac{1}{\sqrt{2 \pi}\sigma}e^{- \frac{(y - \mu)^2}{2 \sigma^2}}$ & $\mu$ & $\sigma^2$ \\
+Standard Normal & none & $\displaystyle f(y) = \frac{1}{\sqrt{2 \pi}}e^{- \frac{y^2}{2}}$ & $0$ & $1$ \\
+\end{tabular}
+\end{figure}
+
+\end{document}
+

@@ -1,0 +1,119 @@
+% \documentclass{book}
+
+\documentclass[12pt]{article}
+\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\usepackage[shortalphabetic]{amsrefs}%
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{cool}
+\usepackage{url}
+\usepackage{graphicx,epsfig}
+\usepackage{makecell}
+\usepackage{array}
+
+\def\noi{\noindent}
+\def\T{{\mathbb T}}
+\def\R{{\mathbb R}}
+\def\N{{\mathbb N}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\P{{\mathbb P}}
+\def\E{{\mathbb E}}
+\def\Q{\mathbb{Q}}
+\def\ind{{\mathbb I}}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+
+\title{}
+\author{\vspace{-10ex} }
+
+\begin{center}
+{\LARGE APMA 1650 -- Review Session 2}\\
+\vspace{5mm}
+{\large Monday, July 25, 2016}\\
+% \vspace{5mm}
+\end{center}
+
+\begin{enumerate}
+
+\item The following series of questions refers to the SAT, everyone's favorite standardized test.
+\begin{enumerate}
+\item The mean score on the SAT math section is 511. What is an upper bound on the probability that a student scores over 700? 
+
+\item The standard deviation is 120 of the SAT math section is 120. Can you get a better upper bound on the probability that a student scores over 700?
+
+\item The College Board makes great effort to ensure that SAT scores are roughly normally distributed. Assuming this is the case, what is the probability that a student scores over 700 on the SAT math section?
+\end{enumerate}
+
+\item You are a barista at a local coffee shop. The average number of customers per hour who enter your shop is 10. Assume customers arrive one-at-a-time and their arrivals are independent from each other.
+\begin{enumerate}
+\item What is the probability that fewer than 3 customers will enter your coffee shop in one hour?
+
+\item What is the average time between the arrival of two customers?
+
+\item What is the probability that there will be an interval of 10 minutes or more between the arrival of one customer and the 
+\end{enumerate}
+
+\item Let $X$ and $Y$ have a joint density function given by
+\[
+f(x,y) = \begin{cases}
+c x & 0 \leq y \leq x \leq 3 \\
+0 & otherwise
+\end{cases}
+\]
+\begin{enumerate}
+\item Find the value of $c$ such that this is valid joint density function.
+
+\item Find the marginal densities of $X$ and $Y$.
+
+\item Find the expected values of $X$ and $Y$.
+
+\item Find the conditional density of $Y$ given $X = x$.
+
+\item Find $\P(Y \leq  1/2 | X = 1)$
+
+\item Find the conditional expected value $\E(Y|X = x)$.
+\end{enumerate}
+
+\item Let $X$ and $Y$ be random variables with joint density given by
+\[
+f(x, y) = \begin{cases}
+6(1-y) & 0 \leq x \leq y \leq 1\\
+0 & \text{otherwise}
+\end{cases}
+\]
+Find the covariance of $X$ and $Y$. Are $X$ and $Y$ independent?
+
+\item A forester studying the effects of fertilization on pine forests is interested in estimating the average basal area of pine trees (basal area is the area of a given section of land that is occupied by the cross-section of tree trunks at their base). She has discovered that these measurements (in square inches) are normally distributed with standard deviation of 4 square inches.
+\begin{enumerate}
+\item If she samples $n = 9$ trees, what is the probability that the sample mean will be within 2 square inches of the population mean.
+
+\item If she would like the sample mean to be within 1 square inch of the population mean with probability 0.90, how many trees must she measure in order to ensure this degree of accuracy?
+\end{enumerate}
+
+\item There are 3 boxes on a table, containing $0, \theta$, and $\theta+1$ jellybeans.  Each of $n$ people opens a box uniformly at random and takes the amount of jellybeans in the box. (The boxes are reset after each person takes their turn.) Let $X_1, \dots, X_n$ be the number of jellybeans taken by each of the $n$ people.
+\begin{enumerate}
+\item Show $\hat{\theta} = \bar{X} = (1/n) \sum_{i=1}^n X_i$ is a biased estimator for $\theta$. 
+
+\item Based on the above, how can we modify $\hat{\theta}$ to convert it into an unbiased estimator.
+\end{enumerate}
+
+\item Suppose that the number of minutes late a RIPTA bus arrives is uniformly distributed on an interval [0, 12]. Suppose you measured the delay of a RIPTA bus 64 times and computed the sample mean $\bar{Y}$. What is the probability that the sample mean is between 5 and 7 minutes?
+
+\end{enumerate}
+\end{document}

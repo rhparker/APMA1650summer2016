@@ -1,0 +1,91 @@
+% \documentclass{book}
+
+\documentclass[12pt]{article}
+\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\usepackage[shortalphabetic]{amsrefs}%
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{svg}
+\usepackage{mathtools}
+\usepackage{cool}
+\usepackage{url}
+\usepackage{graphicx,epsfig}
+\usepackage{makecell}
+\usepackage{array}
+
+\def\noi{\noindent}
+\def\T{{\mathbb T}}
+\def\R{{\mathbb R}}
+\def\N{{\mathbb N}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\P{{\mathbb P}}
+\def\E{{\mathbb E}}
+\def\Q{\mathbb{Q}}
+\def\ind{{\mathbb I}}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+
+\title{}
+\author{\vspace{-10ex} }
+
+\begin{center}
+{\LARGE APMA 1650 -- Problem Session 2}\\
+\vspace{5mm}
+{\large Wednesday, July 20, 2016}\\
+% \vspace{5mm}
+\end{center}
+
+There are seven problems on this sheet. There is no particular order to them, so I recommend that you work on the ones you find the most interesting.
+
+\begin{enumerate}
+
+\item For a certain section of a pine forest, the number of diseased trees per acre, $Y$ , has a Poisson distribution with mean $\lambda = 10$. The diseased trees are sprayed with an insecticide at a cost of \$3 per tree, plus a fixed overhead cost for equipment rental of \$50. Letting $C$ denote the total spraying cost for a randomly selected acre, find the expected value and variance for $C$. Within what interval would you expect $C$ to lie with probability of at least $0.75$?
+
+\item Lifetimes of automotive tires are given in miles; higher performance tires are rated to last more miles. A manufacturer of tires wants to advertise a mileage interval that includes 90\% of the mileage on tires they manufacture. All they know is that, for a large number of tires tested, the mean mileage was 25,000 miles, and the standard deviation was 4000 miles. What interval would you suggest?
+
+\item A machine used to fill cereal boxes dispenses, on average, $\mu$ ounces per box. Let $Y$ be the amount of ounces of cereal dispensed by the machine. The manufacturer wants $Y$ to be within 1 ounce of $\mu$ at least 75\% of the time. What is the largest value of the standard deviation $\sigma$ of $Y$ that can be tolerated if the manufacturer's objectives are met.
+
+\item Beginning at 12:00 midnight, a call center is up for one hours and then down for two hours on a regular cycle. A person who is unaware of this schedule dials the center at a random time between 12:00 midnight at 5:00 am. What is the probability that the call center is up when the person's call comes in?
+
+\item Weekly CPU time used by a hedge fund can be modeled by a random variable $Y$ which has probability density function (measured in hours) given by:
+\[
+f(y) = \begin{cases}
+c y^2(4-y) & 0 \leq y \leq 4 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+\begin{enumerate}
+\item Find the value of $c$ such that this is a valid density function.
+\item Find the expected value and variance of $Y$.
+\item The CPU time costs the firm \$200 per hour. Find the expected value and variance of the weekly cost for CPU time.
+\end{enumerate}
+
+\item The magnitude of earthquakes can be modeled as an exponential distribution with mean 2.4 (as measured on the Richter scale). 
+\begin{enumerate}
+\item Find the probability that an earthquake will exceed 3.0 on the Richter scale.
+\item Find the probability that an earthquake will fall between 2.0 and 3.0 on the Richter scale.
+\end{enumerate}
+
+\item Scores on an examination are (roughly) normally distributed with mean 78 and variance 36.
+\begin{enumerate}
+\item What is the probability that a student scores higher than 72?
+\item Suppose that students in the top 20\% will receive an A on the exam? (This is now how I grade my exams.) What is the minimum score needed to receive an A?
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
+
