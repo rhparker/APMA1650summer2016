@@ -1,90 +1,6 @@
-\documentclass[12pt]{article}
-\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
-\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
-\usepackage[shortalphabetic]{amsrefs}%
-\usepackage{amsmath}
-\usepackage{enumerate}
-\usepackage{enumitem}
-\usepackage{amssymb}                              
-\usepackage{amsfonts}
-\usepackage{amsthm}
-\usepackage{bbm}
-\usepackage[table,xcdraw]{xcolor}
-\usepackage{tikz}
-\usepackage{float}
-\usepackage{booktabs}
-\usepackage{svg}
-\usepackage{mathtools}
-\usepackage{cool}
-\usepackage{url}
-\usepackage{graphicx,epsfig}
-\usepackage{framed}
-\usepackage{hyperref}  
-
-\usetikzlibrary{automata,arrows,positioning,calc}
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
-\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
-\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
-\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
-
-\makeatletter
-\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
-  \hskip -\arraycolsep
-  \let\@ifnextchar\new@ifnextchar
-  \array{#1}}
-\makeatother
-
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{exercise}{Exercise}%
-\newtheorem{problem}[exercise]{Problem}%
-\newtheorem*{example}{Example}
-
-\theoremstyle{remark}
-\newtheorem*{question}{Question}
-\newtheorem*{observation}{Observation}
-\newtheorem*{remark}{Remark}
+\documentclass[notes.tex]{subfiles}
 
 \graphicspath{ {images/} }
-
-\setlength{\parindent}{0cm}
-\renewcommand{\vec}[1]{\ensuremath{\mathbf{#1}}}
-
-\def\noi{\noindent}
-\def\T{{\mathbb T}}
-\def\R{{\mathbb R}}
-\def\N{{\mathbb N}}
-\def\C{{\mathbb C}}
-\def\Z{{\mathbb Z}}
-\def\P{{\mathbb P}}
-\def\E{{\mathbb E}}
-\def\Q{\mathbb{Q}}
-\def\ind{{\mathbb I}}
-
-\def\cale{{\mathcal E}}
-\def\cals{{\mathcal S}}
-\def\calc{{\mathcal C}}
-\def\caln{{\mathcal N}}
-\def\calb{{\mathcal B}}
-\def\calg{{\cal G}}
-
-\def\ds{\displaystyle}
-\def\ra{\rightarrow}
-\newcommand{\conv}{\mbox{\rm conv}}
-\newcommand{\spaan}{\mbox{\rm span}}
-\newcommand{\deet}{\mbox{\rm det}}
-\newcommand{\aff}{\mbox{\rm aff}}
-\newcommand{\cl}{\mbox{\rm cl}}
-\newcommand{\dimm}{\mbox{\rm dim}}
-\newcommand{\sm}{\setminus}
-\def\ci{\perp\!\!\!\perp}
-
-\newcommand{\ink}{\rule{.5\baselineskip}{.55\baselineskip}}
 
 \begin{document}
 
@@ -101,7 +17,7 @@ Here are two examples of hypothesis tests.
 \item You are the principal investigator for a trial of a new drug to treat hypertension (high blood pressure). You claim that your new drug will reduce systolic blood pressure by 10 mmHg compared to a placebo pill. The parameter of interest is $\mu_1 - \mu_2$, the difference in mean blood pressure reductions between the mythical populations of all people with hypertension who would receive the drug and all people with hypertension who would receive a placebo. Your hypothesis is that $\mu_1 - \mu_2 \geq 10$. To test this, you will do a double-blind study and randomly assign 100 patients to receive the drug and 100 patients to receive the placebo pill. You will use the estimator $\bar{Y}_1 - \bar{Y}_2$ to test your hypothesis. Using statistics, you will be able quantify the probability that you correctly accept or reject your hypothesis based on the value of the estimator.
 \end{enumerate}
 
-Hypothesis testing uses the ideas we learned in the previous sections -- sampling, estimators, and confidence levels -- to 
+Hypothesis testing uses the ideas we learned in the previous sections -- sampling, estimators, and confidence intervals -- to make inferences about a general population using samples drawn from that population and to quantify how confident we are with these inferences.
 
 \subsection{Elements of a Hypothesis Test}
 There are four elements of any hypothesis test. We will go through an example as we discuss them. 
@@ -220,17 +136,17 @@ Recall that $\sigma_{\hat{\theta}}$ is the standard deviation of the estimator, 
 \begin{example}
 You are a pollster who is interested in the voting preference in Rhode Island for the gubernatorial election. The population of interest is the number of registered voters in Rhode Island, and the parameter of interest is the $p$, the proportion of voters who support Gina Raimondo. Suppose you sample 100 voters and 60 of them favor Raimondo. Does the evidence support Raimondo being favored at a level of 0.05?\\
 
-The parameters of the test are given above. The test statistic is $\hat{p} = 0.6$. To find the appropriate rejection region at a level of $\alpha = 0.05$ we need to find the appropriate value of $z_\alpha$ from the $Z$ table. Looking at the table, we find that $z_\alpha = 1.64$ (we could also have chosen 1.65). We do not know the population standard deviation, but we can estimate it by using $\hat{p}$ in place of the true value $p$:
+The parameters of the test are given above. The test statistic is $\hat{p} = 0.6$. To find the appropriate rejection region at a level of $\alpha = 0.05$ we need to find the appropriate value of $z_\alpha$ from the $Z$ table. Looking at the table, we find that $z_\alpha = 1.64$ (we could also have chosen 1.65). We do not know the standard deviation $\sigma_{\hat{p}}$ for the test statistic $\hat{p}$, but since we are centering our confidence interval about the null hypothesis ($p = 0.5$), we estimate the standard deviation of $\hat{p}$ by assuming that the null hypothesis holds, i.e.
 \[
-\sigma_{\hat{\theta}} = \sqrt{ \frac{p(1-p)}{n} } \approx \sqrt{ \frac{\hat{p}(1-\hat{p})}{n} } = \sqrt{ \frac{(0.6)(0.4)}{100}} = 0.049
+\sigma_{\hat{p}} \approx \sqrt{ \frac{p(1-p)}{n} } = \sqrt{ \frac{(0.5)(0.5)}{100}} = 0.05
 \] 
 From this we calculate:
 \[
-k = 0.5 + z_\alpha \sigma_{\hat{\theta}} = 0.5 + 1.64 (0.049) = 0.58
+k = 0.5 + z_\alpha \sigma_{\hat{p}} = 0.5 + 1.64 (0.05) = 0.582
 \]
 Thus the rejection region is
 \[
-\{ \hat{p} \geq 0.58 \}
+\{ \hat{p} \geq 0.582 \}
 \]
 Since our test statistic is 0.6, it falls inside the rejection region, thus we can reject our null hypothesis with a level of 0.05, so we are 95\% confident that Raimondo is favored in the population at large.
 \end{example}
@@ -321,9 +237,13 @@ Since we know $\theta_a$ and $\sigma_{\hat{\theta}}$, and since we have already 
 Let's go back and do our polling example from above.
 
 \begin{example}
-You are again a pollster who is interested in the voting preference in Rhode Island for the gubernatorial election. The population of interest is the number of registered voters in Rhode Island, and the parameter of interest is the $p$, the proportion of voters who are Gina Raimondo supporters. You sample 100 voters and 60 of them favor Raimondo. You create a hypothesis test with $\alpha = 0.05$, for which we have seen that the rejection region is $\{ \hat{p} \geq 0.58 \}$. For a value of the alternative hypothesis $p_a = 0.60$, calculate $\beta$, the probability of a type II error.\\
+You are again a pollster who is interested in the voting preference in Rhode Island for the gubernatorial election. The population of interest is the number of registered voters in Rhode Island, and the parameter of interest is the $p$, the proportion of voters who are Gina Raimondo supporters. You sample 100 voters and 60 of them favor Raimondo. You create a hypothesis test with $\alpha = 0.05$, for which we have seen that the rejection region is $\{ \hat{p} \geq 0.582 \}$. For a value of the alternative hypothesis $p_a = 0.60$, calculate $\beta$, the probability of a type II error.\\
 
-Given our discussion above, plugging in the values we determined in the example above ($k = 0.58$, $\sigma_{\hat{\theta}} = 0.049$), and using $p_a = 0.60$:
+In this case, since we are assuming the alternative hypothesis $p_a = 0.60$ is true, we estimate the standard deviation $\sigma_{\hat{p}}$ of the test statistic $\hat{p}$ using the value of $p$ from the alternative hypothesis. 
+\[
+\sigma_{\hat{p}} \approx \sqrt{ \frac{p_a(1-p_a)}{n} } = \sqrt{ \frac{(0.6)(0.4)}{100}} = 0.049
+\] 
+Plugging in the value of $k = 0.58$ we determined in the example above, and using $p_a = 0.60$ and $\sigma_{\hat{p}} = 0.049$:
 \begin{align*}
 \beta &= \P\left( Z \leq \frac{ k - p_a}{\sigma_{\hat{p}}} \right) \\
 &= \P\left( Z \leq \frac{ 0.58 - 0.60}{ 0.049 } \right) \\
@@ -406,16 +326,16 @@ Let's look at our voter polling example from before.
 \begin{example}
 You are a pollster who is interested in the voting preference in Rhode Island for the 2016 gubernatorial election. The population of interest is the number of registered voters in Rhode Island, and the parameter of interest is the $p$, the proportion of voters who support Gina Raimondo. Suppose you sample 100 voters and 60 of them favor Raimondo. What is the $p$-value for this test? (It is a little confusing that $p$ is the sample proportion and we also have a $p$-value for the test, but this notation is standard in both cases; we will write the $p$-value as ``$p$-value'' rather than just $p$ to avoid this confusion).\\
 
-We want the smallest value of $\alpha$ for which we will reject the null hypothesis. The value we obtained for $\hat{p}$ is 0.6. We estimated the standard deviation of the estimator $\hat{p}$ as 0.049 above (this include the factor of $\sqrt{n}$ in the denominator). Thus we have:
+We want the smallest value of $\alpha$ for which we will reject the null hypothesis. The value we obtained for $\hat{p}$ is 0.6. We estimated the standard deviation $\sigma_{\hat{p}}$ of the estimator $\hat{p}$ as 0.050 in the example above, where we recall that we are assuming that the null hypothesis is true. Thus we have:
 \begin{align*}
 p\text{-value} &= \P(\hat{p} \geq 0.6 \text{ given null hypothesis is true})\\
 &= \P(\hat{p} \geq 0.6 \text{ given } p = 0.5)\\
 &= \P \left( \frac{\hat{p} - 0.5}{\sigma_{\hat{p}}} \geq \frac{0.6 - 0.5}{\sigma_{\hat{p}}} \right) \\
-&= \P \left( Z \geq \frac{0.1}{0.049} \right)\\
-&= \P (Z \geq 2.04)\\
-&= 0.0207
+&= \P \left( Z \geq \frac{0.1}{0.05} \right)\\
+&= \P (Z \geq 2.00)\\
+&= 0.0228
 \end{align*}
-Thus we have a $p$-value of 0.0207, which is the smallest value of $\alpha$ for which the test statistic indicates that we can reject the null hypothesis. Above, we showed that we can reject the null hypothesis with an $\alpha$ of 0.05. This is consistent with our $p$-value, since 0.05 is greater than the $p$-value.
+We obtain a $p$-value of 0.0228, which is the smallest value of $\alpha$ for which the test statistic indicates that we can reject the null hypothesis. Above, we showed that we can reject the null hypothesis with an $\alpha$ of 0.05. This is consistent with our $p$-value, since 0.05 is greater than the $p$-value.
 \end{example}
 
 \subsection{Small sample hypothesis testing for the population mean}
@@ -493,9 +413,9 @@ Suppose we have a random sample taken from a population with parameter $\theta$,
 \end{framed}
 Let's look at examples of simple and composite hypotheses.
 \begin{example}
-\begin{enumerate}
+\begin{enumerate}\leavevmode 
 \item Suppose we have a population which is normally distributed with mean $\mu$ and variance 1. Since the distribution of the population is uniquely specified by $\mu$, a hypothesis involving $\mu$ such as the null hypothesis $\mu_0 = 0$, is a simple hypothesis.
-\item Suppose we have a population which is normally distributed with mean $\mu$ and unknown variance $\sigma^2$. Here we need both $\mu$ and $\sigma_2$ to specify the distribution of the population, so a hypothesis involving $\mu$ such as the null hypothesis $\mu_0 = 0$, is a composite hypothesis.
+\item Suppose we have a population which is normally distributed with mean $\mu$ and unknown variance $\sigma^2$. Here we need both $\mu$ and $\sigma^2$ to specify the distribution of the population, so a hypothesis involving $\mu$ such as the null hypothesis $\mu_0 = 0$, is a composite hypothesis.
 \item Suppose we have a population with is exponentially distributed with parameter $\lambda$. Then a hypothesis involving $\lambda$ is a simple hypothesis since $\lambda$ uniquely specifies the distribution of the population. Since the population mean $\mu = 1 / \lambda$, a hypothesis involving the mean $\mu$ is also a simple hypothesis.
 \end{enumerate}
 \end{example}

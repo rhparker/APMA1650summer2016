@@ -1,94 +1,6 @@
-% \documentclass{book}
-
-\documentclass[12pt]{article}
-\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
-\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
-\usepackage[shortalphabetic]{amsrefs}%
-\usepackage{amsmath}
-\usepackage{enumerate}
-\usepackage{enumitem}
-\usepackage{amssymb}                
-\usepackage{amsmath}                
-\usepackage{amsfonts}
-\usepackage{amsthm}
-\usepackage{bbm}
-\usepackage[table,xcdraw]{xcolor}
-\usepackage{tikz}
-\usepackage{float}
-\usepackage{booktabs}
-\usepackage{svg}
-\usepackage{mathtools}
-\usepackage{cool}
-\usepackage{url}
-\usepackage{graphicx,epsfig}
-\usepackage{framed}
-\usepackage{hyperref}  
-
-\usetikzlibrary{automata,arrows,positioning,calc}
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
-\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
-\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
-\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
-
-\makeatletter
-\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
-  \hskip -\arraycolsep
-  \let\@ifnextchar\new@ifnextchar
-  \array{#1}}
-\makeatother
-
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{exercise}{Exercise}%
-\newtheorem{problem}[exercise]{Problem}%
-\newtheorem*{example}{Example}
-
-\theoremstyle{remark}
-\newtheorem*{question}{Question}
-\newtheorem*{observation}{Observation}
-\newtheorem*{remark}{Remark}
+\documentclass[notes.tex]{subfiles}
 
 \graphicspath{ {images/} }
-
-\setlength{\parindent}{0cm}
-\renewcommand{\vec}[1]{\ensuremath{\mathbf{#1}}}
-
-\def\noi{\noindent}
-\def\T{{\mathbb T}}
-\def\R{{\mathbb R}}
-\def\N{{\mathbb N}}
-\def\C{{\mathbb C}}
-\def\Z{{\mathbb Z}}
-\def\P{{\mathbb P}}
-\def\E{{\mathbb E}}
-\def\Q{\mathbb{Q}}
-\def\ind{{\mathbb I}}
-
-\def\cale{{\mathcal E}}
-\def\cals{{\mathcal S}}
-\def\calc{{\mathcal C}}
-\def\caln{{\mathcal N}}
-\def\calb{{\mathcal B}}
-\def\calg{{\cal G}}
-
-\def\ds{\displaystyle}
-\def\ra{\rightarrow}
-\newcommand{\conv}{\mbox{\rm conv}}
-\newcommand{\spaan}{\mbox{\rm span}}
-\newcommand{\deet}{\mbox{\rm det}}
-\newcommand{\aff}{\mbox{\rm aff}}
-\newcommand{\cl}{\mbox{\rm cl}}
-\newcommand{\dimm}{\mbox{\rm dim}}
-\newcommand{\sm}{\setminus}
-\def\ci{\perp\!\!\!\perp}
-
-
-\newcommand{\ink}{\rule{.5\baselineskip}{.55\baselineskip}}
 
 \begin{document}
 
@@ -426,14 +338,14 @@ The number of combinations (unordered arrangements) of $r$ items drawn from a gr
 
 \begin{example}The Brown crossword puzzle club consists of 5 undergraduate and 7 graduate students.
 \begin{enumerate}
-\item How many different committees of 2 undergrads and 3 grad students can be formed?
+\item How many different committees of 2 undergrads and 3 graduate students can be formed?
 
-There are $\binom{5}{2}$ possible groups of 2 undergrads, and $\binom{7}{3}$ possible groups of 3 grad students. We multiply these together (basic principle of counting) to get:
+There are $\binom{5}{2}$ possible groups of 2 undergrads, and $\binom{7}{3}$ possible groups of 3 graduate students. We multiply these together (basic principle of counting) to get:
 \[
 \binom{5}{2} \binom{7}{3}  = \frac{5!}{2!3!} \frac{7!}{3!4!} = \frac{5\cdot4}{2\cdot1} \frac{7\cdot6\cdot5}{3\cdot2\cdot1} = 10 \cdot 35 = 350
 \]
 
-\item What if two of the grads students refuse to be on the same committee?
+\item What if two of the graduate students refuse to be on the same committee?
 
 There are $\binom{7}{3} = 35$ possible groups of 3 graduate students. How many contain both of the two students who refuse to serve together? To make a three-person committee which includes these two, you need to include the two rival students plus one other student selected from the five remaining graduate students. Thus there are $\binom{2}{2}\binom{5}{1} = 5$ committees which include the two rival students. Subtracting from 35, there are 30 committees which don't include both rival students. As above, we multiply to get $10 \cdot 30 = 300$ possible committees.
 \end{enumerate}
@@ -452,9 +364,9 @@ There are 52 cards in a poker deck, and a poker hand is 5 cards. Since the order
 \end{enumerate}
 To get the probability of a full house, we divide by the number of poker hands (the size of the sample space) to get:
 \[
-\frac{\binom{13}{1}\binom{4}{3}\binom{12}{1}\binom{4}{2}}{\binom{52}{2}} = 0.00144
+\frac{\binom{13}{1}\binom{4}{3}\binom{12}{1}\binom{4}{2}}{\binom{52}{5}} = 0.00144
 \]
-It is worth noting that the number of full houses is not $\binom{13}{2}\binom{4}{3}\binom{4}{2}$, i.e. choose two numbers, then choose a three-of-a-kind, then choose a pair. Why does this not work? This method does not distinguish betwen, say, \texttt{33366} and \texttt{33666} (i.e. it treats these as the same), and these are two distinct full houses. Since this undercounts by a factor of two, you can check that if you multiply this by two, you get the correct answer above. 
+It is worth noting that the number of full houses is not $\binom{13}{2}\binom{4}{3}\binom{4}{2}$, i.e. choose two numbers, then choose a three-of-a-kind, then choose a pair. Why does this not work? This method does not distinguish between, say, \texttt{33366} and \texttt{33666} (i.e. it treats these as the same), and these are two distinct full houses. Since this undercounts by a factor of two, you can check that if you multiply this by two, you get the correct answer above. 
 \end{example}
 
 Combinations are incredibly useful. We can use them in some rather surprising cases.
@@ -560,7 +472,7 @@ If you want to think about this another way, you can use the following reasoning
 \]
 where * represents a space to put an objects, and $|$ is a section divider. There are $n!$ permutations of $n$ objects, thus there are $n!$ distinct ways to place the $n$ objects into the box. Since we are dividing our objects into groups, order does not matter within each group. The first section in the box represents the first group, so since order does not matter within that section, we divide by $n_1!$, the number of permutations of $n_1$ objects. Repeating this for each section, we divide by each $n_i!$ in turn to obtain our multinomial coefficient. 
 
-\begin{example}A group of 15 international relations students will be divided into three groups. Each group consists of 15 students and is assigned a different country (Azerbaijan, Belarus, and Chechnya) on which to do a group final presentation. How many such divisions are possible:\\
+\begin{example}A group of 15 international relations students will be divided into three groups. Each group consists of 5 students and is assigned a different country (Azerbaijan, Belarus, and Chechnya) on which to do a group final presentation. How many such divisions are possible:\\
 
 Since we are are dividing 15 people into 3 distinct groups of 5, we can use the multinomial coefficient to determine the number or arrangements:
 \[
@@ -818,7 +730,7 @@ The interpretation of the other branches of the tree is similar. Here is a versi
 
 To find $\P(R)$, we just add up all the leaves that end passing through $R$. There are two such leaves, labeled with probabilities 1/8 and 2/8, thus $\P(R) = 1/8 + 2/8 = 3/8$.\\
 
-In adding the probabilities above, we used the addition rule. To see how we used it, recall that the sample space is designated $\cals$ and that $B_1$ and $B_2$ are disjoint with $B_1 \cup B2 = \cals$ (you can only choose one bag, and you must choose a bag):
+In adding the probabilities above, we used the addition rule. To see how we used it, recall that the sample space is designated $\cals$ and that $B_1$ and $B_2$ are disjoint with $B_1 \cup B_2 = \cals$ (you can only choose one bag, and you must choose a bag):
 \begin{align*}
 R &= R \cap \cals & \text{ intersecting with $\cals$ does nothing, since $A \subset \cals$}\\
 &= R \cap (B_1 \cup B_2) \\

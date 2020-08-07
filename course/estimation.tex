@@ -1,91 +1,6 @@
-\documentclass[12pt]{article}
-\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
-\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
-\usepackage[shortalphabetic]{amsrefs}%
-\usepackage{amsmath}
-\usepackage{enumerate}
-\usepackage{enumitem}
-\usepackage{amssymb}                
-\usepackage{amsmath}                
-\usepackage{amsfonts}
-\usepackage{amsthm}
-\usepackage{bbm}
-\usepackage[table,xcdraw]{xcolor}
-\usepackage{tikz}
-\usepackage{float}
-\usepackage{booktabs}
-\usepackage{svg}
-\usepackage{mathtools}
-\usepackage{cool}
-\usepackage{url}
-\usepackage{graphicx,epsfig}
-\usepackage{framed}
-\usepackage{hyperref}  
-
-\usetikzlibrary{automata,arrows,positioning,calc}
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
-\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
-\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
-\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
-
-\makeatletter
-\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
-  \hskip -\arraycolsep
-  \let\@ifnextchar\new@ifnextchar
-  \array{#1}}
-\makeatother
-
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{exercise}{Exercise}%
-\newtheorem{problem}[exercise]{Problem}%
-\newtheorem*{example}{Example}
-
-\theoremstyle{remark}
-\newtheorem*{question}{Question}
-\newtheorem*{observation}{Observation}
-\newtheorem*{remark}{Remark}
+\documentclass[notes.tex]{subfiles}
 
 \graphicspath{ {images/} }
-
-\setlength{\parindent}{0cm}
-\renewcommand{\vec}[1]{\ensuremath{\mathbf{#1}}}
-
-\def\noi{\noindent}
-\def\T{{\mathbb T}}
-\def\R{{\mathbb R}}
-\def\N{{\mathbb N}}
-\def\C{{\mathbb C}}
-\def\Z{{\mathbb Z}}
-\def\P{{\mathbb P}}
-\def\E{{\mathbb E}}
-\def\Q{\mathbb{Q}}
-\def\ind{{\mathbb I}}
-
-\def\cale{{\mathcal E}}
-\def\cals{{\mathcal S}}
-\def\calc{{\mathcal C}}
-\def\caln{{\mathcal N}}
-\def\calb{{\mathcal B}}
-\def\calg{{\cal G}}
-
-\def\ds{\displaystyle}
-\def\ra{\rightarrow}
-\newcommand{\conv}{\mbox{\rm conv}}
-\newcommand{\spaan}{\mbox{\rm span}}
-\newcommand{\deet}{\mbox{\rm det}}
-\newcommand{\aff}{\mbox{\rm aff}}
-\newcommand{\cl}{\mbox{\rm cl}}
-\newcommand{\dimm}{\mbox{\rm dim}}
-\newcommand{\sm}{\setminus}
-\def\ci{\perp\!\!\!\perp}
-
-\newcommand{\ink}{\rule{.5\baselineskip}{.55\baselineskip}}
 
 \begin{document}
 
@@ -138,7 +53,7 @@ If $Bias(\hat{\theta})$ is the bias of $\hat{\theta}$ and $Var(\hat{\theta})$ is
 MSE(\hat{\theta}) = [Bias(\hat{\theta})]^2 + Var(\hat{\theta})
 \] 
 \end{framed}
-Note that the MSE can be divided into two components: variance and bias squared. Both of these are positive. We have discussed above how low bias is a good quality for an estimator. Low variance is a desired quality for an estimator as well since ideally we would like the distribution of the estimator to cluster tightly about the parameter of interest. In general, if we keep the sample size fixed, there is a tradeoff between bias and variance. For a given MSE, if we wish our estimator to have lower bias, then we must accept a higher variance and vice versa.\\
+Note that the MSE can be divided into two components: variance and bias squared. Both of these are positive. We have discussed above how low bias is a good quality for an estimator. Low variance is a desired quality for an estimator as well since ideally we would like the distribution of the estimator to cluster tightly about the parameter of interest. In general, if we keep the sample size fixed, there is a trade-off between bias and variance. For a given MSE, if we wish our estimator to have lower bias, then we must accept a higher variance and vice versa.\\
 
 To show the relationship between MSE, bias, and variance, we take the definition of MSE and add and subtract $\E(\hat{\theta})$ inside the parentheses.
 
@@ -212,7 +127,7 @@ $\mu_1 - \mu_2$                                                 & $n_1$ and $n_2
 $p_1 - p_2$                                                     & $n_1$ and $n_2$                                       & $\hat{p}_1 - \hat{p}_2$ & $p_1 - p_2$                                              & $\frac{p_1(1-p_1)}{n_1} +\frac{p_2(1-p_2)}{n_2} $ & $\sqrt{\frac{p_1(1-p_1)}{n_1} +\frac{p_2(1-p_2)}{n_2} }$     \\ \bottomrule
 \end{tabular}
 \end{figure}
-The standard deviation of an estimator is sometimes called the \emph{standard error}. You may see that term in the scientific literature, but we will not use it in class. Note that the expected values and variances in the table above hold regardless of the distribution of the underlying population. In the case that the population is normal, the sample mean estimators $\bar{Y}$ and $\bar{Y_1} - \bar{Y_2}$ have a normal distribution, as discussed in the chapter on sampling distributions. However, for large sample sizes (approximately $n \geq 30$), the central limit theorem comes into play. Thus for large sample sizes, the sample mean estimators $\bar{Y}$ and $\bar{Y_1} - \bar{Y_2}$ are approximately normally distributed regardless of the distribution of the underlying population. For a binomial population, the population proportion estimators $\hat{p}$ and $\hat{p}_1 - \hat{p}_2$ are also approximately normal for large sample sizes. How large a sample size do we need in this case? It depends on $p$. The farther $p$ is from 1/2, the larger sample size $n$ we need for the binomial distribution to be approximately normal. In the homework, we showed that this is the case when $0 \leq 3 \sqrt{pq/n} \leq 1$, where $q = 1 - p$. We then showed that an easier rule to check is that the binomial distribution is approximately normal when $n \geq 9p/q$ and $n \geq 9q/p$.\\
+The standard deviation of an estimator is sometimes called the \emph{standard error}. You may see that term in the scientific literature, but we will not use it in class. Note that the expected values and variances in the table above hold regardless of the distribution of the underlying population. In the case that the population is normal, the sample mean estimators $\bar{Y}$ and $\bar{Y_1} - \bar{Y_2}$ have a normal distribution, as discussed in the chapter on sampling distributions. However, for large sample sizes (approximately $n \geq 30$), the central limit theorem comes into play. Thus for large sample sizes, the sample mean estimators $\bar{Y}$ and $\bar{Y_1} - \bar{Y_2}$ are approximately normally distributed regardless of the distribution of the underlying population. For a binomial population, the population proportion estimators $\hat{p}$ and $\hat{p}_1 - \hat{p}_2$ are also approximately normal for large sample sizes. How large a sample size do we need in this case? It depends on $p$. The farther $p$ is from 1/2, the larger sample size $n$ we need for the binomial distribution to be approximately normal. In a homework problem, we showed that this is the case when $0 \leq 3 \sqrt{pq/n} \leq 1$, where $q = 1 - p$. We then showed that an easier rule to check is that the binomial distribution is approximately normal when $n \geq 9p/q$ and $n \geq 9q/p$.\\
 
 As another example, let's look at our estimators for population variance. Recall from the previous section that the sample variance is given by:
 \[
@@ -362,7 +277,7 @@ To find $z_{\alpha/2}$, we look at our Z table. Since $(1 - \alpha) = 0.98$, $\a
 
 Here is another example, this time dealing with the difference between sample proportions.
 
-\begin{example}Two brands of lightbulbs, denoted brand A and brand B, are guaranteed to last for at least 1 year. In a random sample of 50 lightbulbs of brand A, 12 were found to fail before the 1 year period ended. In an independent random sample of 60 lightbulbs of brand B, 12 were also found to fail before the 1 year period ended. Give a 98\% confidence interval for the difference $p_1 - p_2$ between the proportion of failures of the two brands during the 1 year period.\\
+\begin{example}Two brands of light bulbs, denoted brand A and brand B, are guaranteed to last for at least 1 year. In a random sample of 50 light bulbs of brand A, 12 were found to fail before the 1 year period ended. In an independent random sample of 60 light bulbs of brand B, 12 were also found to fail before the 1 year period ended. Give a 98\% confidence interval for the difference $p_1 - p_2$ between the proportion of failures of the two brands during the 1 year period.\\
 
 The parameter of interest here is $p_1 - p_2$, and we use as our estimator $\hat{p}_1 - \hat{p}_2$. Evaluating our estimators, we get $\hat{p}_1 = 12/50 = 0.24$ and $\hat{p}_2 = 12/16 = 0.20$, thus $\hat{p}_1 - \hat{p}_2 = 0.24 - 0.20 = 0.04$. To construct our confidence interval, we need the standard deviation of our estimator. From the table above (or by deriving it from the variance of the binomial distribution), we have
 \[
@@ -380,11 +295,11 @@ We found $z_{\alpha/2}$ for a 98\% confidence interval in the previous example, 
 &= [ 0.04 - 0.185, 0.04 + 0.185] \\
 &= [-0.145, 0.225]
 \end{align*}
-Note that our 98\% confidence overlaps 0. If the true parameter $p_1 - p_2$ were 0, then there would be no difference in the 1-year failure rates of the two brands of lightbulbs! Thus we cannot exclude that possibility with 98\% confidence.
+Note that our 98\% confidence overlaps 0. If the true parameter $p_1 - p_2$ were 0, then there would be no difference in the 1-year failure rates of the two brands of light bulbs! Thus we cannot exclude that possibility with 98\% confidence.
 \end{example}
 
 \subsubsection{Experimental Design: Selecting the Sample Size}
-If you are designing an experiment, one of the parameters you must choose is the sample size. As an example, suppose you are polling registered voters in Rhode Island and asking them if they are voting for Gina Raimondo. You use the estimator $\hat{p}$ for $p$, the true proportion of Raimondo voters. As the number $n$ of people polled (the size of your sample) increases, the variance of your estimator $\hat{p}$ decreases, and there is a higher probability that your estimator will be close to the true proportion. In terms of confidence intervals, if you desire 95\% confidence that your interval contains the true parameter $p$, as you increase the sample size, the confidence interval becomes narrower. There is a tradeoff, however, as the sample size gets larger. Collecting a larger sample is more expensive and consumes more resources. Is there any way mathematically to determine ahead of time the sample size we need to attain a desired level of accuracy for our estimator?\\
+If you are designing an experiment, one of the parameters you must choose is the sample size. As an example, suppose you are polling registered voters in Rhode Island and asking them if they are voting for Gina Raimondo. You use the estimator $\hat{p}$ for $p$, the true proportion of Raimondo voters. As the number $n$ of people polled (the size of your sample) increases, the variance of your estimator $\hat{p}$ decreases, and there is a higher probability that your estimator will be close to the true proportion. In terms of confidence intervals, if you desire 95\% confidence that your interval contains the true parameter $p$, as you increase the sample size, the confidence interval becomes narrower. There is a trade-off, however, as the sample size gets larger. Collecting a larger sample is more expensive and consumes more resources. Is there any way mathematically to determine ahead of time the sample size we need to attain a desired level of accuracy for our estimator?\\
 
 Suppose we want to estimate the average diameter $\mu$ of a ball bearing produced by a ball bearing machine, and we wish the probability that our estimate is within 0.02 mm of the true mean to be 0.95. Assuming the diameters of the ball bearings are normally distributed (or taking a large enough sample that the central limit theorem applies), by the 68-95-99.7 rule we want the true value $\mu$ to be within 2 standard deviations of our estimator $\bar{Y}$ (This is the standard deviation of the \emph{estimator}, not the population standard deviation). Thus we want:
 \begin{align*}

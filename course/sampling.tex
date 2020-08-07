@@ -1,91 +1,6 @@
-\documentclass[12pt]{article}
-\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
-\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
-\usepackage[shortalphabetic]{amsrefs}%
-\usepackage{amsmath}
-\usepackage{enumerate}
-\usepackage{enumitem}
-\usepackage{amssymb}                
-\usepackage{amsmath}                
-\usepackage{amsfonts}
-\usepackage{amsthm}
-\usepackage{bbm}
-\usepackage[table,xcdraw]{xcolor}
-\usepackage{tikz}
-\usepackage{float}
-\usepackage{booktabs}
-\usepackage{svg}
-\usepackage{mathtools}
-\usepackage{cool}
-\usepackage{url}
-\usepackage{graphicx,epsfig}
-\usepackage{framed}
-\usepackage{hyperref}  
-
-\usetikzlibrary{automata,arrows,positioning,calc}
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
-\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
-\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
-\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
-
-\makeatletter
-\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
-  \hskip -\arraycolsep
-  \let\@ifnextchar\new@ifnextchar
-  \array{#1}}
-\makeatother
-
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{exercise}{Exercise}%
-\newtheorem{problem}[exercise]{Problem}%
-\newtheorem*{example}{Example}
-
-\theoremstyle{remark}
-\newtheorem*{question}{Question}
-\newtheorem*{observation}{Observation}
-\newtheorem*{remark}{Remark}
+\documentclass[notes.tex]{subfiles}
 
 \graphicspath{ {images/} }
-
-\setlength{\parindent}{0cm}
-\renewcommand{\vec}[1]{\ensuremath{\mathbf{#1}}}
-
-\def\noi{\noindent}
-\def\T{{\mathbb T}}
-\def\R{{\mathbb R}}
-\def\N{{\mathbb N}}
-\def\C{{\mathbb C}}
-\def\Z{{\mathbb Z}}
-\def\P{{\mathbb P}}
-\def\E{{\mathbb E}}
-\def\Q{\mathbb{Q}}
-\def\ind{{\mathbb I}}
-
-\def\cale{{\mathcal E}}
-\def\cals{{\mathcal S}}
-\def\calc{{\mathcal C}}
-\def\caln{{\mathcal N}}
-\def\calb{{\mathcal B}}
-\def\calg{{\cal G}}
-
-\def\ds{\displaystyle}
-\def\ra{\rightarrow}
-\newcommand{\conv}{\mbox{\rm conv}}
-\newcommand{\spaan}{\mbox{\rm span}}
-\newcommand{\deet}{\mbox{\rm det}}
-\newcommand{\aff}{\mbox{\rm aff}}
-\newcommand{\cl}{\mbox{\rm cl}}
-\newcommand{\dimm}{\mbox{\rm dim}}
-\newcommand{\sm}{\setminus}
-\def\ci{\perp\!\!\!\perp}
-
-\newcommand{\ink}{\rule{.5\baselineskip}{.55\baselineskip}}
 
 \begin{document}
 
@@ -228,8 +143,6 @@ We will now briefly discuss two other useful distributions, the chi-square and $
 
 \subsubsection{Chi-square distribution}
 
-\emph{This section was not covered in class but is included for completeness; unless I cover it in the future, I am presenting this purely for reference. It will not appear on any problem set or exam.} \\
-
 The chi-square distribution is the distribution of the sum of the squares of independent, standard normal random variables. Since the variance of a random variable is computed by first finding the expected value of the square of the random variable, the chi-square distribution is used when we make inferences about the variance of a population. 
 
 \begin{framed}
@@ -339,8 +252,8 @@ As the number of df gets larger (i.e. approaches infinity), the t distribution a
 
 We are interested in finding $a$ and $b$ such that $\P(a \leq (\bar{Y} - \mu) \leq b) = 0.90$. Multiplying by $\sqrt{n}$ and dividing by $S$, we get:
 \begin{align*}
-\P\left( \frac{\sqrt{n}a}{S} \leq \sqrt{n} \left(\frac{\bar{Y} - \mu}{ S }\right) \leq \frac{\sqrt{n}a}{S} \right) &= 0.90\\
-\P\left( \frac{\sqrt{16}a}{0.1} \leq T \leq \frac{\sqrt{16}a}{0.1} \right) &= 0.90 \\
+\P\left( \frac{\sqrt{n}a}{S} \leq \sqrt{n} \left(\frac{\bar{Y} - \mu}{ S }\right) \leq \frac{\sqrt{n}b}{S} \right) &= 0.90\\
+\P\left( \frac{\sqrt{16}a}{0.1} \leq T \leq \frac{\sqrt{16}b}{0.1} \right) &= 0.90 \\
 \P\left( 40a \leq T \leq 40b  \right) &= 0.90 
 \end{align*}
 Now we look at our t-table. Note that the t-table gives probabilities for the upper tail of the t-distribution and that the t-distribution is symmetric about the mean. We have a sample of 16, so we want 15 df. We will take a symmetric interval about the mean, so we want $\P(T \leq 40a) = 0.05$ and $\P(T \leq 40b) = 0.05$. For the upper tail, we look at the t-table in the row for 15 df and go across until we get to 0.05, which gives us a t-value of 1.753. By symmetry, the lower t-value is -1.753. Thus we have $40b = 1.753$, which implies $b = 0.0438$. By symmetry, $a = -0.0438$. Thus we are 90\% confident that the difference between the sample and population means falls within the interval $[-0.0438, 0.0438]$.\\
@@ -386,7 +299,7 @@ Suppose standardized test scores historically have a mean of 60 and variance of 
 
 We will compute the probability that the sample mean is less than or equal to 58. Let $\bar{Y}$ be the mean of the sample of 100 students who take the new version. By the central limit theorem, since our sample size is large ($\geq 30$), the sample mean is an approximately normal random variable with mean $\mu = 60$ and variance $\sigma^2 / n = 64 / 100$. The standard deviation of the sample mean is the square root of the variance, i.e. $8/10 = 0.8$. Converting to the standard normal random variable:
 \[
-\P(\bar{Y} \leq 58) = \P\left( Z \leq \frac{58 - 60}{0.8} \right) = \P(Z \leq 2.5) = 0.0062
+\P(\bar{Y} \leq 58) = \P\left( Z \leq \frac{58 - 60}{0.8} \right) = \P(Z \leq -2.5) = 0.0062
 \]
 This probability is so small that it is unlikely that it was drawn from a population with mean 60 and variance 64. Thus it is highly likely that it was drawn from a population with different characteristics, i.e. it is highly likely that there is something wrong with the test.
 \end{example}

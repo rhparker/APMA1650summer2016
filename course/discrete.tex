@@ -1,91 +1,6 @@
-\documentclass[12pt]{article}
-\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
-\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
-\usepackage[shortalphabetic]{amsrefs}%
-\usepackage{amsmath}
-\usepackage{enumerate}
-\usepackage{enumitem}
-\usepackage{amssymb}                
-\usepackage{amsmath}                
-\usepackage{amsfonts}
-\usepackage{amsthm}
-\usepackage{bbm}
-\usepackage[table,xcdraw]{xcolor}
-\usepackage{tikz}
-\usepackage{float}
-\usepackage{booktabs}
-\usepackage{svg}
-\usepackage{mathtools}
-\usepackage{cool}
-\usepackage{url}
-\usepackage{graphicx,epsfig}
-\usepackage{framed}
-\usepackage{hyperref}  
-
-\usetikzlibrary{automata,arrows,positioning,calc}
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
-\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
-\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
-\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
-
-\makeatletter
-\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
-  \hskip -\arraycolsep
-  \let\@ifnextchar\new@ifnextchar
-  \array{#1}}
-\makeatother
-
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{exercise}{Exercise}%
-\newtheorem{problem}[exercise]{Problem}%
-\newtheorem*{example}{Example}
-
-\theoremstyle{remark}
-\newtheorem*{question}{Question}
-\newtheorem*{observation}{Observation}
-\newtheorem*{remark}{Remark}
+\documentclass[notes.tex]{subfiles}
 
 \graphicspath{ {images/} }
-
-\setlength{\parindent}{0cm}
-\renewcommand{\vec}[1]{\ensuremath{\mathbf{#1}}}
-
-\def\noi{\noindent}
-\def\T{{\mathbb T}}
-\def\R{{\mathbb R}}
-\def\N{{\mathbb N}}
-\def\C{{\mathbb C}}
-\def\Z{{\mathbb Z}}
-\def\P{{\mathbb P}}
-\def\E{{\mathbb E}}
-\def\Q{\mathbb{Q}}
-\def\ind{{\mathbb I}}
-
-\def\cale{{\mathcal E}}
-\def\cals{{\mathcal S}}
-\def\calc{{\mathcal C}}
-\def\caln{{\mathcal N}}
-\def\calb{{\mathcal B}}
-\def\calg{{\cal G}}
-
-\def\ds{\displaystyle}
-\def\ra{\rightarrow}
-\newcommand{\conv}{\mbox{\rm conv}}
-\newcommand{\spaan}{\mbox{\rm span}}
-\newcommand{\deet}{\mbox{\rm det}}
-\newcommand{\aff}{\mbox{\rm aff}}
-\newcommand{\cl}{\mbox{\rm cl}}
-\newcommand{\dimm}{\mbox{\rm dim}}
-\newcommand{\sm}{\setminus}
-\def\ci{\perp\!\!\!\perp}
-
-\newcommand{\ink}{\rule{.5\baselineskip}{.55\baselineskip}}
 
 \begin{document}
 
@@ -102,7 +17,7 @@ A \emph{discrete} random variable $Y$ is a random variable which can only take o
 Here are some examples of discrete random variables:
 \begin{enumerate}
 \item The number of voters in Providence, Rhode Island who prefer Jorge Elorza.
-\item The number of defective lightbulbs out of a shipment of 1000 lightbulbs.
+\item The number of defective light bulbs out of a shipment of 1000 light bulbs.
 \item The number of times I play a slot machine in Las Vegas until I win.
 \end{enumerate}
 
@@ -171,7 +86,6 @@ We can also represent the pmf graphically as a histogram\footnote{I will undoubt
 \includegraphics[width=5cm]{2coinshisto}
 \end{figure}
 
-
 A discrete random variable induces a probability distribution on the sample space of all possible values the random variable can take. This is a different sample space from the original sample space. Back to our two-coin-flip example, the random variable $Y$ induces a probability distribution on a new sample space $\mathcal{T} = \{0, 1, 2\}$. The probabilities of the sample points in $\mathcal{T}$ are the probabilities $p(y)$ for $y = 0, 1, 2$. We can illustrate this new sample space in a picture.
 
 \begin{figure}[H]
@@ -230,7 +144,7 @@ The pmf for $X$ can be expressed similarly.
 \end{example}
 
 \subsection{Expected Value}
-Given a discrete random variable, we can definite it's mean, or expected value. 
+Given a discrete random variable, we can definite its mean, or expected value. 
 
 \begin{framed}
   \emph{Expected value of a random variable}\\
@@ -276,7 +190,7 @@ We will discuss several properties of the expected value. The first and and one 
 \begin{framed}
   \emph{Linearity of expectation}\\
   \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
-Let $X$ and $Y$ be two random variables\footnote{So far we have only discussed what an expected value is in terms of discrete random variables, but this is true for all random variable.}, and let $a$ and $b$ be constants. Then
+Let $X$ and $Y$ be two random variables\footnote{So far we have only discussed what an expected value is in terms of discrete random variables, but this is true for all random variables.}, and let $a$ and $b$ be constants. Then
 \[
 \E(aX + bY) = a\E(X) + b\E(Y)
 \]
@@ -287,6 +201,8 @@ As a corollary of this, if we have random variables $X_1, X_2, \dots, X_n$, then
 \E(X_1 + X_2 + \cdots + X_n) = \E(X_1) + \E(X_2) + \cdots + \E(X_n)
 \]
 \end{framed}
+
+\footnotetext{So far we have only discussed what an expected value is in terms of discrete random variables, but this is true for all random variables.}
 
 Linearity of expectation is a really nice property since it does not require the random variables to be independent. Let's do a problem to illustrate the usefulness of linearity of expectation.
 
@@ -484,19 +400,17 @@ Let's compute the variance of the two random variables above. Since $Y$ is more 
 
 The mean of both random variables is 3, so we have:
 \begin{align*}
-Var(X) &= \sum_{\text{all }x}(x - 3)^2 \:p(x) \\
+Va&r(X) = \sum_{\text{all }x}(x - 3)^2 \:p(x) \\
 &= (0-3)^2 \frac{1}{64} + (1-3)^2 \frac{6}{64} + (2-3)^2 \frac{15}{64} + (3-3)^2 \frac{20}{64} + (4-3)^2 \frac{15}{64} + (5-3)^2 \frac{6}{64} + (6-3)^2 \frac{1}{64} \\
 &= \frac{(9)(1)}{64} + \frac{(4)(6)}{64} + \frac{(1)(15)}{64} + \frac{(0)(20)}{64} + \frac{(1)(15)}{64} + \frac{(4)(6)}{64} + \frac{(9)(1)}{64} \\ 
-&= \frac{96}{64} \\
-&= \frac{3}{2}
+&= \frac{96}{64} = \frac{3}{2}
 \end{align*}
 
 \begin{align*}
-Var(Y) &= \sum_{\text{all }y}(y - 3)^2 \:p(y) \\
+Va&r(Y) = \sum_{\text{all }y}(y - 3)^2 \:p(y) \\
 &= (0-3)^2 \frac{1}{7} + (1-3)^2 \frac{1}{7} + (2-3)^2 \frac{1}{7} + (4-3)^2 \frac{1}{7} + (4-3)^2 \frac{1}{7} + (5-3)^2 \frac{1}{7} + (6-3)^2 \frac{1}{7} \\
 &= \frac{1}{7}(9 + 4 + 1 + 0 + 1 + 4 + 9) \\
-&= \frac{28}{7} \\
-&= 4
+&= \frac{28}{7} = 4
 \end{align*}
 As predicted from the histograms, $Y$ has a much higher variance.
 \end{example}
@@ -877,6 +791,7 @@ The variance is tedious to prove, and since not much is gained by doing it, we w
 &= \frac{p}{p^2} \\
 &= \frac{1}{p} 
 \end{align*}
+\footnotetext{This can be justified; if you want to know more about this and find these types of mathematical subtleties interesting, I recommend taking a course in real analysis.}
 
 The geometric distribution is often used the model the distribution of how long you need to wait for a particular event to happen. In this case, the waiting time is given in discrete ``chunks'' of time such as hours or days.
 
@@ -1047,7 +962,7 @@ The limiting probability $p(y)$ is the pmf for the \emph{Poisson distribution}.
   \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
 A discrete random variable $Y$ has a \emph{Poisson distribution} with parameter $\lambda > 0$ if 
 \begin{align*}
-p(y) &= e^{-\lambda}\frac{\lambda^y}{y!} &\lambda = 0, 1, 2, \dots
+p(y) &= e^{-\lambda}\frac{\lambda^y}{y!} &y = 0, 1, 2, \dots
 \end{align*}
 $Y$ is called a \emph{Poisson random variable} with parameter $\lambda$, which is often denoted $Y\sim\text{Poisson}(\lambda)$.
 \end{framed}

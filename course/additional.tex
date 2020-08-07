@@ -1,91 +1,6 @@
-\documentclass[12pt]{article}
-\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
-\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
-\usepackage[shortalphabetic]{amsrefs}%
-\usepackage{amsmath}
-\usepackage{enumerate}
-\usepackage{enumitem}
-\usepackage{amssymb}                
-\usepackage{amsmath}                
-\usepackage{amsfonts}
-\usepackage{amsthm}
-\usepackage{bbm}
-\usepackage[table,xcdraw]{xcolor}
-\usepackage{tikz}
-\usepackage{float}
-\usepackage{booktabs}
-\usepackage{svg}
-\usepackage{mathtools}
-\usepackage{cool}
-\usepackage{url}
-\usepackage{graphicx,epsfig}
-\usepackage{framed}
-\usepackage{hyperref}  
-
-\usetikzlibrary{automata,arrows,positioning,calc}
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
-\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
-\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
-\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
-
-\makeatletter
-\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
-  \hskip -\arraycolsep
-  \let\@ifnextchar\new@ifnextchar
-  \array{#1}}
-\makeatother
-
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{exercise}{Exercise}%
-\newtheorem{problem}[exercise]{Problem}%
-\newtheorem*{example}{Example}
-
-\theoremstyle{remark}
-\newtheorem*{question}{Question}
-\newtheorem*{observation}{Observation}
-\newtheorem*{remark}{Remark}
+\documentclass[notes.tex]{subfiles}
 
 \graphicspath{ {images/} }
-
-\setlength{\parindent}{0cm}
-\renewcommand{\vec}[1]{\ensuremath{\mathbf{#1}}}
-
-\def\noi{\noindent}
-\def\T{{\mathbb T}}
-\def\R{{\mathbb R}}
-\def\N{{\mathbb N}}
-\def\C{{\mathbb C}}
-\def\Z{{\mathbb Z}}
-\def\P{{\mathbb P}}
-\def\E{{\mathbb E}}
-\def\Q{\mathbb{Q}}
-\def\ind{{\mathbb I}}
-
-\def\cale{{\mathcal E}}
-\def\cals{{\mathcal S}}
-\def\calc{{\mathcal C}}
-\def\caln{{\mathcal N}}
-\def\calb{{\mathcal B}}
-\def\calg{{\cal G}}
-
-\def\ds{\displaystyle}
-\def\ra{\rightarrow}
-\newcommand{\conv}{\mbox{\rm conv}}
-\newcommand{\spaan}{\mbox{\rm span}}
-\newcommand{\deet}{\mbox{\rm det}}
-\newcommand{\aff}{\mbox{\rm aff}}
-\newcommand{\cl}{\mbox{\rm cl}}
-\newcommand{\dimm}{\mbox{\rm dim}}
-\newcommand{\sm}{\setminus}
-\def\ci{\perp\!\!\!\perp}
-
-\newcommand{\ink}{\rule{.5\baselineskip}{.55\baselineskip}}
 
 \begin{document}
 
@@ -257,11 +172,11 @@ Thus $\hat{I}_n$ is unbiased. By the Law of Large Numbers, as $n \rightarrow \in
 Linear regression is one of the mathematical methods most often used by professional statisticians. Linear regression is an inferential procedure which is used when one random variable $Y$, called the dependent variable, has a mean which is a function of one or more nonrandom variables $x_1, \dots, x_n$, called the independent variables. (The names ``dependent'' and ``independent'' are used in the scientific sense to indicate the roles the variables play, and do not imply anything about independence in the probabilistic sense.) What are some examples of this? 
 \begin{enumerate}
 \item $Y$ is the stopping distance for an automobile of a particular make and model. $Y$ is a random variable, but its mean depends on the velocity $x$ of the car before the brakes are applied.
-\item $Y$ is the elongation of a strip of metal subject to a stretching force. $Y$ is a random variable whose mean depends on the applied foce $x_1$ and the temperature $x_2$.
+\item $Y$ is the elongation of a strip of metal subject to a stretching force. $Y$ is a random variable whose mean depends on the applied force $x_1$ and the temperature $x_2$.
 \item $Y$ is the sale price of homes in a certain neighborhood over the past month. $Y$ is a random variable whose mean depends, among other things, on $x$, the size of the home in square feet. 
 \end{enumerate}
 
-In this section we will only consider a single independent variable $x$. Consider a scatterplot of $n$ samples of the random variable $Y$ corresponding to $n$ values of the independent variable $x$. We could, for example, plot home prices in a certain neighborhood versus the size of the home. Intuitively, you would expect that $Y$ would roughly increase as $x$ increases, since bigger homes are more likely to sell for more. A purely deterministic, linear model, which we can write as
+In this section we will only consider a single independent variable $x$. Consider a scatter-plot of $n$ samples of the random variable $Y$ corresponding to $n$ values of the independent variable $x$. We could, for example, plot home prices in a certain neighborhood versus the size of the home. Intuitively, you would expect that $Y$ would roughly increase as $x$ increases, since bigger homes are more likely to sell for more. A purely deterministic, linear model, which we can write as
 \[
 Y = \beta_0 + \beta_1 x
 \]

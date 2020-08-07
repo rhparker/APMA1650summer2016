@@ -1,91 +1,6 @@
-\documentclass[12pt]{article}
-\usepackage[pdfborder={0 0 0.5 [3 2]}]{hyperref}%
-\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
-\usepackage[shortalphabetic]{amsrefs}%
-\usepackage{amsmath}
-\usepackage{enumerate}
-\usepackage{enumitem}
-\usepackage{amssymb}                
-\usepackage{amsmath}                
-\usepackage{amsfonts}
-\usepackage{amsthm}
-\usepackage{bbm}
-\usepackage[table,xcdraw]{xcolor}
-\usepackage{tikz}
-\usepackage{float}
-\usepackage{booktabs}
-\usepackage{svg}
-\usepackage{mathtools}
-\usepackage{cool}
-\usepackage{url}
-\usepackage{graphicx,epsfig}
-\usepackage{framed}
-\usepackage{hyperref}  
-
-\usetikzlibrary{automata,arrows,positioning,calc}
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
-\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
-\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
-\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
-
-\makeatletter
-\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
-  \hskip -\arraycolsep
-  \let\@ifnextchar\new@ifnextchar
-  \array{#1}}
-\makeatother
-
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{exercise}{exercise}%
-\newtheorem{problem}[exercise]{Problem}%
-\newtheorem*{example}{Example}
-
-\theoremstyle{remark}
-\newtheorem*{question}{Question}
-\newtheorem*{observation}{Observation}
-\newtheorem*{remark}{Remark}
+\documentclass[notes.tex]{subfiles}
 
 \graphicspath{ {images/} }
-
-\setlength{\parindent}{0cm}
-\renewcommand{\vec}[1]{\ensuremath{\mathbf{#1}}}
-
-\def\noi{\noindent}
-\def\T{{\mathbb T}}
-\def\R{{\mathbb R}}
-\def\N{{\mathbb N}}
-\def\C{{\mathbb C}}
-\def\Z{{\mathbb Z}}
-\def\P{{\mathbb P}}
-\def\E{{\mathbb E}}
-\def\Q{\mathbb{Q}}
-\def\ind{{\mathbb I}}
-
-\def\cale{{\mathcal E}}
-\def\cals{{\mathcal S}}
-\def\calc{{\mathcal C}}
-\def\caln{{\mathcal N}}
-\def\calb{{\mathcal B}}
-\def\calg{{\cal G}}
-
-\def\ds{\displaystyle}
-\def\ra{\rightarrow}
-\newcommand{\conv}{\mbox{\rm conv}}
-\newcommand{\spaan}{\mbox{\rm span}}
-\newcommand{\deet}{\mbox{\rm det}}
-\newcommand{\aff}{\mbox{\rm aff}}
-\newcommand{\cl}{\mbox{\rm cl}}
-\newcommand{\dimm}{\mbox{\rm dim}}
-\newcommand{\sm}{\setminus}
-\def\ci{\perp\!\!\!\perp}
-
-\newcommand{\ink}{\rule{.5\baselineskip}{.55\baselineskip}}
 
 \begin{document}
 \setcounter{section}{2}
@@ -236,7 +151,7 @@ We can illustrate the third relationship above, $\P(a \leq Y \leq b) = F(b) - F(
 \includegraphics[width=5cm]{normalcdfPab.pdf}
 \end{figure}
 
-You may ask why we bother at all with cdfs since it seems easier to work with densities. There are three good reasons to consider CDFs. From a mathematical standpoint, the cdf is a more fundamental object than the pdf; every continuous random variable has a cdf, while there are continuous random variables which have no density\footnote{All continuous random variables we will encounter in this course will have a density}. From a practical standpoint, the normal distribution, perhaps the most important distribution is all of probability, has a density which is unwieldy, thus we will use the cdf to compute probabilities involving that distribution. Finally, the cdf is used to define the \emph{median} and \emph{quartiles} of a probability distribution, which are important descriptors of a probability distribution.
+You may ask why we bother at all with cdfs since it seems easier to work with densities. There are three good reasons to consider cdfs. From a mathematical standpoint, the cdf is a more fundamental object than the pdf; every continuous random variable has a cdf, while there are continuous random variables which have no density\footnote{All continuous random variables we will encounter in this course will have a density}. From a practical standpoint, the normal distribution, perhaps the most important distribution is all of probability, has a density which is unwieldy, thus we will use the cdf to compute probabilities involving that distribution. Finally, the cdf is used to define the \emph{median} and \emph{quartiles} of a probability distribution, which are important descriptors of a probability distribution.
 
 \subsection{Median and Quartiles}
 The \emph{median} is the ``middle'' of a probability distribution. It is the value which separates the upper half of the distribution from the lower half of the distribution. The median is more robust to outlier values than the mean, and so in some cases may be a better descriptor of a typical outcome than the mean. Mathematically, if $Y$ is a random variable, the we can define the median of $Y$ as the value $m$ such that $\P(Y \leq m) = \P(Y \geq m) = 1/2$. For a continuous random variable $Y$ with cdf $F(y)$, we can define the median using the cdf as the value $m$ for which $F(m) = 1/2$. Similarly we can define the 1st and 3rd quartiles (the median is sometimes called the 2nd quartile). 
@@ -248,7 +163,7 @@ Let $Y$ be a continuous random variable with cdf $F(y)$. Then we define the \emp
 \begin{align*}
 F(Q_1) &= \P(Y \leq Q_1) = 1/4\\
 F(m) &= \P(Y \leq m) = 1/2\\
-F(Q_3) &= \P(Y \leq Q_3) = 1/4
+F(Q_3) &= \P(Y \leq Q_3) = 3/4
 \end{align*}
 \end{framed}
 
@@ -360,7 +275,7 @@ The \emph{continuous uniform distribution}, which we shall generally just call t
 \item Strokkur, one of the most famous geysers in Iceland, erupts approximately once every 10 minutes\footnote{Its neighbor Geysir, from which we get the word ``geyser'', hardly ever erupts these days.}. For a given 10-minute interval, we can model the probability that Strokkur will erupt by a uniform distribution on the interval $[0, 10]$
 \end{enumerate}
 
-A uniform distribution is specified in terms of parameters $a$ and $b$, which are the endpoints of the interval $[a. b]$ on which the uniform distribution is defined. What is the density function for the uniform distribution? Look at the picture below:
+A uniform distribution is specified in terms of parameters $a$ and $b$, which are the endpoints of the interval $[a, b]$ on which the uniform distribution is defined. What is the density function for the uniform distribution? Look at the picture below:
 \begin{figure}[H]
 \centering
 \includegraphics[width=8cm]{uniformdensity.eps}
@@ -482,7 +397,7 @@ Let $Z$ be a standard normal random variable, and suppose we wish to calculate $
 \begin{align*}
 \P(-1 \leq Z \leq 1) = \int_{-1}^1 \frac{1}{\sqrt{2 \pi}} e^{-\frac{z^2}{2}} dz
 \end{align*} 
-Unfortunately, there is no nice antiderivative for the integrand, so we cannot compute the integral using the fundamental theorem of calculus. One option is to use numerical intergration techniques, which can be done using software packages such as Matlab or Mathematica. Another option is to use tables for the cdf of the standard normal distribution. Although this is perhaps a bit ``old-school'', it is important you know how to use these tables. There are many versions of the $Z$-table. The one I will provide (and the one which is on the course website) is the actual cdf for $Z$, i.e. is gives values for $F(z) = \P(Z \leq z)$. Since the standard normal is symmetric about 0, some tables only provide values on one side of the mean, since the others can be computed using symmetry. The table in the textbook by Wackerly et al (2008), for example, provides $\P(Z \geq z)$ for $z \geq 0$.\\
+Unfortunately, there is no nice antiderivative for the integrand, so we cannot compute the integral using the fundamental theorem of calculus. One option is to use numerical integration techniques, which can be done using software packages such as Matlab or Mathematica. Another option is to use tables for the cdf of the standard normal distribution. Although this is perhaps a bit ``old-school'', it is important you know how to use these tables. There are many versions of the $Z$-table. The one I will provide (and the one which is on the course website) is the actual cdf for $Z$, i.e. is gives values for $F(z) = \P(Z \leq z)$. Since the standard normal is symmetric about 0, some tables only provide values on one side of the mean, since the others can be computed using symmetry. The table in the textbook by Wackerly et al (2008), for example, provides $\P(Z \geq z)$ for $z \geq 0$.\\
 
 How do we compute this using a $Z$-table? Letting $F(z)$ be the cdf for the standard normal distribution, recall that for any continuous probability distribution we have:
 \[
@@ -643,7 +558,7 @@ We can use this to show the memoryless property of the exponential distribution.
 \begin{framed}
 \emph{Memoryless property of the exponential distribution}\\
   \rule{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{.1pt} \\
-Let $Y$ be a geometric random variable with parameter $\lambda$. Then for all $a$ and $b$
+Let $Y$ be an exponential random variable with parameter $\lambda$. Then for all $a$ and $b$
 \begin{align*}
 \P(Y > a + b | Y > a) = \P(Y > b)
 \end{align*}
